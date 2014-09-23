@@ -1,0 +1,40 @@
+#main-navbar {
+    margin-top: 20px;
+}
+
+.panel-satellite {
+    margin-top: 20px;
+}
+
+.satellite-title {
+    font-weight: bold;
+}
+
+.panel-transponder {
+    margin-top: 20px;
+}
+
+.add-transponder {
+    margin-top: -6px;
+}
+
+.suggest-transponder {
+    margin-top: -6px;
+}
+
+.panel-transponder > .panel-heading {
+    background-color: #B3E5FF;
+}
+
+.label-transponder-suggestions {
+    margin-right: 10px;
+    color: white;
+}
+
+.transponder-element {
+    margin-bottom: 10px;
+}
+
+.transponder-element-suggest {
+    margin-bottom: 10px;
+}
