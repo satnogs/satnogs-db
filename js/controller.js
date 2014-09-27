@@ -1,7 +1,16 @@
 angular.module('satnogs-db')
     .controller('SatnogsDBCtrl',
-                function SatnogsDBCtrl($scope, $routeParams, $filter, DBstorage) {
+                function SatnogsDBCtrl($scope, DBStorage) {
 
-    var items = $scope.todos = DBStorage.get();
-    
+    DBStorage.get().then(function(data) {
+        $scope.items = data.rows;
+        $scope.$apply();
+    });
+
+    DBStorage.changes().on('change', function() {
+        DBStorage.get().then(function(data) {
+            $scope.items = data.rows;
+            $scope.$apply();
+        });
+    });
 });
