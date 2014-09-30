@@ -67,15 +67,18 @@
 
     <div class="container" id="search" ng-controller="SatnogsDBCtrl">
       <div class="col-md-12">
-        <input type="text" class="form-control input-lg" placeholder="Search for satellite (NORAD ID or Name)">
+        <input type="text"
+               class="form-control input-lg"
+               placeholder="Search for satellite (NORAD ID or Name)"
+               ng-model="search">
       </div>
 
       <!-- Satellite Panels -->
-      <div class="col-md-12">
+      <div class="col-md-12" ng-repeat="satellite in items | filter:search">
         <div class="panel panel-default panel-satellite">
           <div class="panel-heading">
             <h3 class="panel-title">
-              <span class="satellite-title">25544 ISS</span>
+              <span class="satellite-title">{{ satellite.norad_cat_id }} {{ satellite.name }}</span>
               <button type="button"
                       class="btn btn-default btn-sm pull-right add-transponder"
                       data-toggle="modal"
@@ -83,17 +86,16 @@
                 <span class="glyphicon glyphicon-plus"></span>
                 <span class="plus-tip">Suggest new transponder</span>
               </button>
-              <span class="label label-warning pull-right label-transponder-suggestions">3 new suggestions</span>
             </h3>
           </div>
           <div class="panel-body">
 
             <!-- Transponders -->
-            <div class="col-md-12">
+            <div class="col-md-12" ng-repeat="transponder in satellite.transponders">
               <div class="panel panel-default panel-transponder">
                 <div class="panel-heading">
                   <h3 class="panel-title">
-                    <span class="transponder-title">Mode V/V AFSK Packet</span>
+                    <span class="transponder-title">{{ transponder.description }}</span>
                     <button type="button"
                             class="btn btn-default btn-sm pull-right suggest-transponder"
                             data-toggle="modal"
@@ -101,154 +103,21 @@
                       <span class="glyphicon glyphicon-edit"></span>
                       <span class="plus-tip">Suggest edits</span>
                     </button>
-                    <span class="label label-warning pull-right label-transponder-suggestions">4 suggested edits</span>
                   </h3>
                 </div>
                 <div class="panel-body">
-                  <div class="container transponder-element"><div class="col-md-3">
-                      <span class="label label-default">Uplink Low</span>
-                      <span class="pull-right">144.800 Mhz</span>
-                  </div></div>
-                  <div class="container transponder-element"><div class="col-md-3">
-                      <span class="label label-default">Uplink High</span>
-                      <span class="pull-right">144.900 Mhz</span>
-                  </div></div>
-                  <div class="container transponder-element"><div class="col-md-3">
-                      <span class="label label-default">Downlink Low</span>
-                      <span class="pull-right">344.800 Mhz</span>
-                  </div></div>
-                  <div class="container transponder-element"><div class="col-md-3">
-                      <span class="label label-default">Downlink High</span>
-                      <span class="pull-right">344.900 Mhz</span>
-                  </div></div>
-                  <div class="container transponder-element"><div class="col-md-3">
-                      <span class="label label-default">Mode</span>
-                      <span class="pull-right">AFSK</span>
-                  </div></div>
-                  <div class="container transponder-element"><div class="col-md-3">
-                      <span class="label label-default">Baud</span>
-                      <span class="pull-right">4400</span>
-                  </div></div>
-                  <div class="container transponder-element"><div class="col-md-3">
-                      <span class="label label-default">Invert</span>
-                      <span class="glyphicon glyphicon-ok pull-right"></span>
-                  </div></div>
+                  <div class="container transponder-element"
+                       ng-repeat="(key, value) in transponder">
+                    <div class="col-md-3"
+                         ng-if="key != 'description'">
+                      <span class="label label-default">{{ key }}</span>
+                      <span class="pull-right">{{ value }}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-12">
-        <div class="panel panel-default panel-satellite">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-              <span class="satellite-title">22825 KITSAT B</span>
-              <button type="button" class="btn btn-default btn-sm pull-right add-transponder">
-                <span class="glyphicon glyphicon-plus"></span>
-                <span class="plus-tip">Suggest new transponder</span>
-              </button>
-            </h3>
-          </div>
-          <div class="panel-body">
-            No transponder data for 22825 KITSAT B.
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-12">
-        <div class="panel panel-default panel-satellite">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-              <span class="satellite-title">38853 FITSAT-1</span>
-              <button type="button" class="btn btn-default btn-sm pull-right add-transponder">
-                <span class="glyphicon glyphicon-plus"></span>
-                <span class="plus-tip">Suggest new transponder</span>
-              </button>
-            </h3>
-          </div>
-          <div class="panel-body">
-            <div class="col-md-12">
-              <div class="panel panel-default panel-transponder">
-                <div class="panel-heading">
-                  <h3 class="panel-title">
-                    <span class="transponder-title">CW Beacon</span>
-                    <button type="button"
-                            class="btn btn-default btn-sm pull-right suggest-transponder"
-                            data-toggle="modal"
-                            data-target="#editModal">
-                      <span class="glyphicon glyphicon-edit"></span>
-                      <span class="plus-tip">Suggest edits</span>
-                    </button>
-                  </h3>
-                </div>
-                <div class="panel-body">
-                  <div class="container transponder-element"><div class="col-md-3">
-                      <span class="label label-default">Downlink Low</span>
-                      <span class="pull-right">437.250 Mhz</span>
-                  </div></div>
-                  <div class="container transponder-element"><div class="col-md-3">
-                      <span class="label label-default">Mode</span>
-                      <span class="pull-right">CW</span>
-                  </div></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="panel panel-default panel-transponder">
-                <div class="panel-heading">
-                  <h3 class="panel-title">
-                    <span class="transponder-title">FM</span>
-                    <button type="button"
-                            class="btn btn-default btn-sm pull-right suggest-transponder"
-                            data-toggle="modal"
-                            data-target="#editModal">
-                      <span class="glyphicon glyphicon-edit"></span>
-                      <span class="plus-tip">Suggest edits</span>
-                    </button>
-                    <span class="label label-warning pull-right label-transponder-suggestions">1 suggested edit</span>
-                  </h3>
-                </div>
-                <div class="panel-body">
-                  <div class="container transponder-element"><div class="col-md-3">
-                      <span class="label label-default">Downlink Low</span>
-                      <span class="pull-right">437.445 Mhz</span>
-                  </div></div>
-                  <div class="container transponder-element"><div class="col-md-3">
-                      <span class="label label-default">Mode</span>
-                      <span class="pull-right">FM</span>
-                  </div></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="panel panel-default panel-transponder">
-                <div class="panel-heading">
-                  <h3 class="panel-title">
-                    <span class="transponder-title">C-Band</span>
-                    <button type="button"
-                            class="btn btn-default btn-sm pull-right suggest-transponder"
-                            data-toggle="modal"
-                            data-target="#editModal">
-                      <span class="glyphicon glyphicon-edit"></span>
-                      <span class="plus-tip">Suggest edits</span>
-                    </button>
-                  </h3>
-                </div>
-                <div class="panel-body">
-                  <div class="container transponder-element"><div class="col-md-3">
-                      <span class="label label-default">Downlink Low</span>
-                      <span class="pull-right">5840.000 Mhz</span>
-                  </div></div>
-                  <div class="container transponder-element"><div class="col-md-3">
-                      <span class="label label-default">Mode</span>
-                      <span class="pull-right">Unspecified</span>
-                  </div></div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
