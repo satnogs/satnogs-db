@@ -1,4 +1,4 @@
-angular.module('satnogs-db', ['ngRoute']).config(function ($routeProvider) {
+angular.module('satnogs-db', ['ngRoute', 'ui.bootstrap']).config(function ($routeProvider) {
     'use strict';
 
     // TODO: base app

@@ -1,19 +1,19 @@
-$( document ).ready(function() {
+$(document).ready(function () {
     $(".plus-tip").hide();
 
-    $( ".add-transponder" )
-        .mouseover(function() {
-            $( this ).find( ".plus-tip" ).show();
+    $(".add-transponder")
+        .mouseover(function () {
+            $(this).find(".plus-tip").show();
         })
-        .mouseout(function() {
-            $( this ).find( ".plus-tip" ).hide();
+        .mouseout(function () {
+            $(this).find(".plus-tip").hide();
         });
 
-    $( ".suggest-transponder" )
-        .mouseover(function() {
-            $( this ).find( ".plus-tip" ).show();
+    $(".suggest-transponder")
+        .mouseover(function () {
+            $(this).find(".plus-tip").show();
         })
-        .mouseout(function() {
-            $( this ).find( ".plus-tip" ).hide();
+        .mouseout(function () {
+            $(this).find(".plus-tip").hide();
         });
 });

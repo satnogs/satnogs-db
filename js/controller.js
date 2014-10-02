@@ -8,7 +8,6 @@ angular.module('satnogs-db')
             docs.push(element.doc);
         })
         $scope.items = docs;
-        console.log(docs);
         $scope.$apply();
     });
 
@@ -22,4 +21,33 @@ angular.module('satnogs-db')
             $scope.$apply();
         });
     });
+});
+
+//Modal Controllers
+angular.module('satnogs-db').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+
+  $scope.ok = function () {
+    $modalInstance.close($scope.selected.item);
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+});
+
+angular.module('satnogs-db').controller('ModalEdit', function ($scope, $modal, $log) {
+
+  $scope.open = function (size) {
+    var modalInstance = $modal.open({
+      templateUrl: 'modal_edit.html',
+      controller: 'ModalInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function () {
+          return $scope.items;
+        }
+      }
+    });
+
+  };
 });
