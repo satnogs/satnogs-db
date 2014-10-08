@@ -42,3 +42,25 @@
 .transponder-element-suggest {
     margin-bottom: 10px;
 }
+
+.plus-tip {
+    display: none;
+}
+
+.stats {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+.stats div {
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.77) !important;
+}
+
+.info {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.satellite-panels {
+    display: none;
+}

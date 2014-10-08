@@ -29,7 +29,7 @@
 
   </head>
 
-  <body ng-app="satnogs-db">
+  <body ng-app="satnogs-db" ng-controller="SatnogsDBCtrl">
     <div class="container">
       <nav class="navbar navbar-default" role="navigation" id="main-navbar">
         <div class="container-fluid">
@@ -68,18 +68,33 @@
       </nav>
     </div><!-- End Navigation Bar -->
 
-    <div class="container" id="search" ng-controller="SatnogsDBCtrl">
+    <div class="stats container">
+      <div class="col-md-4">
+        <h1 ng-bind="countSatellites(items)">...</h1>
+        <h3>Satellites</h3>
+      </div>
+      <div class="col-md-4">
+        <h1 ng-bind="countTransponders(items)">...</h1>
+        <h3>Transponders</h3>
+      </div>
+      <div class="col-md-4">
+        <h1>...</h1>
+        <h3>Contributors</h3>
+      </div>
+    </div>
+
+    <div class="container" id="search">
 
       <!-- Search Bar -->
       <div class="col-md-12">
         <input type="text"
-               class="form-control input-lg"
+               class="form-control input-lg satellite-search"
                placeholder="Search for satellite (NORAD Cat ID or Name)"
                ng-model="search">
       </div>
 
       <!-- Satellite Panels -->
-      <div class="col-md-12" ng-repeat="satellite in items | filter:search">
+      <div class="col-md-12 satellite-panels" ng-repeat="satellite in items | filter:search">
         <div class="panel panel-default panel-satellite">
           <div class="panel-heading" ng-controller="ModalEdit">
             <h3 class="panel-title">
@@ -126,6 +141,21 @@
         </div>
       </div>
 
+    </div>
+
+    <div class="info container">
+      <div class="col-md-4">
+        <h3>Open</h1>
+        <p>SatNOGS DB is and will always be an open database. We aspire to crete a hollistic, unified, global transponder database for all satellite transponders. You can export the data or even connect your application using our API.</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Crowd-sourced</h1>
+        <p>We rely on user submitted crowd-sourced information. Create an account and start suggesting additions and/or modifications on our Database. We need your help!</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Extensible</h1>
+        <p>We designed SatNOGS-DB to be easily extensible to accommodate additions and modification on transponder model. Go ahead and suggest chaneges or even code them in <a href="https://github.com/satnogs/satnogs-db">our repo</a>.</p>
+      </div>
     </div>
 
     <footer>
