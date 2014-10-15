@@ -37,6 +37,18 @@ angular.module('satnogs-db')
       }
       return transponderCount;
     }
+
+    $scope.freqNum = function(value) {
+        if(isNaN(value)){
+          return value;
+        }else{
+          value = value/1000000;
+          value = value.toFixed(3);
+          var freq = value.toString();
+          var freqFormatted = freq + " Mhz"
+          return freqFormatted;
+        }
+     }
   });
 
 //Modal Controllers
