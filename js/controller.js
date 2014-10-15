@@ -1,27 +1,43 @@
 angular.module('satnogs-db')
-    .controller('SatnogsDBCtrl',
-                function SatnogsDBCtrl($scope, DBStorage) {
+  .controller('SatnogsDBCtrl',
+              function SatnogsDBCtrl($scope, DBStorage) {
 
     DBStorage.get().then(function(data) {
-        docs = [];
-        data.rows.forEach(function(element, index, array){
-            docs.push(element.doc);
-        })
-        $scope.items = docs;
-        $scope.$apply();
+      docs = [];
+      data.rows.forEach(function(element, index, array){
+        docs.push(element.doc);
+      });
+      $scope.items = docs;
+      $scope.$apply();
     });
 
     DBStorage.changes().on('change', function() {
-        DBStorage.get().then(function(data) {
-            docs = [];
-            data.rows.forEach(function(element, index, array){
-                docs.push(element.doc);
-            })
-            $scope.items = docs;
-            $scope.$apply();
+      DBStorage.get().then(function(data) {
+        docs = [];
+        data.rows.forEach(function(element, index, array){
+          docs.push(element.doc);
         });
+        $scope.items = docs;
+        $scope.$apply();
+      });
     });
-});
+
+    $scope.countSatellites = function(items) {
+      return Object.keys(items).length;
+    };
+
+    $scope.countTransponders = function(items) {
+      var transponderCount = 0;
+      for (var sat in items) {
+        for (var tra in sat) {
+          if(sat.hasOwnProperty(tra)){
+            transponderCount++;
+          }
+        }
+      }
+      return transponderCount;
+    }
+  });
 
 //Modal Controllers
 angular.module('satnogs-db').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
