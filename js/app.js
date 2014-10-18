@@ -1,6 +1,17 @@
-angular.module('satnogs-db', ['ngRoute', 'ui.bootstrap']).config(function ($routeProvider) {
+var app = angular.module('satnogs-db', ['ngRoute', 'ui.bootstrap']);
+
+app.config(function ($routeProvider){
     'use strict';
 
-    // TODO: base app
+    $routeProvider
+      .when('/', {
+        templateUrl: 'templates/main.html',
+      })
+      .when('/login', {
+        templateUrl: 'templates/login.html',
+      })
+      .when('/signup', {
+        templateUrl: 'templates/signup.html',
+      });
 
 });

@@ -5,7 +5,6 @@ $(document).ready(function () {
     $(document).on("mouseout", ".add-transponder", function(){
         $(this).find(".plus-tip").hide();
     });
-
     $(document).on("mouseover", ".suggest-transponder", function(){
         $(this).find(".plus-tip").show();
     });

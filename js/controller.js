@@ -1,6 +1,4 @@
-angular.module('satnogs-db')
-  .controller('SatnogsDBCtrl',
-              function SatnogsDBCtrl($scope, DBStorage) {
+app.controller('SatnogsDBCtrl', function SatnogsDBCtrl($scope, DBStorage, $routeParams) {
 
     DBStorage.get().then(function(data) {
       docs = [];
@@ -36,7 +34,7 @@ angular.module('satnogs-db')
         }
       }
       return transponderCount;
-    }
+    };
 
     $scope.freqNum = function(value) {
         if(isNaN(value)){
@@ -45,14 +43,14 @@ angular.module('satnogs-db')
           value = value/1000000;
           value = value.toFixed(3);
           var freq = value.toString();
-          var freqFormatted = freq + " Mhz"
+          var freqFormatted = freq + " Mhz";
           return freqFormatted;
         }
-     }
+     };
   });
 
 //Modal Controllers
-angular.module('satnogs-db').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items, $routeParams) {
 
   $scope.ok = function () {
     $modalInstance.close($scope.selected.item);
@@ -63,7 +61,7 @@ angular.module('satnogs-db').controller('ModalInstanceCtrl', function ($scope, $
   };
 });
 
-angular.module('satnogs-db').controller('ModalEdit', function ($scope, $modal, $log) {
+app.controller('ModalEdit', function ($scope, $modal, $log, $routeParams) {
 
   $scope.open = function (size) {
     var modalInstance = $modal.open({
@@ -77,5 +75,30 @@ angular.module('satnogs-db').controller('ModalEdit', function ($scope, $modal, $
       }
     });
 
+  };
+});
+
+//Registration Form Controller
+app.controller('registrationFormCtrl', function($scope, DBStorage) {
+  $scope.registrationForm = {};
+  $scope.registrationForm.username = "";
+  $scope.registrationForm.password = "";
+
+  $scope.registrationForm.submit = function(item, event) {
+    var username = $scope.registrationForm.username;
+    var password = $scope.registrationForm.password;
+
+    remote_db.signup(username, password, function(err, response) {
+      if (err) {
+        if (err.name === 'conflict') {
+          $scope.error = 'Username already exists!';
+        } else if (err.name === 'forbidden') {
+          $scope.error = 'Invalid username/password';
+        } else {
+          $scope.error = 'Oops... Something bad happened';
+        }
+        $scope.$apply()
+      }
+    });
   };
 });
