@@ -82,7 +82,7 @@ app.controller('ModalEdit', function ($scope, $modal, $log, $routeParams) {
 });
 
 //Registration Form Controller
-app.controller('registrationFormCtrl', function($scope, DBStorage) {
+app.controller('registrationFormCtrl', function($scope, $location, DBStorage) {
   $scope.registrationForm = {};
   $scope.registrationForm.username = "";
   $scope.registrationForm.password = "";
@@ -100,7 +100,34 @@ app.controller('registrationFormCtrl', function($scope, DBStorage) {
         } else {
           $scope.error = 'Oops... Something bad happened';
         }
-        $scope.$apply()
+        $scope.$apply();
+      } else {
+        $location.path('/');
+      }
+    });
+  };
+});
+
+//Login Form Controller
+app.controller('loginFormCtrl', function($scope, $location, DBStorage) {
+  $scope.loginForm = {};
+  $scope.loginForm.username = "";
+  $scope.loginForm.password = "";
+
+  $scope.loginForm.submit = function(item, event) {
+    var username = $scope.loginForm.username;
+    var password = $scope.loginForm.password;
+
+    remote_db.signup(username, password, function(err, response) {
+      if (err) {
+        if (err.name === 'unauthorized') {
+          $scope.error = 'Name or password incorrect!';
+        } else {
+          $scope.error = 'Oops... Something bad happened';
+        }
+        $scope.$apply();
+      } else {
+        $location.path('/');
       }
     });
   };
