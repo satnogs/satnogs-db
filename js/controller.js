@@ -47,6 +47,9 @@ app.controller('SatnogsDBCtrl', function SatnogsDBCtrl($scope, DBStorage, $route
           return freqFormatted;
         }
      };
+
+    $scope.$on('$viewContentLoaded', mainUI);
+
   });
 
 //Modal Controllers
