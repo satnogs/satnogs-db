@@ -1,7 +1,6 @@
 // satnogs-db storage
 
-angular.module('satnogs-db')
-    .factory('DBStorage', function() {
+app.factory('DBStorage', function() {
         'use strict';
 
         return {
@@ -27,4 +26,34 @@ angular.module('satnogs-db')
                 return db.changes({live: true});
             }
         };
+});
+
+app.factory('Auth', function($rootScope) {
+    var currentUser = {
+        loggedIn: false,
+        username: ''
+    };
+
+    return {
+      isLoggedIn: function() {
+          return currentUser.loggedIn;
+      },
+
+      getUserName: function() {
+          return currentUser.username;
+      },
+
+      logOut: function () {
+          currentUser.loggedIn = false;
+          currentUser.username = '';
+          $rootScope.$broadcast('userChanged', currentUser);
+      },
+
+      logIn: function (username) {
+          currentUser.loggedIn = true;
+          currentUser.username = username;
+          $rootScope.$broadcast('userChanged', currentUser);
+      }
+
+    };
 });

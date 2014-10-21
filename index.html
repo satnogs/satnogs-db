@@ -30,10 +30,9 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon.ico">
-
   </head>
 
-  <body ng-app="satnogs-db" ng-controller="SatnogsDBCtrl">
+  <body ng-app="satnogs-db">
     <div class="container">
       <nav class="navbar navbar-default" role="navigation" id="main-navbar">
         <div class="container-fluid">
@@ -51,20 +50,28 @@
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"
+	       ng-controller="MainCtrl">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
               <li class=""><a href="#">Moderation</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" ng-if='loggedIn'>
               <li class="dropdown" on-toggle="toggled(open)">
-                <a href="#"
-                   class="dropdown-toggle">User
-                   <span class="caret"></span>
+                <a href="#" class="dropdown-toggle">
+		  User <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="#" ng-click='logout()'>Logout</a></li>
                 </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-if='!loggedIn'>
+              <li>
+                <a href="#login">Login</a>
+              </li>
+              <li>
+                <a href="#signup">Sign up</a>
               </li>
             </ul>
           </div>

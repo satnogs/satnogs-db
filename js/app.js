@@ -6,15 +6,16 @@ app.config(function ($routeProvider){
     $routeProvider
       .when('/', {
         templateUrl: 'templates/main.html',
+        controller: 'SatnogsDBCtrl'
       })
       .when('/login', {
-        templateUrl: 'templates/login.html',
+        templateUrl: 'templates/login.html'
       })
       .when('/signup', {
-        templateUrl: 'templates/signup.html',
+        templateUrl: 'templates/signup.html'
       })
       .otherwise({
-          redirectTo: '/'
+        redirectTo: '/'
       });
 
 });

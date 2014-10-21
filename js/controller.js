@@ -1,3 +1,23 @@
+app.controller('MainCtrl', function MainCtrl($scope, Auth) {
+
+    $scope.loggedIn = Auth.isLoggedIn();
+    $scope.username = Auth.getUserName;
+
+    $scope.logout = function() {
+        remote_db.logout(function(err, respone) {
+            if (!err) {
+                Auth.logOut();
+            }
+        });
+    };
+
+    $scope.$on('userChanged', function(event, x) {
+        $scope.loggedIn = x.loggedIn;
+        $scope.username = x.username;
+        $scope.$apply();
+    });
+});
+
 app.controller('SatnogsDBCtrl', function SatnogsDBCtrl($scope, DBStorage, $routeParams) {
 
     DBStorage.get().then(function(data) {
@@ -82,7 +102,12 @@ app.controller('ModalEdit', function ($scope, $modal, $log, $routeParams) {
 });
 
 //Registration Form Controller
-app.controller('registrationFormCtrl', function($scope, $location, DBStorage) {
+app.controller('registrationFormCtrl', function($scope, $location, DBStorage, Auth) {
+
+  if (Auth.isLoggedIn()) {
+    $location.path('/');
+  }
+
   $scope.registrationForm = {};
   $scope.registrationForm.username = "";
   $scope.registrationForm.password = "";
@@ -100,35 +125,40 @@ app.controller('registrationFormCtrl', function($scope, $location, DBStorage) {
         } else {
           $scope.error = 'Oops... Something bad happened';
         }
-        $scope.$apply();
       } else {
         $location.path('/');
       }
+      $scope.$apply();
     });
   };
 });
 
 //Login Form Controller
-app.controller('loginFormCtrl', function($scope, $location, DBStorage) {
+app.controller('loginFormCtrl', function($scope, $rootScope, $location, DBStorage, Auth) {
   $scope.loginForm = {};
   $scope.loginForm.username = "";
   $scope.loginForm.password = "";
+
+  if (Auth.isLoggedIn()) {
+    $location.path('/');
+  }
 
   $scope.loginForm.submit = function(item, event) {
     var username = $scope.loginForm.username;
     var password = $scope.loginForm.password;
 
-    remote_db.signup(username, password, function(err, response) {
+    remote_db.login(username, password, function(err, response) {
       if (err) {
         if (err.name === 'unauthorized') {
           $scope.error = 'Name or password incorrect!';
         } else {
           $scope.error = 'Oops... Something bad happened';
         }
-        $scope.$apply();
       } else {
+        Auth.logIn(response.name);
         $location.path('/');
       }
+      $scope.$apply();
     });
   };
 });
