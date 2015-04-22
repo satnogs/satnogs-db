@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %} - Home{% endblock %}
+
+{% block content %}
+  <div class="stats row">
+    <div class="col-md-4">
+      <h1>{{ satellites.count }}</h1>
+      <h3>Satellites</h3>
+    </div>
+    <div class="col-md-4">
+      <h1>{{ transponders.count }}</h1>
+      <h3>Transponders</h3>
+    </div>
+    <div class="col-md-4">
+      <h1>{{ contributors.count }}</h1>
+      <h3>Contributors</h3>
+    </div>
+  </div>
+
+  <div class="row" id="search">
+    <div class="col-md-12">
+      <form method="post" action="">
+        <input type="text" list="satellites-list"
+               class="form-control input-lg satellite-search"
+               placeholder="Search for satellite (NORAD Cat ID or Name)">
+        <datalist id="satellites-list">
+          {% for sat in satellites %}
+            <option value="{{ sat.name }}">
+          {% endfor %}
+        </datalist>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 satellite-panels">
+      {% for sat in satellites %}
+        <div class="panel panel-default panel-satellite">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <span class="satellite-title">{{ sat.norad_cat_id }} {{ sat.name }}</span>
+              <button type="button"
+                      class="btn btn-default btn-sm pull-right add-transponder">
+                <span class="glyphicon glyphicon-plus" title="Suggest new transponder"></span>
+              </button>
+            </h3>
+          </div>
+
+          {% for transponder in sat.transponder.all %}
+            <div class="row panel-body">
+              <div class="col-md-12">
+                <div class="panel panel-default panel-transponder">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">
+                      <span class="transponder-title">{{ transponder.description }}</span>
+                      <button type="button"
+                              class="btn btn-default btn-sm pull-right suggest-transponder"
+                              data-toggle="modal"
+                              data-target="#editModal">
+                        <span class="glyphicon glyphicon-edit" title="Suggest edits"></span>
+                      </button>
+                    </h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="container transponder-element">
+                      <div class="col-md-3">
+                        <span class="label label-default">{{ transponder.key }}</span>
+                        <span class="pull-right">{{ transponder.value }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="info row">
+    <div class="col-md-4">
+      <h3>Open</h3>
+      <p>SatNOGS DB is and will always be an open database. We aspire to crete a hollistic, unified, global transponder database for all satellite transponders. You can export the data or even connect your application using our API.</p>
+    </div>
+    <div class="col-md-4">
+      <h3>Crowd-sourced</h3>
+      <p>We rely on user submitted crowd-sourced information. Create an account and start suggesting additions and/or modifications on our Database. We need your help!</p>
+    </div>
+    <div class="col-md-4">
+      <h3>Extensible</h3>
+      <p>We designed SatNOGS-DB to be easily extensible to accommodate additions and modification on transponder model. Go ahead and suggest chaneges or even code them in <a href="https://github.com/satnogs/satnogs-db">our repo</a>.</p>
+    </div>
+  </div>
+{% endblock %}

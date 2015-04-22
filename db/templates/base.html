@@ -1,0 +1,111 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en" ng-app>
+  <head>
+    <meta charset="utf-8">
+    <title>SatNOGS DB{% block title %}{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/lib/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lib/bootstrap-theme.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    {% block css %}
+    {% endblock %}
+
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+
+  </head>
+
+  <body>
+    {% block prenav-content %}{% endblock %}
+    <div class="container">
+      <nav class="navbar navbar-default" role="navigation" id="main-navbar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'home' %}">
+              <img id="navbar-logo" src="{% static 'img/satnogs_db.png' %}" alt="SatNOGS net">
+            </a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="{% url 'home' %}"><a href="{% url 'home' %}">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              {% if request.user.is_authenticated %}
+              <li class="dropdown">
+                <a href="#"
+                   class="dropdown-toggle"
+                   data-toggle="dropdown">{{ request.user.username }}
+                   <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                </ul>
+              </li>
+              {% else %}
+                <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+                <li><a href="{% url 'account_login' %}">Log In</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+
+      {% if messages %}
+        <div class="row messages">
+          <div class="col-md-12">
+            {% for notification in messages %}
+              <div class="alert alert-{{ notification.tags }}" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                {{ notification.message }}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% block content %}{% endblock content %}
+
+    </div>
+
+    <footer>
+      <div class="container">
+        <hr>
+        <div class="row">
+          <div class="col-md-6">
+            <span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span> 2014<script>document.write("-"+new Date().getFullYear());</script>
+            <a href="http://librespacefoundation.org/" target="_blank">Libre Space Foundation</a>.<br>
+            <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
+            Transponder data are freely distributed under the
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA</a> license.
+          </div>
+          <div class="col-md-6 text-right footer-options">
+            <a href="https://github.com/satnogs/satnogs-db">Contribute</a> |
+            <a href="#top">Back to top</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{% static 'js/lib/jquery-1.11.2.min.js' %}"></script>
+    <script src="{% static 'js/lib/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+    {% block javascript %}
+    {% endblock javascript %}
+
+    <!-- Google Analytics -->
+    {{ analytics_code }}
+</body>
+</html>

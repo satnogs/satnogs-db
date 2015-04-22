@@ -1,0 +1,24 @@
+# Basics
+*.py[cod]
+*.pyc
+__pycache__
+env
+.env
+
+# Logs
+*.log
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Sqlite
+*.db
+*.sqlite
+*.sqlite3
+
+# Media & Static
+media
+/staticfiles/*
