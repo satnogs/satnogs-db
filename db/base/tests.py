@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 import factory
 from factory import fuzzy
 
-from db.base.models import MODE_CHOICES, Satellite, Transponder
+from db.base.models import MODE_CHOICES, Satellite, Transponder, Suggestion
 
 
 class UserFactory(factory.django.DjangoModelFactory):
@@ -34,10 +34,15 @@ class TransponderFactory(factory.django.DjangoModelFactory):
     invert = fuzzy.FuzzyChoice(choices=[True, False])
     baud = fuzzy.FuzzyInteger(4000, 22000, step=1000)
     satellite = factory.SubFactory(SatelliteFactory)
-    approved = fuzzy.FuzzyChoice(choices=[True, False])
-    suggestion = factory.SubFactory('db.base.tests.TransponderFactory')
+
+    class Meta:
+        model = Transponder
+
+
+class SuggestionFactory(factory.django.DjangoModelFactory):
+    transponder = factory.SubFactory('db.base.tests.TransponderFactory')
     citation = fuzzy.FuzzyText()
     user = factory.SubFactory('db.base.tests.UserFactory')
 
     class Meta:
-        model = Transponder
+        model = Suggestion

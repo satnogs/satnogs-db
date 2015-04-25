@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 
 
 from db.base.models import Transponder, Satellite, MODE_CHOICES
-from db.base.forms import SatelliteSearchForm, TransponderSuggestionForm
+from db.base.forms import SatelliteSearchForm, SuggestionForm
 
 
 def home(request):
@@ -41,7 +41,7 @@ def home(request):
 @login_required
 @require_POST
 def suggestion(request):
-    suggestion_form = TransponderSuggestionForm(request.POST)
+    suggestion_form = SuggestionForm(request.POST)
     if suggestion_form.is_valid():
         suggestion = suggestion_form.save(commit=False)
         suggestion.user = request.user

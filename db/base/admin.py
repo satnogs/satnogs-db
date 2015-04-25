@@ -18,10 +18,7 @@ class TransponderAdmin(admin.ModelAdmin):
 
 @admin.register(Suggestion)
 class SuggestionAdmin(admin.ModelAdmin):
-    list_display = ('description', 'suggestion', 'user', 'satellite', 'uplink_low',
-                    'uplink_high', 'downlink_low', 'downlink_high', 'approved')
-    search_fields = ('satellite', 'approved')
+    list_display = ('description', 'transponder', 'user', 'satellite', 'uplink_low',
+                    'uplink_high', 'downlink_low', 'downlink_high')
+    search_fields = ('satellite', )
     list_filter = ('mode', 'invert')
-
-    def get_queryset(self, request):
-        return Transponder.objects_all.filter(approved=False)
