@@ -1,0 +1,4 @@
+# Local development dependencies go here
+-r dev.txt
+
+MySQL-python==1.2.5

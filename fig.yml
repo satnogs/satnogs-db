@@ -1,0 +1,22 @@
+db:
+  image: mariadb:5.5
+  environment:
+  - MYSQL_DATABASE=satnogsdb
+  - MYSQL_USER=satnogsdb
+  - MYSQL_PASSWORD=satnogsdb
+  - MYSQL_ROOT_PASSWORD=toor
+web:
+  build: .
+  ports:
+    - "8000:8000"
+  volumes:
+    - .:/app
+  links:
+    - db
+  environment:
+    - DJANGO_SETTINGS_MODULE=db.settings.dev
+    - DEFAULT_FROM_EMAIL=noreply@example.com
+    - ALLOWED_HOSTS=*
+    - DATABASE_URL=mysql://satnogsdb:satnogsdb@db/satnogsdb
+  command:
+    ./docker/run-fig.sh

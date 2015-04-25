@@ -10,7 +10,7 @@ django-braces==1.4.0
 django-secure==1.0.1
 
 # Users
-django-allauth==0.19.1
+-e git+https://github.com/comzeradd/django-allauth.git@migration#egg=allauth
 django-crispy-forms==1.4.0
 
 # API
