@@ -20,34 +20,42 @@
 
   <div class="row" id="search">
     <div class="col-md-12">
-      <form method="post" action="">
-        <input type="text" list="satellites-list"
+      <form method="post" action="{% url 'home' %}" id="search-form">{% csrf_token %}
+        <div class="input-group">
+        <input type="text" name="term" list="satellites-list" id="search-input"
                class="form-control input-lg satellite-search"
-               placeholder="Search for satellite (NORAD Cat ID or Name)">
+               placeholder="Select Satellite (Type NORAD Cat ID or Name)" autocomplete="off">
+        <div class="input-group-addon">
+          <a href="#" id="search-button">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          </a>
+        </div>
+        </div>
         <datalist id="satellites-list">
           {% for sat in satellites %}
-            <option value="{{ sat.name }}">
+            <option value="{{ sat }}">
           {% endfor %}
         </datalist>
       </form>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-12 satellite-panels">
-      {% for sat in satellites %}
+  {% if satellite %}
+    <div class="row">
+      <div class="col-md-12 satellite-panels">
         <div class="panel panel-default panel-satellite">
           <div class="panel-heading">
             <h3 class="panel-title">
-              <span class="satellite-title">{{ sat.norad_cat_id }} {{ sat.name }}</span>
+              <span class="satellite-title">{{ satellite }}</span>
               <button type="button"
-                      class="btn btn-default btn-sm pull-right add-transponder">
+                      class="btn btn-default btn-sm pull-right add-transponder"
+                      data-toggle="modal" data-target="#NewSuggestionModal">
                 <span class="glyphicon glyphicon-plus" title="Suggest new transponder"></span>
               </button>
             </h3>
           </div>
 
-          {% for transponder in sat.transponder.all %}
+          {% for transponder in satellite.transponders.all %}
             <div class="row panel-body">
               <div class="col-md-12">
                 <div class="panel panel-default panel-transponder">
@@ -57,7 +65,7 @@
                       <button type="button"
                               class="btn btn-default btn-sm pull-right suggest-transponder"
                               data-toggle="modal"
-                              data-target="#editModal">
+                              data-target="#EditSuggestionModal">
                         <span class="glyphicon glyphicon-edit" title="Suggest edits"></span>
                       </button>
                     </h3>
@@ -65,19 +73,170 @@
                   <div class="panel-body">
                     <div class="container transponder-element">
                       <div class="col-md-3">
-                        <span class="label label-default">{{ transponder.key }}</span>
-                        <span class="pull-right">{{ transponder.value }}</span>
+                        <span class="label label-default">Uplink Low</span>
+                        <span class="pull-right">{{ transponder.uplink_low }} - {{ transponder.approved }}</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <!-- Edit Suggestion Modal -->
+            <div class="modal fade" id="EditSuggestionModal" tabindex="-1" role="dialog" aria-labelledby="EditSuggestionModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="EditSuggestionModalLabel">Suggest an edit to this Transponder</h4>
+                  </div>
+                  {% if request.user.is_authenticated %}
+                    <form action="{% url 'suggestion' %}" method="post" id="editsuggestion-form">{% csrf_token %}
+                      <div class="modal-body">
+                        <div class="input-group transponder-element-suggest">
+                          <div class="input-group-addon">Description</div>
+                          <input type="text" class="form-control" name="description" value="{{ transponder.description }}">
+                        </div>
+                        <div class="input-group transponder-element-suggest">
+                          <input type="checkbox" value="1" name="alive" {% if transponder.alive %}checked{% endif %}> Alive
+                        </div>
+                        <div class="input-group transponder-element-suggest">
+                          <div class="input-group-addon">Uplink Low</div>
+                          <input type="text" class="form-control" name="uplink_low" value="{{ transponder.uplink_low }}">
+                        </div>
+                        <div class="input-group transponder-element-suggest">
+                          <div class="input-group-addon">Uplink High</div>
+                          <input type="text" class="form-control" name="uplink_high" value="{{ transponder.uplink_high }}">
+                        </div>
+                        <div class="input-group transponder-element-suggest">
+                          <div class="input-group-addon">Downlink Low</div>
+                          <input type="text" class="form-control" name="downlink_low" value="{{ transponder.downlink_low }}">
+                        </div>
+                        <div class="input-group transponder-element-suggest">
+                          <div class="input-group-addon">Downlink High</div>
+                          <input type="text" class="form-control" name="downlink_high" value="{{ transponder.downlink_high }}">
+                        </div>
+                        <div class="input-group transponder-element-suggest">
+                          <div class="input-group-addon">Mode</div>
+                          <select class="form-control" name="mode">
+                            {% for mode in modes %}
+                              <option value="{{ mode }}" {% ifequal transponder.mode mode %}selected{% endifequal %}>
+                                {{ mode }}
+                              </option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                        <div class="input-group transponder-element-suggest">
+                          <input type="checkbox" value="1" name="invert" {% if transponder.invert %}checked{% endif %}> Invert
+                        </div>
+                        <div class="input-group transponder-element-suggest">
+                          <div class="input-group-addon">Baud Rate</div>
+                          <input type="text" class="form-control" name="baud" value="{{ transponder.baud }}">
+                        </div>
+                        <div class="input-group transponder-element-suggest">
+                          <div class="input-group-addon">Citation URL</div>
+                          <input type="url" class="form-control" name="citation" value="{{ transponder.citation }}">
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                      </div>
+                      <input type="hidden" name="suggestion" value="{{ transponder.pk }}">
+                      <input type="hidden" name="satellite" value="{{ satellite.pk }}">
+                    </form>
+                  {% else %}
+                    <div class="modal-body">
+                      <div class="text-danger">You need to login first to add a new suggestion.</div>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-default" data-dismiss="modal">Close</button>
+                      <a href="{% url 'account_login' %}" class="btn btn-primary">Log In</a>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
           {% endfor %}
         </div>
-      {% endfor %}
+      </div>
     </div>
-  </div>
+
+    <!-- Suggestion Modal -->
+    <div class="modal fade" id="NewSuggestionModal" tabindex="-1" role="dialog" aria-labelledby="NewSuggestionModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="NewSuggestionModalLabel">Suggest a new Transponder</h4>
+          </div>
+          {% if request.user.is_authenticated %}
+            <form action="{% url 'suggestion' %}" method="post" id="newsuggestion-form">{% csrf_token %}
+              <div class="modal-body">
+                <div class="input-group transponder-element-suggest">
+                  <div class="input-group-addon">Description</div>
+                  <input type="text" class="form-control" name="description">
+                </div>
+                <div class="input-group transponder-element-suggest">
+                  <input type="checkbox" value="1" name="alive"> Alive
+                </div>
+                <div class="input-group transponder-element-suggest">
+                  <div class="input-group-addon">Uplink_Low</div>
+                  <input type="text" class="form-control" name="uplink_low">
+                </div>
+                <div class="input-group transponder-element-suggest">
+                  <div class="input-group-addon">Uplink High</div>
+                  <input type="text" class="form-control" name="uplink_high">
+                </div>
+                <div class="input-group transponder-element-suggest">
+                  <div class="input-group-addon">Downlink Low</div>
+                  <input type="text" class="form-control" name="downlink_low">
+                </div>
+                <div class="input-group transponder-element-suggest">
+                  <div class="input-group-addon">Downlink High</div>
+                  <input type="text" class="form-control" name="downlink_high">
+                </div>
+                <div class="input-group transponder-element-suggest">
+                  <div class="input-group-addon">Mode</div>
+                  <select class="form-control" name="mode">
+                    {% for mode in modes %}
+                      <option value="{{ mode }}">
+                        {{ mode }}
+                      </option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="input-group transponder-element-suggest">
+                  <input type="checkbox" value="1" name="invert"> Invert
+                </div>
+                <div class="input-group transponder-element-suggest">
+                  <div class="input-group-addon">Baud Rate</div>
+                  <input type="text" class="form-control" name="baud">
+                </div>
+                <div class="input-group transponder-element-suggest">
+                  <div class="input-group-addon">Citation URL</div>
+                  <input type="url" class="form-control" name="citation">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Send</button>
+              </div>
+              <input type="hidden" name="satellite" value="{{ satellite.pk }}">
+            </form>
+          {% else %}
+            <div class="modal-body">
+              <div class="text-danger">You need to login first to add a new suggestion.</div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-default" data-dismiss="modal">Close</button>
+              <a href="{% url 'account_login' %}" class="btn btn-primary">Log In</a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
 
   <div class="info row">
     <div class="col-md-4">

@@ -9,7 +9,7 @@ urlpatterns = patterns(
     '',
 
     # Base
-    url(r'^$', include('db.base.urls')),
+    url(r'^', include('db.base.urls')),
 
     # Accounts
     url(r'^accounts/', include('allauth.urls')),
