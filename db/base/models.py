@@ -43,7 +43,7 @@ class Transponder(models.Model):
 
 
 class Suggestion(Transponder):
-    citation = models.URLField(max_length=255, blank=True)
+    citation = models.CharField(max_length=255, blank=True)
     user = models.ForeignKey(User, blank=True, null=True,
                              on_delete=models.SET_NULL)
     transponder = models.ForeignKey(Transponder, blank=True, null=True,
