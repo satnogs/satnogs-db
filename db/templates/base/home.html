@@ -22,9 +22,11 @@
     <div class="col-md-12">
       <form method="post" action="{% url 'home' %}" id="search-form">{% csrf_token %}
         <div class="input-group">
-        <input type="text" name="term" list="satellites-list" id="search-input"
+        <input type="text" list="satellites-list"
                class="form-control input-lg satellite-search"
-               placeholder="Select Satellite (Type NORAD Cat ID or Name)" autocomplete="off">
+               placeholder="Select Satellite (Type NORAD Cat ID or Name)"
+               {% if not satellite %}autofocus{% endif %}>
+        <input type="hidden" name="term" name="term" id="search-term">
         <div class="input-group-addon">
           <a href="#" id="search-button">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>

@@ -1,16 +1,20 @@
 $(document).ready(function() {
     'use strict';
 
-    $('#search-input').focus();
+    //$('input:text').focus();
 
-    $('#search-input').keypress(function (e) {
+    $('input:text').keypress(function (e) {
         if (e.which == 13) {
+            var term = $('input:text').val();
+            $('input[name="term"]').val(term);
             $('#search-form').submit();
             return false;
         }
     });
 
     $('#search-button').click(function (e) {
+        var term = $('input:text').val();
+        $('input[name="term"]').val(term);
         $('#search-form').submit();
         return false;
     });
