@@ -34,6 +34,7 @@ class TransponderFactory(factory.django.DjangoModelFactory):
     invert = fuzzy.FuzzyChoice(choices=[True, False])
     baud = fuzzy.FuzzyInteger(4000, 22000, step=1000)
     satellite = factory.SubFactory(SatelliteFactory)
+    approved = fuzzy.FuzzyChoice(choices=[True, False])
 
     class Meta:
         model = Transponder

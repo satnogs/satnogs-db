@@ -10,7 +10,7 @@ class Command(BaseCommand):
     help = 'Create initial fixtures'
 
     def handle(self, *args, **options):
-        TransponderFactory.create_batch(20)
+        TransponderFactory.create_batch(20, approved=True)
 
         satellites = Satellite.objects.all()
 

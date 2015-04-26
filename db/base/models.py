@@ -6,6 +6,11 @@ from django.contrib.auth.models import User
 MODE_CHOICES = ['FM', 'AFSK', 'BFSK', 'APRS', 'SSTV', 'CW', 'FMN']
 
 
+class TransponderApprovedManager(models.Manager):
+    def get_queryset(self):
+        return super(TransponderApprovedManager, self).get_queryset().filter(approved=True)
+
+
 class Satellite(models.Model):
     """Model for SatNOGS satellites."""
     norad_cat_id = models.PositiveIntegerField()
@@ -29,6 +34,9 @@ class Transponder(models.Model):
     baud = models.FloatField(validators=[MinValueValidator(0)])
     satellite = models.ForeignKey(Satellite, related_name='transponders',
                                   null=True)
+    approved = models.BooleanField(default=False)
+
+    objects = TransponderApprovedManager()
 
     def __unicode__(self):
         return self.description
