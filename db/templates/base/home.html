@@ -75,8 +75,50 @@
                   <div class="panel-body">
                     <div class="container transponder-element">
                       <div class="col-md-3">
+                        <span class="label label-default">Alive</span>
+                        <span class="pull-right">{{ transponder.alive|default:"-" }}</span>
+                      </div>
+                    </div>
+                    <div class="container transponder-element">
+                      <div class="col-md-3">
                         <span class="label label-default">Uplink Low</span>
-                        <span class="pull-right">{{ transponder.uplink_low }} - {{ transponder.approved }}</span>
+                        <span class="pull-right">{{ transponder.uplink_low|default:"-" }}</span>
+                      </div>
+                    </div>
+                    <div class="container transponder-element">
+                      <div class="col-md-3">
+                        <span class="label label-default">Uplink High</span>
+                        <span class="pull-right">{{ transponder.uplink_high|default:"-" }}</span>
+                      </div>
+                    </div>
+                    <div class="container transponder-element">
+                      <div class="col-md-3">
+                        <span class="label label-default">Downlink Low</span>
+                        <span class="pull-right">{{ transponder.downlink_low|default:"-" }}</span>
+                      </div>
+                    </div>
+                    <div class="container transponder-element">
+                      <div class="col-md-3">
+                        <span class="label label-default">Downlink High</span>
+                        <span class="pull-right">{{ transponder.downlink_high|default:"-" }}</span>
+                      </div>
+                    </div>
+                    <div class="container transponder-element">
+                      <div class="col-md-3">
+                        <span class="label label-default">Mode</span>
+                        <span class="pull-right">{{ transponder.mode|default:"-" }}</span>
+                      </div>
+                    </div>
+                    <div class="container transponder-element">
+                      <div class="col-md-3">
+                        <span class="label label-default">Invert</span>
+                        <span class="pull-right">{{ transponder.invert|default:"-" }}</span>
+                      </div>
+                    </div>
+                    <div class="container transponder-element">
+                      <div class="col-md-3">
+                        <span class="label label-default">Baud</span>
+                        <span class="pull-right">{{ transponder.baud|default:"-" }}</span>
                       </div>
                     </div>
                   </div>
@@ -157,6 +199,12 @@
                     </div>
                   {% endif %}
                 </div>
+              </div>
+            </div>
+          {% empty %}
+            <div class="row panel-body">
+              <div class="col-md-12">
+                <span class="text-danger">No approved transponders yet for this Satellite.</span>
               </div>
             </div>
           {% endfor %}
