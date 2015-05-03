@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
@@ -47,7 +47,8 @@ def suggestion(request):
         suggestion.user = request.user
         suggestion.save()
 
-        messages.success(request, 'Your suggestion was stored successfully. Thanks for contibuting!')
+        messages.success(request, ('Your suggestion was stored successfully. '
+                                   'Thanks for contibuting!'))
         return redirect(reverse('home'))
 
     messages.error(request, 'We are sorry, but some error occured :(')
