@@ -15,7 +15,7 @@ class Command(BaseCommand):
                     help='Delete Satellite'),
     )
     args = '<Satellite Identifiers>'
-    help = 'Updates/Inserts TLEs for certain Satellites'
+    help = 'Updates/Inserts Name for certain Satellites'
 
     def handle(self, *args, **options):
         for item in args:
