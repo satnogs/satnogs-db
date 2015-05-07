@@ -3,12 +3,14 @@ from __future__ import unicode_literals
 
 from django.db import models, migrations
 import django.db.models.deletion
+from django.conf import settings
 import django.core.validators
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
@@ -34,8 +36,29 @@ class Migration(migrations.Migration):
                 ('invert', models.BooleanField(default=False)),
                 ('baud', models.FloatField(validators=[django.core.validators.MinValueValidator(0)])),
                 ('approved', models.BooleanField(default=False)),
-                ('satellite', models.ForeignKey(related_name='transponder', to='base.Satellite', null=True)),
-                ('suggestion', models.ForeignKey(related_name='suggestions', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='base.Transponder', null=True)),
             ],
+        ),
+        migrations.CreateModel(
+            name='Suggestion',
+            fields=[
+                ('transponder_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='base.Transponder')),
+                ('citation', models.CharField(max_length=255, blank=True)),
+            ],
+            bases=('base.transponder',),
+        ),
+        migrations.AddField(
+            model_name='transponder',
+            name='satellite',
+            field=models.ForeignKey(related_name='transponders', to='base.Satellite', null=True),
+        ),
+        migrations.AddField(
+            model_name='suggestion',
+            name='transponder',
+            field=models.ForeignKey(related_name='suggestions', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='base.Transponder', null=True),
+        ),
+        migrations.AddField(
+            model_name='suggestion',
+            name='user',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.SET_NULL, blank=True, to=settings.AUTH_USER_MODEL, null=True),
         ),
     ]
