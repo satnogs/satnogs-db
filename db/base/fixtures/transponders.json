@@ -3,7 +3,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 3,
-        "description": "Mode U TLM",
+        "uuid": "ZAKErADdWKpMiDjvKKhmmB",
         "uplink_low": null,
         "downlink_low": 437125000,
         "alive": true,
@@ -11,7 +11,8 @@
         "mode": "CW",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U TLM"
     },
     "model": "base.transponder",
     "pk": 1
@@ -20,7 +21,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 4,
-        "description": "Mode -/U BPSK",
+        "uuid": "MSo4x56nP9Pp7X7Fp54o4N",
         "uplink_low": null,
         "downlink_low": 435790000,
         "alive": true,
@@ -28,7 +29,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode -/U BPSK"
     },
     "model": "base.transponder",
     "pk": 2
@@ -37,7 +39,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 5,
-        "description": "Mode H TLM",
+        "uuid": "ybJ86zjXzQxDReZ5skY56B",
         "uplink_low": null,
         "downlink_low": 29352000,
         "alive": true,
@@ -45,7 +47,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode H TLM"
     },
     "model": "base.transponder",
     "pk": 3
@@ -54,7 +57,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 6,
-        "description": "Mode V/U Linear",
+        "uuid": "jSoctuLdUFBSUJHYgbgZuN",
         "uplink_low": 145900000,
         "downlink_low": 435800000,
         "alive": true,
@@ -62,7 +65,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": 146000000,
-        "downlink_high": 435900000
+        "downlink_high": 435900000,
+        "description": "Mode V/U Linear"
     },
     "model": "base.transponder",
     "pk": 4
@@ -71,7 +75,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 6,
-        "description": "Mode U CW Beacon",
+        "uuid": "Zqa2ebzyRRBffvwkLnjTVc",
         "uplink_low": null,
         "downlink_low": 435795000,
         "alive": true,
@@ -79,7 +83,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U CW Beacon"
     },
     "model": "base.transponder",
     "pk": 5
@@ -88,7 +93,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 7,
-        "description": "Mode V/U APRS,BBS 9K6 FSK",
+        "uuid": "c4T33yxNiE8EAEc7V6LMQk",
         "uplink_low": 145930000,
         "downlink_low": 435225000,
         "alive": true,
@@ -96,7 +101,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode V/U APRS,BBS 9K6 FSK"
     },
     "model": "base.transponder",
     "pk": 6
@@ -105,7 +111,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 7,
-        "description": "Mode V/U BBS1 9K6 FSK",
+        "uuid": "maYGaaMWsSBeDDDMpcM9ES",
         "uplink_low": 145850000,
         "downlink_low": 435225000,
         "alive": true,
@@ -113,7 +119,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode V/U BBS1 9K6 FSK"
     },
     "model": "base.transponder",
     "pk": 7
@@ -122,7 +129,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 7,
-        "description": "Mode V/U BBS2 9K6 FSK",
+        "uuid": "PtJxyimKfNcGwXY8hfdTgG",
         "uplink_low": 145890000,
         "downlink_low": 435225000,
         "alive": true,
@@ -130,7 +137,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode V/U BBS2 9K6 FSK"
     },
     "model": "base.transponder",
     "pk": 8
@@ -139,7 +147,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 7,
-        "description": "Mode L/U BBS 9K6 FSK",
+        "uuid": "kSAj4wZUjLHaDcoJub2gdP",
         "uplink_low": 1269700000,
         "downlink_low": 435225000,
         "alive": true,
@@ -147,7 +155,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode L/U BBS 9K6 FSK"
     },
     "model": "base.transponder",
     "pk": 9
@@ -156,7 +165,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 7,
-        "description": "Mode L/U BBS 9K6 FSK",
+        "uuid": "SBNBVk7PJxWGaMtAnMm7HA",
         "uplink_low": 1269800000,
         "downlink_low": 435225000,
         "alive": true,
@@ -164,7 +173,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode L/U BBS 9K6 FSK"
     },
     "model": "base.transponder",
     "pk": 10
@@ -173,7 +183,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 7,
-        "description": "Mode L/U BBS 9K6 FSK",
+        "uuid": "qvdNpHXGCBkBYSzGokjsYY",
         "uplink_low": 1269900000,
         "downlink_low": 435225000,
         "alive": true,
@@ -181,7 +191,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode L/U BBS 9K6 FSK"
     },
     "model": "base.transponder",
     "pk": 11
@@ -190,7 +201,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 8,
-        "description": "Mode V/V AFSK Packet",
+        "uuid": "4Yp5mRhdNPURqAuVn77NMk",
         "uplink_low": 145990000,
         "downlink_low": 145800000,
         "alive": true,
@@ -198,7 +209,8 @@
         "mode": "AFSK",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode V/V AFSK Packet"
     },
     "model": "base.transponder",
     "pk": 12
@@ -207,7 +219,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 8,
-        "description": "Mode V/U FM Voice",
+        "uuid": "jAkJ2yf46z8Kup5Yu8vita",
         "uplink_low": 145800000,
         "downlink_low": 437800000,
         "alive": true,
@@ -215,7 +227,8 @@
         "mode": "FM",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode V/U FM Voice"
     },
     "model": "base.transponder",
     "pk": 13
@@ -224,7 +237,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 8,
-        "description": "Mode V APRS",
+        "uuid": "ZJxCeQmih9zDfYNVrB4wRN",
         "uplink_low": 145825000,
         "downlink_low": 145825000,
         "alive": true,
@@ -232,7 +245,8 @@
         "mode": "FM",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode V APRS"
     },
     "model": "base.transponder",
     "pk": 14
@@ -241,7 +255,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 8,
-        "description": "Mode V Imaging",
+        "uuid": "qW5N27QuSrN2JMasbNiUhR",
         "uplink_low": null,
         "downlink_low": 145800000,
         "alive": true,
@@ -249,7 +263,8 @@
         "mode": "SSTV",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode V Imaging"
     },
     "model": "base.transponder",
     "pk": 15
@@ -258,7 +273,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 8,
-        "description": "Mode U/V FM Voice",
+        "uuid": "yMufCB474YJ4YRdDepfMUk",
         "uplink_low": 437800000,
         "downlink_low": 145800000,
         "alive": true,
@@ -266,7 +281,8 @@
         "mode": "FM",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U/V FM Voice"
     },
     "model": "base.transponder",
     "pk": 16
@@ -275,7 +291,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 8,
-        "description": "Mode V/V FM (crew R2+3)",
+        "uuid": "PjfcFc4PZ8M8n3thuyA6x9",
         "uplink_low": 144490000,
         "downlink_low": 145800000,
         "alive": true,
@@ -283,7 +299,8 @@
         "mode": "FM",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode V/V FM (crew R2+3)"
     },
     "model": "base.transponder",
     "pk": 17
@@ -292,7 +309,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 8,
-        "description": "Mode V/V FM (crew R1)",
+        "uuid": "pQRPwTWqQr7unDav5Mz4pG",
         "uplink_low": 145200000,
         "downlink_low": 145800000,
         "alive": true,
@@ -300,7 +317,8 @@
         "mode": "FM",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode V/V FM (crew R1)"
     },
     "model": "base.transponder",
     "pk": 18
@@ -309,7 +327,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 9,
-        "description": "Mode V/V APRS AFSK",
+        "uuid": "2dCbF2jmsxFpHw8ApevTMd",
         "uplink_low": 145825000,
         "downlink_low": 145825000,
         "alive": true,
@@ -317,7 +335,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode V/V APRS AFSK"
     },
     "model": "base.transponder",
     "pk": 19
@@ -326,7 +345,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 10,
-        "description": "Mode V/U FM Voice",
+        "uuid": "Y9P45XRJH8yAsbDDe4qHnE",
         "uplink_low": 145850000,
         "downlink_low": 436795000,
         "alive": true,
@@ -334,7 +353,8 @@
         "mode": "FM",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode V/U FM Voice"
     },
     "model": "base.transponder",
     "pk": 20
@@ -343,7 +363,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 11,
-        "description": "Mode U Beacon",
+        "uuid": "fpLBtCB3kRcf5uFWvSonsC",
         "uplink_low": null,
         "downlink_low": 437400000,
         "alive": true,
@@ -351,7 +371,8 @@
         "mode": "CW",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U Beacon"
     },
     "model": "base.transponder",
     "pk": 21
@@ -360,7 +381,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 11,
-        "description": "Mode U TLM",
+        "uuid": "ufVXbFsznnzKWsXqyf8gwE",
         "uplink_low": null,
         "downlink_low": 436837500,
         "alive": true,
@@ -368,7 +389,8 @@
         "mode": "CW",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U TLM"
     },
     "model": "base.transponder",
     "pk": 22
@@ -377,7 +399,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 12,
-        "description": "Mode U CW Beacon",
+        "uuid": "gmmMUrZydhneJJZRJAYoG",
         "uplink_low": null,
         "downlink_low": 436847500,
         "alive": true,
@@ -385,7 +407,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U CW Beacon"
     },
     "model": "base.transponder",
     "pk": 23
@@ -394,7 +417,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 12,
-        "description": "Mode U AFSK TLM",
+        "uuid": "2uGo77ULzByLLyshanpctH",
         "uplink_low": null,
         "downlink_low": 437490000,
         "alive": true,
@@ -402,7 +425,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U AFSK TLM"
     },
     "model": "base.transponder",
     "pk": 24
@@ -411,7 +435,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 13,
-        "description": "Mode U CW Beacon",
+        "uuid": "Vcr7nxdqbtgUMEBkQ5fQgn",
         "uplink_low": null,
         "downlink_low": 435352000,
         "alive": true,
@@ -419,7 +443,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U CW Beacon"
     },
     "model": "base.transponder",
     "pk": 25
@@ -428,7 +453,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 14,
-        "description": "Indian Beacon",
+        "uuid": "iQTQN82FXUCVSFmkYfohh5",
         "uplink_low": null,
         "downlink_low": 145936000,
         "alive": true,
@@ -436,7 +461,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Indian Beacon"
     },
     "model": "base.transponder",
     "pk": 26
@@ -445,7 +471,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 14,
-        "description": "Indian U/V Lin",
+        "uuid": "9F84Wpixu87uciHwKzx8tU",
         "uplink_low": 435220000,
         "downlink_low": 145870000,
         "alive": true,
@@ -453,7 +479,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": 435280000,
-        "downlink_high": 145930000
+        "downlink_high": 145930000,
+        "description": "Indian U/V Lin"
     },
     "model": "base.transponder",
     "pk": 27
@@ -462,7 +489,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 14,
-        "description": "Dutch Beacon CW",
+        "uuid": "7ZnAwpRgAPpoa5uTrjh9Ge",
         "uplink_low": null,
         "downlink_low": 145860000,
         "alive": true,
@@ -470,7 +497,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Dutch Beacon CW"
     },
     "model": "base.transponder",
     "pk": 28
@@ -479,7 +507,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 14,
-        "description": "Dutch U/V Lin",
+        "uuid": "Ja4nCimS64XJQaTCuaJRZh",
         "uplink_low": 435225000,
         "downlink_low": 145875000,
         "alive": true,
@@ -487,7 +515,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": 435275000,
-        "downlink_high": 145925000
+        "downlink_high": 145925000,
+        "description": "Dutch U/V Lin"
     },
     "model": "base.transponder",
     "pk": 29
@@ -496,7 +525,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 15,
-        "description": "Mode U BEACON",
+        "uuid": "ShK6dsshtuNqssrY4xP7LA",
         "uplink_low": null,
         "downlink_low": 437465000,
         "alive": true,
@@ -504,7 +533,8 @@
         "mode": "CW",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U BEACON"
     },
     "model": "base.transponder",
     "pk": 30
@@ -513,7 +543,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 15,
-        "description": "Mode U TLM",
+        "uuid": "BykbvfhDt8p3ieh8Nr8SYm",
         "uplink_low": null,
         "downlink_low": 437425000,
         "alive": true,
@@ -521,7 +551,8 @@
         "mode": "CW",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U TLM"
     },
     "model": "base.transponder",
     "pk": 31
@@ -530,7 +561,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 16,
-        "description": "Mode U TLM 1",
+        "uuid": "w3YLCLgdTqDpqhZ24uaJzM",
         "uplink_low": null,
         "downlink_low": 437275000,
         "alive": true,
@@ -538,7 +569,8 @@
         "mode": "CW",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U TLM 1"
     },
     "model": "base.transponder",
     "pk": 32
@@ -547,7 +579,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 16,
-        "description": "Mode U TLM 2",
+        "uuid": "ie2oBdY3zydrkWxEHvXtL",
         "uplink_low": null,
         "downlink_low": 437475000,
         "alive": true,
@@ -555,7 +587,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U TLM 2"
     },
     "model": "base.transponder",
     "pk": 33
@@ -564,7 +597,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 16,
-        "description": "Mode L/U Digipeater",
+        "uuid": "qFB67RqFJauwWgZCimDUPJ",
         "uplink_low": 1267600000,
         "downlink_low": 437475000,
         "alive": true,
@@ -572,7 +605,8 @@
         "mode": "GMSK",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode L/U Digipeater"
     },
     "model": "base.transponder",
     "pk": 34
@@ -581,7 +615,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 17,
-        "description": "Mode V BPSK TLM primary",
+        "uuid": "nvAxvDLCZ5Tkm9hmPBGCZH",
         "uplink_low": null,
         "downlink_low": 145868000,
         "alive": true,
@@ -589,7 +623,8 @@
         "mode": "SSB",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode V BPSK TLM primary"
     },
     "model": "base.transponder",
     "pk": 35
@@ -598,7 +633,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 17,
-        "description": "Mode V BPSK TLM secondary",
+        "uuid": "KSvJvnzcsf8CCr5whUygya",
         "uplink_low": null,
         "downlink_low": 145930000,
         "alive": true,
@@ -606,7 +641,8 @@
         "mode": "SSB",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode V BPSK TLM secondary"
     },
     "model": "base.transponder",
     "pk": 36
@@ -615,7 +651,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 18,
-        "description": "Mode U TLM",
+        "uuid": "WzUhZvVherckTDUttWu3dW",
         "uplink_low": null,
         "downlink_low": 437485000,
         "alive": true,
@@ -623,7 +659,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U TLM"
     },
     "model": "base.transponder",
     "pk": 37
@@ -632,7 +669,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 18,
-        "description": "Mode U SSTV",
+        "uuid": "k684vNNWvVqJQM2TzZ4PhG",
         "uplink_low": null,
         "downlink_low": 437485000,
         "alive": true,
@@ -640,7 +677,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U SSTV"
     },
     "model": "base.transponder",
     "pk": 38
@@ -649,7 +687,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 18,
-        "description": "Mode U Digi",
+        "uuid": "83vZm8YxPFoXjEzH9yhy4V",
         "uplink_low": null,
         "downlink_low": 437485000,
         "alive": true,
@@ -657,7 +695,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U Digi"
     },
     "model": "base.transponder",
     "pk": 39
@@ -666,7 +705,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 19,
-        "description": "Telemetry Beacon 1 Beacon",
+        "uuid": "h7S7VNjodegJM2AYahtvAN",
         "uplink_low": null,
         "downlink_low": 435215000,
         "alive": true,
@@ -674,7 +713,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Telemetry Beacon 1 Beacon"
     },
     "model": "base.transponder",
     "pk": 40
@@ -683,7 +723,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 19,
-        "description": "Telemetry Beacon 2 Beacon",
+        "uuid": "gFtFgRMUqbmLbR94Jjb2KK",
         "uplink_low": null,
         "downlink_low": 435315000,
         "alive": true,
@@ -691,7 +731,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Telemetry Beacon 2 Beacon"
     },
     "model": "base.transponder",
     "pk": 41
@@ -700,7 +741,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 20,
-        "description": "Mode U CW",
+        "uuid": "rmv9kRFrXDtQ8H7wucWwbm",
         "uplink_low": null,
         "downlink_low": 437250000,
         "alive": true,
@@ -708,7 +749,8 @@
         "mode": "CW",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U CW"
     },
     "model": "base.transponder",
     "pk": 42
@@ -717,7 +759,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 20,
-        "description": "Mode U FM 1200",
+        "uuid": "RP8r4va9hjC7sADMafUEFM",
         "uplink_low": null,
         "downlink_low": 437425000,
         "alive": true,
@@ -725,7 +767,8 @@
         "mode": "AFSK",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U FM 1200"
     },
     "model": "base.transponder",
     "pk": 43
@@ -734,7 +777,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 20,
-        "description": "Mode U FM 9600",
+        "uuid": "MqmQZv4wGRtxxfCFUGT5rh",
         "uplink_low": null,
         "downlink_low": 437425000,
         "alive": true,
@@ -742,7 +785,8 @@
         "mode": "GMSK",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U FM 9600"
     },
     "model": "base.transponder",
     "pk": 44
@@ -751,7 +795,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 21,
-        "description": "Mode U MSG",
+        "uuid": "ZkQJidFbx97FBARSxybeyh",
         "uplink_low": null,
         "downlink_low": 437385000,
         "alive": true,
@@ -759,7 +803,8 @@
         "mode": "CW",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U MSG"
     },
     "model": "base.transponder",
     "pk": 45
@@ -768,7 +813,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 22,
-        "description": "CW Beacon",
+        "uuid": "MbPzY2tZLnAqPHAELprZt4",
         "uplink_low": null,
         "downlink_low": 437505000,
         "alive": true,
@@ -776,7 +821,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "CW Beacon"
     },
     "model": "base.transponder",
     "pk": 46
@@ -785,7 +831,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 22,
-        "description": "FSK 1k2 Beacon",
+        "uuid": "QXy3Mi9DCV5moRCxw3dxgb",
         "uplink_low": null,
         "downlink_low": 437505000,
         "alive": true,
@@ -793,7 +839,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "FSK 1k2 Beacon"
     },
     "model": "base.transponder",
     "pk": 47
@@ -802,7 +849,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 23,
-        "description": "CW Beacon",
+        "uuid": "EojzB5Mx7Tk8n7oKTNBJcC",
         "uplink_low": null,
         "downlink_low": 436000000,
         "alive": true,
@@ -810,7 +857,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "CW Beacon"
     },
     "model": "base.transponder",
     "pk": 48
@@ -819,7 +867,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 23,
-        "description": "GMSK 4k8 9k6",
+        "uuid": "ZwdQUwqRbFETGnLAxoH9JF",
         "uplink_low": null,
         "downlink_low": 436000000,
         "alive": true,
@@ -827,7 +875,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "GMSK 4k8 9k6"
     },
     "model": "base.transponder",
     "pk": 49
@@ -836,7 +885,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 24,
-        "description": "CW Beacon",
+        "uuid": "ozVyJXXBodJDu4dio4vAzV",
         "uplink_low": null,
         "downlink_low": 437325000,
         "alive": true,
@@ -844,7 +893,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "CW Beacon"
     },
     "model": "base.transponder",
     "pk": 50
@@ -853,7 +903,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 24,
-        "description": "GFSK 19k2",
+        "uuid": "r6mypHqFn5e2M2gadzsPx3",
         "uplink_low": null,
         "downlink_low": 437325000,
         "alive": true,
@@ -861,7 +911,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "GFSK 19k2"
     },
     "model": "base.transponder",
     "pk": 51
@@ -870,7 +921,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 25,
-        "description": "CW Beacon",
+        "uuid": "T7QXLn5PryWVdjqDUfGa55",
         "uplink_low": null,
         "downlink_low": 435790000,
         "alive": true,
@@ -878,7 +929,8 @@
         "mode": "CW",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "CW Beacon"
     },
     "model": "base.transponder",
     "pk": 52
@@ -887,7 +939,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 25,
-        "description": "Mode V/U FM",
+        "uuid": "AEzrojCTbvAeZRDtPmqitc",
         "uplink_low": 145825000,
         "downlink_low": 435675000,
         "alive": true,
@@ -895,7 +947,8 @@
         "mode": "FM",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode V/U FM"
     },
     "model": "base.transponder",
     "pk": 53
@@ -904,7 +957,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 25,
-        "description": "Mode V/U Linear",
+        "uuid": "DMfzzRQEHk98K7diJ3wo27",
         "uplink_low": 145925000,
         "downlink_low": 435715000,
         "alive": true,
@@ -912,7 +965,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": 145975000,
-        "downlink_high": 435765000
+        "downlink_high": 435765000,
+        "description": "Mode V/U Linear"
     },
     "model": "base.transponder",
     "pk": 54
@@ -921,7 +975,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 25,
-        "description": "Mode V/U BBS AFSK",
+        "uuid": "xVq7syPGptNE56YpFTAgGh",
         "uplink_low": 145825000,
         "downlink_low": 435675000,
         "alive": true,
@@ -929,7 +983,8 @@
         "mode": "AFSK",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode V/U BBS AFSK"
     },
     "model": "base.transponder",
     "pk": 55
@@ -938,7 +993,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 27,
-        "description": "CW Beacon",
+        "uuid": "NMbzCvfQ2cfTf4XUbDKe5A",
         "uplink_low": null,
         "downlink_low": 437275000,
         "alive": true,
@@ -946,7 +1001,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "CW Beacon"
     },
     "model": "base.transponder",
     "pk": 56
@@ -955,7 +1011,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 27,
-        "description": "Payload",
+        "uuid": "KXTiVXsz8GnSZrfQU4yTnM",
         "uplink_low": null,
         "downlink_low": 437505000,
         "alive": true,
@@ -963,7 +1019,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Payload"
     },
     "model": "base.transponder",
     "pk": 57
@@ -972,7 +1029,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 28,
-        "description": "CW Beacon",
+        "uuid": "XvPtteeoMRay7B3n3akDJE",
         "uplink_low": null,
         "downlink_low": 437425000,
         "alive": true,
@@ -980,7 +1037,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "CW Beacon"
     },
     "model": "base.transponder",
     "pk": 58
@@ -989,7 +1047,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 29,
-        "description": "MCubed GMSK Beacon",
+        "uuid": "UpunTDE3mZuzsVXUBWNGj5",
         "uplink_low": null,
         "downlink_low": 437485000,
         "alive": true,
@@ -997,7 +1055,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "MCubed GMSK Beacon"
     },
     "model": "base.transponder",
     "pk": 59
@@ -1006,7 +1065,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 29,
-        "description": "Explorer 1 Prime Unit 2 Beacon",
+        "uuid": "RHwhZR7PW4heGkuudpbLxa",
         "uplink_low": null,
         "downlink_low": 437505000,
         "alive": true,
@@ -1014,7 +1073,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Explorer 1 Prime Unit 2 Beacon"
     },
     "model": "base.transponder",
     "pk": 60
@@ -1023,7 +1083,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 35,
-        "description": "AFSK 1200",
+        "uuid": "YpAL97NoEZsDuzWdbAMKzF",
         "uplink_low": 437438300,
         "downlink_low": 437438300,
         "alive": true,
@@ -1031,7 +1091,8 @@
         "mode": "FM",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "AFSK 1200"
     },
     "model": "base.transponder",
     "pk": 61
@@ -1040,7 +1101,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 43,
-        "description": "BPSK Telemetry",
+        "uuid": "KVx23PsGcpXJ5JymDXbETC",
         "uplink_low": null,
         "downlink_low": 145935000,
         "alive": true,
@@ -1048,7 +1109,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "BPSK Telemetry"
     },
     "model": "base.transponder",
     "pk": 62
@@ -1057,7 +1119,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 43,
-        "description": "Mode U/V Linear",
+        "uuid": "kjb3TFADq77qj2AFSzxHCV",
         "uplink_low": 435130000,
         "downlink_low": 145950000,
         "alive": true,
@@ -1065,7 +1127,8 @@
         "mode": "",
         "invert": true,
         "uplink_high": 435150000,
-        "downlink_high": 145970000
+        "downlink_high": 145970000,
+        "description": "Mode U/V Linear"
     },
     "model": "base.transponder",
     "pk": 63
@@ -1074,7 +1137,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 1,
-        "description": "Mode U/V Beacon",
+        "uuid": "YCcdJmZyt62cx8R8fv8mTe",
         "uplink_low": null,
         "downlink_low": 145977500,
         "alive": true,
@@ -1082,7 +1145,8 @@
         "mode": "CW",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U/V Beacon"
     },
     "model": "base.transponder",
     "pk": 64
@@ -1091,7 +1155,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 1,
-        "description": "Mode U Beacon",
+        "uuid": "epmfL93RZ2Vf5WKK4X2auf",
         "uplink_low": null,
         "downlink_low": 435106000,
         "alive": true,
@@ -1099,7 +1163,8 @@
         "mode": "CW",
         "invert": true,
         "uplink_high": null,
-        "downlink_high": null
+        "downlink_high": null,
+        "description": "Mode U Beacon"
     },
     "model": "base.transponder",
     "pk": 65
@@ -1108,7 +1173,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 1,
-        "description": "Mode V/A (A) Lin",
+        "uuid": "Pfwywu74BnMu72ykCicETX",
         "uplink_low": 145850000,
         "downlink_low": 29400000,
         "alive": true,
@@ -1116,7 +1181,8 @@
         "mode": "CW",
         "invert": true,
         "uplink_high": 145950000,
-        "downlink_high": 29500000
+        "downlink_high": 29500000,
+        "description": "Mode V/A (A) Lin"
     },
     "model": "base.transponder",
     "pk": 66
@@ -1125,7 +1191,7 @@
     "fields": {
         "baud": 0.0,
         "satellite": 1,
-        "description": "Mode U/V (B) Lin",
+        "uuid": "uLfAhJaZJUWmA9Sik8yQ2m",
         "uplink_low": 432125000,
         "downlink_low": 145925000,
         "alive": true,
@@ -1133,7 +1199,8 @@
         "mode": "CW",
         "invert": true,
         "uplink_high": 432175000,
-        "downlink_high": 145975000
+        "downlink_high": 145975000,
+        "description": "Mode U/V (B) Lin"
     },
     "model": "base.transponder",
     "pk": 67

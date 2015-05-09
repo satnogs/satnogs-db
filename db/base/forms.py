@@ -10,4 +10,4 @@ class SatelliteSearchForm(forms.Form):
 class SuggestionForm(forms.ModelForm):
     class Meta:
         model = Suggestion
-        exclude = ['user']
+        exclude = ['user', 'uuid']

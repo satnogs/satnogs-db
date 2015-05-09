@@ -13,7 +13,7 @@ class TransponderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Transponder
-        fields = ('id', 'description', 'alive', 'uplink_low', 'uplink_high',
+        fields = ('uuid', 'description', 'alive', 'uplink_low', 'uplink_high',
                   'downlink_low', 'downlink_high', 'mode', 'invert',
                   'baud', 'norad')
 

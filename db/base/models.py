@@ -1,3 +1,5 @@
+from shortuuidfield import ShortUUIDField
+
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.contrib.auth.models import User
@@ -22,6 +24,7 @@ class Satellite(models.Model):
 
 class Transponder(models.Model):
     """Model for antennas transponders."""
+    uuid = ShortUUIDField(db_index=True, unique=True)
     description = models.TextField()
     alive = models.BooleanField(default=True)
     uplink_low = models.PositiveIntegerField(blank=True, null=True)
