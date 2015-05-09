@@ -42,7 +42,7 @@
         "downlink_low": 29352000,
         "alive": true,
         "approved": true,
-        "mode": "CARRIER",
+        "mode": "",
         "invert": true,
         "uplink_high": null,
         "downlink_high": null
@@ -195,7 +195,7 @@
         "downlink_low": 145800000,
         "alive": true,
         "approved": true,
-        "mode": "AFSK 1200 bps",
+        "mode": "AFSK",
         "invert": true,
         "uplink_high": null,
         "downlink_high": null
@@ -229,7 +229,7 @@
         "downlink_low": 145825000,
         "alive": true,
         "approved": true,
-        "mode": "FM 1200 bps",
+        "mode": "FM",
         "invert": true,
         "uplink_high": null,
         "downlink_high": null
@@ -246,7 +246,7 @@
         "downlink_low": 145800000,
         "alive": true,
         "approved": true,
-        "mode": "SSTV in FM carrier",
+        "mode": "SSTV",
         "invert": true,
         "uplink_high": null,
         "downlink_high": null
@@ -331,7 +331,7 @@
         "downlink_low": 436795000,
         "alive": true,
         "approved": true,
-        "mode": "FM, PL 67.0 Hz",
+        "mode": "FM",
         "invert": true,
         "uplink_high": null,
         "downlink_high": null
@@ -552,7 +552,7 @@
         "downlink_low": 437475000,
         "alive": true,
         "approved": true,
-        "mode": "AX.25 1200 bps",
+        "mode": "",
         "invert": true,
         "uplink_high": null,
         "downlink_high": null
@@ -569,7 +569,7 @@
         "downlink_low": 437475000,
         "alive": true,
         "approved": true,
-        "mode": "GMSK 9600 bps",
+        "mode": "GMSK",
         "invert": true,
         "uplink_high": null,
         "downlink_high": null
@@ -722,7 +722,7 @@
         "downlink_low": 437425000,
         "alive": true,
         "approved": true,
-        "mode": "1k2 AFSK",
+        "mode": "AFSK",
         "invert": true,
         "uplink_high": null,
         "downlink_high": null
@@ -739,7 +739,7 @@
         "downlink_low": 437425000,
         "alive": true,
         "approved": true,
-        "mode": "9k2 GMSK",
+        "mode": "GMSK",
         "invert": true,
         "uplink_high": null,
         "downlink_high": null
@@ -1028,7 +1028,7 @@
         "downlink_low": 437438300,
         "alive": true,
         "approved": true,
-        "mode": "FM\r",
+        "mode": "FM",
         "invert": true,
         "uplink_high": null,
         "downlink_high": null
@@ -1096,7 +1096,7 @@
         "downlink_low": 435106000,
         "alive": true,
         "approved": true,
-        "mode": "CW/RTTY",
+        "mode": "CW",
         "invert": true,
         "uplink_high": null,
         "downlink_high": null
@@ -1113,7 +1113,7 @@
         "downlink_low": 29400000,
         "alive": true,
         "approved": true,
-        "mode": "SSB/CW",
+        "mode": "CW",
         "invert": true,
         "uplink_high": 145950000,
         "downlink_high": 29500000
@@ -1130,7 +1130,7 @@
         "downlink_low": 145925000,
         "alive": true,
         "approved": true,
-        "mode": "SSB/CW",
+        "mode": "CW",
         "invert": true,
         "uplink_high": 432175000,
         "downlink_high": 145975000

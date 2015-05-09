@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-MODE_CHOICES = ['FM', 'AFSK', 'BFSK', 'APRS', 'SSTV', 'CW', 'FMN']
+MODE_CHOICES = ['FM', 'AFSK', 'BFSK', 'APRS', 'SSTV', 'CW', 'FMN', 'SSTV', 'GMSK', 'SSB']
 
 
 class TransponderApprovedManager(models.Manager):
