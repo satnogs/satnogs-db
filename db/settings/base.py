@@ -67,7 +67,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
+
     'allauth.account.context_processors.account',
+
+    'db.base.context_processors.analytics',
+    'db.base.context_processors.stage_notice',
 )
 TEMPLATE_DIRS = (
     path.join(BASE_DIR, 'templates'),

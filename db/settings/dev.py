@@ -1,5 +1,6 @@
 from base import *
 
+ENVIRONMENT = 'dev'
 
 # Debug
 DEBUG = True

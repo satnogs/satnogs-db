@@ -162,3 +162,15 @@ body {
 footer {
     margin-bottom: 10px;
 }
+
+.stage-notice {
+    background-color: #D74545;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.stage-notice a {
+    color: #ffff00;
+}
