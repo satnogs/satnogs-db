@@ -125,6 +125,10 @@ body {
 }
 
 .panel-transponder {
+    margin-bottom: 20px;
+}
+
+.panel-first {
     margin-top: 20px;
 }
 

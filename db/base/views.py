@@ -26,7 +26,7 @@ def home(request):
                 messages.error(request, 'Please select one of the available Satellites')
                 return redirect(reverse('home'))
 
-            return render(request, 'base/home.html', {'satellites': satellites,
+            return render(request, 'base/suggest.html', {'satellites': satellites,
                                                       'transponders': transponders,
                                                       'satellite': satellite,
                                                       'contributors': contributors,
