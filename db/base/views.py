@@ -53,3 +53,7 @@ def suggestion(request):
 
     messages.error(request, 'We are sorry, but some error occured :(')
     return redirect(reverse('home'))
+
+
+def about(request):
+    return render(request, 'base/about.html')
