@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %} - FAQ{% endblock %}
+
+{% block content %}
+  <div class="row text">
+    <div class="col-md-12">
+      <h1>FAQ</h1>
+
+      <h3>How do I suggest a new transponder?</h3>
+      <ul class="faq">
+        <li>
+          First you need to identify the satellite which carries the transponder.
+          Do that by searching on the main search field and selecting the satellite you would like
+          to add a new transponder in.
+          <div><img src="{% static 'img/faq-1.jpg' %}"></div>
+        </li>
+        <li>
+          Make sure that the transponder is not already listed under the satellite.
+          Double check for other Modes that might include the information you would like to add.
+        </li>
+        <li>
+          Click on the small plus icon on the upper right corner of the satellite.
+          <div><img src="{% static 'img/faq-2.jpg' %}"></div>
+        </li>
+        <li>
+          Complete the fields to the best of your knowledge/research.
+        </li>
+        <li>
+          Make sure to include the citation URL, pointing to the web page you retrieved this
+          information, so that the reviewers can confirm the submission.
+        </li>
+        <li>
+          Click submit and you are done!
+        </li>
+        <li>
+          Make sure to include the citation URL, pointing to the web page you retrieved this information,
+          so that the reviewers can confirm the submission. Click submit and you are done!
+          SatNOGS DB reviewers will be checking your submission as soon as possible to approve it!
+        </li>
+      </ul>
+
+      <h3>How do I suggest an edit to a transponder?</h3>
+      <ul class="faq">
+        <li>
+          First you need to identify the satellite which carries the transponder.
+        </li>
+        <li>
+          Do that by searching on the main search field and selecting the satellite that
+          carries the transponder you would like to edit.
+          <div><img src="{% static 'img/faq-1.jpg' %}"></div>
+        </li>
+        <li>
+          Double check for other Modes that might include the information you would like to add.
+        </li>
+        <li>
+          Click on the small plus icon on the upper right corner of the transponder.
+          <div><img src="{% static 'img/faq-3.jpg' %}"></div>
+        </li>
+        <li>
+          Complete/Edit the fields to the best of your knowledge/research.
+        </li>
+        <li>
+          Make sure to include the citation URL, pointing to the web page you retrieved this information,
+          so that the reviewers can confirm the submission.
+        </li>
+        <li>
+          Click submit and you are done!
+        </li>
+        <li>
+          SatNOGS DB reviewers will be checking your submission as soon as possible to approve it!
+        </li>
+      </ul>
+    </h3>
+
+    <h3>The satellite I am looking is not there.</h3>
+    <ul class="faq">
+      <li>
+        Not all satellites are in SatNOGS DB yet. We prioritized the most common ones that we have
+        transponder information for. We need your help to expand our database!
+      </li>
+      <li>
+            Go to our <a href="https://community.satnogs.org/c/software/db" target="_blank">Community Forum</a>
+            and open a new thread requesting a satellite addition, with additional info
+            (links and citations) about it.
+      </li>
+      <li>
+        A DB reviewer will answer promptly and add the satellite to the DB so you can suggest
+        transponder information.
+      </li>
+    </ul>
+
+    </div>
+  </div>
+{% endblock content %}

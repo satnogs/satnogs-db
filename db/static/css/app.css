@@ -163,6 +163,14 @@ body {
     margin-bottom: 30px;
 }
 
+.text {
+    max-width: 900px;
+}
+
+.faq > li {
+    margin-top: 20px;
+}
+
 footer {
     margin-bottom: 10px;
 }
