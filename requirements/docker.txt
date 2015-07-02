@@ -1,4 +1,5 @@
-# Local development dependencies go here
+# Docker-only dependencies
 -r dev.txt
 
 MySQL-python==1.2.5
+gunicorn==19.3.0
