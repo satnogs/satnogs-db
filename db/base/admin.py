@@ -26,6 +26,25 @@ class SuggestionAdmin(admin.ModelAdmin):
     list_filter = ('mode', 'invert')
     readonly_fields = ('uuid', 'satellite', 'transponder', 'approved', 'user',
                        'citation', 'transponder_data')
+    actions = ['approve_suggestion']
+
+    def approve_suggestion(self, request, queryset):
+        for obj in queryset:
+            if obj.transponder:
+                obj.uuid = obj.transponder.uuid
+                obj.transponder.delete()
+            obj.approved = True
+            obj.save()
+        rows_updated = queryset.count()
+
+        # Print a message
+        if rows_updated == 1:
+            message_bit = '1 suggestion was'
+        else:
+            message_bit = '{0} suggestions were'.format(rows_updated)
+        self.message_user(request, '{0} successfully approved.'.format(message_bit))
+
+    approve_suggestion.short_description = 'Approve selected suggestions'
 
     def transponder_uuid(self, obj):
         try:
@@ -37,7 +56,7 @@ class SuggestionAdmin(admin.ModelAdmin):
         if obj.transponder:
             redirect_url = reverse('admin:base_transponder_changelist')
             extra = '{0}'.format(obj.transponder.pk)
-            return '<a href="{}">Trnasponder Initial Data</a>'.format(
+            return '<a href="{0}">Trnasponder Initial Data</a>'.format(
                 redirect_url + extra)
         else:
             return '-'
