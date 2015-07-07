@@ -125,6 +125,10 @@ body {
 }
 
 .panel-transponder {
+    margin-bottom: 20px;
+}
+
+.panel-first {
     margin-top: 20px;
 }
 
@@ -157,6 +161,14 @@ body {
 .info {
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+.text {
+    max-width: 900px;
+}
+
+.faq > li {
+    margin-top: 20px;
 }
 
 footer {

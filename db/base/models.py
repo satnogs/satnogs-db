@@ -13,6 +13,11 @@ class TransponderApprovedManager(models.Manager):
         return super(TransponderApprovedManager, self).get_queryset().filter(approved=True)
 
 
+class SuggestionApprovedManager(models.Manager):
+    def get_queryset(self):
+        return super(SuggestionApprovedManager, self).get_queryset().filter(approved=False)
+
+
 class Satellite(models.Model):
     """Model for SatNOGS satellites."""
     norad_cat_id = models.PositiveIntegerField()
@@ -51,6 +56,8 @@ class Suggestion(Transponder):
                              on_delete=models.SET_NULL)
     transponder = models.ForeignKey(Transponder, blank=True, null=True,
                                     on_delete=models.SET_NULL, related_name='suggestions')
+
+    objects = SuggestionApprovedManager()
 
     def __unicode__(self):
         return self.description

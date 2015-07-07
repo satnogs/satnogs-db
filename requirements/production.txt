@@ -2,3 +2,5 @@
 -r base.txt
 
 MySQL-python==1.2.5
+gunicorn==19.3.0
+opbeat==3.0.1
