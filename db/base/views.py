@@ -26,7 +26,7 @@ def home(request):
                 messages.error(request, 'Please select one of the available Satellites')
                 return redirect(reverse('home'))
 
-            return render(request, 'base/home.html', {'satellites': satellites,
+            return render(request, 'base/suggest.html', {'satellites': satellites,
                                                       'transponders': transponders,
                                                       'satellite': satellite,
                                                       'contributors': contributors,
@@ -53,3 +53,11 @@ def suggestion(request):
 
     messages.error(request, 'We are sorry, but some error occured :(')
     return redirect(reverse('home'))
+
+
+def about(request):
+    return render(request, 'base/about.html')
+
+
+def faq(request):
+    return render(request, 'base/faq.html')
