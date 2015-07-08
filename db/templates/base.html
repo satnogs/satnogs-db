@@ -36,7 +36,10 @@
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="{% url 'home' %}"><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="{% url 'about' %}">About</a></li>
+              <li><a href="{% url 'faq' %}">FAQ</a></li>
+              <li><a href="https://community.satnogs.org/" target="_blank">Community</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               {% if request.user.is_authenticated %}
