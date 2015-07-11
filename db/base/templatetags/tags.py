@@ -12,3 +12,13 @@ def active(request, urls):
         return 'active'
     return None
 
+
+@register.filter
+def frq(value):
+    try:
+        to_format = float(value)
+    except TypeError:
+        return '-'
+    formatted = format(float(to_format) / 1000000, '.3f')
+    formatted = formatted + ' Mhz'
+    return formatted

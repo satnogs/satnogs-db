@@ -1,5 +1,7 @@
 {% extends "base/home.html" %}
 
+{% load tags %}
+
 {% block title %} - Suggest{% endblock %}
 
 {% block content %}
@@ -41,25 +43,25 @@
                     <div class="container transponder-element">
                       <div class="col-md-3">
                         <span class="label label-default">Alive</span>
-                        <span class="pull-right">{{ transponder.alive|default:"-" }}</span>
+                        <span class="pull-right">{{ transponder.alive|frq }}</span>
                       </div>
                     </div>
                     <div class="container transponder-element">
                       <div class="col-md-3">
                         <span class="label label-default">Uplink Low</span>
-                        <span class="pull-right">{{ transponder.uplink_low|default:"-" }}</span>
+                        <span class="pull-right">{{ transponder.uplink_low|frq }}</span>
                       </div>
                     </div>
                     <div class="container transponder-element">
                       <div class="col-md-3">
                         <span class="label label-default">Uplink High</span>
-                        <span class="pull-right">{{ transponder.uplink_high|default:"-" }}</span>
+                        <span class="pull-right">{{ transponder.uplink_high|frq }}</span>
                       </div>
                     </div>
                     <div class="container transponder-element">
                       <div class="col-md-3">
                         <span class="label label-default">Downlink Low</span>
-                        <span class="pull-right">{{ transponder.downlink_low|default:"-" }}</span>
+                        <span class="pull-right">{{ transponder.downlink_low|frq }}</span>
                       </div>
                     </div>
                   </div>
@@ -114,19 +116,19 @@
                       </div>
                       <div class="input-group transponder-element-suggest">
                         <div class="input-group-addon">Uplink Low</div>
-                        <input type="text" class="form-control" name="uplink_low" value="{{ transponder.uplink_low|default_if_none:'' }}">
+                        <input type="number" class="form-control" name="uplink_low" value="{{ transponder.uplink_low|default_if_none:'' }}">
                       </div>
                       <div class="input-group transponder-element-suggest">
                         <div class="input-group-addon">Uplink High</div>
-                        <input type="text" class="form-control" name="uplink_high" value="{{ transponder.uplink_high|default_if_none:'' }}">
+                        <input type="number" class="form-control" name="uplink_high" value="{{ transponder.uplink_high|default_if_none:'' }}">
                       </div>
                       <div class="input-group transponder-element-suggest">
                         <div class="input-group-addon">Downlink Low</div>
-                        <input type="text" class="form-control" name="downlink_low" value="{{ transponder.downlink_low|default_if_none:'' }}">
+                        <input type="number" class="form-control" name="downlink_low" value="{{ transponder.downlink_low|default_if_none:'' }}">
                       </div>
                       <div class="input-group transponder-element-suggest">
                         <div class="input-group-addon">Downlink High</div>
-                        <input type="text" class="form-control" name="downlink_high" value="{{ transponder.downlink_high|default_if_none:'' }}">
+                        <input type="number" class="form-control" name="downlink_high" value="{{ transponder.downlink_high|default_if_none:'' }}">
                       </div>
                       <div class="input-group transponder-element-suggest">
                         <div class="input-group-addon">Mode</div>
@@ -143,7 +145,7 @@
                       </div>
                       <div class="input-group transponder-element-suggest">
                         <div class="input-group-addon">Baud Rate</div>
-                        <input type="text" class="form-control" name="baud" value="{{ transponder.baud|default_if_none:'' }}">
+                        <input type="number" class="form-control" name="baud" value="{{ transponder.baud|default_if_none:'' }}">
                       </div>
                       <div class="input-group transponder-element-suggest">
                         <div class="input-group-addon">Citation URL</div>
@@ -200,19 +202,19 @@
               </div>
               <div class="input-group transponder-element-suggest">
                 <div class="input-group-addon">Uplink_Low</div>
-                <input type="text" class="form-control" name="uplink_low">
+                <input type="number" class="form-control" name="uplink_low">
               </div>
               <div class="input-group transponder-element-suggest">
                 <div class="input-group-addon">Uplink High</div>
-                <input type="text" class="form-control" name="uplink_high">
+                <input type="number" class="form-control" name="uplink_high">
               </div>
               <div class="input-group transponder-element-suggest">
                 <div class="input-group-addon">Downlink Low</div>
-                <input type="text" class="form-control" name="downlink_low">
+                <input type="number" class="form-control" name="downlink_low">
               </div>
               <div class="input-group transponder-element-suggest">
                 <div class="input-group-addon">Downlink High</div>
-                <input type="text" class="form-control" name="downlink_high">
+                <input type="number" class="form-control" name="downlink_high">
               </div>
               <div class="input-group transponder-element-suggest">
                 <div class="input-group-addon">Mode</div>
@@ -229,7 +231,7 @@
               </div>
               <div class="input-group transponder-element-suggest">
                 <div class="input-group-addon">Baud Rate</div>
-                <input type="text" class="form-control" name="baud">
+                <input type="number" class="form-control" name="baud">
               </div>
               <div class="input-group transponder-element-suggest">
                 <div class="input-group-addon">Citation URL</div>
