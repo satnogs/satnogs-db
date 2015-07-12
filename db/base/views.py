@@ -6,14 +6,12 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse
 
 
-from db.base.models import Transponder, Satellite, MODE_CHOICES
+from db.base.models import Transponder, Satellite, Suggestion, MODE_CHOICES
 from db.base.forms import SatelliteSearchForm, SuggestionForm
 
 
 def home(request):
     satellites = Satellite.objects.all()
-    transponders = Transponder.objects.all()
-    contributors = User.objects.filter(is_active=1)
 
     if request.method == 'POST':
         satellite_form = SatelliteSearchForm(request.POST)
@@ -26,16 +24,18 @@ def home(request):
                 messages.error(request, 'Please select one of the available Satellites')
                 return redirect(reverse('home'))
 
-            return render(request, 'base/suggest.html', {'satellites': satellites,
-                                                      'transponders': transponders,
-                                                      'satellite': satellite,
-                                                      'contributors': contributors,
-                                                      'satellite_form': satellite_form,
-                                                      'modes': MODE_CHOICES})
+            return render(request, 'base/suggest.html', {'satellite': satellite,
+                                                         'satellites': satellites,
+                                                         'satellite_form': satellite_form,
+                                                         'modes': MODE_CHOICES})
 
+    transponders = Transponder.objects.all().count()
+    suggestions = Suggestion.objects.all().count()
+    contributors = User.objects.filter(is_active=1).count()
     return render(request, 'base/home.html', {'satellites': satellites,
                                               'transponders': transponders,
-                                              'contributors': contributors})
+                                              'contributors': contributors,
+                                              'suggestions': suggestions})
 
 
 @login_required
