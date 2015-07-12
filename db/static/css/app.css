@@ -178,9 +178,14 @@ footer {
 .stage-notice {
     background-color: #D74545;
     color: white;
-    padding: 10px;
+    padding: 5px;
     text-align: center;
     font-size: 0.9em;
+    z-index: 20;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
 }
 
 .stage-notice a {
