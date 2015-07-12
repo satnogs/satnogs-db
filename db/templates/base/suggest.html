@@ -20,6 +20,11 @@
                     data-toggle="modal" data-target="#NewSuggestionModal">
               <span class="glyphicon glyphicon-plus" title="Suggest new transponder"></span>
             </button>
+            {% if suggestions %}
+              <span class="suggestions-counter pull-right label label-primary">
+                {{ suggestions }} suggestions pending
+              </span>
+            {% endif %}
           </h3>
         </div>
 

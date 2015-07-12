@@ -24,8 +24,11 @@ def home(request):
                 messages.error(request, 'Please select one of the available Satellites')
                 return redirect(reverse('home'))
 
+            suggestions = Suggestion.objects.filter(satellite=satellite).count()
+
             return render(request, 'base/suggest.html', {'satellite': satellite,
                                                          'satellites': satellites,
+                                                         'suggestions': suggestions,
                                                          'satellite_form': satellite_form,
                                                          'modes': MODE_CHOICES})
 
