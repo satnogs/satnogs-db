@@ -140,6 +140,10 @@ body {
     margin-top: -6px;
 }
 
+.suggestions-counter {
+    margin-right: 10px;
+}
+
 .panel-transponder > .panel-heading {
     background-color: #B3E5FF;
     background-image: none;
