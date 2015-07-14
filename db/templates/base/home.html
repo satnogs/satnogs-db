@@ -3,17 +3,21 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-    <div class="stats row">
-      <div class="col-md-4">
+    <div class="stats row hidden-xs hidden-sm">
+      <div class="col-md-3">
         <h1>{{ satellites.count }}</h1>
         <h3>Satellites</h3>
       </div>
-      <div class="col-md-4">
-        <h1>{{ transponders.count }}</h1>
+      <div class="col-md-3">
+        <h1>{{ transponders }}</h1>
         <h3>Transponders</h3>
       </div>
-      <div class="col-md-4">
-        <h1>{{ contributors.count }}</h1>
+      <div class="col-md-3">
+        <h1>{{ suggestions }}</h1>
+        <h3>Suggestions</h3>
+      </div>
+      <div class="col-md-3">
+        <h1>{{ contributors }}</h1>
         <h3>Contributors</h3>
       </div>
     </div>

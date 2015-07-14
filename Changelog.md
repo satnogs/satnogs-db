@@ -1,3 +1,9 @@
+## 0.3
+
+* Show active link on top menu
+* Beautify freqs as MHz
+* Add Suggestions stats
+
 ## 0.2
 
 * Simplify suggestions UI
