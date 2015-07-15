@@ -48,7 +48,7 @@
                     <div class="container transponder-element">
                       <div class="col-md-3">
                         <span class="label label-default">Alive</span>
-                        <span class="pull-right">{{ transponder.alive|frq }}</span>
+                        <span class="pull-right">{{ transponder.alive }}</span>
                       </div>
                     </div>
                     <div class="container transponder-element">
@@ -74,7 +74,7 @@
                     <div class="container transponder-element">
                       <div class="col-md-3">
                         <span class="label label-default">Downlink High</span>
-                        <span class="pull-right">{{ transponder.downlink_high|default:"-" }}</span>
+                        <span class="pull-right">{{ transponder.downlink_high|frq }}</span>
                       </div>
                     </div>
                     <div class="container transponder-element">
