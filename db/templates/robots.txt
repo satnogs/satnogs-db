@@ -1,0 +1,6 @@
+user-agent: *
+{% if enviroment == 'production' %}
+Disallow: /admin/
+{% else %}
+Disallow: /
+{% endif %}

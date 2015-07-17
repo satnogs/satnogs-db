@@ -4,8 +4,9 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseNotFound, HttpResponseServerError
+from django.http import HttpResponseNotFound, HttpResponseServerError, HttpResponse
 from django.shortcuts import render
+from django.conf import settings
 
 from db.base.models import Transponder, Satellite, Suggestion, MODE_CHOICES
 from db.base.forms import SatelliteSearchForm, SuggestionForm
@@ -51,6 +52,13 @@ def custom_404(request):
 def custom_500(request):
     """Custom 500 error handler."""
     return HttpResponseServerError(render(request, '500.html'))
+
+
+def robots(request):
+    data = render(request, 'robots.txt', {'environment': settings.ENVIRONMENT})
+    response = HttpResponse(data,
+                            content_type='text/plain; charset=utf-8')
+    return response
 
 
 @login_required

@@ -6,4 +6,5 @@ urlpatterns = patterns(
     url(r'^about/$', 'about', name='about'),
     url(r'^faq/$', 'faq', name='faq'),
     url(r'^suggestion/$', 'suggestion', name='suggestion'),
+    url(r'^robots\.txt$', 'robots', name='robots'),
 )
