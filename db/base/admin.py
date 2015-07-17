@@ -8,8 +8,8 @@ from django.contrib.sites.shortcuts import get_current_site
 
 from db.base.models import Satellite, Transponder, Suggestion
 
-
 logger = logging.getLogger('db')
+
 
 @admin.register(Satellite)
 class SatelliteAdmin(admin.ModelAdmin):

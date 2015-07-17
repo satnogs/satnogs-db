@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseNotFound, HttpResponseServerError, HttpResponse
-from django.shortcuts import render
 from django.conf import settings
 
 from db.base.models import Transponder, Satellite, Suggestion, MODE_CHOICES
