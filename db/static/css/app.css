@@ -89,6 +89,13 @@ body {
     border-color: #eed3d7;
 }
 
+.error {
+    margin-top: 40px;
+    width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
 .img-avatar {
     border: 2px solid white;
     border-radius: 50px;

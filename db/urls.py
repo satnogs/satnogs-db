@@ -5,6 +5,9 @@ from django.conf.urls.static import static
 from django.contrib import admin
 admin.autodiscover()
 
+handler404 = 'db.base.views.custom_404'
+handler500 = 'db.base.views.custom_500'
+
 urlpatterns = patterns(
     '',
 
@@ -21,4 +24,9 @@ urlpatterns = patterns(
     url(r'^admin/', include(admin.site.urls)),
 )
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += patterns(
+        '',
+        url(r'^404/$', handler404),
+        url(r'^500/$', handler500),
+    )
