@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 
-from db.api import serializers
+from db.api import serializers, filters
 from db.base.models import Satellite, Transponder
 
 
@@ -12,3 +12,4 @@ class SatelliteView(viewsets.ModelViewSet):
 class TransponderView(viewsets.ModelViewSet):
     queryset = Transponder.objects.all()
     serializer_class = serializers.TransponderSerializer
+    filter_class = filters.TransponderViewFilter

@@ -18,6 +18,7 @@ django-crispy-forms==1.4.0
 # API
 djangorestframework==3.1.1
 markdown==2.6.1
+django-filter==0.9.2
 
 # Astronomy
 orbit==0.2
