@@ -6,6 +6,7 @@ from db.base.models import Satellite, Transponder
 class SatelliteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Satellite
+        fields = ('norad_cat_id', 'name')
 
 
 class TransponderSerializer(serializers.ModelSerializer):
