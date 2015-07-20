@@ -1,7 +1,14 @@
+import logging
+
 from django.contrib import admin
 from django.core.urlresolvers import reverse
+from django.template.loader import render_to_string
+from django.conf import settings
+from django.contrib.sites.shortcuts import get_current_site
 
 from db.base.models import Satellite, Transponder, Suggestion
+
+logger = logging.getLogger('db')
 
 
 @admin.register(Satellite)
@@ -35,6 +42,24 @@ class SuggestionAdmin(admin.ModelAdmin):
                 obj.transponder.delete()
             obj.approved = True
             obj.save()
+
+            # Notify user
+            current_site = get_current_site(request)
+            subject = '[{0}] Your suggestion was approved'.format(current_site.name)
+            template = 'emails/suggestion_approved.txt'
+            data = {
+                'satname': obj.satellite.name,
+                'site_name': current_site.name
+            }
+            message = render_to_string(template, {'data': data})
+            try:
+                obj.user.email_user(subject, message, from_email=settings.DEFAULT_FROM_EMAIL)
+            except:
+                logger.error(
+                    'Could not send email to user',
+                    exc_info=True
+                )
+
         rows_updated = queryset.count()
 
         # Print a message
