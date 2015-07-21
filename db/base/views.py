@@ -1,3 +1,5 @@
+import logging
+
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.views.decorators.http import require_POST
@@ -9,6 +11,8 @@ from django.conf import settings
 
 from db.base.models import Transponder, Satellite, Suggestion, MODE_CHOICES
 from db.base.forms import SatelliteSearchForm, SuggestionForm
+
+logger = logging.getLogger('db')
 
 
 def home(request):
@@ -73,9 +77,17 @@ def suggestion(request):
         messages.success(request, ('Your suggestion was stored successfully. '
                                    'Thanks for contibuting!'))
         return redirect(reverse('home'))
+    else:
+        logger.debug(
+            'Suggestion form was not valid',
+            exc_info=True,
+            extra={
+                'form': suggestion_form.errors,
+            }
+        )
 
-    messages.error(request, 'We are sorry, but some error occured :(')
-    return redirect(reverse('home'))
+        messages.error(request, 'We are sorry, but some error occured :(')
+        return redirect(reverse('home'))
 
 
 def about(request):
