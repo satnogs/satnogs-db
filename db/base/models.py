@@ -39,7 +39,7 @@ class Transponder(models.Model):
     mode = models.CharField(choices=zip(MODE_CHOICES, MODE_CHOICES),
                             max_length=10)
     invert = models.BooleanField(default=False)
-    baud = models.FloatField(validators=[MinValueValidator(0)])
+    baud = models.FloatField(validators=[MinValueValidator(0)], blank=True, null=True)
     satellite = models.ForeignKey(Satellite, related_name='transponders',
                                   null=True)
     approved = models.BooleanField(default=False)
