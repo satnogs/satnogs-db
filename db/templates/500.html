@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %} - Server Error{% endblock %}
+
+{% block content %}
+<div class="error">
+  <h1>500</h1>
+
+  <h3>Server Error</h3>
+
+  <p>
+    We track these errors automatically, but if the problem persists feel free to contact us.
+    In the meantime, try refreshing. Head back to <a href="{% url 'home' %}">homepage</a>.
+  </p>
+
+  <p><img src="{% static 'img/error.png' %}"></p>
+
+</div>
+{% endblock content %}

@@ -1,0 +1,7 @@
+{% extends 'emails/base.txt' %}
+
+{% block main %}
+Your suggestion for Satellite {{ data.satname }} was approved!
+
+Thank you for your contribution.
+{% endblock %}
