@@ -18,7 +18,7 @@
             <button type="button"
                     class="btn btn-default btn-sm pull-right add-transponder"
                     data-toggle="modal" data-target="#NewSuggestionModal">
-              <span class="glyphicon glyphicon-plus" title="Suggest new transponder"></span>
+              <span class="glyphicon glyphicon-plus" title="Suggest new transmitter"></span>
             </button>
             {% if suggestions %}
               <span class="suggestions-counter pull-right label label-primary">
@@ -107,7 +107,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="EditSuggestionModalLabel">Suggest an edit to this Transponder</h4>
+                  <h4 class="modal-title" id="EditSuggestionModalLabel">Suggest an edit to this Transmitter</h4>
                 </div>
                 {% if request.user.is_authenticated %}
                   <form action="{% url 'suggestion' %}" method="post" id="editsuggestion-form">{% csrf_token %}
@@ -179,7 +179,7 @@
         {% empty %}
           <div class="row panel-body">
             <div class="col-md-12">
-              <span class="text-danger">No approved transponders yet for this Satellite.</span>
+              <span class="text-danger">No approved transmitters yet for this Satellite.</span>
             </div>
           </div>
         {% endfor %}
@@ -193,7 +193,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="NewSuggestionModalLabel">Suggest a new Transponder</h4>
+          <h4 class="modal-title" id="NewSuggestionModalLabel">Suggest a new Transmitter</h4>
         </div>
         {% if request.user.is_authenticated %}
           <form action="{% url 'suggestion' %}" method="post" id="newsuggestion-form">{% csrf_token %}
