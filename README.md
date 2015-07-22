@@ -1,6 +1,6 @@
 # SatNOGS DB
 
-SatNOGS DB is a transponder suggestions and crowd-sourcing app.
+SatNOGS DB is a transmitter suggestions and crowd-sourcing app.
 
 ## Install and Contribute
 
