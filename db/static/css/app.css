@@ -131,7 +131,7 @@ body {
     font-weight: bold;
 }
 
-.panel-transponder {
+.panel-transmitter {
     margin-bottom: 20px;
 }
 
@@ -139,11 +139,11 @@ body {
     margin-top: 20px;
 }
 
-.add-transponder {
+.add-transmitter {
     margin-top: -6px;
 }
 
-.suggest-transponder {
+.suggest-transmitter {
     margin-top: -6px;
 }
 
@@ -151,21 +151,21 @@ body {
     margin-right: 10px;
 }
 
-.panel-transponder > .panel-heading {
+.panel-transmitter > .panel-heading {
     background-color: #B3E5FF;
     background-image: none;
 }
 
-.label-transponder-suggestions {
+.label-transmitter-suggestions {
     margin-right: 10px;
     color: white;
 }
 
-.transponder-element {
+.transmitter-element {
     margin-bottom: 10px;
 }
 
-.transponder-element-suggest {
+.transmitter-element-suggest {
     margin-bottom: 10px;
 }
 

@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 
 from db.api import serializers, filters
-from db.base.models import Satellite, Transponder
+from db.base.models import Satellite, Transmitter
 
 
 class SatelliteView(viewsets.ModelViewSet):
@@ -10,8 +10,8 @@ class SatelliteView(viewsets.ModelViewSet):
     lookup_field = 'norad_cat_id'
 
 
-class TransponderView(viewsets.ModelViewSet):
-    queryset = Transponder.objects.all()
-    serializer_class = serializers.TransponderSerializer
-    filter_class = filters.TransponderViewFilter
+class TransmitterView(viewsets.ModelViewSet):
+    queryset = Transmitter.objects.all()
+    serializer_class = serializers.TransmitterSerializer
+    filter_class = filters.TransmitterViewFilter
     lookup_field = 'uuid'

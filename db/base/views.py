@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseNotFound, HttpResponseServerError, HttpResponse
 from django.conf import settings
 
-from db.base.models import Transponder, Satellite, Suggestion, MODE_CHOICES
+from db.base.models import Transmitter, Satellite, Suggestion, MODE_CHOICES
 from db.base.forms import SatelliteSearchForm, SuggestionForm
 
 logger = logging.getLogger('db')
@@ -38,11 +38,11 @@ def home(request):
                                                          'satellite_form': satellite_form,
                                                          'modes': MODE_CHOICES})
 
-    transponders = Transponder.objects.all().count()
+    transmitters = Transmitter.objects.all().count()
     suggestions = Suggestion.objects.all().count()
     contributors = User.objects.filter(is_active=1).count()
     return render(request, 'base/home.html', {'satellites': satellites,
-                                              'transponders': transponders,
+                                              'transmitters': transmitters,
                                               'contributors': contributors,
                                               'suggestions': suggestions})
 

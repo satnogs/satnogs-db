@@ -7,7 +7,7 @@ from db.api import views
 router = routers.DefaultRouter()
 
 router.register(r'satellites', views.SatelliteView)
-router.register(r'transponders', views.TransponderView)
+router.register(r'transmitters', views.TransmitterView)
 
 urlpatterns = patterns(
     '',

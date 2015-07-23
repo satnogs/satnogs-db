@@ -6,7 +6,7 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
 
-from db.base.models import Satellite, Transponder, Suggestion
+from db.base.models import Satellite, Transmitter, Suggestion
 
 logger = logging.getLogger('db')
 
@@ -16,8 +16,8 @@ class SatelliteAdmin(admin.ModelAdmin):
     list_display = ('name', 'norad_cat_id')
 
 
-@admin.register(Transponder)
-class TransponderAdmin(admin.ModelAdmin):
+@admin.register(Transmitter)
+class TransmitterAdmin(admin.ModelAdmin):
     list_display = ('uuid', 'description', 'satellite', 'uplink_low',
                     'uplink_high', 'downlink_low', 'downlink_high',)
     search_fields = ('satellite', 'uuid',)
@@ -27,19 +27,19 @@ class TransponderAdmin(admin.ModelAdmin):
 
 @admin.register(Suggestion)
 class SuggestionAdmin(admin.ModelAdmin):
-    list_display = ('uuid', 'description', 'transponder_uuid', 'user', 'satellite', 'uplink_low',
+    list_display = ('uuid', 'description', 'transmitter_uuid', 'user', 'satellite', 'uplink_low',
                     'uplink_high', 'downlink_low', 'downlink_high',)
     search_fields = ('satellite', 'uuid',)
     list_filter = ('mode', 'invert')
-    readonly_fields = ('uuid', 'satellite', 'transponder', 'approved', 'user',
-                       'citation', 'transponder_data')
+    readonly_fields = ('uuid', 'satellite', 'transmitter', 'approved', 'user',
+                       'citation', 'transmitter_data')
     actions = ['approve_suggestion']
 
     def approve_suggestion(self, request, queryset):
         for obj in queryset:
-            if obj.transponder:
-                obj.uuid = obj.transponder.uuid
-                obj.transponder.delete()
+            if obj.transmitter:
+                obj.uuid = obj.transmitter.uuid
+                obj.transmitter.delete()
             obj.approved = True
             obj.save()
 
@@ -71,18 +71,18 @@ class SuggestionAdmin(admin.ModelAdmin):
 
     approve_suggestion.short_description = 'Approve selected suggestions'
 
-    def transponder_uuid(self, obj):
+    def transmitter_uuid(self, obj):
         try:
-            return obj.transponder.uuid
+            return obj.transmitter.uuid
         except:
             return '-'
 
-    def transponder_data(self, obj):
-        if obj.transponder:
-            redirect_url = reverse('admin:base_transponder_changelist')
-            extra = '{0}'.format(obj.transponder.pk)
-            return '<a href="{0}">Trnasponder Initial Data</a>'.format(
+    def transmitter_data(self, obj):
+        if obj.transmitter:
+            redirect_url = reverse('admin:base_transmitter_changelist')
+            extra = '{0}'.format(obj.transmitter.pk)
+            return '<a href="{0}">Transmitter Initial Data</a>'.format(
                 redirect_url + extra)
         else:
             return '-'
-    transponder_data.allow_tags = True
+    transmitter_data.allow_tags = True
