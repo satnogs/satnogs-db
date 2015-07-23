@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from db.base.models import Satellite, Transponder
+from db.base.models import Satellite, Transmitter
 
 
 class SatelliteSerializer(serializers.ModelSerializer):
@@ -9,11 +9,11 @@ class SatelliteSerializer(serializers.ModelSerializer):
         fields = ('norad_cat_id', 'name')
 
 
-class TransponderSerializer(serializers.ModelSerializer):
+class TransmitterSerializer(serializers.ModelSerializer):
     norad_cat_id = serializers.SerializerMethodField()
 
     class Meta:
-        model = Transponder
+        model = Transmitter
         fields = ('uuid', 'description', 'alive', 'uplink_low', 'uplink_high',
                   'downlink_low', 'downlink_high', 'mode', 'invert',
                   'baud', 'norad_cat_id')

@@ -14,7 +14,7 @@
         "downlink_high": null,
         "description": "Mode U TLM"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 1
 },
 {
@@ -32,7 +32,7 @@
         "downlink_high": null,
         "description": "Mode -/U BPSK"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 2
 },
 {
@@ -50,7 +50,7 @@
         "downlink_high": null,
         "description": "Mode H TLM"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 3
 },
 {
@@ -68,7 +68,7 @@
         "downlink_high": 435900000,
         "description": "Mode V/U Linear"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 4
 },
 {
@@ -86,7 +86,7 @@
         "downlink_high": null,
         "description": "Mode U CW Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 5
 },
 {
@@ -104,7 +104,7 @@
         "downlink_high": null,
         "description": "Mode V/U APRS,BBS 9K6 FSK"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 6
 },
 {
@@ -122,7 +122,7 @@
         "downlink_high": null,
         "description": "Mode V/U BBS1 9K6 FSK"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 7
 },
 {
@@ -140,7 +140,7 @@
         "downlink_high": null,
         "description": "Mode V/U BBS2 9K6 FSK"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 8
 },
 {
@@ -158,7 +158,7 @@
         "downlink_high": null,
         "description": "Mode L/U BBS 9K6 FSK"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 9
 },
 {
@@ -176,7 +176,7 @@
         "downlink_high": null,
         "description": "Mode L/U BBS 9K6 FSK"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 10
 },
 {
@@ -194,7 +194,7 @@
         "downlink_high": null,
         "description": "Mode L/U BBS 9K6 FSK"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 11
 },
 {
@@ -212,7 +212,7 @@
         "downlink_high": null,
         "description": "Mode V/V AFSK Packet"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 12
 },
 {
@@ -230,7 +230,7 @@
         "downlink_high": null,
         "description": "Mode V/U FM Voice"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 13
 },
 {
@@ -248,7 +248,7 @@
         "downlink_high": null,
         "description": "Mode V APRS"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 14
 },
 {
@@ -266,7 +266,7 @@
         "downlink_high": null,
         "description": "Mode V Imaging"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 15
 },
 {
@@ -284,7 +284,7 @@
         "downlink_high": null,
         "description": "Mode U/V FM Voice"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 16
 },
 {
@@ -302,7 +302,7 @@
         "downlink_high": null,
         "description": "Mode V/V FM (crew R2+3)"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 17
 },
 {
@@ -320,7 +320,7 @@
         "downlink_high": null,
         "description": "Mode V/V FM (crew R1)"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 18
 },
 {
@@ -338,7 +338,7 @@
         "downlink_high": null,
         "description": "Mode V/V APRS AFSK"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 19
 },
 {
@@ -356,7 +356,7 @@
         "downlink_high": null,
         "description": "Mode V/U FM Voice"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 20
 },
 {
@@ -374,7 +374,7 @@
         "downlink_high": null,
         "description": "Mode U Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 21
 },
 {
@@ -392,7 +392,7 @@
         "downlink_high": null,
         "description": "Mode U TLM"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 22
 },
 {
@@ -410,7 +410,7 @@
         "downlink_high": null,
         "description": "Mode U CW Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 23
 },
 {
@@ -428,7 +428,7 @@
         "downlink_high": null,
         "description": "Mode U AFSK TLM"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 24
 },
 {
@@ -446,7 +446,7 @@
         "downlink_high": null,
         "description": "Mode U CW Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 25
 },
 {
@@ -464,7 +464,7 @@
         "downlink_high": null,
         "description": "Indian Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 26
 },
 {
@@ -482,7 +482,7 @@
         "downlink_high": 145930000,
         "description": "Indian U/V Lin"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 27
 },
 {
@@ -500,7 +500,7 @@
         "downlink_high": null,
         "description": "Dutch Beacon CW"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 28
 },
 {
@@ -518,7 +518,7 @@
         "downlink_high": 145925000,
         "description": "Dutch U/V Lin"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 29
 },
 {
@@ -536,7 +536,7 @@
         "downlink_high": null,
         "description": "Mode U BEACON"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 30
 },
 {
@@ -554,7 +554,7 @@
         "downlink_high": null,
         "description": "Mode U TLM"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 31
 },
 {
@@ -572,7 +572,7 @@
         "downlink_high": null,
         "description": "Mode U TLM 1"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 32
 },
 {
@@ -590,7 +590,7 @@
         "downlink_high": null,
         "description": "Mode U TLM 2"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 33
 },
 {
@@ -608,7 +608,7 @@
         "downlink_high": null,
         "description": "Mode L/U Digipeater"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 34
 },
 {
@@ -626,7 +626,7 @@
         "downlink_high": null,
         "description": "Mode V BPSK TLM primary"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 35
 },
 {
@@ -644,7 +644,7 @@
         "downlink_high": null,
         "description": "Mode V BPSK TLM secondary"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 36
 },
 {
@@ -662,7 +662,7 @@
         "downlink_high": null,
         "description": "Mode U TLM"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 37
 },
 {
@@ -680,7 +680,7 @@
         "downlink_high": null,
         "description": "Mode U SSTV"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 38
 },
 {
@@ -698,7 +698,7 @@
         "downlink_high": null,
         "description": "Mode U Digi"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 39
 },
 {
@@ -716,7 +716,7 @@
         "downlink_high": null,
         "description": "Telemetry Beacon 1 Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 40
 },
 {
@@ -734,7 +734,7 @@
         "downlink_high": null,
         "description": "Telemetry Beacon 2 Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 41
 },
 {
@@ -752,7 +752,7 @@
         "downlink_high": null,
         "description": "Mode U CW"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 42
 },
 {
@@ -770,7 +770,7 @@
         "downlink_high": null,
         "description": "Mode U FM 1200"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 43
 },
 {
@@ -788,7 +788,7 @@
         "downlink_high": null,
         "description": "Mode U FM 9600"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 44
 },
 {
@@ -806,7 +806,7 @@
         "downlink_high": null,
         "description": "Mode U MSG"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 45
 },
 {
@@ -824,7 +824,7 @@
         "downlink_high": null,
         "description": "CW Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 46
 },
 {
@@ -842,7 +842,7 @@
         "downlink_high": null,
         "description": "FSK 1k2 Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 47
 },
 {
@@ -860,7 +860,7 @@
         "downlink_high": null,
         "description": "CW Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 48
 },
 {
@@ -878,7 +878,7 @@
         "downlink_high": null,
         "description": "GMSK 4k8 9k6"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 49
 },
 {
@@ -896,7 +896,7 @@
         "downlink_high": null,
         "description": "CW Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 50
 },
 {
@@ -914,7 +914,7 @@
         "downlink_high": null,
         "description": "GFSK 19k2"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 51
 },
 {
@@ -932,7 +932,7 @@
         "downlink_high": null,
         "description": "CW Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 52
 },
 {
@@ -950,7 +950,7 @@
         "downlink_high": null,
         "description": "Mode V/U FM"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 53
 },
 {
@@ -968,7 +968,7 @@
         "downlink_high": 435765000,
         "description": "Mode V/U Linear"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 54
 },
 {
@@ -986,7 +986,7 @@
         "downlink_high": null,
         "description": "Mode V/U BBS AFSK"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 55
 },
 {
@@ -1004,7 +1004,7 @@
         "downlink_high": null,
         "description": "CW Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 56
 },
 {
@@ -1022,7 +1022,7 @@
         "downlink_high": null,
         "description": "Payload"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 57
 },
 {
@@ -1040,7 +1040,7 @@
         "downlink_high": null,
         "description": "CW Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 58
 },
 {
@@ -1058,7 +1058,7 @@
         "downlink_high": null,
         "description": "MCubed GMSK Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 59
 },
 {
@@ -1076,7 +1076,7 @@
         "downlink_high": null,
         "description": "Explorer 1 Prime Unit 2 Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 60
 },
 {
@@ -1094,7 +1094,7 @@
         "downlink_high": null,
         "description": "AFSK 1200"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 61
 },
 {
@@ -1112,7 +1112,7 @@
         "downlink_high": null,
         "description": "BPSK Telemetry"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 62
 },
 {
@@ -1130,7 +1130,7 @@
         "downlink_high": 145970000,
         "description": "Mode U/V Linear"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 63
 },
 {
@@ -1148,7 +1148,7 @@
         "downlink_high": null,
         "description": "Mode U/V Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 64
 },
 {
@@ -1166,7 +1166,7 @@
         "downlink_high": null,
         "description": "Mode U Beacon"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 65
 },
 {
@@ -1184,7 +1184,7 @@
         "downlink_high": 29500000,
         "description": "Mode V/A (A) Lin"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 66
 },
 {
@@ -1202,7 +1202,7 @@
         "downlink_high": 145975000,
         "description": "Mode U/V (B) Lin"
     },
-    "model": "base.transponder",
+    "model": "base.transmitter",
     "pk": 67
 }
 ]

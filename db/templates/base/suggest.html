@@ -16,7 +16,7 @@
           <h3 class="panel-title">
             <span class="satellite-title">{{ satellite }}</span>
             <button type="button"
-                    class="btn btn-default btn-sm pull-right add-transponder"
+                    class="btn btn-default btn-sm pull-right add-transmitter"
                     data-toggle="modal" data-target="#NewSuggestionModal">
               <span class="glyphicon glyphicon-plus" title="Suggest new transmitter"></span>
             </button>
@@ -28,15 +28,15 @@
           </h3>
         </div>
 
-        {% for transponder in satellite.transponders.all %}
+        {% for transmitter in satellite.transmitters.all %}
           <div class="row panel-body">
             <div class="col-md-12">
-              <div class="panel panel-default panel-transponder {% if forloop.first %}panel-first{% endif %}">
+              <div class="panel panel-default panel-transmitter {% if forloop.first %}panel-first{% endif %}">
                 <div class="panel-heading">
                   <h3 class="panel-title">
-                    <span class="transponder-title">{{ transponder.description }}</span>
+                    <span class="transmitter-title">{{ transmitter.description }}</span>
                     <button type="button"
-                            class="btn btn-default btn-sm pull-right suggest-transponder"
+                            class="btn btn-default btn-sm pull-right suggest-transmitter"
                             data-toggle="modal"
                             data-target="#EditSuggestionModal">
                       <span class="glyphicon glyphicon-edit" title="Suggest edits"></span>
@@ -45,54 +45,54 @@
                 </div>
                 <div class="panel-body">
                   <div class="col-md-6">
-                    <div class="container transponder-element">
+                    <div class="container transmitter-element">
                       <div class="col-md-3">
                         <span class="label label-default">Alive</span>
-                        <span class="pull-right">{{ transponder.alive }}</span>
+                        <span class="pull-right">{{ transmitter.alive }}</span>
                       </div>
                     </div>
-                    <div class="container transponder-element">
+                    <div class="container transmitter-element">
                       <div class="col-md-3">
                         <span class="label label-default">Uplink Low</span>
-                        <span class="pull-right">{{ transponder.uplink_low|frq }}</span>
+                        <span class="pull-right">{{ transmitter.uplink_low|frq }}</span>
                       </div>
                     </div>
-                    <div class="container transponder-element">
+                    <div class="container transmitter-element">
                       <div class="col-md-3">
                         <span class="label label-default">Uplink High</span>
-                        <span class="pull-right">{{ transponder.uplink_high|frq }}</span>
+                        <span class="pull-right">{{ transmitter.uplink_high|frq }}</span>
                       </div>
                     </div>
-                    <div class="container transponder-element">
+                    <div class="container transmitter-element">
                       <div class="col-md-3">
                         <span class="label label-default">Downlink Low</span>
-                        <span class="pull-right">{{ transponder.downlink_low|frq }}</span>
+                        <span class="pull-right">{{ transmitter.downlink_low|frq }}</span>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="container transponder-element">
+                    <div class="container transmitter-element">
                       <div class="col-md-3">
                         <span class="label label-default">Downlink High</span>
-                        <span class="pull-right">{{ transponder.downlink_high|frq }}</span>
+                        <span class="pull-right">{{ transmitter.downlink_high|frq }}</span>
                       </div>
                     </div>
-                    <div class="container transponder-element">
+                    <div class="container transmitter-element">
                       <div class="col-md-3">
                         <span class="label label-default">Mode</span>
-                        <span class="pull-right">{{ transponder.mode|default:"-" }}</span>
+                        <span class="pull-right">{{ transmitter.mode|default:"-" }}</span>
                       </div>
                     </div>
-                    <div class="container transponder-element">
+                    <div class="container transmitter-element">
                       <div class="col-md-3">
                         <span class="label label-default">Invert</span>
-                        <span class="pull-right">{{ transponder.invert|default:"-" }}</span>
+                        <span class="pull-right">{{ transmitter.invert|default:"-" }}</span>
                       </div>
                     </div>
-                    <div class="container transponder-element">
+                    <div class="container transmitter-element">
                       <div class="col-md-3">
                         <span class="label label-default">Baud</span>
-                        <span class="pull-right">{{ transponder.baud|default:"-" }}</span>
+                        <span class="pull-right">{{ transmitter.baud|default:"-" }}</span>
                       </div>
                     </div>
                   </div>
@@ -112,47 +112,47 @@
                 {% if request.user.is_authenticated %}
                   <form action="{% url 'suggestion' %}" method="post" id="editsuggestion-form">{% csrf_token %}
                     <div class="modal-body">
-                      <div class="input-group transponder-element-suggest">
+                      <div class="input-group transmitter-element-suggest">
                         <div class="input-group-addon">Description</div>
-                        <input type="text" class="form-control" name="description" value="{{ transponder.description }}">
+                        <input type="text" class="form-control" name="description" value="{{ transmitter.description }}">
                       </div>
-                      <div class="input-group transponder-element-suggest">
-                        <input type="checkbox" value="1" name="alive" {% if transponder.alive %}checked{% endif %}> Alive
+                      <div class="input-group transmitter-element-suggest">
+                        <input type="checkbox" value="1" name="alive" {% if transmitter.alive %}checked{% endif %}> Alive
                       </div>
-                      <div class="input-group transponder-element-suggest">
+                      <div class="input-group transmitter-element-suggest">
                         <div class="input-group-addon">Uplink Low</div>
-                        <input type="number" class="form-control" name="uplink_low" value="{{ transponder.uplink_low|default_if_none:'' }}">
+                        <input type="number" class="form-control" name="uplink_low" value="{{ transmitter.uplink_low|default_if_none:'' }}">
                       </div>
-                      <div class="input-group transponder-element-suggest">
+                      <div class="input-group transmitter-element-suggest">
                         <div class="input-group-addon">Uplink High</div>
-                        <input type="number" class="form-control" name="uplink_high" value="{{ transponder.uplink_high|default_if_none:'' }}">
+                        <input type="number" class="form-control" name="uplink_high" value="{{ transmitter.uplink_high|default_if_none:'' }}">
                       </div>
-                      <div class="input-group transponder-element-suggest">
+                      <div class="input-group transmitter-element-suggest">
                         <div class="input-group-addon">Downlink Low</div>
-                        <input type="number" class="form-control" name="downlink_low" value="{{ transponder.downlink_low|default_if_none:'' }}">
+                        <input type="number" class="form-control" name="downlink_low" value="{{ transmitter.downlink_low|default_if_none:'' }}">
                       </div>
-                      <div class="input-group transponder-element-suggest">
+                      <div class="input-group transmitter-element-suggest">
                         <div class="input-group-addon">Downlink High</div>
-                        <input type="number" class="form-control" name="downlink_high" value="{{ transponder.downlink_high|default_if_none:'' }}">
+                        <input type="number" class="form-control" name="downlink_high" value="{{ transmitter.downlink_high|default_if_none:'' }}">
                       </div>
-                      <div class="input-group transponder-element-suggest">
+                      <div class="input-group transmitter-element-suggest">
                         <div class="input-group-addon">Mode</div>
                         <select class="form-control" name="mode">
                           {% for mode in modes %}
-                            <option value="{{ mode }}" {% ifequal transponder.mode mode %}selected{% endifequal %}>
+                            <option value="{{ mode }}" {% ifequal transmitter.mode mode %}selected{% endifequal %}>
                               {{ mode }}
                             </option>
                           {% endfor %}
                         </select>
                       </div>
-                      <div class="input-group transponder-element-suggest">
-                        <input type="checkbox" value="1" name="invert" {% if transponder.invert %}checked{% endif %}> Invert
+                      <div class="input-group transmitter-element-suggest">
+                        <input type="checkbox" value="1" name="invert" {% if transmitter.invert %}checked{% endif %}> Invert
                       </div>
-                      <div class="input-group transponder-element-suggest">
+                      <div class="input-group transmitter-element-suggest">
                         <div class="input-group-addon">Baud Rate</div>
-                        <input type="number" class="form-control" name="baud" value="{{ transponder.baud|default_if_none:'' }}">
+                        <input type="number" class="form-control" name="baud" value="{{ transmitter.baud|default_if_none:'' }}">
                       </div>
-                      <div class="input-group transponder-element-suggest">
+                      <div class="input-group transmitter-element-suggest">
                         <div class="input-group-addon">Citation URL</div>
                         <input type="text" class="form-control" name="citation" required>
                       </div>
@@ -161,7 +161,7 @@
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       <button type="submit" class="btn btn-primary">Send</button>
                     </div>
-                    <input type="hidden" name="transponder" value="{{ transponder.pk }}">
+                    <input type="hidden" name="transmitter" value="{{ transmitter.pk }}">
                     <input type="hidden" name="satellite" value="{{ satellite.pk }}">
                   </form>
                 {% else %}
@@ -198,30 +198,30 @@
         {% if request.user.is_authenticated %}
           <form action="{% url 'suggestion' %}" method="post" id="newsuggestion-form">{% csrf_token %}
             <div class="modal-body">
-              <div class="input-group transponder-element-suggest">
+              <div class="input-group transmitter-element-suggest">
                 <div class="input-group-addon">Description</div>
                 <input type="text" class="form-control" name="description">
               </div>
-              <div class="input-group transponder-element-suggest">
+              <div class="input-group transmitter-element-suggest">
                 <input type="checkbox" value="1" name="alive" checked> Alive
               </div>
-              <div class="input-group transponder-element-suggest">
+              <div class="input-group transmitter-element-suggest">
                 <div class="input-group-addon">Uplink_Low</div>
                 <input type="number" class="form-control" name="uplink_low">
               </div>
-              <div class="input-group transponder-element-suggest">
+              <div class="input-group transmitter-element-suggest">
                 <div class="input-group-addon">Uplink High</div>
                 <input type="number" class="form-control" name="uplink_high">
               </div>
-              <div class="input-group transponder-element-suggest">
+              <div class="input-group transmitter-element-suggest">
                 <div class="input-group-addon">Downlink Low</div>
                 <input type="number" class="form-control" name="downlink_low">
               </div>
-              <div class="input-group transponder-element-suggest">
+              <div class="input-group transmitter-element-suggest">
                 <div class="input-group-addon">Downlink High</div>
                 <input type="number" class="form-control" name="downlink_high">
               </div>
-              <div class="input-group transponder-element-suggest">
+              <div class="input-group transmitter-element-suggest">
                 <div class="input-group-addon">Mode</div>
                 <select class="form-control" name="mode">
                   {% for mode in modes %}
@@ -231,14 +231,14 @@
                   {% endfor %}
                 </select>
               </div>
-              <div class="input-group transponder-element-suggest">
+              <div class="input-group transmitter-element-suggest">
                 <input type="checkbox" value="1" name="invert"> Invert
               </div>
-              <div class="input-group transponder-element-suggest">
+              <div class="input-group transmitter-element-suggest">
                 <div class="input-group-addon">Baud Rate</div>
                 <input type="number" class="form-control" name="baud">
               </div>
-              <div class="input-group transponder-element-suggest">
+              <div class="input-group transmitter-element-suggest">
                 <div class="input-group-addon">Citation URL</div>
                 <input type="url" class="form-control" name="citation" required>
               </div>

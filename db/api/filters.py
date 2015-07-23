@@ -1,9 +1,9 @@
 import django_filters
 
-from db.base.models import Transponder
+from db.base.models import Transmitter
 
 
-class TransponderViewFilter(django_filters.FilterSet):
+class TransmitterViewFilter(django_filters.FilterSet):
     class Meta:
-        model = Transponder
+        model = Transmitter
         fields = ['mode', 'satellite__norad_cat_id']
