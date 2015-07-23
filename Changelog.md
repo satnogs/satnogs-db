@@ -1,3 +1,7 @@
+# 0.5
+
+* Rename Transponders to Transmitters
+
 ## 0.4
 
 * Hide suggestions counter when None
