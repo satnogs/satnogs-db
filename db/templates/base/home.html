@@ -50,6 +50,20 @@
     </div>
   {% endblock %}
 
+  <div class="row" style="margin-top: 20px;">
+    <div class="col-md-12">
+      <ul class="list-group">
+        {% for sat in satellites %}
+          <li class="list-group-item satellite-group-item">
+            <div style="font-weight:bold;">{{ sat.norad_cat_id }}</div>
+            <div>{{ sat.name }}</div>
+            <div class="transmitters" style="display:none;"><span class="badge">4</span> transmitters</div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
   <div class="info row">
     <div class="col-md-4">
       <h3>Open</h3>

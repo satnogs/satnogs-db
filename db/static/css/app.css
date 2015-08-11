@@ -182,6 +182,23 @@ body {
     margin-top: 20px;
 }
 
+.satellite-group-item {
+    width: 20%;
+    float: left;
+    height: 110px;
+    padding: 10px;
+    line-height: 1.4;
+    text-align: center;
+    background-color: #F9F9F9;
+    border: 1px solid #FFF;
+    cursor: pointer;
+}
+
+.satellite-group-item:hover {
+    background-color: #337AB7;
+    color: white;
+}
+
 footer {
     margin-bottom: 10px;
 }

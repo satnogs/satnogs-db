@@ -18,4 +18,12 @@ $(document).ready(function() {
         $('#search-form').submit();
         return false;
     });
+
+    $('.satellite-group-item').mouseover(function() {
+        $(this).find('.transmitters').first().show();
+    });
+
+    $('.satellite-group-item').mouseout(function() {
+        $('.transmitters').hide();
+    });
 });

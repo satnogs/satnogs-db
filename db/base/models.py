@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 
 MODE_CHOICES = ['FM', 'AFSK', 'BFSK', 'APRS', 'SSTV', 'CW', 'FMN', 'SSTV', 'GMSK', 'SSB']
 
+
 class TransmitterApprovedManager(models.Manager):
     def get_queryset(self):
         return super(TransmitterApprovedManager, self).get_queryset().filter(approved=True)
@@ -21,6 +22,9 @@ class Satellite(models.Model):
     """Model for SatNOGS satellites."""
     norad_cat_id = models.PositiveIntegerField()
     name = models.CharField(max_length=45)
+
+    class Meta:
+        ordering = ["name"]
 
     def __unicode__(self):
         return '{0} - {1}'.format(self.norad_cat_id, self.name)
