@@ -15,6 +15,9 @@ django-secure==1.0.1
 django-allauth==0.20.0
 django-crispy-forms==1.4.0
 
+# Images
+Pillow==2.9.0
+
 # API
 djangorestframework==3.1.1
 markdown==2.6.1
