@@ -4,17 +4,18 @@
 
 {% block title %} - Suggest{% endblock %}
 
-{% block content %}
-  {% block search %}
-    {{ block.super }}
-  {% endblock %}
+{% block top %}{% endblock %}
 
+{% block content %}
   <div class="row">
     <div class="col-md-12 satellite-panels">
       <div class="panel panel-default panel-satellite">
         <div class="panel-heading">
           <h3 class="panel-title">
-            <span class="satellite-title">{{ satellite }}</span>
+            <div class="satellite-title">
+              <a href="{% url 'home' %}">Home</a></span> /
+              {{ satellite }}
+            </div>
             <button type="button"
                     class="btn btn-default btn-sm pull-right add-transmitter"
                     data-toggle="modal" data-target="#NewSuggestionModal">

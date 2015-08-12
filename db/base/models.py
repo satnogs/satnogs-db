@@ -3,9 +3,10 @@ from shortuuidfield import ShortUUIDField
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.conf import settings
 
 MODE_CHOICES = ['FM', 'AFSK', 'BFSK', 'APRS', 'SSTV', 'CW', 'FMN', 'SSTV', 'GMSK', 'SSB']
+
 
 class TransmitterApprovedManager(models.Manager):
     def get_queryset(self):
@@ -21,6 +22,17 @@ class Satellite(models.Model):
     """Model for SatNOGS satellites."""
     norad_cat_id = models.PositiveIntegerField()
     name = models.CharField(max_length=45)
+    names = models.TextField(blank=True)
+    image = models.ImageField(upload_to='satellites', blank=True)
+
+    class Meta:
+        ordering = ["name"]
+
+    def get_image(self):
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
+        else:
+            return settings.SATELLITE_DEFAULT_IMAGE
 
     def __unicode__(self):
         return '{0} - {1}'.format(self.norad_cat_id, self.name)

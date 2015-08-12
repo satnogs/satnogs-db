@@ -1,54 +1,72 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block title %}{% endblock %}
 
-{% block content %}
-    <div class="stats row hidden-xs hidden-sm">
-      <div class="{% if suggestions %}col-md-3{% else %}col-md-4{% endif %}">
-        <h1>{{ satellites.count }}</h1>
-        <h3>Satellites</h3>
-      </div>
-      <div class="{% if suggestions %}col-md-3{% else %}col-md-4{% endif %}">
-        <h1>{{ transmitters }}</h1>
-        <h3>Transmitters</h3>
-      </div>
-      {% if suggestions %}
-        <div class="col-md-3">
-          <h1>{{ suggestions }}</h1>
-          <h3>Suggestions</h3>
+{% block top %}
+  <div class="row" id="search">
+    <div class="col-md-8">
+      <input type="text" list="satellites-list"
+             class="form-control input-lg satellite-search"
+             placeholder="Filter by Name or NORAD Cat ID"
+             autocomplete="off">
+    </div>
+    <div class="col-md-4">
+      <div class="row hidden-xs hidden-sm">
+        <div class="{% if suggestions %}col-md-3{% else %}col-md-4{% endif %}">
+          <p class="stats">
+            <img src="{% static 'img/satellites.png' %}">
+            {{ satellites.count }}
+          </p>
         </div>
-      {% endif %}
-      <div class="{% if suggestions %}col-md-3{% else %}col-md-4{% endif %}">
-        <h1>{{ contributors }}</h1>
-        <h3>Contributors</h3>
+        <div class="{% if suggestions %}col-md-3{% else %}col-md-4{% endif %}">
+          <p class="stats">
+            <img src="{% static 'img/transmitters.png' %}">
+            {{ transmitters }}
+          </p>
+        </div>
+        {% if suggestions %}
+          <div class="col-md-3">
+            <p class="stats">
+              <img src="{% static 'img/suggestions.png' %}">
+              {{ suggestions }}
+            </p>
+          </div>
+        {% endif %}
+        <div class="{% if suggestions %}col-md-3{% else %}col-md-4{% endif %}">
+          <p class="stats">
+            <img src="{% static 'img/contributors.png' %}">
+            {{ contributors }}
+          </p>
+        </div>
       </div>
     </div>
+  </div>
+{% endblock %}
 
-  {% block search %}
-    <div class="row" id="search">
-      <div class="col-md-12">
-        <form method="post" action="{% url 'home' %}" id="search-form">{% csrf_token %}
-          <div class="input-group">
-          <input type="text" list="satellites-list"
-                 class="form-control input-lg satellite-search"
-                 placeholder="Select Satellite (Type NORAD Cat ID or Name)"
-                 {% if not satellite %}autofocus{% endif %}>
-          <input type="hidden" name="term" name="term" id="search-term">
-          <div class="input-group-addon">
-            <a href="#" id="search-button">
-              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            </a>
+{% block content %}
+  <div class="row sats">
+    {% for sat in satellites %}
+      <div class="col-md-4 col-sm-6 col-xs-12 satellite-group-item" data-selector="{{ sat.name|lower }}{{ sat.norad_cat_id }}{{ sat.names|lower }}">
+        <a href="{% url 'satellite' norad=sat.norad_cat_id %}" class="satellite-item">
+          <div class="row">
+            <div class="col-md-3">
+              <img src="{{ sat.get_image }}" alt="{{ sat.name }}" class="satellite-img">
+            </div>
+            <div class="col-md-9 satellite-info">
+              <div class="satellite-title">{{ sat.norad_cat_id }} - {{ sat.name }}</div>
+              <div>{{ sat.names }}</div>
+              <div class="satellite-transmitters">
+                {% for transmitter in sat.transmitters.all %}
+                  <span class="label label-default">{{ transmitter.description }}</span>
+                {% endfor %}
+              </div>
+            </div>
           </div>
-          </div>
-          <datalist id="satellites-list">
-            {% for sat in satellites %}
-              <option value="{{ sat }}">
-            {% endfor %}
-          </datalist>
-        </form>
+        </a>
       </div>
-    </div>
-  {% endblock %}
+    {% endfor %}
+  </div>
 
   <div class="info row">
     <div class="col-md-4">
