@@ -1,6 +1,12 @@
 from rest_framework import serializers
 
-from db.base.models import Satellite, Transmitter
+from db.base.models import Mode, Satellite, Transmitter
+
+
+class ModeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Mode
+        fields = ('id', 'name')
 
 
 class SatelliteSerializer(serializers.ModelSerializer):

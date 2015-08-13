@@ -1,0 +1,100 @@
+[
+{
+    "fields": {
+        "name": "FM"
+    },
+    "model": "base.mode",
+    "pk": 1
+},
+{
+    "fields": {
+        "name": "AFSK"
+    },
+    "model": "base.mode",
+    "pk": 2
+},
+{
+    "fields": {
+        "name": "BFSK"
+    },
+    "model": "base.mode",
+    "pk": 3
+},
+{
+    "fields": {
+        "name": "APRS"
+    },
+    "model": "base.mode",
+    "pk": 4
+},
+{
+    "fields": {
+        "name": "SSTV"
+    },
+    "model": "base.mode",
+    "pk": 5
+},
+{
+    "fields": {
+        "name": "CW"
+    },
+    "model": "base.mode",
+    "pk": 6
+},
+{
+    "fields": {
+        "name": "FMN"
+    },
+    "model": "base.mode",
+    "pk": 7
+},
+{
+    "fields": {
+        "name": "GMSK"
+    },
+    "model": "base.mode",
+    "pk": 8
+},
+{
+    "fields": {
+        "name": "SSB"
+    },
+    "model": "base.mode",
+    "pk": 9
+},
+{
+    "fields": {
+        "name": "BPSK"
+    },
+    "model": "base.mode",
+    "pk": 10
+},
+{
+    "fields": {
+        "name": "PSK"
+    },
+    "model": "base.mode",
+    "pk": 11
+},
+{
+    "fields": {
+        "name": "MSK"
+    },
+    "model": "base.mode",
+    "pk": 12
+},
+{
+    "fields": {
+        "name": "FFSK"
+    },
+    "model": "base.mode",
+    "pk": 13
+},
+{
+    "fields": {
+        "name": "PSK31"
+    },
+    "model": "base.mode",
+    "pk": 14
+}
+]
