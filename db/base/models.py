@@ -5,8 +5,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 
-MODE_CHOICES = ['FM', 'AFSK', 'BFSK', 'APRS', 'SSTV', 'CW', 'FMN', 'SSTV', 'GMSK', 'SSB']
-
 
 class TransmitterApprovedManager(models.Manager):
     def get_queryset(self):
@@ -16,6 +14,13 @@ class TransmitterApprovedManager(models.Manager):
 class SuggestionApprovedManager(models.Manager):
     def get_queryset(self):
         return super(SuggestionApprovedManager, self).get_queryset().filter(approved=False)
+
+
+class Mode(models.Model):
+    name = models.CharField(max_length=10, unique=True)
+
+    def __unicode__(self):
+        return self.name
 
 
 class Satellite(models.Model):
@@ -46,8 +51,7 @@ class Transmitter(models.Model):
     uplink_high = models.PositiveIntegerField(blank=True, null=True)
     downlink_low = models.PositiveIntegerField(blank=True, null=True)
     downlink_high = models.PositiveIntegerField(blank=True, null=True)
-    mode = models.CharField(choices=zip(MODE_CHOICES, MODE_CHOICES),
-                            max_length=10)
+    mode = models.ForeignKey(Mode, related_name='transmitters', null=True)
     invert = models.BooleanField(default=False)
     baud = models.FloatField(validators=[MinValueValidator(0)], blank=True, null=True)
     satellite = models.ForeignKey(Satellite, related_name='transmitters',

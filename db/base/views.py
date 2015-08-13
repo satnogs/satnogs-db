@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseNotFound, HttpResponseServerError, HttpResponse
 from django.conf import settings
 
-from db.base.models import Transmitter, Satellite, Suggestion, MODE_CHOICES
+from db.base.models import Mode, Transmitter, Satellite, Suggestion
 from db.base.forms import SatelliteSearchForm, SuggestionForm
 
 logger = logging.getLogger('db')
@@ -48,10 +48,11 @@ def satellite(request, norad):
     """View to render home page."""
     satellite =  get_object_or_404(Satellite, norad_cat_id=norad)
     suggestions = Suggestion.objects.filter(satellite=satellite).count()
+    modes = Mode.objects.all()
 
     return render(request, 'base/satellite.html', {'satellite': satellite,
                                                    'suggestions': suggestions,
-                                                   'modes': MODE_CHOICES})
+                                                   'modes': modes})
 
 @login_required
 @require_POST
