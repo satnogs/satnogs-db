@@ -11,7 +11,7 @@ def add_modes(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('base', '0005_auto_20150813_1112'),
+        ('base', '0006_auto_20150813_1112'),
     ]
 
     operations = [

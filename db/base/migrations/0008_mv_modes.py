@@ -18,7 +18,7 @@ def mv_modes(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('base', '0006_initial_modes'),
+        ('base', '0007_initial_modes'),
     ]
 
     operations = [

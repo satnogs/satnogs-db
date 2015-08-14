@@ -18,9 +18,8 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(unique=True, max_length=10)),
             ],
         ),
-        migrations.AlterField(
+        migrations.RemoveField(
             model_name='transmitter',
             name='mode',
-            field=models.ForeignKey(related_name='transmitters', to='base.Mode', null=True),
         ),
     ]
