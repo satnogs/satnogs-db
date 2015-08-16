@@ -50,10 +50,10 @@
       <div class="col-md-4 col-sm-6 col-xs-12 satellite-group-item" data-selector="{{ sat.name|lower }}{{ sat.norad_cat_id }}{{ sat.names|lower }}">
         <a href="{% url 'satellite' norad=sat.norad_cat_id %}" class="satellite-item">
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-xs-3">
               <img src="{{ sat.get_image }}" alt="{{ sat.name }}" class="satellite-img">
             </div>
-            <div class="col-md-9 satellite-info">
+            <div class="col-xs-9 satellite-info">
               <div class="satellite-title">{{ sat.norad_cat_id }} - {{ sat.name }}</div>
               <div>{{ sat.names }}</div>
               <div class="satellite-transmitters">
