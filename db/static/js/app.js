@@ -1,21 +1,24 @@
 $(document).ready(function() {
     'use strict';
 
-    //$('input:text').focus();
-
-    $('input:text').keypress(function (e) {
-        if (e.which == 13) {
-            var term = $('input:text').val();
-            $('input[name="term"]').val(term);
-            $('#search-form').submit();
-            return false;
-        }
+    var items = new Array();
+    $('div.satellite-group-item').each(function(i, obj) {
+        items.push(obj);
     });
 
-    $('#search-button').click(function (e) {
-        var term = $('input:text').val();
-        $('input[name="term"]').val(term);
-        $('#search-form').submit();
-        return false;
+    var t = $('input');
+    t.bind('propertychange keyup input paste', function(event) {
+        var term = t.val();
+        if (term !== '') {
+            $('.satellite-group-item').hide();
+            var results = $.grep(items, function(e) {
+                if ($(e).data('selector').indexOf(term) !== -1) {
+                    return $(e);
+                }
+            });
+            $(results).show();
+        } else {
+            $('.satellite-group-item').show();
+        }
     });
 });

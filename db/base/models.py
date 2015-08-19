@@ -3,9 +3,8 @@ from shortuuidfield import ShortUUIDField
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
-
-MODE_CHOICES = ['FM', 'AFSK', 'BFSK', 'APRS', 'SSTV', 'CW', 'FMN', 'SSTV', 'GMSK', 'SSB']
 
 class TransmitterApprovedManager(models.Manager):
     def get_queryset(self):
@@ -17,10 +16,28 @@ class SuggestionApprovedManager(models.Manager):
         return super(SuggestionApprovedManager, self).get_queryset().filter(approved=False)
 
 
+class Mode(models.Model):
+    name = models.CharField(max_length=10, unique=True)
+
+    def __unicode__(self):
+        return self.name
+
+
 class Satellite(models.Model):
     """Model for SatNOGS satellites."""
     norad_cat_id = models.PositiveIntegerField()
     name = models.CharField(max_length=45)
+    names = models.TextField(blank=True)
+    image = models.ImageField(upload_to='satellites', blank=True)
+
+    class Meta:
+        ordering = ["name"]
+
+    def get_image(self):
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
+        else:
+            return settings.SATELLITE_DEFAULT_IMAGE
 
     def __unicode__(self):
         return '{0} - {1}'.format(self.norad_cat_id, self.name)
@@ -34,8 +51,7 @@ class Transmitter(models.Model):
     uplink_high = models.PositiveIntegerField(blank=True, null=True)
     downlink_low = models.PositiveIntegerField(blank=True, null=True)
     downlink_high = models.PositiveIntegerField(blank=True, null=True)
-    mode = models.CharField(choices=zip(MODE_CHOICES, MODE_CHOICES),
-                            max_length=10)
+    mode = models.ForeignKey(Mode, related_name='transmitters', null=True)
     invert = models.BooleanField(default=False)
     baud = models.FloatField(validators=[MinValueValidator(0)], blank=True, null=True)
     satellite = models.ForeignKey(Satellite, related_name='transmitters',

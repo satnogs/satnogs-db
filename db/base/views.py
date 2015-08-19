@@ -1,6 +1,6 @@
 import logging
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseNotFound, HttpResponseServerError, HttpResponse
 from django.conf import settings
 
-from db.base.models import Transmitter, Satellite, Suggestion, MODE_CHOICES
+from db.base.models import Mode, Transmitter, Satellite, Suggestion
 from db.base.forms import SatelliteSearchForm, SuggestionForm
 
 logger = logging.getLogger('db')
@@ -18,26 +18,6 @@ logger = logging.getLogger('db')
 def home(request):
     """View to render home page."""
     satellites = Satellite.objects.all()
-
-    if request.method == 'POST':
-        satellite_form = SatelliteSearchForm(request.POST)
-        if satellite_form.is_valid():
-            term = satellite_form.cleaned_data['term']
-            norad_cat_id = term.split()[0]
-            try:
-                satellite = Satellite.objects.get(norad_cat_id=norad_cat_id)
-            except:
-                messages.error(request, 'Please select one of the available Satellites')
-                return redirect(reverse('home'))
-
-            suggestions = Suggestion.objects.filter(satellite=satellite).count()
-
-            return render(request, 'base/suggest.html', {'satellite': satellite,
-                                                         'satellites': satellites,
-                                                         'suggestions': suggestions,
-                                                         'satellite_form': satellite_form,
-                                                         'modes': MODE_CHOICES})
-
     transmitters = Transmitter.objects.all().count()
     suggestions = Suggestion.objects.all().count()
     contributors = User.objects.filter(is_active=1).count()
@@ -63,6 +43,16 @@ def robots(request):
                             content_type='text/plain; charset=utf-8')
     return response
 
+
+def satellite(request, norad):
+    """View to render home page."""
+    satellite =  get_object_or_404(Satellite, norad_cat_id=norad)
+    suggestions = Suggestion.objects.filter(satellite=satellite).count()
+    modes = Mode.objects.all()
+
+    return render(request, 'base/satellite.html', {'satellite': satellite,
+                                                   'suggestions': suggestions,
+                                                   'modes': modes})
 
 @login_required
 @require_POST

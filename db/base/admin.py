@@ -6,9 +6,14 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
 
-from db.base.models import Satellite, Transmitter, Suggestion
+from db.base.models import Mode, Satellite, Transmitter, Suggestion
 
 logger = logging.getLogger('db')
+
+
+@admin.register(Mode)
+class ModeAdmin(admin.ModelAdmin):
+    list_display = ('name',)
 
 
 @admin.register(Satellite)
@@ -19,7 +24,7 @@ class SatelliteAdmin(admin.ModelAdmin):
 @admin.register(Transmitter)
 class TransmitterAdmin(admin.ModelAdmin):
     list_display = ('uuid', 'description', 'satellite', 'uplink_low',
-                    'uplink_high', 'downlink_low', 'downlink_high',)
+                    'uplink_high', 'downlink_low', 'downlink_high')
     search_fields = ('satellite', 'uuid',)
     list_filter = ('mode', 'invert')
     readonly_fields = ('uuid', 'satellite', 'approved',)

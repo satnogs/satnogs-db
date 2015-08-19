@@ -4,17 +4,18 @@
 
 {% block title %} - Suggest{% endblock %}
 
-{% block content %}
-  {% block search %}
-    {{ block.super }}
-  {% endblock %}
+{% block top %}{% endblock %}
 
+{% block content %}
   <div class="row">
     <div class="col-md-12 satellite-panels">
       <div class="panel panel-default panel-satellite">
         <div class="panel-heading">
           <h3 class="panel-title">
-            <span class="satellite-title">{{ satellite }}</span>
+            <div class="satellite-title">
+              <a href="{% url 'home' %}">Home</a></span> /
+              {{ satellite }}
+            </div>
             <button type="button"
                     class="btn btn-default btn-sm pull-right add-transmitter"
                     data-toggle="modal" data-target="#NewSuggestionModal">
@@ -43,57 +44,61 @@
                     </button>
                   </h3>
                 </div>
-                <div class="panel-body">
-                  <div class="col-md-6">
-                    <div class="container transmitter-element">
-                      <div class="col-md-3">
-                        <span class="label label-default">Alive</span>
-                        <span class="pull-right">{{ transmitter.alive }}</span>
-                      </div>
+                <div class="row panel-body">
+                  <div class="col-sm-3 col-xs-6">
+                    <div class="transmitter-element">
+                      <span class="label label-default">Alive</span>
                     </div>
-                    <div class="container transmitter-element">
-                      <div class="col-md-3">
-                        <span class="label label-default">Uplink Low</span>
-                        <span class="pull-right">{{ transmitter.uplink_low|frq }}</span>
-                      </div>
+                    <div class="transmitter-element">
+                      <span class="label label-default">Mode</span>
                     </div>
-                    <div class="container transmitter-element">
-                      <div class="col-md-3">
-                        <span class="label label-default">Uplink High</span>
-                        <span class="pull-right">{{ transmitter.uplink_high|frq }}</span>
-                      </div>
+                    <div class="transmitter-element">
+                      <span class="label label-default">Invert</span>
                     </div>
-                    <div class="container transmitter-element">
-                      <div class="col-md-3">
-                        <span class="label label-default">Downlink Low</span>
-                        <span class="pull-right">{{ transmitter.downlink_low|frq }}</span>
-                      </div>
+                    <div class="transmitter-element">
+                      <span class="label label-default">Baud</span>
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="container transmitter-element">
-                      <div class="col-md-3">
-                        <span class="label label-default">Downlink High</span>
-                        <span class="pull-right">{{ transmitter.downlink_high|frq }}</span>
-                      </div>
+                  <div class="col-sm-3 col-xs-6">
+                    <div class="transmitter-element">
+                      {{ transmitter.alive }}
                     </div>
-                    <div class="container transmitter-element">
-                      <div class="col-md-3">
-                        <span class="label label-default">Mode</span>
-                        <span class="pull-right">{{ transmitter.mode|default:"-" }}</span>
-                      </div>
+                    <div class="transmitter-element">
+                      {{ transmitter.mode|default:"-" }}
                     </div>
-                    <div class="container transmitter-element">
-                      <div class="col-md-3">
-                        <span class="label label-default">Invert</span>
-                        <span class="pull-right">{{ transmitter.invert|default:"-" }}</span>
-                      </div>
+                    <div class="transmitter-element">
+                      {{ transmitter.invert|default:"-" }}
                     </div>
-                    <div class="container transmitter-element">
-                      <div class="col-md-3">
-                        <span class="label label-default">Baud</span>
-                        <span class="pull-right">{{ transmitter.baud|default:"-" }}</span>
-                      </div>
+                    <div class="transmitter-element">
+                      {{ transmitter.baud|default:"-" }}
+                    </div>
+                  </div>
+                  <div class="col-sm-3 col-xs-6">
+                    <div class="transmitter-element">
+                      <span class="label label-default">Uplink Low</span>
+                    </div>
+                    <div class="transmitter-element">
+                      <span class="label label-default">Uplink High</span>
+                    </div>
+                    <div class="transmitter-element">
+                      <span class="label label-default">Downlink Low</span>
+                    </div>
+                    <div class="transmitter-element">
+                      <span class="label label-default">Downlink High</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 col-xs-6">
+                    <div class="transmitter-element">
+                      {{ transmitter.uplink_low|frq }}
+                    </div>
+                    <div class="transmitter-element">
+                      {{ transmitter.uplink_high|frq }}
+                    </div>
+                    <div class="transmitter-element">
+                      {{ transmitter.downlink_low|frq }}
+                    </div>
+                    <div class="transmitter-element">
+                      {{ transmitter.downlink_high|frq }}
                     </div>
                   </div>
                 </div>

@@ -1,4 +1,10 @@
-# 0.5
+## 0.6
+
+* Redesign homepage UI
+* Satellite additional names and image
+* Move Modes to model
+
+## 0.5
 
 * Rename Transponders to Transmitters
 
