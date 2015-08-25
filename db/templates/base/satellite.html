@@ -23,7 +23,7 @@
             </button>
             {% if suggestions %}
               <span class="suggestions-counter pull-right label label-primary">
-                {{ suggestions }} suggestions pending
+                {{ suggestions }} suggestion{{ suggestions|pluralize }} pending
               </span>
             {% endif %}
           </h3>
@@ -230,7 +230,7 @@
                 <div class="input-group-addon">Mode</div>
                 <select class="form-control" name="mode">
                   {% for mode in modes %}
-                    <option value="{{ mode }}">
+                    <option value="{{ mode.id }}">
                       {{ mode }}
                     </option>
                   {% endfor %}
