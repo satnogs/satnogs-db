@@ -3,6 +3,7 @@ from base import *
 
 ENVIRONMENT = 'production'
 
+# Opbeat
 MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
     'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
     'opbeat.contrib.django.middleware.Opbeat404CatchMiddleware',
