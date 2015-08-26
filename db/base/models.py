@@ -51,7 +51,8 @@ class Transmitter(models.Model):
     uplink_high = models.PositiveIntegerField(blank=True, null=True)
     downlink_low = models.PositiveIntegerField(blank=True, null=True)
     downlink_high = models.PositiveIntegerField(blank=True, null=True)
-    mode = models.ForeignKey(Mode, related_name='transmitters', null=True)
+    mode = models.ForeignKey(Mode, blank=True, null=True,
+                             on_delete=models.SET_NULL, related_name='transmitters')
     invert = models.BooleanField(default=False)
     baud = models.FloatField(validators=[MinValueValidator(0)], blank=True, null=True)
     satellite = models.ForeignKey(Satellite, related_name='transmitters',
