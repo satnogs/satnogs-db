@@ -2,7 +2,8 @@
 {
     "fields": {
         "norad_cat_id": 7530,
-        "name": "OSCAR 7 (AO-7)"
+        "name": "OSCAR 7 (AO-7)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 1
@@ -10,7 +11,8 @@
 {
     "fields": {
         "norad_cat_id": 14781,
-        "name": "UOSAT 2 (UO-11)"
+        "name": "UOSAT 2 (UO-11)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 2
@@ -18,7 +20,8 @@
 {
     "fields": {
         "norad_cat_id": 20442,
-        "name": "LUSAT (LO-19)"
+        "name": "LUSAT (LO-19)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 3
@@ -26,7 +29,8 @@
 {
     "fields": {
         "norad_cat_id": 22826,
-        "name": "ITAMSAT (IO-26)"
+        "name": "ITAMSAT (IO-26)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 4
@@ -34,7 +38,8 @@
 {
     "fields": {
         "norad_cat_id": 23439,
-        "name": "RADIO ROSTO (RS-15)"
+        "name": "RADIO ROSTO (RS-15)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 5
@@ -42,7 +47,8 @@
 {
     "fields": {
         "norad_cat_id": 24278,
-        "name": "JAS-2 (FO-29)"
+        "name": "JAS-2 (FO-29)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 6
@@ -50,7 +56,8 @@
 {
     "fields": {
         "norad_cat_id": 25397,
-        "name": "TECHSAT 1B (GO-32)"
+        "name": "TECHSAT 1B (GO-32)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 7
@@ -58,7 +65,8 @@
 {
     "fields": {
         "norad_cat_id": 25544,
-        "name": "ISS (ZARYA)"
+        "name": "ISS (ZARYA)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 8
@@ -66,7 +74,8 @@
 {
     "fields": {
         "norad_cat_id": 26931,
-        "name": "PCSAT (NO-44)"
+        "name": "PCSAT (NO-44)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 9
@@ -74,7 +83,8 @@
 {
     "fields": {
         "norad_cat_id": 27607,
-        "name": "SAUDISAT 1C (SO-50)"
+        "name": "SAUDISAT 1C (SO-50)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 10
@@ -82,7 +92,8 @@
 {
     "fields": {
         "norad_cat_id": 27844,
-        "name": "CUTE-1 (CO-55)"
+        "name": "CUTE-1 (CO-55)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 11
@@ -90,7 +101,8 @@
 {
     "fields": {
         "norad_cat_id": 27848,
-        "name": "CUBESAT XI-IV (CO-57)"
+        "name": "CUBESAT XI-IV (CO-57)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 12
@@ -98,7 +110,8 @@
 {
     "fields": {
         "norad_cat_id": 27939,
-        "name": "MOZHAYETS 4 (RS-22)"
+        "name": "MOZHAYETS 4 (RS-22)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 13
@@ -106,7 +119,8 @@
 {
     "fields": {
         "norad_cat_id": 28650,
-        "name": "HAMSAT (VO-52)"
+        "name": "HAMSAT (VO-52)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 14
@@ -114,7 +128,8 @@
 {
     "fields": {
         "norad_cat_id": 28895,
-        "name": "CUBESAT XI-V (CO-58)"
+        "name": "CUBESAT XI-V (CO-58)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 15
@@ -122,7 +137,8 @@
 {
     "fields": {
         "norad_cat_id": 32785,
-        "name": "CUTE-1.7+APD II (CO-65)"
+        "name": "CUTE-1.7+APD II (CO-65)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 16
@@ -130,7 +146,8 @@
 {
     "fields": {
         "norad_cat_id": 32789,
-        "name": "DELFI-C3 (DO-64)"
+        "name": "DELFI-C3 (DO-64)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 17
@@ -138,7 +155,8 @@
 {
     "fields": {
         "norad_cat_id": 32791,
-        "name": "SEEDS II (CO-66)"
+        "name": "SEEDS II (CO-66)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 18
@@ -146,7 +164,8 @@
 {
     "fields": {
         "norad_cat_id": 32953,
-        "name": "YUBILEINY (RS-30)"
+        "name": "YUBILEINY (RS-30)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 19
@@ -154,7 +173,8 @@
 {
     "fields": {
         "norad_cat_id": 33493,
-        "name": "PRISM (HITOMI)"
+        "name": "PRISM (HITOMI)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 20
@@ -162,7 +182,8 @@
 {
     "fields": {
         "norad_cat_id": 33499,
-        "name": "KKS-1 (KISEKI)"
+        "name": "KKS-1 (KISEKI)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 21
@@ -170,7 +191,8 @@
 {
     "fields": {
         "norad_cat_id": 35932,
-        "name": "SWISSCUBE"
+        "name": "SWISSCUBE",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 22
@@ -178,7 +200,8 @@
 {
     "fields": {
         "norad_cat_id": 35933,
-        "name": "BEESAT"
+        "name": "BEESAT",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 23
@@ -186,7 +209,8 @@
 {
     "fields": {
         "norad_cat_id": 35935,
-        "name": "ITUPSAT 1"
+        "name": "ITUPSAT 1",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 24
@@ -194,7 +218,8 @@
 {
     "fields": {
         "norad_cat_id": 36122,
-        "name": "XIWANG-1 (HOPE-1)"
+        "name": "XIWANG-1 (HOPE-1)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 25
@@ -202,7 +227,8 @@
 {
     "fields": {
         "norad_cat_id": 36799,
-        "name": "TISAT 1"
+        "name": "TISAT 1",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 26
@@ -210,7 +236,8 @@
 {
     "fields": {
         "norad_cat_id": 37839,
-        "name": "JUGNU"
+        "name": "JUGNU",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 27
@@ -218,7 +245,8 @@
 {
     "fields": {
         "norad_cat_id": 37841,
-        "name": "SRMSAT"
+        "name": "SRMSAT",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 28
@@ -226,23 +254,17 @@
 {
     "fields": {
         "norad_cat_id": 37855,
-        "name": "M-CUBED & EXP-1 PRIME"
+        "name": "M-CUBED & EXP-1 PRIME",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 29
 },
 {
     "fields": {
-        "norad_cat_id": 38340,
-        "name": "HORYU 2"
-    },
-    "model": "base.satellite",
-    "pk": 30
-},
-{
-    "fields": {
         "norad_cat_id": 39087,
-        "name": "AAUSAT3"
+        "name": "AAUSAT3",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 31
@@ -250,7 +272,8 @@
 {
     "fields": {
         "norad_cat_id": 39090,
-        "name": "STRAND-1"
+        "name": "STRAND-1",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 32
@@ -258,7 +281,8 @@
 {
     "fields": {
         "norad_cat_id": 39134,
-        "name": "SOMP"
+        "name": "SOMP",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 33
@@ -266,7 +290,8 @@
 {
     "fields": {
         "norad_cat_id": 39136,
-        "name": "BEESAT-2"
+        "name": "BEESAT-2",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 34
@@ -274,7 +299,8 @@
 {
     "fields": {
         "norad_cat_id": 39153,
-        "name": "CUBEBUG-1 (CAPITAN BETO)"
+        "name": "CUBEBUG-1 (CAPITAN BETO)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 35
@@ -282,7 +308,8 @@
 {
     "fields": {
         "norad_cat_id": 39417,
-        "name": "ZACUBE-1 (TSHEPISOSAT)"
+        "name": "ZACUBE-1 (TSHEPISOSAT)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 36
@@ -290,7 +317,8 @@
 {
     "fields": {
         "norad_cat_id": 39427,
-        "name": "TRITON-1"
+        "name": "TRITON-1",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 37
@@ -298,7 +326,8 @@
 {
     "fields": {
         "norad_cat_id": 39430,
-        "name": "GOMX 1"
+        "name": "GOMX 1",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 38
@@ -306,23 +335,17 @@
 {
     "fields": {
         "norad_cat_id": 39433,
-        "name": "HUMSAT-D"
+        "name": "HUMSAT-D",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 39
 },
 {
     "fields": {
-        "norad_cat_id": 39436,
-        "name": "EAGLE 2"
-    },
-    "model": "base.satellite",
-    "pk": 40
-},
-{
-    "fields": {
         "norad_cat_id": 39438,
-        "name": "VELOX-PII"
+        "name": "VELOX-PII",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 41
@@ -330,7 +353,8 @@
 {
     "fields": {
         "norad_cat_id": 39440,
-        "name": "CUBEBUG-2 (LO-74)"
+        "name": "CUBEBUG-2 (LO-74)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 42
@@ -338,7 +362,8 @@
 {
     "fields": {
         "norad_cat_id": 39444,
-        "name": "FUNCUBE-1 (AO-73)"
+        "name": "FUNCUBE-1 (AO-73)",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 43
@@ -346,7 +371,8 @@
 {
     "fields": {
         "norad_cat_id": 39446,
-        "name": "UWE-3"
+        "name": "UWE-3",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 44
@@ -354,7 +380,8 @@
 {
     "fields": {
         "norad_cat_id": 39770,
-        "name": "SPROUT"
+        "name": "SPROUT",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 45
@@ -362,9 +389,199 @@
 {
     "fields": {
         "norad_cat_id": 40021,
-        "name": "DUCHIFAT-1"
+        "name": "DUCHIFAT-1",
+        "names": ""
     },
     "model": "base.satellite",
     "pk": 46
+},
+{
+    "fields": {
+        "norad_cat_id": 40025,
+        "name": "QB50P1",
+        "names": "EO 79, European-OSCAR 79, FUNcube 3"
+    },
+    "model": "base.satellite",
+    "pk": 47
+},
+{
+    "fields": {
+        "norad_cat_id": 40661,
+        "name": "LIGHTSAIL-1",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 49
+},
+{
+    "fields": {
+        "norad_cat_id": 40719,
+        "name": "DEORBITSAIL",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 50
+},
+{
+    "fields": {
+        "norad_cat_id": 40379,
+        "name": "GRIFEX",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 51
+},
+{
+    "fields": {
+        "norad_cat_id": 40654,
+        "name": "NO-84",
+        "names": "PSAT"
+    },
+    "model": "base.satellite",
+    "pk": 52
+},
+{
+    "fields": {
+        "norad_cat_id": 40655,
+        "name": "NO-83",
+        "names": "BRICSat-P"
+    },
+    "model": "base.satellite",
+    "pk": 53
+},
+{
+    "fields": {
+        "norad_cat_id": 40377,
+        "name": "FIREBIRD 3",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 54
+},
+{
+    "fields": {
+        "norad_cat_id": 40378,
+        "name": "FIREBIRD 4",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 55
+},
+{
+    "fields": {
+        "norad_cat_id": 40380,
+        "name": "EXOCUBE",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 56
+},
+{
+    "fields": {
+        "norad_cat_id": 40074,
+        "name": "UKUBE-1",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 57
+},
+{
+    "fields": {
+        "norad_cat_id": 40071,
+        "name": "DX1",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 58
+},
+{
+    "fields": {
+        "norad_cat_id": 40054,
+        "name": "AISAT",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 59
+},
+{
+    "fields": {
+        "norad_cat_id": 40057,
+        "name": "VELOX 1",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 60
+},
+{
+    "fields": {
+        "norad_cat_id": 40014,
+        "name": "BUGSAT-1 (TITA)",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 61
+},
+{
+    "fields": {
+        "norad_cat_id": 40024,
+        "name": "NANOSATC-BR1",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 62
+},
+{
+    "fields": {
+        "norad_cat_id": 40042,
+        "name": "POLYITAN-1",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 63
+},
+{
+    "fields": {
+        "norad_cat_id": 40032,
+        "name": "QB50P2",
+        "names": "EO 80, European-OSCAR 80"
+    },
+    "model": "base.satellite",
+    "pk": 64
+},
+{
+    "fields": {
+        "norad_cat_id": 40012,
+        "name": "UNISAT-6",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 65
+},
+{
+    "fields": {
+        "norad_cat_id": 40043,
+        "name": "TIGRISAT",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 66
+},
+{
+    "fields": {
+        "norad_cat_id": 39436,
+        "name": "EAGLE 2",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 67
+},
+{
+    "fields": {
+        "norad_cat_id": 38340,
+        "name": "HORYU 2",
+        "names": ""
+    },
+    "model": "base.satellite",
+    "pk": 68
 }
 ]
