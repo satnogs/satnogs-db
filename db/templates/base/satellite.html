@@ -10,184 +10,162 @@
   <div class="row">
     <div class="col-md-12 satellite-panels">
       <div class="panel panel-default panel-satellite">
-        <div class="panel-heading">
-          <h3 class="panel-title">
+        <div class="row panel-body">
+          <div class="col-md-3 panel-satellite">
             <div class="satellite-title">
-              <a href="{% url 'home' %}">Home</a></span> /
               {{ satellite }}
             </div>
-            <button type="button"
-                    class="btn btn-default btn-sm pull-right add-transmitter"
-                    data-toggle="modal" data-target="#NewSuggestionModal">
-              <span class="glyphicon glyphicon-plus" title="Suggest new transmitter"></span>
-            </button>
+            <div>
+              {{ satellite.names }}
+            </div>
+            <div>
+              <img src="{{ satellite.get_image }}" alt="{{ satellite.name }}" class="satellite-img-full">
+            </div>
             {% if suggestions %}
-              <span class="suggestions-counter pull-right label label-primary">
+              <div class="suggestions-counter label label-primary">
                 {{ suggestions }} suggestion{{ suggestions|pluralize }} pending
-              </span>
+              </div>
             {% endif %}
-          </h3>
-        </div>
-
-        {% for transmitter in satellite.transmitters.all %}
-          <div class="row panel-body">
-            <div class="col-md-12">
-              <div class="panel panel-default panel-transmitter {% if forloop.first %}panel-first{% endif %}">
-                <div class="panel-heading">
-                  <h3 class="panel-title">
-                    <span class="transmitter-title">{{ transmitter.description }}</span>
-                    <button type="button"
-                            class="btn btn-default btn-sm pull-right suggest-transmitter"
-                            data-toggle="modal"
-                            data-target="#EditSuggestionModal">
-                      <span class="glyphicon glyphicon-edit" title="Suggest edits"></span>
-                    </button>
-                  </h3>
+            <div>
+              <button type="button"
+                      class="btn btn-primary"
+                      data-toggle="modal" data-target="#NewSuggestionModal">
+                Suggest New Transmitter
+              </button>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <div class="row">
+              {% for transmitter in satellite.transmitters.all %}
+                <div class="col-md-6">
+                  <div class="panel panel-default panel-transmitter">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">
+                        <span class="transmitter-title">{{ transmitter.description }}</span>
+                        <button type="button"
+                                class="btn btn-default btn-sm pull-right suggest-transmitter"
+                                data-toggle="modal"
+                                data-target="#EditSuggestionModal">
+                          <span class="glyphicon glyphicon-edit" title="Suggest edits"></span>
+                        </button>
+                      </h3>
+                    </div>
+                    <div class="row panel-body">
+                      <div class="col-md-12">
+                        {% if transmitter.alive %}
+                          {% include "includes/field.html" with name="Alive" value=transmitter.alive %}
+                        {% endif %}
+                        {% if transmitter.mode %}
+                          {% include "includes/field.html" with name="Mode" value=transmitter.mode %}
+                        {% endif %}
+                        {% if transmitter.invert %}
+                          {% include "includes/field.html" with name="Invert" value=transmitter.invert %}
+                        {% endif %}
+                        {% if transmitter.baud %}
+                          {% include "includes/field.html" with name="Baud" value=transmitter.baud %}
+                        {% endif %}
+                        {% if transmitter.uplink_low %}
+                          {% include "includes/field.html" with name="Uplink Low" value=transmitter.uplink_low|frq %}
+                        {% endif %}
+                        {% if transmitter.uplink_high %}
+                          {% include "includes/field.html" with name="Uplink High" value=transmitter.uplink_high|frq %}
+                        {% endif %}
+                        {% if transmitter.downlink_low %}
+                          {% include "includes/field.html" with name="Downlink Low" value=transmitter.downlink_low|frq %}
+                        {% endif %}
+                        {% if transmitter.downlink_high %}
+                          {% include "includes/field.html" with name="Downlink High" value=transmitter.downlink_high|frq %}
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                <!-- Edit Suggestion Modal -->
+                <div class="modal fade" id="EditSuggestionModal" tabindex="-1" role="dialog" aria-labelledby="EditSuggestionModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="EditSuggestionModalLabel">Suggest an edit to this Transmitter</h4>
+                      </div>
+                      {% if request.user.is_authenticated %}
+                        <form action="{% url 'suggestion' %}" method="post" id="editsuggestion-form">{% csrf_token %}
+                          <div class="modal-body">
+                            <div class="input-group transmitter-element-suggest">
+                              <div class="input-group-addon">Description</div>
+                              <input type="text" class="form-control" name="description" value="{{ transmitter.description }}">
+                            </div>
+                            <div class="input-group transmitter-element-suggest">
+                              <input type="checkbox" value="1" name="alive" {% if transmitter.alive %}checked{% endif %}> Alive
+                            </div>
+                            <div class="input-group transmitter-element-suggest">
+                              <div class="input-group-addon">Uplink Low</div>
+                              <input type="number" class="form-control" name="uplink_low" value="{{ transmitter.uplink_low|default_if_none:'' }}">
+                            </div>
+                            <div class="input-group transmitter-element-suggest">
+                              <div class="input-group-addon">Uplink High</div>
+                              <input type="number" class="form-control" name="uplink_high" value="{{ transmitter.uplink_high|default_if_none:'' }}">
+                            </div>
+                            <div class="input-group transmitter-element-suggest">
+                              <div class="input-group-addon">Downlink Low</div>
+                              <input type="number" class="form-control" name="downlink_low" value="{{ transmitter.downlink_low|default_if_none:'' }}">
+                            </div>
+                            <div class="input-group transmitter-element-suggest">
+                              <div class="input-group-addon">Downlink High</div>
+                              <input type="number" class="form-control" name="downlink_high" value="{{ transmitter.downlink_high|default_if_none:'' }}">
+                            </div>
+                            <div class="input-group transmitter-element-suggest">
+                              <div class="input-group-addon">Mode</div>
+                              <select class="form-control" name="mode">
+                                {% for mode in modes %}
+                                  <option value="{{ mode }}" {% ifequal transmitter.mode mode %}selected{% endifequal %}>
+                                    {{ mode }}
+                                  </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                            <div class="input-group transmitter-element-suggest">
+                              <input type="checkbox" value="1" name="invert" {% if transmitter.invert %}checked{% endif %}> Invert
+                            </div>
+                            <div class="input-group transmitter-element-suggest">
+                              <div class="input-group-addon">Baud Rate</div>
+                              <input type="number" class="form-control" name="baud" value="{{ transmitter.baud|default_if_none:'' }}">
+                            </div>
+                            <div class="input-group transmitter-element-suggest">
+                              <div class="input-group-addon">Citation URL</div>
+                              <input type="text" class="form-control" name="citation" required>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Send</button>
+                          </div>
+                          <input type="hidden" name="transmitter" value="{{ transmitter.pk }}">
+                          <input type="hidden" name="satellite" value="{{ satellite.pk }}">
+                        </form>
+                      {% else %}
+                        <div class="modal-body">
+                          <div class="text-danger">You need to login first to add a new suggestion.</div>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-default" data-dismiss="modal">Close</button>
+                          <a href="{% url 'account_login' %}" class="btn btn-primary">Log In</a>
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% empty %}
                 <div class="row panel-body">
-                  <div class="col-sm-3 col-xs-6">
-                    <div class="transmitter-element">
-                      <span class="label label-default">Alive</span>
-                    </div>
-                    <div class="transmitter-element">
-                      <span class="label label-default">Mode</span>
-                    </div>
-                    <div class="transmitter-element">
-                      <span class="label label-default">Invert</span>
-                    </div>
-                    <div class="transmitter-element">
-                      <span class="label label-default">Baud</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-3 col-xs-6">
-                    <div class="transmitter-element">
-                      {{ transmitter.alive }}
-                    </div>
-                    <div class="transmitter-element">
-                      {{ transmitter.mode|default:"-" }}
-                    </div>
-                    <div class="transmitter-element">
-                      {{ transmitter.invert|default:"-" }}
-                    </div>
-                    <div class="transmitter-element">
-                      {{ transmitter.baud|default:"-" }}
-                    </div>
-                  </div>
-                  <div class="col-sm-3 col-xs-6">
-                    <div class="transmitter-element">
-                      <span class="label label-default">Uplink Low</span>
-                    </div>
-                    <div class="transmitter-element">
-                      <span class="label label-default">Uplink High</span>
-                    </div>
-                    <div class="transmitter-element">
-                      <span class="label label-default">Downlink Low</span>
-                    </div>
-                    <div class="transmitter-element">
-                      <span class="label label-default">Downlink High</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-3 col-xs-6">
-                    <div class="transmitter-element">
-                      {{ transmitter.uplink_low|frq }}
-                    </div>
-                    <div class="transmitter-element">
-                      {{ transmitter.uplink_high|frq }}
-                    </div>
-                    <div class="transmitter-element">
-                      {{ transmitter.downlink_low|frq }}
-                    </div>
-                    <div class="transmitter-element">
-                      {{ transmitter.downlink_high|frq }}
-                    </div>
+                  <div class="col-md-12">
+                    <span class="text-danger">No approved transmitters yet for this Satellite.</span>
                   </div>
                 </div>
-              </div>
+              {% endfor %}
             </div>
           </div>
-
-          <!-- Edit Suggestion Modal -->
-          <div class="modal fade" id="EditSuggestionModal" tabindex="-1" role="dialog" aria-labelledby="EditSuggestionModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="EditSuggestionModalLabel">Suggest an edit to this Transmitter</h4>
-                </div>
-                {% if request.user.is_authenticated %}
-                  <form action="{% url 'suggestion' %}" method="post" id="editsuggestion-form">{% csrf_token %}
-                    <div class="modal-body">
-                      <div class="input-group transmitter-element-suggest">
-                        <div class="input-group-addon">Description</div>
-                        <input type="text" class="form-control" name="description" value="{{ transmitter.description }}">
-                      </div>
-                      <div class="input-group transmitter-element-suggest">
-                        <input type="checkbox" value="1" name="alive" {% if transmitter.alive %}checked{% endif %}> Alive
-                      </div>
-                      <div class="input-group transmitter-element-suggest">
-                        <div class="input-group-addon">Uplink Low</div>
-                        <input type="number" class="form-control" name="uplink_low" value="{{ transmitter.uplink_low|default_if_none:'' }}">
-                      </div>
-                      <div class="input-group transmitter-element-suggest">
-                        <div class="input-group-addon">Uplink High</div>
-                        <input type="number" class="form-control" name="uplink_high" value="{{ transmitter.uplink_high|default_if_none:'' }}">
-                      </div>
-                      <div class="input-group transmitter-element-suggest">
-                        <div class="input-group-addon">Downlink Low</div>
-                        <input type="number" class="form-control" name="downlink_low" value="{{ transmitter.downlink_low|default_if_none:'' }}">
-                      </div>
-                      <div class="input-group transmitter-element-suggest">
-                        <div class="input-group-addon">Downlink High</div>
-                        <input type="number" class="form-control" name="downlink_high" value="{{ transmitter.downlink_high|default_if_none:'' }}">
-                      </div>
-                      <div class="input-group transmitter-element-suggest">
-                        <div class="input-group-addon">Mode</div>
-                        <select class="form-control" name="mode">
-                          {% for mode in modes %}
-                            <option value="{{ mode }}" {% ifequal transmitter.mode mode %}selected{% endifequal %}>
-                              {{ mode }}
-                            </option>
-                          {% endfor %}
-                        </select>
-                      </div>
-                      <div class="input-group transmitter-element-suggest">
-                        <input type="checkbox" value="1" name="invert" {% if transmitter.invert %}checked{% endif %}> Invert
-                      </div>
-                      <div class="input-group transmitter-element-suggest">
-                        <div class="input-group-addon">Baud Rate</div>
-                        <input type="number" class="form-control" name="baud" value="{{ transmitter.baud|default_if_none:'' }}">
-                      </div>
-                      <div class="input-group transmitter-element-suggest">
-                        <div class="input-group-addon">Citation URL</div>
-                        <input type="text" class="form-control" name="citation" required>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary">Send</button>
-                    </div>
-                    <input type="hidden" name="transmitter" value="{{ transmitter.pk }}">
-                    <input type="hidden" name="satellite" value="{{ satellite.pk }}">
-                  </form>
-                {% else %}
-                  <div class="modal-body">
-                    <div class="text-danger">You need to login first to add a new suggestion.</div>
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn btn-default" data-dismiss="modal">Close</button>
-                    <a href="{% url 'account_login' %}" class="btn btn-primary">Log In</a>
-                  </div>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        {% empty %}
-          <div class="row panel-body">
-            <div class="col-md-12">
-              <span class="text-danger">No approved transmitters yet for this Satellite.</span>
-            </div>
-          </div>
-        {% endfor %}
+        </div>
       </div>
     </div>
   </div>

@@ -28,7 +28,8 @@ class Satellite(models.Model):
     norad_cat_id = models.PositiveIntegerField()
     name = models.CharField(max_length=45)
     names = models.TextField(blank=True)
-    image = models.ImageField(upload_to='satellites', blank=True)
+    image = models.ImageField(upload_to='satellites', blank=True,
+                              help_text='Ideally: 250x250')
 
     class Meta:
         ordering = ["name"]

@@ -131,6 +131,10 @@ body {
     margin-top: 20px;
 }
 
+.panel-satellite > div {
+    margin-bottom: 10px;
+}
+
 .satellite-info {
     min-height: 100px;
 }
@@ -160,13 +164,18 @@ a.satellite-item:hover {
 
 .satellite-title {
     font-weight: bold;
-    display: inline;
+    font-size: 1.2em;
 }
 
 .satellite-img {
     max-width: 70px;
     border-radius: 10px;
     padding: 5px;
+}
+
+.satellite-img-full {
+    max-width: 245px;
+    border-radius: 5px;
 }
 
 .satellite-transmitters {
@@ -182,15 +191,11 @@ a.satellite-item:hover {
 }
 
 .panel-transmitter {
-    margin-bottom: 20px;
+    margin: 20px 0px;
 }
 
 .panel-first {
     margin-top: 20px;
-}
-
-.add-transmitter {
-    margin-top: -6px;
 }
 
 .suggest-transmitter {
@@ -198,7 +203,7 @@ a.satellite-item:hover {
 }
 
 .suggestions-counter {
-    margin-right: 10px;
+    display: inline-block;
 }
 
 .panel-transmitter > .panel-heading {
@@ -212,7 +217,7 @@ a.satellite-item:hover {
 }
 
 .transmitter-element {
-    margin-bottom: 10px;
+    margin: 10px;
 }
 
 .transmitter-element-suggest {
