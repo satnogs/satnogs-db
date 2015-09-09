@@ -8,7 +8,7 @@ $(document).ready(function() {
 
     var t = $('input');
     t.bind('propertychange keyup input paste', function(event) {
-        var term = t.val();
+        var term = t.val().toLowerCase();
         if (term !== '') {
             $('.satellite-group-item').hide();
             var results = $.grep(items, function(e) {
