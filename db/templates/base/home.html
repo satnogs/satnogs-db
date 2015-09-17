@@ -53,6 +53,11 @@
           <div class="row">
             <div class="col-xs-3">
               <img src="{{ sat.get_image }}" alt="{{ sat.name }}" class="satellite-img">
+              {% if request.user.is_superuser and sat.pending_suggestions %}
+                <div class="suggestions-counter text-info satellite-img">
+                  <span class="glyphicon glyphicon-edit" title="Suggest edits"></span> {{  sat.pending_suggestions }}
+                </div>
+              {% endif %}
             </div>
             <div class="col-xs-9 satellite-info">
               <div class="satellite-title">{{ sat.norad_cat_id }} - {{ sat.name }}</div>

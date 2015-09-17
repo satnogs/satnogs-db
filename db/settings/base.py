@@ -142,9 +142,9 @@ LOGGING = {
     },
     'loggers': {
         'django.request': {
-            'handlers': ['opbeat'],
             'level': 'ERROR',
-            'propagate': True,
+            'handlers': ['opbeat'],
+            'propagate': False,
         },
         'django.db.backends': {
             'level': 'ERROR',
@@ -153,7 +153,7 @@ LOGGING = {
         },
         'db': {
             'level': 'WARNING',
-            'handlers': ['opbeat'],
+            'handlers': ['console', 'opbeat'],
             'propagate': False,
         },
         'opbeat.errors': {

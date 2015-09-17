@@ -206,11 +206,6 @@ a.satellite-item:hover {
     display: inline-block;
 }
 
-.panel-transmitter > .panel-heading {
-    background-color: #B3E5FF;
-    background-image: none;
-}
-
 .label-transmitter-suggestions {
     margin-right: 10px;
     color: white;
