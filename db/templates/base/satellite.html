@@ -214,6 +214,9 @@
                           {% if suggestion.downlink_high %}
                             {% include "includes/field.html" with name="Downlink High" value=suggestion.downlink_high|frq original=suggestion.transmitter.downlink_high|frq %}
                           {% endif %}
+                          {% if suggestion.citation %}
+                            {% include "includes/field.html" with name="Citation" value=suggestion.citation|urlizetrunc:35 %}
+                          {% endif %}
                         </div>
                       </div>
                     </div>
