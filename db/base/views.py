@@ -8,7 +8,6 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseNotFound, HttpResponseServerError, HttpResponse
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 
@@ -49,13 +48,14 @@ def robots(request):
 
 def satellite(request, norad):
     """View to render home page."""
-    satellite =  get_object_or_404(Satellite, norad_cat_id=norad)
+    satellite = get_object_or_404(Satellite, norad_cat_id=norad)
     suggestions = Suggestion.objects.filter(satellite=satellite)
     modes = Mode.objects.all()
 
     return render(request, 'base/satellite.html', {'satellite': satellite,
                                                    'suggestions': suggestions,
                                                    'modes': modes})
+
 
 @login_required
 @require_POST
