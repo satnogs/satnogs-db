@@ -8,9 +8,11 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseNotFound, HttpResponseServerError, HttpResponse
 from django.conf import settings
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
 
 from db.base.models import Mode, Transmitter, Satellite, Suggestion
-from db.base.forms import SatelliteSearchForm, SuggestionForm
+from db.base.forms import SuggestionForm
 
 logger = logging.getLogger('db')
 
@@ -46,13 +48,14 @@ def robots(request):
 
 def satellite(request, norad):
     """View to render home page."""
-    satellite =  get_object_or_404(Satellite, norad_cat_id=norad)
+    satellite = get_object_or_404(Satellite, norad_cat_id=norad)
     suggestions = Suggestion.objects.filter(satellite=satellite)
     modes = Mode.objects.all()
 
     return render(request, 'base/satellite.html', {'satellite': satellite,
                                                    'suggestions': suggestions,
                                                    'modes': modes})
+
 
 @login_required
 @require_POST
@@ -63,6 +66,30 @@ def suggestion(request):
         suggestion = suggestion_form.save(commit=False)
         suggestion.user = request.user
         suggestion.save()
+
+        # Notify admins
+        admins = User.objects.filter(is_superuser=True)
+        site = get_current_site(request)
+        subject = '[{0}] A new suggestion was submitted'.format(site.name)
+        template = 'emails/new_suggestion.txt'
+        saturl = '{0}{1}'.format(
+            site.domain,
+            reverse('satellite', kwargs={'norad': suggestion.satellite.norad_cat_id})
+        )
+        data = {
+            'satname': suggestion.satellite.name,
+            'saturl': saturl,
+            'site_name': site.name
+        }
+        message = render_to_string(template, {'data': data})
+        for user in admins:
+            try:
+                user.email_user(subject, message, from_email=settings.DEFAULT_FROM_EMAIL)
+            except:
+                logger.error(
+                    'Could not send email to user',
+                    exc_info=True
+                )
 
         messages.success(request, ('Your suggestion was stored successfully. '
                                    'Thanks for contibuting!'))
