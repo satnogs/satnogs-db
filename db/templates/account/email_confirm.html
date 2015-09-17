@@ -8,7 +8,7 @@
 {% block content %}
   <div class="container">
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-md-5">
         <h2>Confirm E-mail Address</h2>
 
         {% if confirmation %}
@@ -18,7 +18,7 @@
             is an e-mail address for user {{ user_display }}.
           </p>
           <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">{% csrf_token %}
-            <button class="submit" type="submit">Confirm</button>
+            <button class="btn btn-default" type="submit">Confirm</button>
           </form>
         {% else %}
           {% url 'account_email' as email_url %}

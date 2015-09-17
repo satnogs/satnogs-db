@@ -6,15 +6,22 @@
 {% block title %} - Sign Up{% endblock title %}
 
 {% block content %}
-  <h1>Sign Up</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <h2>Sign Up</h2>
 
-  <p>Already have an account? Then please <a href="{{ login_url }}">sign in</a>.</p>
+        <p>Already have an account? Then please <a href="{{ login_url }}">sign in</a>.</p>
 
-  <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">{% csrf_token %}
-    {{ form|crispy }}
-    {% if redirect_field_value %}
-      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-    {% endif %}
-    <button class="btn" type="submit">Sign Up &raquo;</button>
-  </form>
+        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">{% csrf_token %}
+          {{ form|crispy }}
+          {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+          <button class="btn btn-default" type="submit">Sign Up &raquo;</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
 {% endblock content %}
