@@ -13,7 +13,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 
 from db.base.models import Mode, Transmitter, Satellite, Suggestion
-from db.base.forms import SatelliteSearchForm, SuggestionForm
+from db.base.forms import SuggestionForm
 
 logger = logging.getLogger('db')
 
