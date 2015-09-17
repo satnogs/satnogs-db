@@ -68,8 +68,8 @@ def suggestion(request):
                                    'Thanks for contibuting!'))
         return redirect(reverse('home'))
     else:
-        logger.debug(
-            'Suggestion form was not valid',
+        logger.error(
+            'Suggestion form was not valid {0}'.format(suggestion_form.errors),
             exc_info=True,
             extra={
                 'form': suggestion_form.errors,
