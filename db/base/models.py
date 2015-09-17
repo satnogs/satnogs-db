@@ -40,6 +40,11 @@ class Satellite(models.Model):
         else:
             return settings.SATELLITE_DEFAULT_IMAGE
 
+    @property
+    def pending_suggestions(self):
+        pending = Suggestion.objects.filter(satellite=self.id).count()
+        return pending
+
     def __unicode__(self):
         return '{0} - {1}'.format(self.norad_cat_id, self.name)
 

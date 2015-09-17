@@ -47,7 +47,7 @@ def robots(request):
 def satellite(request, norad):
     """View to render home page."""
     satellite =  get_object_or_404(Satellite, norad_cat_id=norad)
-    suggestions = Suggestion.objects.filter(satellite=satellite).count()
+    suggestions = Suggestion.objects.filter(satellite=satellite)
     modes = Mode.objects.all()
 
     return render(request, 'base/satellite.html', {'satellite': satellite,
@@ -75,7 +75,6 @@ def suggestion(request):
                 'form': suggestion_form.errors,
             }
         )
-
         messages.error(request, 'We are sorry, but some error occured :(')
         return redirect(reverse('home'))
 

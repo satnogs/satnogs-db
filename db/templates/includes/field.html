@@ -4,5 +4,8 @@
   </div>
   <div class="col-md-6">
     {{ value }}
+      {% if original %}
+        <div class="text-info">{{ original }}</div>
+      {% endif %}
   </div>
 </div>
