@@ -16,6 +16,7 @@ THIRD_PARTY_APPS = (
     'allauth',
     'allauth.account',
     'crispy_forms',
+    'compressor',
 )
 LOCAL_APPS = (
     'db.base',
@@ -92,6 +93,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 )
 MEDIA_ROOT = path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -140,9 +142,9 @@ LOGGING = {
     },
     'loggers': {
         'django.request': {
-            'handlers': ['opbeat'],
             'level': 'ERROR',
-            'propagate': True,
+            'handlers': ['opbeat'],
+            'propagate': False,
         },
         'django.db.backends': {
             'level': 'ERROR',
@@ -151,7 +153,7 @@ LOGGING = {
         },
         'db': {
             'level': 'WARNING',
-            'handlers': ['opbeat'],
+            'handlers': ['console', 'opbeat'],
             'propagate': False,
         },
         'opbeat.errors': {

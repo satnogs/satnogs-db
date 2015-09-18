@@ -28,7 +28,8 @@ class Satellite(models.Model):
     norad_cat_id = models.PositiveIntegerField()
     name = models.CharField(max_length=45)
     names = models.TextField(blank=True)
-    image = models.ImageField(upload_to='satellites', blank=True)
+    image = models.ImageField(upload_to='satellites', blank=True,
+                              help_text='Ideally: 250x250')
 
     class Meta:
         ordering = ["name"]
@@ -38,6 +39,11 @@ class Satellite(models.Model):
             return self.image.url
         else:
             return settings.SATELLITE_DEFAULT_IMAGE
+
+    @property
+    def pending_suggestions(self):
+        pending = Suggestion.objects.filter(satellite=self.id).count()
+        return pending
 
     def __unicode__(self):
         return '{0} - {1}'.format(self.norad_cat_id, self.name)
@@ -51,7 +57,8 @@ class Transmitter(models.Model):
     uplink_high = models.PositiveIntegerField(blank=True, null=True)
     downlink_low = models.PositiveIntegerField(blank=True, null=True)
     downlink_high = models.PositiveIntegerField(blank=True, null=True)
-    mode = models.ForeignKey(Mode, related_name='transmitters', null=True)
+    mode = models.ForeignKey(Mode, blank=True, null=True,
+                             on_delete=models.SET_NULL, related_name='transmitters')
     invert = models.BooleanField(default=False)
     baud = models.FloatField(validators=[MinValueValidator(0)], blank=True, null=True)
     satellite = models.ForeignKey(Satellite, related_name='transmitters',

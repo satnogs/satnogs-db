@@ -1,3 +1,12 @@
+## 0.7
+
+* Provide initiliaze command for developers
+* Enhance Satellite view with image
+* Fix case sensitivity on filtering
+* Add static files compression
+* Show suggestion to frontend for admins
+* Email admins on new suggestion
+
 ## 0.6
 
 * Redesign homepage UI

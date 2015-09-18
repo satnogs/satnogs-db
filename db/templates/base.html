@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load tags %}
+{% load compress %}
 
 <!DOCTYPE html>
 <html lang="en" ng-app>
@@ -7,11 +8,13 @@
     <meta charset="utf-8">
     <title>SatNOGS DB{% block title %}{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/lib/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/lib/bootstrap-theme.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/app.css' %}">
-    {% block css %}
-    {% endblock %}
+    {% compress css %}
+      <link rel="stylesheet" href="{% static 'css/lib/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/lib/bootstrap-theme.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/app.css' %}">
+      {% block css %}
+      {% endblock %}
+    {% endcompress %}
 
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
 
@@ -106,11 +109,13 @@
       </div>
     </footer>
 
-    <script src="{% static 'js/lib/jquery-1.11.2.min.js' %}"></script>
-    <script src="{% static 'js/lib/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/app.js' %}"></script>
-    {% block javascript %}
-    {% endblock javascript %}
+    {% compress js %}
+      <script src="{% static 'js/lib/jquery-1.11.2.min.js' %}"></script>
+      <script src="{% static 'js/lib/bootstrap.min.js' %}"></script>
+      <script src="{% static 'js/app.js' %}"></script>
+      {% block javascript %}
+      {% endblock javascript %}
+    {% endcompress %}
 
     <!-- Google Analytics -->
     {{ analytics_code }}

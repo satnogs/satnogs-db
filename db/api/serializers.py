@@ -28,8 +28,8 @@ class TransmitterSerializer(serializers.ModelSerializer):
     def get_mode_id(self, obj):
         try:
             return obj.mode.id
-	except:
-	    return None
+        except:
+            return None
 
     def get_norad_cat_id(self, obj):
         return obj.satellite.norad_cat_id
