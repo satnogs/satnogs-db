@@ -47,7 +47,7 @@
 {% block content %}
   <div class="row sats">
     {% for sat in satellites %}
-      <div class="col-md-4 col-sm-6 col-xs-12 satellite-group-item"
+      <div class="col-md-4 satellite-group-item"
            data-selector="{{ sat.name|lower }}{{ sat.norad_cat_id }}{{ sat.names|lower }}">
         <a href="{% url 'satellite' norad=sat.norad_cat_id %}" class="satellite-item">
           <div class="row">
@@ -71,6 +71,12 @@
           </div>
         </a>
       </div>
+      {% if forloop.counter|divisibleby:3 %}
+        </div>
+         {% if not loop.last %}
+           <div class="row">
+         {% endif %}
+      {% endif %}
     {% endfor %}
   </div>
 

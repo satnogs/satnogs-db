@@ -174,7 +174,8 @@ a.satellite-item:hover {
 }
 
 .satellite-img-full {
-    max-width: 245px;
+    width: 100%;
+    max-width: 300px;
     border-radius: 5px;
 }
 
