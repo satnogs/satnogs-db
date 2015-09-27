@@ -70,6 +70,19 @@ class Transmitter(models.Model):
     def __unicode__(self):
         return self.description
 
+    def update_from_suggestion(self, suggestion):
+        self.description = suggestion.description
+        self.alive = suggestion.alive
+        self.downlink_low = suggestion.downlink_low
+        self.downlink_high = suggestion.downlink_high
+        self.uplink_low = suggestion.uplink_low
+        self.uplink_high = suggestion.uplink_high
+        self.mode = suggestion.mode
+        self.invert = suggestion.invert
+        self.baud = suggestion.baud
+        self.approved = True
+        self.save()
+
 
 class Suggestion(Transmitter):
     citation = models.CharField(max_length=255, blank=True)
