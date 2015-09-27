@@ -42,11 +42,15 @@ class SuggestionAdmin(admin.ModelAdmin):
 
     def approve_suggestion(self, request, queryset):
         for obj in queryset:
-            if obj.transmitter:
-                obj.uuid = obj.transmitter.uuid
-                obj.transmitter.delete()
-            obj.approved = True
-            obj.save()
+            try:
+                transmitter = Transmitter.objects.get(id=obj.transmitter.id)
+                transmitter.update_from_suggestion(obj)
+                obj.delete()
+            except (Transmitter.DoesNotExist, AttributeError):
+                obj.approved=True
+                obj.citation=''
+                obj.user=None
+                obj.save()
 
             # Notify user
             current_site = get_current_site(request)
