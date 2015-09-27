@@ -169,6 +169,7 @@ a.satellite-item:hover {
 
 .satellite-img {
     max-width: 70px;
+    max-height: 70px;
     border-radius: 10px;
     padding: 5px;
 }
@@ -205,6 +206,7 @@ a.satellite-item:hover {
 
 .suggestions-counter {
     display: inline-block;
+    font-size: 0.9em;
 }
 
 .label-transmitter-suggestions {
