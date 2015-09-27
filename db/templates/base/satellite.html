@@ -45,7 +45,7 @@
                         <button type="button"
                                 class="btn btn-default btn-sm pull-right suggest-transmitter"
                                 data-toggle="modal"
-                                data-target="#EditSuggestionModal">
+                                data-target="#EditSuggestionModal-{{ transmitter.id }}">
                           <span class="glyphicon glyphicon-edit" title="Suggest edits"></span>
                         </button>
                       </h3>
@@ -81,7 +81,7 @@
                   </div>
 
                   <!-- Edit Suggestion Modal -->
-                  <div class="modal fade" id="EditSuggestionModal" tabindex="-1" role="dialog" aria-labelledby="EditSuggestionModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="EditSuggestionModal-{{ transmitter.id }}" tabindex="-1" role="dialog" aria-labelledby="EditSuggestionModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
