@@ -1,5 +1,5 @@
 # Basic stuff
-django>=1.8,<1.9
+django==1.8.7
 django-shortuuidfield==0.1.2
 django_compressor==1.5
 
