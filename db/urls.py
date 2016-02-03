@@ -1,33 +1,32 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
-
 from django.contrib import admin
-admin.autodiscover()
+from django.views.static import serve
+
+from allauth import urls as allauth_urls
+
+from db.base.urls import base_urlpatterns
+from db.api.urls import api_urlpatterns
 
 handler404 = 'db.base.views.custom_404'
 handler500 = 'db.base.views.custom_500'
 
-urlpatterns = patterns(
-    '',
-
+urlpatterns = [
     # Base
-    url(r'^', include('db.base.urls')),
+    url(r'^', include(base_urlpatterns)),
 
     # Accounts
-    url(r'^accounts/', include('allauth.urls')),
+    url(r'^accounts/', include(allauth_urls)),
 
     # API
-    url(r'^api/', include('db.api.urls')),
+    url(r'^api/', include(api_urlpatterns)),
 
     # Admin
-    url(r'^admin/', include(admin.site.urls)),
-)
+    url(r'^admin/', admin.site.urls),
+]
 
 if settings.DEBUG:
-    urlpatterns += patterns(
-        '',
-        url(r'^404/$', handler404),
-        url(r'^500/$', handler500),
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)$', serve,
             {'document_root': settings.MEDIA_ROOT}),
-    )
+    ]
