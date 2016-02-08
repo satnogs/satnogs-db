@@ -10,7 +10,4 @@ router.register(r'modes', views.ModeView)
 router.register(r'satellites', views.SatelliteView)
 router.register(r'transmitters', views.TransmitterView)
 
-urlpatterns = patterns(
-    '',
-    url(r'^', include(router.urls))
-)
+api_urlpatterns = router.urls

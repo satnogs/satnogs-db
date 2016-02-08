@@ -2,4 +2,4 @@
 -r dev.txt
 
 MySQL-python==1.2.5
-gunicorn==19.3.0
+gunicorn==19.4.5

@@ -4,7 +4,6 @@ ENVIRONMENT = 'dev'
 
 # Debug
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 MIDDLEWARE_CLASSES = MIDDLEWARE_CLASSES + (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
