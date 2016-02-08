@@ -22,7 +22,7 @@ Pillow==3.1.1
 # API
 djangorestframework==3.3.2
 markdown==2.6.5
-django-filter==0.12.0
+git+https://github.com/alex/django-filter.git@0.12.0#egg=django-filter
 
 # Astronomy
-orbit==0.2
+git+https://github.com/comzeradd/orbit.git@cache##egg=orbit
