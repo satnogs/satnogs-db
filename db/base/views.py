@@ -93,7 +93,7 @@ def suggestion(request):
 
         messages.success(request, ('Your suggestion was stored successfully. '
                                    'Thanks for contibuting!'))
-        return redirect(reverse('home'))
+        return reverse('satellite', kwargs={'norad': suggestion.satellite.norad_cat_id})
     else:
         logger.error(
             'Suggestion form was not valid {0}'.format(suggestion_form.errors),
