@@ -6,22 +6,22 @@ django-compressor==2.0
 # Configuration
 django-dotenv==1.4.1
 dj-database-url==0.4.0
-opbeat==3.2.2
+opbeat==3.3
 
 # Security
 django-braces==1.8.1
 django-secure==1.0.1
 
 # Users
-django-allauth==0.24.1
+django-allauth==0.25.2
 django-crispy-forms==1.6.0
 
 # Images
 Pillow==3.1.1
 
 # API
-djangorestframework==3.3.2
-markdown==2.6.5
+djangorestframework==3.3.3
+markdown==2.6.6
 git+https://github.com/alex/django-filter.git@0.12.0#egg=django-filter
 
 # Astronomy
