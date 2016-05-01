@@ -23,3 +23,4 @@ def frq(value):
         formatted = format(float(to_format) / 1000000, '.6f')
     formatted = formatted + ' Mhz'
     return formatted
+    
