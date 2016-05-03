@@ -1,0 +1,64 @@
+{
+  "norad_id": "234234",
+  "transmitter": "29384",
+  "appendix": [
+    {
+      "Key": "EPS_V",
+      "Description": "EPS Voltage",
+      "Unit": "Volt"
+    },
+    {
+      "Key": "EPS_T",
+      "Description": "EPS Temperature",
+      "Unit": "Celsius"
+    },
+    {
+      "Key": "COMMS_T",
+      "Description": "COMMS Temperature",
+      "Unit": "Celsius"
+    }
+  ],
+  "telemetry": [
+    {
+      "satellite_datetime": "20160408T234900Z",
+      "observation_datetime": "20160408T234900Z",
+      "data_id": "234",
+      "damod_data": {
+        "EPS_V": "9.1",
+        "EPS_T": "14",
+        "COMMS_T": "24"
+      }
+    },
+    {
+      "satellite_datetime": "20160407T234900Z",
+      "observation_datetime": "20160407T234900Z",
+      "data_id": "224",
+      "damod_data": {
+        "EPS_V": "10.1",
+        "EPS_T": "24",
+        "COMMS_T": "34"
+      }
+    },
+    {
+      "satellite_datetime": "20160406T234900Z",
+      "observation_datetime": "20160406T234900Z",
+      "data_id": "214",
+      "damod_data": {
+        "EPS_V": "9",
+        "EPS_T": "34",
+        "COMMS_T": "24"
+      }
+    },
+    {
+      "satellite_datetime": "20160405T234900Z",
+      "observation_datetime": "20160405T234900Z",
+      "data_id": "204",
+      "damod_data": {
+        "EPS_V": "9.5",
+        "EPS_T": "33",
+        "COMMS_T": "22"
+      }
+    }
+  ]
+}
+
