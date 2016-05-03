@@ -19,11 +19,18 @@ THIRD_PARTY_APPS = (
     'allauth.account',
     'crispy_forms',
     'compressor',
+    'djangobower',
 )
 LOCAL_APPS = (
     'db.base',
     'db.api',
 )
+BOWER_INSTALLED_APPS = (
+    'underscore',
+    'backbone',
+    'd3',
+)
+
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 # Middlware
@@ -90,6 +97,7 @@ TEMPLATES = [
     },
 ]
 
+
 # Static & Media
 STATIC_ROOT = path.join(path.dirname(BASE_DIR), 'staticfiles')
 STATIC_URL = '/static/'
@@ -100,6 +108,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
+    'djangobower.finders.BowerFinder',
 )
 MEDIA_ROOT = path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -119,6 +128,12 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 LOGIN_REDIRECT_URL = 'home'
+
+# Djangobower pahts
+
+# Djang-Bower
+BOWER_COMPONENTS_ROOT = path.join(BASE_DIR, 'static')
+
 
 # Logging
 LOGGING = {
