@@ -7,20 +7,41 @@
 {% block top %}{% endblock %}
 
 {% block content %}
+
+  <!-- Satellite Overview Section -->
   <div class="row">
     <div class="col-md-12 satellite-panels">
       <div class="panel panel-default panel-satellite">
-        <div class="row panel-body">
-          <div class="col-md-3 panel-satellite">
+        <div class="panel-heading">
             <div class="satellite-title">
               {{ satellite }}
             </div>
+        </div>
+        <div class="row panel-body">
+          <div class="col-md-3 panel-satellite">
             <div>
               {{ satellite.names }}
             </div>
             <div>
               <img src="{{ satellite.get_image }}" alt="{{ satellite.name }}" class="satellite-img-full">
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transmitters Section -->
+  <div class="row">
+    <div class="col-md-12 satellite-panels">
+      <div class="panel panel-default panel-satellite">
+        <div class="panel-heading">
+            <div class="satellite-title">
+              Transmitters
+            </div>
+        </div>
+        <div class="row panel-body">
+          <div class="col-md-3 panel-satellite">
             {% if suggestions %}
               <div class="suggestions-counter label label-primary">
                 {{ suggestions.count }} suggestion{{ suggestions.count|pluralize }} pending
@@ -237,6 +258,38 @@
     </div>
   </div>
 
+  <!-- Telemetry Section -->
+  <div class="row">
+    <div class="col-md-12 satellite-panels">
+      <div class="panel panel-default panel-satellite">
+        <div class="panel-heading">
+            <div class="satellite-title">
+              Telemetry
+            </div>
+        </div>
+        <div class="row panel-body">
+          <div class="col-md-3 panel-satellite">
+            <ul id="telemetry-descriptors">
+            </ul>
+          </div>
+          <div class="col-md-9 panel-satellite">          
+            <div id="telemetry-viz">
+            </div>
+          </div>
+          
+          <script id="telemetryDescriptorsTemplate" type="text/template">
+              <li class="list-group-item"><a href="#<%- Key %>"><%- Description %></a></li>
+          </script>
+
+          <script id="telemetryYAxisTemplate" type="text/template">
+              <p><%- satellite_datetime %></p>
+          </script>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Suggestion Modal -->
   <div class="modal fade" id="NewSuggestionModal" tabindex="-1" role="dialog" aria-labelledby="NewSuggestionModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -312,4 +365,6 @@
       </div>
     </div>
   </div>
+
+
 {% endblock %}

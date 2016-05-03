@@ -1,38 +1,81 @@
 // Models
 
-var Telemetry = Backbone.Model.extend({
-    urlRoot:"//db.satnogs.org/",
-});
- 
+var Telemetry = Backbone.Model.extend({});
+
+/*** To deal with uri 
+var TelemetryAppendix = Backbone.Model.extend({
+        idAttribute: "list_id",
+        urlRoot: '/api/telem',    
+        initialize: function() {
+            this.items = new app.ListItem;
+            this.items.url = '/lists/' + this.id + '/items';
+        }
+    });
+***/
+
 var TelemetryCollection = Backbone.Collection.extend({
     model: Telemetry,
     url:"/static/telemetry.json"
 });
  
+var TelemetryDescriptors = TelemetryCollection.extend({
+    parse: function(response){
+        // Return only the nested objects that will be our models
+        return response.appendix;
+    }
+ });
+
+var TelemetryData = TelemetryCollection.extend({
+    parse: function(response){
+        // Return only the nested objects that will be our models
+        return response.telemetry;
+    }
+ });
+
 // Views 
-var TelemetryView = Backbone.View.extend({
-    el: "#telemetry",
-    template: _.template($('#telemetryTemplate').html()),
+var TelemetryDescriptorsView = Backbone.View.extend({
+    el: "#telemetry-descriptors",
+    template: _.template($('#telemetryDescriptorsTemplate').html()),
     initialize: function(){
         this.listenTo(this.collection,"add", this.renderItem);          
     },
     render: function () {
         this.collection.each(function(model){
-             var telemetryTemplate = this.template(model.toJSON());
-             this.$el.append(telemetryTemplate);
+             var telemetryDescriptorsTemplate = this.template(model.toJSON());
+             this.$el.append(telemetryDescriptorsTemplate);
         }, this);        
         return this;
     },
-    renderItem: function(telemetry) {
-         var telemetryTemplate = this.template(telemetry.toJSON());
-         this.$el.append(telemetryTemplate);        
+    renderItem: function(telemetryDescriptors) {
+         var telemetryDescriptorsTemplate = this.template(telemetryDescriptors.toJSON());
+         this.$el.append(telemetryDescriptorsTemplate);        
     }
 });
 
 
-var telemetryCollection = new TelemetryCollection(); //startData);
+var TelemetryTimeView = Backbone.View.extend({
+    el: "#telemetry-viz",
+    template: _.template($('#telemetryYAxisTemplate').html()),
+    initialize: function(){
+        this.listenTo(this.collection,"add", this.renderItem);          
+    },
+    render: function () {
+        this.collection.each(function(model){
+             var telemetryYAxisTemplate = this.template(model.toJSON());
+             this.$el.append(telemetryYAxisTemplate);
+        }, this);        
+        return this;
+    },
+    renderItem: function(telemetryYAxis) {
+         var telemetryYAxisTemplate = this.template(telemetryYAxis.toJSON());
+         this.$el.append(telemetryYAxisTemplate);        
+    }
+});
 
-telemetryCollection.fetch(); /*({
+// Rendering
+
+var telemetryDescriptors = new TelemetryDescriptors(); //startData);
+telemetryDescriptors.fetch(); /*({
   success: function(){
     //renderCollection(); // some callback to do stuff with the collection you made
   },
@@ -40,6 +83,12 @@ telemetryCollection.fetch(); /*({
   }
 });
 */
+var telemetryDescriptorsView = new TelemetryDescriptorsView({ collection: telemetryDescriptors });
+telemetryDescriptorsView.render();
 
-var telemetryView = new TelemetryView({ collection: telemetryCollection });
-telemetryView.render();
+
+var telemetryData = new TelemetryData(); //startData);
+telemetryData.fetch();
+var telemetryTimeView = new TelemetryTimeView({ collection: telemetryData });
+telemetryTimeView.render();
+
