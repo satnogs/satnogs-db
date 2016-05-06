@@ -186,3 +186,7 @@ SECRET_KEY = getenv('SECRET_KEY', 'changeme')
 # Database
 DATABASE_URL = getenv('DATABASE_URL', 'sqlite:///db.sqlite3')
 DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
+
+# NETWORK API
+NETWORK_API_ENDPOINT = getenv('NETWORK_API_ENDPOINT', 'https://network.satnogs.org/api/')
+DATA_FETCH_DAYS = getenv('DATA_FETCH_DAYS', 10)
