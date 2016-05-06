@@ -1,4 +1,6 @@
 from os import path, getenv
+import dj_database_url
+
 BASE_DIR = path.dirname(path.dirname(__file__))
 
 # Apps
@@ -182,6 +184,5 @@ REST_FRAMEWORK = {
 SECRET_KEY = getenv('SECRET_KEY', 'changeme')
 
 # Database
-import dj_database_url
 DATABASE_URL = getenv('DATABASE_URL', 'sqlite:///db.sqlite3')
 DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}

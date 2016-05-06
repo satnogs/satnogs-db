@@ -47,9 +47,9 @@ class SuggestionAdmin(admin.ModelAdmin):
                 transmitter.update_from_suggestion(obj)
                 obj.delete()
             except (Transmitter.DoesNotExist, AttributeError):
-                obj.approved=True
-                obj.citation=''
-                obj.user=None
+                obj.approved = True
+                obj.citation = ''
+                obj.user = None
                 obj.save()
 
             # Notify user
