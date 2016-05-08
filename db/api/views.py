@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 
 from db.api import serializers, filters
-from db.base.models import Mode, Satellite, Transmitter
+from db.base.models import Mode, Satellite, Transmitter, DemodData
 
 
 class ModeView(viewsets.ReadOnlyModelViewSet):
@@ -20,3 +20,9 @@ class TransmitterView(viewsets.ReadOnlyModelViewSet):
     serializer_class = serializers.TransmitterSerializer
     filter_class = filters.TransmitterViewFilter
     lookup_field = 'uuid'
+
+
+class TelemetryView(viewsets.ReadOnlyModelViewSet):
+    queryset = DemodData.objects.all()
+    serializer_class = serializers.TelemetrySerializer
+    filter_class = filters.TelemetryViewFilter
