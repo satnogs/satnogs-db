@@ -17,6 +17,10 @@ def frq(value):
         to_format = float(value)
     except (TypeError, ValueError):
         return ''
-    formatted = format(float(to_format) / 1000000, '.3f')
+    if to_format % 1000 == 0:
+        formatted = format(float(to_format) / 1000000, '.3f')
+    else:
+        formatted = format(float(to_format) / 1000000, '.6f')
     formatted = formatted + ' Mhz'
     return formatted
+    
