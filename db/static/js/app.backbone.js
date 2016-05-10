@@ -93,236 +93,178 @@ var telemetryTimeView = new TelemetryTimeView({ collection: telemetryData });
 telemetryTimeView.render();
 
 
-
-/************************************
-D3 Collection
-************************************/
-
-/*var TelemetryViz = Backbone.View.extend({
-
-  "el": "#telemetry-viz",
-
-  initialize: function() {
-    // Container el
-  }
-
-  render: function() {
-    // On changes in collection, render
-  }
-
-  frame: function() {
-    // on time draw
-  },
- 
-
-})*/
+////////// Bar chart
 
 
-var w = 440,
-    h = 200;
+d3.custom = {};
 
+d3.custom.barChart = function module() {
+    var config = {
+        margin: {top: 20, right: 20, bottom: 40, left: 40},
+        width: 500,
+        height: 500
+    };
+    var svg;
 
-/*var DataPoint = Backbone.Model.extend({
+    var dispatch = d3.dispatch('customHover');
 
-    initialize: function(x) {
-        this.set({
-            x: x
-        });
-    },
+    var data; // a global
 
-    type: "point",
+    d3.json("/static/telemetry.json", function(error, json) {
+      if (error) return console.warn(error);
+      data = json;
+    });
 
-    randomize: function() {
-        this.set({
-            x: Math.round(Math.random() * 10)
+    function exports(_selection) {
+        _selection.each(function(_data) {
+            var chartW = config.width - config.margin.left - config.margin.right,
+                chartH = config.height - config.margin.top - config.margin.bottom;
+
+            var x1 = d3.scale.ordinal()
+                .domain(_data.map(function(d, i){ return i; }))
+                .rangeRoundBands([0, chartW], .1);
+
+            var y1 = d3.scale.linear()
+                .domain([0, d3.max(_data, function(d, i){ return d; })])
+                .range([chartH, 0]);
+
+            var xAxis = d3.svg.axis()
+                .scale(x1)
+                .orient('bottom');
+
+            var yAxis = d3.svg.axis()
+                .scale(y1)
+                .orient('left');
+
+            var barW = chartW / _data.length;
+
+            if(!svg) {
+                svg = d3.select(this)
+                    .append('svg')
+                    .classed('chart', true);
+                var container = svg.append('g').classed('container-group', true);
+                container.append('g').classed('chart-group', true);
+                container.append('g').classed('x-axis-group axis', true);
+                container.append('g').classed('y-axis-group axis', true);
+            }
+
+            svg.transition().attr({width: config.width, height: config.height})
+            svg.select('.container-group')
+                .attr({transform: 'translate(' + config.margin.left + ',' + config.margin.top + ')'});
+
+            svg.select('.x-axis-group.axis')
+                .attr({transform: 'translate(0,' + (chartH) + ')'})
+                .transition()
+                .call(xAxis);
+
+            svg.select('.y-axis-group.axis')
+                .transition()
+                .call(yAxis);
+
+            var barW = x1.rangeBand();
+            var bars = svg.select('.chart-group')
+                .selectAll('.bar')
+                .data(_data);
+            bars.enter().append('rect')
+                .classed('bar', true)
+                .attr({x: chartW,
+                    width: barW,
+                    y: function(d, i) { return y1(d); },
+                    height: function(d, i) { return chartH - y1(d); }
+                })
+                .on('mouseover', dispatch.customHover);
+            bars.transition()
+                .attr({
+                    width: barW,
+                    x: function(d, i) { return x1(i); },
+                    y: function(d, i) { return y1(d); },
+                    height: function(d, i) { return chartH - y1(d); }
+                });
+            bars.exit().transition().style({opacity: 0}).remove();
+
         });
     }
-
-});
-
-var DataSeries = Backbone.Collection.extend({
-
-    model: Telemetry,
-
-    fetch: function(hello) {
-        this.reset();
-        this.add([
-            new DataPoint(10),
-            new DataPoint(12),
-            new DataPoint(15),
-            new DataPoint(18)
-            ]);
-    },
-
-});*/
-
-var DataSeries = Backbone.Collection.extend({
-
-    model: Telemetry,
-
-    fetch: function(hello) {
-        this.reset();
-        this.add([
-            new DataPoint(10),
-            new DataPoint(12),
-            new DataPoint(15),
-            new DataPoint(18)
-            ]);
-    },
-
-});
-
-
-var DataPoint = Backbone.Model.extend({
-
-    initialize: function(x) {
-        this.set({
-            x: x
-        });
-    },
-
-    type: "point",
-
-});
-
-var TelemetryDataView = Backbone.View.extend({
-
-    el: "#telemetry-graph",
-
-    initialize: function(){
-        _.bindAll(this, "render");
-        this.collection.bind("change", this.render);
-
-        this.listenTo(this.collection,"add", this.renderItem);          
-
-        this.chart = d3.selectAll($(this.el)).append("svg").attr("class", "chart").attr("width", w).attr("height", h).append("g").attr("transform", "translate(10,15)");
-
-    },
-    render: function () {
-
-        var data = this.collection.models;
-
-        this.collection.each(function(model){
-             var telemetryYAxisTemplate = this.template(model.toJSON());
-             this.$el.append(telemetryYAxisTemplate);
-        }, this);        
-
+    exports.config = function(_newConfig) {
+        if (!arguments.length) return width;
+        for(var x in _newConfig) if(x in config) config[x] = _newConfig[x];
         return this;
-    },
+    };
+    d3.rebind(exports, dispatch, 'on');
+    return exports;
+};
 
-    renderItem: function(telemetryObj) {
-        var data = telemetryObj.toJSON();
-        
-        var x = d3.scale.linear().domain([0, 500]).range([0, w - 10]);
 
-        var y = d3.scale.ordinal().domain([0, 1, 2, 3]).rangeBands([0, h - 20]);
+// Bar chart view
+/////////////////////////////////////
 
-        console.log(data.data_id);
-
-        var self = this;
-        var rect = this.chart.selectAll("rect").data(data, function(d, i) {
-            return i;
-        });
-/*
-        rect.enter().insert("rect").attr("y", function(d, i) {
-            return y(d.get("data_id").attr("width", 10}).attr("height", 20);
-
-        return rect;
-
-        rect.enter().insert("rect", "text").attr("y", function(d) {
-            return y(d.get("data_id"));
-        }).attr("width", function(d) {
-            return x(d.get("data_id"));
-        }).attr("height", y.rangeBand());
-
-        rect.transition().duration(1000).attr("width", function(d) {
-            return x(d.get("data_id"));
-        }).attr("height", y.rangeBand());
-
-        rect.exit().remove();*/
-        
-    }
-
-});
-
-var BarGraph = Backbone.View.extend({
-
-    "el": "#graph",
-
+var BarChartView = Backbone.View.extend({
+    el: ".chart",
+    chart: null,
+    chartSelection: null,
     initialize: function() {
-
-        _.bindAll(this, "render");
-        this.collection.bind("change", this.render);
-
-        this.chart = d3.selectAll($(this.el)).append("svg").attr("class", "chart").attr("width", w).attr("height", h).append("g").attr("transform", "translate(10,15)");
-
-        this.collection.fetch();
+        _.bindAll(this, 'render', 'update');
+        this.model.bind('change:data', this.render);
+        this.model.bind('change:config', this.update);
+        chart = d3.custom.barChart();
+        chart.config(this.model.get('config'));
+        chart.on('customHover', function(d, i){ console.log('hover', d, i); });
+        this.render();
     },
-
     render: function() {
-
-        var data = this.collection.models;
-
-        var x = d3.scale.linear().domain([0, d3.max(data, function(d) {
-            return d.get("x");
-        })]).range([0, w - 10]);
-
-        var y = d3.scale.ordinal().domain([0, 1, 2, 3]).rangeBands([0, h - 20]);
-
-        var self = this;
-        var rect = this.chart.selectAll("rect").data(data, function(d, i) {
-            return i;
-        });
-
-        rect.enter().insert("rect", "text").attr("y", function(d) {
-            return y(d.get("x"));
-        }).attr("width", function(d) {
-            return x(d.get("x"));
-        }).attr("height", y.rangeBand());
-
-        rect.transition().duration(1000).attr("width", function(d) {
-            return x(d.get("x"));
-        }).attr("height", y.rangeBand());
-
-        rect.exit().remove();
-        
-        var text = this.chart.selectAll("text").data(data, function(d, i) {
-            return i;
-        });
-
-       text.enter().append("text")
-        .attr("x", function(d) {
-            return x(d.get("x"));
-        })
-        .attr("y", function(d,i) { return y(i) + y.rangeBand() / 2; })
-        .attr("dx", -3) // padding-right
-        .attr("dy", ".35em") // vertical-align: middle
-        .attr("text-anchor", "end") // text-align: right
-           .text(function(d) { return d.get("x");});
-   
-        /*this.chart.selectAll("line").data(x.ticks(10)).enter().append("line").attr("x1", x).attr("x2", x).attr("y1", 0).attr("y2", h - 10).style("stroke", "#ccc");
-
-        this.chart.selectAll("line").data(x.ticks(10)).attr("x1", x).attr("x2", x);
-
-        this.chart.selectAll("line").data(x.ticks(10)).exit().remove();
-
-        this.chart.selectAll(".rule").data(x.ticks(10)).enter().append("text").attr("class", "rule").attr("x", x).attr("y", 0).attr("dy", -3).attr("text-anchor", "middle").text(String);
-
-        this.chart.selectAll(".rule").data(x.ticks(10)).attr("x1", x).text(String);
-
-        this.chart.selectAll(".rule").data(x.ticks(10)).exit().remove();*/
+        this.chartSelection = d3.select(this.el)
+            .datum(this.model.get('data'))
+            .call(chart);
     },
-
-
+    update: function() {
+        this.chartSelection.call(chart.config(this.model.get('config')));
+    },
 });
 
+// Buttons view
+/////////////////////////////////////
+
+var ControlView = Backbone.View.extend({
+    el: ".control",
+    events: {
+        "click .update-data": "updateData",
+        "click .update-config": "updateConfig",
+    },
+    updateData: function() {
+        var that = this
+        var newData = d3.range(this._randomInt(10)).map(function(d, i){ return that._randomInt(100); });
+        this.model.set({data: newData});
+    },
+    updateConfig: function() {
+        var newConfig = {width: this._randomInt(600, 100)};
+        this.model.set({config: newConfig});
+    },
+    _randomInt: function(_maxSize, _minSize){ 
+        var minSize = _minSize || 1;
+        return ~~(Math.random() * (_maxSize - minSize)) + minSize; 
+    }
+});
+
+// Bar chart data
+/////////////////////////////////////
+
+var BarChartData = Backbone.Model.extend({
+    defaults: {
+        data: [1, 2, 5, 4],
+        config: {height: 200, width: 400}   
+    },
+   /* initialize: function() {
+        this.collection.each(function(i,item) {
+            //this.$el.append("<ul>" + item.get("field_name") + "</ul>");
+            console.log(item.get("data_id"))
+        });
+    },*/
+});
+
+// Usage
+/////////////////////////////////////
+
+var barChartModel = new BarChartData();
 
 
-    var dataSeries = new DataSeries();
-    new BarGraph({
-        collection: dataSeries
-    }).render();
-
-    new TelemetryDataView({
-        collection: telemetryData
-    }).render();
+var controlView = new ControlView({model: barChartModel});
+var barChartView = new BarChartView({model: barChartModel})
