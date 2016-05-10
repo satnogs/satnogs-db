@@ -122,7 +122,7 @@ var w = 440,
     h = 200;
 
 
-var DataPoint = Backbone.Model.extend({
+/*var DataPoint = Backbone.Model.extend({
 
     initialize: function(x) {
         this.set({
@@ -144,7 +144,7 @@ var DataSeries = Backbone.Collection.extend({
 
     model: Telemetry,
 
-    fetch: function() {
+    fetch: function(hello) {
         this.reset();
         this.add([
             new DataPoint(10),
@@ -153,6 +153,95 @@ var DataSeries = Backbone.Collection.extend({
             new DataPoint(18)
             ]);
     },
+
+});*/
+
+var DataSeries = Backbone.Collection.extend({
+
+    model: Telemetry,
+
+    fetch: function(hello) {
+        this.reset();
+        this.add([
+            new DataPoint(10),
+            new DataPoint(12),
+            new DataPoint(15),
+            new DataPoint(18)
+            ]);
+    },
+
+});
+
+
+var DataPoint = Backbone.Model.extend({
+
+    initialize: function(x) {
+        this.set({
+            x: x
+        });
+    },
+
+    type: "point",
+
+});
+
+var TelemetryDataView = Backbone.View.extend({
+
+    el: "#telemetry-graph",
+
+    initialize: function(){
+        _.bindAll(this, "render");
+        this.collection.bind("change", this.render);
+
+        this.listenTo(this.collection,"add", this.renderItem);          
+
+        this.chart = d3.selectAll($(this.el)).append("svg").attr("class", "chart").attr("width", w).attr("height", h).append("g").attr("transform", "translate(10,15)");
+
+    },
+    render: function () {
+
+        var data = this.collection.models;
+
+        this.collection.each(function(model){
+             var telemetryYAxisTemplate = this.template(model.toJSON());
+             this.$el.append(telemetryYAxisTemplate);
+        }, this);        
+
+        return this;
+    },
+
+    renderItem: function(telemetryObj) {
+        var data = telemetryObj.toJSON();
+        
+        var x = d3.scale.linear().domain([0, 500]).range([0, w - 10]);
+
+        var y = d3.scale.ordinal().domain([0, 1, 2, 3]).rangeBands([0, h - 20]);
+
+        console.log(data.data_id);
+
+        var self = this;
+        var rect = this.chart.selectAll("rect").data(data, function(d, i) {
+            return i;
+        });
+/*
+        rect.enter().insert("rect").attr("y", function(d, i) {
+            return y(d.get("data_id").attr("width", 10}).attr("height", 20);
+
+        return rect;
+
+        rect.enter().insert("rect", "text").attr("y", function(d) {
+            return y(d.get("data_id"));
+        }).attr("width", function(d) {
+            return x(d.get("data_id"));
+        }).attr("height", y.rangeBand());
+
+        rect.transition().duration(1000).attr("width", function(d) {
+            return x(d.get("data_id"));
+        }).attr("height", y.rangeBand());
+
+        rect.exit().remove();*/
+        
+    }
 
 });
 
@@ -174,14 +263,14 @@ var BarGraph = Backbone.View.extend({
 
         var data = this.collection.models;
 
-        var x = d3.scale.linear().domain([0, d3.max(data.damod_data.EPS_V, function(d) {
+        var x = d3.scale.linear().domain([0, d3.max(data, function(d) {
             return d.get("x");
         })]).range([0, w - 10]);
 
         var y = d3.scale.ordinal().domain([0, 1, 2, 3]).rangeBands([0, h - 20]);
 
         var self = this;
-        var rect = this.chart.selectAll("rect").data(data.damod_data, function(d, i) {
+        var rect = this.chart.selectAll("rect").data(data, function(d, i) {
             return i;
         });
 
@@ -197,7 +286,7 @@ var BarGraph = Backbone.View.extend({
 
         rect.exit().remove();
         
-        var text = this.chart.selectAll("text").data(data.damod_data, function(d, i) {
+        var text = this.chart.selectAll("text").data(data, function(d, i) {
             return i;
         });
 
@@ -230,8 +319,10 @@ var BarGraph = Backbone.View.extend({
 
 
     var dataSeries = new DataSeries();
-    console.log(telemetryData);
     new BarGraph({
-        collection: telemetryData
+        collection: dataSeries
     }).render();
 
+    new TelemetryDataView({
+        collection: telemetryData
+    }).render();
