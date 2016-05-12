@@ -14,7 +14,6 @@ var TelemetryAppendix = Backbone.Model.extend({
 ***/
 
 var TelemetryCollection = Backbone.Collection.extend({
-    model: Telemetry,
     url:"/static/telemetry.json"
 });
  
@@ -29,8 +28,12 @@ var TelemetryData = TelemetryCollection.extend({
     parse: function(response){
         // Return only the nested objects that will be our models
         return response.telemetry;
+    },
+    toJSON : function() {
+      return this.map(function(model){ return model.toJSON(); });
     }
  });
+
 
 // Views 
 var TelemetryDescriptorsView = Backbone.View.extend({
@@ -72,26 +75,6 @@ var TelemetryTimeView = Backbone.View.extend({
     }
 });
 
-// Rendering
-
-var telemetryDescriptors = new TelemetryDescriptors(); //startData);
-telemetryDescriptors.fetch(); /*({
-  success: function(){
-    //renderCollection(); // some callback to do stuff with the collection you made
-  },
-  error: function(){
-  }
-});
-*/
-var telemetryDescriptorsView = new TelemetryDescriptorsView({ collection: telemetryDescriptors });
-telemetryDescriptorsView.render();
-
-
-var telemetryData = new TelemetryData(); //startData);
-telemetryData.fetch();
-var telemetryTimeView = new TelemetryTimeView({ collection: telemetryData });
-telemetryTimeView.render();
-
 
 ////////// Bar chart
 
@@ -108,24 +91,20 @@ d3.custom.barChart = function module() {
 
     var dispatch = d3.dispatch('customHover');
 
-    var data; // a global
-
-    d3.json("/static/telemetry.json", function(error, json) {
-      if (error) return console.warn(error);
-      data = json;
-    });
-
     function exports(_selection) {
         _selection.each(function(_data) {
             var chartW = config.width - config.margin.left - config.margin.right,
                 chartH = config.height - config.margin.top - config.margin.bottom;
+
+            console.log(_data.telemetry);
+
 
             var x1 = d3.scale.ordinal()
                 .domain(_data.map(function(d, i){ return i; }))
                 .rangeRoundBands([0, chartW], .1);
 
             var y1 = d3.scale.linear()
-                .domain([0, d3.max(_data, function(d, i){ return d; })])
+                .domain([d3.min(_data, function(d, i){ return d.damod_data.EPS_V; }), d3.max(_data, function(d, i){ return d.damod_data.EPS_V; })])
                 .range([chartH, 0]);
 
             var xAxis = d3.svg.axis()
@@ -169,16 +148,16 @@ d3.custom.barChart = function module() {
                 .classed('bar', true)
                 .attr({x: chartW,
                     width: barW,
-                    y: function(d, i) { return y1(d); },
-                    height: function(d, i) { return chartH - y1(d); }
+                    y: function(d, i) { return 10 }, //+d.damod_data.EPS_V; },
+                    height: function(d, i) { return 10 }, //chartH - +d; }
                 })
                 .on('mouseover', dispatch.customHover);
             bars.transition()
                 .attr({
                     width: barW,
                     x: function(d, i) { return x1(i); },
-                    y: function(d, i) { return y1(d); },
-                    height: function(d, i) { return chartH - y1(d); }
+                    y: function(d, i) { return y1(+d); },
+                    height: function(d, i) { return chartH - y1(+d); }
                 });
             bars.exit().transition().style({opacity: 0}).remove();
 
@@ -202,13 +181,20 @@ var BarChartView = Backbone.View.extend({
     chart: null,
     chartSelection: null,
     initialize: function() {
+        var that = this;
+        this.model.fetch();
         _.bindAll(this, 'render', 'update');
         this.model.bind('change:data', this.render);
         this.model.bind('change:config', this.update);
         chart = d3.custom.barChart();
         chart.config(this.model.get('config'));
         chart.on('customHover', function(d, i){ console.log('hover', d, i); });
-        this.render();
+        this.renderPlaceholder();
+    },
+    renderPlaceholder: function() {
+        this.chartSelection = d3.select(this.el)
+            .datum([{key: '', value: 0}])
+            .call(chart);
     },
     render: function() {
         this.chartSelection = d3.select(this.el)
@@ -217,7 +203,7 @@ var BarChartView = Backbone.View.extend({
     },
     update: function() {
         this.chartSelection.call(chart.config(this.model.get('config')));
-    },
+    }
 });
 
 // Buttons view
@@ -248,23 +234,61 @@ var ControlView = Backbone.View.extend({
 /////////////////////////////////////
 
 var BarChartData = Backbone.Model.extend({
+    url:"/static/telemetry.json",
     defaults: {
-        data: [1, 2, 5, 4],
-        config: {height: 200, width: 400}   
+        data: [],
+        dimension: {},
+        config: {height: 200, width: 800}
     },
-   /* initialize: function() {
-        this.collection.each(function(i,item) {
-            //this.$el.append("<ul>" + item.get("field_name") + "</ul>");
-            console.log(item.get("data_id"))
-        });
-    },*/
+    parse: function(_json) {
+       /* var cf = new crossfilter(_json.yt_abs_views_by_vid);
+        var dimensions = this.get('dimension');
+        dimensions.brands = cf.dimension(function(d) { return d.brand_name; });
+        dimensions.langName = cf.dimension(function(d) { return d.lang_name; });
+        var data = this._getTopOfSum('brands', 'all_time_views', 10);*/
+        var data = _json.telemetry;
+        this.set({data: data});
+    },
+  /*  filterLangBy: function(_value) {
+        this.get('dimension').langName.filterExact(_value);
+        this.set({data: this._getTopOfSum('brands', 'all_time_views', 10)});
+    },
+    _getTopOfSum: function(_dimensionName, _aggregateValueName, _topK){
+        function reduceAdd(p, v){ p += v[_aggregateValueName]; return p; }
+        function reduceRemove(p, v){ p -= v[_aggregateValueName]; return p; }
+        function reduceInitial(){ return 0}
+        var data = this.get('dimension')[_dimensionName].group()
+            .reduce(reduceAdd, reduceRemove, reduceInitial)
+            .top(_topK)
+            .filter(function(d, i){ return d.value > 0; });
+        return data;
+    }*/
+
 });
+
 
 // Usage
 /////////////////////////////////////
 
+var telemetryDescriptors = new TelemetryDescriptors(); //startData);
+telemetryDescriptors.fetch(); /*({
+  success: function(){
+    //renderCollection(); // some callback to do stuff with the collection you made
+  },
+  error: function(){
+  }
+});
+*/
+var telemetryDescriptorsView = new TelemetryDescriptorsView({ collection: telemetryDescriptors });
+telemetryDescriptorsView.render();
+
+var telemetryData = new TelemetryData(); //startData);
+telemetryData.fetch();
+
+var telemetryTimeView = new TelemetryTimeView({ collection: telemetryData });
+telemetryTimeView.render();
+
 var barChartModel = new BarChartData();
-
-
 var controlView = new ControlView({model: barChartModel});
 var barChartView = new BarChartView({model: barChartModel})
+
