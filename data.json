@@ -1,0 +1,119 @@
+[
+{
+    "model": "base.satellite",
+    "pk": 200,
+    "fields": {
+        "norad_cat_id": 99999,
+        "name": "UPSat",
+        "names": "",
+        "image": "",
+        "telemetry_schema": [
+            {
+                "key": "status",
+                "description": "Status",
+                "unit": "Boolean"
+            },
+            {
+                "key": "bat_v",
+                "description": "Battery Voltage",
+                "unit": "Volt"
+            },
+            {
+                "key": "bat_c",
+                "description": "Battery Current",
+                "unit": "Ampere"
+            },
+            {
+                "key": "v3_c",
+                "description": "3V3 bus current",
+                "unit": "Ampere"
+            },
+            {
+                "key": "v5_c",
+                "description": "5V bus current",
+                "unit": "Ampere"
+            },
+            {
+                "key": "comm_t",
+                "description": "COMM Temperature",
+                "unit": "Celsius"
+            },
+            {
+                "key": "eps_t",
+                "description": "EPS Temperature",
+                "unit": "Celsius"
+            },
+            {
+                "key": "batt_t",
+                "description": "Battery Temperature",
+                "unit": "Celsius"
+            }
+        ],
+        "telemetry_decoder": "qb50"
+    }
+},
+{
+    "model": "base.transmitter",
+    "pk": 300,
+    "fields": {
+        "uuid": "E3zFDeWfELniNTa2iVQYUK",
+        "description": "Status Beacon",
+        "alive": true,
+        "uplink_low": null,
+        "uplink_high": null,
+        "downlink_low": null,
+        "downlink_high": null,
+        "mode": 6,
+        "invert": false,
+        "baud": null,
+        "satellite": 200,
+        "approved": true
+    }
+},
+{
+    "model": "base.demoddata",
+    "pk": 1,
+    "fields": {
+        "transmitter": 300,
+        "data_id": 1,
+        "payload": {
+            "damod_data": {
+                "status": "1",
+                "v3_c": 6.03,
+                "bat_v": 7.7,
+                "v5_c": 5.6,
+                "eps_t": 12.0,
+                "comms_t": 46.5,
+                "bat_c": -0.91,
+                "batt_t": 33.5
+            },
+            "observation_datetime": "20160430T164820Z",
+            "satellite_datetime": "20320429T000154Z",
+            "data_id": 1
+        }
+    }
+},
+{
+    "model": "base.demoddata",
+    "pk": 2,
+    "fields": {
+        "transmitter": 300,
+        "data_id": 1,
+        "payload": {
+            "damod_data": {
+                "status": "0",
+                "v3_c": 5.92,
+                "bat_v": 6.95,
+                "v5_c": 4.95,
+                "eps_t": 48.0,
+                "comms_t": 8.75,
+                "bat_c": -0.98,
+                "batt_t": 40.0
+            },
+            "observation_datetime": "20160429T224023Z",
+            "satellite_datetime": "20760304T210239Z",
+            "data_id": 1
+        }
+    }
+}
+]
