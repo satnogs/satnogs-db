@@ -1,3 +1,4 @@
+from jsonfield import JSONField
 from shortuuidfield import ShortUUIDField
 
 from django.core.validators import MinValueValidator
@@ -30,6 +31,8 @@ class Satellite(models.Model):
     names = models.TextField(blank=True)
     image = models.ImageField(upload_to='satellites', blank=True,
                               help_text='Ideally: 250x250')
+    telemetry_schema = JSONField(blank=True)
+    telemetry_decoder = models.CharField(max_length=20, blank=True)
 
     class Meta:
         ordering = ["name"]
@@ -95,3 +98,9 @@ class Suggestion(Transmitter):
 
     def __unicode__(self):
         return self.description
+
+
+class DemodData(models.Model):
+    transmitter = models.ForeignKey(Transmitter)
+    data_id = models.PositiveIntegerField()
+    payload = JSONField()

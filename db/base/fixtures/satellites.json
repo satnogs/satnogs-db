@@ -3,7 +3,50 @@
     "fields": {
         "norad_cat_id": 7530,
         "name": "OSCAR 7 (AO-7)",
-        "names": ""
+        "names": "",
+        "telemetry_schema": [
+            {
+                "key": "status",
+                "description": "Status",
+                "unit": "Boolean"
+            },
+            {
+                "key": "bat_v",
+                "description": "Battery Voltage",
+                "unit": "Volt"
+            },
+            {
+                "key": "bat_c",
+                "description": "Battery Current",
+                "unit": "Ampere"
+            },
+            {
+                "key": "v3_c",
+                "description": "3V3 bus current",
+                "unit": "Ampere"
+            },
+            {
+                "key": "v5_c",
+                "description": "5V bus current",
+                "unit": "Ampere"
+            },
+            {
+                "key": "comm_t",
+                "description": "COMM Temperature",
+                "unit": "Celsius"
+            },
+            {
+                "key": "eps_t",
+                "description": "EPS Temperature",
+                "unit": "Celsius"
+            },
+            {
+                "key": "batt_t",
+                "description": "Battery Temperature",
+                "unit": "Celsius"
+            }
+        ],
+        "telemetry_decoder": "qb50"
     },
     "model": "base.satellite",
     "pk": 1

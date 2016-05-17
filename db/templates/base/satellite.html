@@ -59,7 +59,7 @@
             <div class="row">
               {% for transmitter in satellite.transmitters.all %}
                 <div class="col-md-6">
-                  <div class="panel panel-primary panel-transmitter">
+                  <div class="panel {% if transmitter.alive %}panel-primary{% else %}panel-danger{% endif %} panel-transmitter">
                     <div class="panel-heading">
                       <h3 class="panel-title">
                         <span class="transmitter-title">{{ transmitter.description }}</span>
