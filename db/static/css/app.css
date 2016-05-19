@@ -255,3 +255,12 @@ footer {
 .stage-notice a {
     color: #ffff00;
 }
+
+/** Telemetry Visualisation **/
+
+.line {
+    fill: none;
+    stroke: #000;
+    stroke-width: 3;
+    //shape-rendering: crispEdges;
+}
