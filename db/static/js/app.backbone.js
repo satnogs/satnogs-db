@@ -14,19 +14,17 @@ var TelemetryAppendix = Backbone.Model.extend({
 ***/
 
 var TelemetryCollection = Backbone.Collection.extend({
-    url:"/static/telemetry.json"
+    url:"/api/telemetry/?satellite=99999"
 });
  
 var TelemetryDescriptors = TelemetryCollection.extend({
     parse: function(response){
-        // Return only the nested objects that will be our models
         return response.appendix;
     }
  });
 
 var TelemetryData = TelemetryCollection.extend({
     parse: function(response){
-        // Return only the nested objects that will be our models
         return response.telemetry;
     },
     toJSON : function() {
@@ -76,16 +74,14 @@ var TelemetryTimeView = Backbone.View.extend({
 });
 
 
-////////// Bar chart
-
-
+////////// Point line graph
 d3.custom = {};
 
 d3.custom.barChart = function module() {
     var config = {
         margin: {top: 20, right: 20, bottom: 40, left: 40},
-        width: 500,
-        height: 700
+        width: 700,
+        height: 500
     };
     var svg;
 
@@ -96,8 +92,10 @@ d3.custom.barChart = function module() {
             var chartW = config.width - config.margin.left - config.margin.right,
                 chartH = config.height - config.margin.top - config.margin.bottom;
 
+                console.log(chartH);
+
             var x1 = d3.scale.ordinal()
-                .domain(_data.map(function(d, i){ return d.satellite_datetime ; }))
+                .domain(_data.map(function(d, i){ return d.telemetry.observation_datetime ; }))
                 .rangeRoundBands([0, chartW], .1);
 
             var y1 = d3.scale.linear()
@@ -112,7 +110,7 @@ d3.custom.barChart = function module() {
                 .scale(y1)
                 .orient('left');
 
-            var barW = chartW / _data.length;
+            var xInterval = chartW / _data.length;
 
             if(!svg) {
                 svg = d3.select(this)
@@ -137,7 +135,7 @@ d3.custom.barChart = function module() {
                 .transition()
                 .call(yAxis);
 
-            var barW = x1.rangeBand();
+          /*  var barW = x1.rangeBand();
             var bars = svg.select('.chart-group')
                 .selectAll('.bar')
                 .data(_data);
@@ -156,7 +154,25 @@ d3.custom.barChart = function module() {
                   //  y: function(d, i) { return y1(+d); },
                     //height: function(d, i) { return chartH - y1(+d); }
                 });
-            bars.exit().transition().style({opacity: 0}).remove();
+            bars.exit().transition().style({opacity: 0}).remove();*/
+
+            // Define the line
+            var valueline = d3.svg.line()
+                .x(function(d,i) { return (xInterval*i + config.margin.left); })
+                .y(function(d) { return y1(d.telemetry.damod_data.eps_t) + config.margin.top; });
+
+            // Add the valueline path.
+            svg.append("path")
+                .attr("class", "line")
+                .attr("d", valueline(_data));
+
+                // Add the scatterplot
+            svg.selectAll("dot")
+                .data(_data)
+              .enter().append("circle")
+                .attr("r", 3.5)
+                .attr("cx", function(d, i) { return xInterval*i + config.margin.left })
+                .attr("cy", function(d) { return y1(d.telemetry.damod_data.eps_t) + config.margin.top; });
 
         });
     }
@@ -169,11 +185,10 @@ d3.custom.barChart = function module() {
     return exports;
 };
 
-
 // Bar chart view
 /////////////////////////////////////
 
-var BarChartView = Backbone.View.extend({
+var LineGraphView = Backbone.View.extend({
     el: ".chart",
     chart: null,
     chartSelection: null,
@@ -230,52 +245,24 @@ var ControlView = Backbone.View.extend({
 // Bar chart data
 /////////////////////////////////////
 
-var BarChartData = Backbone.Model.extend({
+var LineGraphData = Backbone.Model.extend({
     url:"/api/telemetry/?satellite=99999",
     defaults: {
         data: [],
         dimension: {},
-        config: {height: 600, width: 800}
+        config: {height: 500, width: 700}
     },
     parse: function(_json) {
-       /* var cf = new crossfilter(_json.yt_abs_views_by_vid);
-        var dimensions = this.get('dimension');
-        dimensions.brands = cf.dimension(function(d) { return d.brand_name; });
-        dimensions.langName = cf.dimension(function(d) { return d.lang_name; });
-        var data = this._getTopOfSum('brands', 'all_time_views', 10);*/
         var data = _json;
         this.set({data: data});
     },
-  /*  filterLangBy: function(_value) {
-        this.get('dimension').langName.filterExact(_value);
-        this.set({data: this._getTopOfSum('brands', 'all_time_views', 10)});
-    },
-    _getTopOfSum: function(_dimensionName, _aggregateValueName, _topK){
-        function reduceAdd(p, v){ p += v[_aggregateValueName]; return p; }
-        function reduceRemove(p, v){ p -= v[_aggregateValueName]; return p; }
-        function reduceInitial(){ return 0}
-        var data = this.get('dimension')[_dimensionName].group()
-            .reduce(reduceAdd, reduceRemove, reduceInitial)
-            .top(_topK)
-            .filter(function(d, i){ return d.value > 0; });
-        return data;
-    }*/
-
 });
-
 
 // Usage
 /////////////////////////////////////
 
 var telemetryDescriptors = new TelemetryDescriptors(); //startData);
-telemetryDescriptors.fetch(); /*({
-  success: function(){
-    //renderCollection(); // some callback to do stuff with the collection you made
-  },
-  error: function(){
-  }
-});
-*/
+telemetryDescriptors.fetch(); 
 var telemetryDescriptorsView = new TelemetryDescriptorsView({ collection: telemetryDescriptors });
 telemetryDescriptorsView.render();
 
@@ -285,7 +272,7 @@ telemetryData.fetch();
 var telemetryTimeView = new TelemetryTimeView({ collection: telemetryData });
 telemetryTimeView.render();
 
-var barChartModel = new BarChartData();
-var controlView = new ControlView({model: barChartModel});
-var barChartView = new BarChartView({model: barChartModel})
+var lineGraphModel = new LineGraphData();
+var controlView = new ControlView({model: lineGraphModel});
+var lineGraphView = new LineGraphView({model: lineGraphModel})
 
