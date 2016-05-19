@@ -85,7 +85,7 @@ d3.custom.barChart = function module() {
     var config = {
         margin: {top: 20, right: 20, bottom: 40, left: 40},
         width: 500,
-        height: 500
+        height: 700
     };
     var svg;
 
@@ -96,15 +96,12 @@ d3.custom.barChart = function module() {
             var chartW = config.width - config.margin.left - config.margin.right,
                 chartH = config.height - config.margin.top - config.margin.bottom;
 
-            console.log(_data.telemetry);
-
-
             var x1 = d3.scale.ordinal()
-                .domain(_data.map(function(d, i){ return i; }))
+                .domain(_data.map(function(d, i){ return d.satellite_datetime ; }))
                 .rangeRoundBands([0, chartW], .1);
 
             var y1 = d3.scale.linear()
-                .domain([d3.min(_data, function(d, i){ return d.damod_data.EPS_V; }), d3.max(_data, function(d, i){ return d.damod_data.EPS_V; })])
+                .domain([0, d3.max(_data, function(d, i){ return +d.telemetry.damod_data.eps_t; })])
                 .range([chartH, 0]);
 
             var xAxis = d3.svg.axis()
@@ -148,16 +145,16 @@ d3.custom.barChart = function module() {
                 .classed('bar', true)
                 .attr({x: chartW,
                     width: barW,
-                    y: function(d, i) { return 10 }, //+d.damod_data.EPS_V; },
-                    height: function(d, i) { return 10 }, //chartH - +d; }
+                    y: function(d, i) { return y1(d.telemetry.damod_data.eps_t) },
+                    height: function(d, i) { return (chartH - y1(d.telemetry.damod_data.eps_t)); }
                 })
                 .on('mouseover', dispatch.customHover);
             bars.transition()
                 .attr({
                     width: barW,
                     x: function(d, i) { return x1(i); },
-                    y: function(d, i) { return y1(+d); },
-                    height: function(d, i) { return chartH - y1(+d); }
+                  //  y: function(d, i) { return y1(+d); },
+                    //height: function(d, i) { return chartH - y1(+d); }
                 });
             bars.exit().transition().style({opacity: 0}).remove();
 
@@ -234,11 +231,11 @@ var ControlView = Backbone.View.extend({
 /////////////////////////////////////
 
 var BarChartData = Backbone.Model.extend({
-    url:"/static/telemetry.json",
+    url:"/api/telemetry/?satellite=99999",
     defaults: {
         data: [],
         dimension: {},
-        config: {height: 200, width: 800}
+        config: {height: 600, width: 800}
     },
     parse: function(_json) {
        /* var cf = new crossfilter(_json.yt_abs_views_by_vid);
@@ -246,7 +243,7 @@ var BarChartData = Backbone.Model.extend({
         dimensions.brands = cf.dimension(function(d) { return d.brand_name; });
         dimensions.langName = cf.dimension(function(d) { return d.lang_name; });
         var data = this._getTopOfSum('brands', 'all_time_views', 10);*/
-        var data = _json.telemetry;
+        var data = _json;
         this.set({data: data});
     },
   /*  filterLangBy: function(_value) {
