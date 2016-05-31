@@ -10,7 +10,7 @@ dj-database-url==0.4.1
 opbeat==3.3.1
 
 # Security
-django-braces==1.8.1
+django-braces==1.9.0
 django-secure==1.0.1
 
 # Users
