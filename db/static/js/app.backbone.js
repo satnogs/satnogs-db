@@ -19,7 +19,7 @@ var TelemetryCollection = Backbone.Collection.extend({
  
 var TelemetryDescriptors = TelemetryCollection.extend({
     parse: function(response){
-        return response.appendix;
+        return response[0].appendix;
     }
  });
 
@@ -32,46 +32,32 @@ var TelemetryData = TelemetryCollection.extend({
     }
  });
 
-
 // Views 
 var TelemetryDescriptorsView = Backbone.View.extend({
     el: "#telemetry-descriptors",
     template: _.template($('#telemetryDescriptorsTemplate').html()),
     initialize: function(){
-        this.listenTo(this.collection,"add", this.renderItem);          
+        this.listenTo(this.collection, 'add reset change remove', this.renderItem);
+        this.collection.fetch();
     },
     render: function () {
         this.collection.each(function(model){
-             var telemetryDescriptorsTemplate = this.template(model.toJSON());
-             this.$el.append(telemetryDescriptorsTemplate);
+            this.$el.append(this.template(model.toJSON()));
         }, this);        
         return this;
     },
-    renderItem: function(telemetryDescriptors) {
-         var telemetryDescriptorsTemplate = this.template(telemetryDescriptors.toJSON());
-         this.$el.append(telemetryDescriptorsTemplate);        
+    renderItem: function (model) {
+        this.$el.append(this.template(model.toJSON()));
     }
 });
 
+var telemetryDescriptorsView = new TelemetryDescriptorsView({ collection: new TelemetryDescriptors() });
 
-var TelemetryTimeView = Backbone.View.extend({
-    el: "#telemetry-viz",
-    template: _.template($('#telemetryYAxisTemplate').html()),
-    initialize: function(){
-        this.listenTo(this.collection,"add", this.renderItem);          
-    },
-    render: function () {
-        this.collection.each(function(model){
-             var telemetryYAxisTemplate = this.template(model.toJSON());
-             this.$el.append(telemetryYAxisTemplate);
-        }, this);        
-        return this;
-    },
-    renderItem: function(telemetryYAxis) {
-         var telemetryYAxisTemplate = this.template(telemetryYAxis.toJSON());
-         this.$el.append(telemetryYAxisTemplate);        
-    }
-});
+
+
+var telemetryData = new TelemetryData(); //startData);
+telemetryData.fetch();
+
 
 
 ////////// Point line graph
@@ -91,8 +77,6 @@ d3.custom.barChart = function module() {
         _selection.each(function(_data) {
             var chartW = config.width - config.margin.left - config.margin.right,
                 chartH = config.height - config.margin.top - config.margin.bottom;
-
-                console.log(chartH);
 
             var x1 = d3.scale.ordinal()
                 .domain(_data.map(function(d, i){ return d.telemetry.observation_datetime ; }))
@@ -260,17 +244,6 @@ var LineGraphData = Backbone.Model.extend({
 
 // Usage
 /////////////////////////////////////
-
-var telemetryDescriptors = new TelemetryDescriptors(); //startData);
-telemetryDescriptors.fetch(); 
-var telemetryDescriptorsView = new TelemetryDescriptorsView({ collection: telemetryDescriptors });
-telemetryDescriptorsView.render();
-
-var telemetryData = new TelemetryData(); //startData);
-telemetryData.fetch();
-
-var telemetryTimeView = new TelemetryTimeView({ collection: telemetryData });
-telemetryTimeView.render();
 
 var lineGraphModel = new LineGraphData();
 var controlView = new ControlView({model: lineGraphModel});
