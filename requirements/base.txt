@@ -7,7 +7,7 @@ django-jsonfield==1.0.0
 # Configuration
 django-dotenv==1.4.1
 dj-database-url==0.4.1
-opbeat==3.3.1
+opbeat==3.3.2
 
 # Security
 django-braces==1.9.0
