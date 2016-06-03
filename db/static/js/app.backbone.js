@@ -176,6 +176,7 @@ var TelemetryVizView = Backbone.View.extend({
             .call(d3.custom.barChart(this.model.get('data')[0].appendix[1].key));
     },
     update: function(e){
+        d3.select("svg").remove();
         var telemetry_key = $(e.currentTarget).attr('id').substring(1);
         this.chartSelection.call(d3.custom.barChart(telemetry_key));
     },

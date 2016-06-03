@@ -264,3 +264,7 @@ footer {
     stroke-width: 3;
     //shape-rendering: crispEdges;
 }
+
+.telemetry-key {
+    cursor: pointer;
+}
