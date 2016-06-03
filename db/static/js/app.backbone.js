@@ -14,21 +14,21 @@ var TelemetryAppendix = Backbone.Model.extend({
 ***/
 
 var TelemetryCollection = Backbone.Collection.extend({
-    model: Telemetry,
-    url:"/static/telemetry.json"
+    url:"/api/telemetry/?satellite=99999"
 });
  
 var TelemetryDescriptors = TelemetryCollection.extend({
     parse: function(response){
-        // Return only the nested objects that will be our models
-        return response.appendix;
+        return response[0].appendix;
     }
  });
 
 var TelemetryData = TelemetryCollection.extend({
     parse: function(response){
-        // Return only the nested objects that will be our models
         return response.telemetry;
+    },
+    toJSON : function() {
+      return this.map(function(model){ return model.toJSON(); });
     }
  });
 
@@ -37,201 +37,196 @@ var TelemetryDescriptorsView = Backbone.View.extend({
     el: "#telemetry-descriptors",
     template: _.template($('#telemetryDescriptorsTemplate').html()),
     initialize: function(){
-        this.listenTo(this.collection,"add", this.renderItem);          
+        this.listenTo(this.collection, 'add reset change remove', this.renderItem);
+        this.collection.fetch();
     },
     render: function () {
         this.collection.each(function(model){
-             var telemetryDescriptorsTemplate = this.template(model.toJSON());
-             this.$el.append(telemetryDescriptorsTemplate);
+            this.$el.append(this.template(model.toJSON()));
         }, this);        
         return this;
     },
-    renderItem: function(telemetryDescriptors) {
-         var telemetryDescriptorsTemplate = this.template(telemetryDescriptors.toJSON());
-         this.$el.append(telemetryDescriptorsTemplate);        
+    renderItem: function (model) {
+        this.$el.append(this.template(model.toJSON()));
     }
 });
 
+var telemetryDescriptorsView = new TelemetryDescriptorsView({ collection: new TelemetryDescriptors() });
 
-var TelemetryTimeView = Backbone.View.extend({
-    el: "#telemetry-viz",
-    template: _.template($('#telemetryYAxisTemplate').html()),
-    initialize: function(){
-        this.listenTo(this.collection,"add", this.renderItem);          
-    },
-    render: function () {
-        this.collection.each(function(model){
-             var telemetryYAxisTemplate = this.template(model.toJSON());
-             this.$el.append(telemetryYAxisTemplate);
-        }, this);        
-        return this;
-    },
-    renderItem: function(telemetryYAxis) {
-         var telemetryYAxisTemplate = this.template(telemetryYAxis.toJSON());
-         this.$el.append(telemetryYAxisTemplate);        
+////////// Telemetry D3 Viz
+
+d3.custom = {};
+
+d3.custom.barChart = function module(telemetry_key) {
+    var config = {
+        margin: {top: 20, right: 20, bottom: 40, left: 40},
+        width: 700,
+        height: 500
+    };
+    var svg;
+
+    var dispatch = d3.dispatch('customHover');
+
+    function exports(_selection) {
+        _selection.each(function(_data) {
+            var chartW = config.width - config.margin.left - config.margin.right,
+                chartH = config.height - config.margin.top - config.margin.bottom;
+
+            var x1 = d3.scale.ordinal()
+                .domain(_data.map(function(d, i){ return d.telemetry.observation_datetime ; }))
+                .rangeRoundBands([0, chartW], .1);
+
+            var y1 = d3.scale.linear()
+                .domain([0, d3.max(_data, function(d, i){ return +d.telemetry.damod_data[telemetry_key]; })])
+                .range([chartH, 0]);
+
+            var xAxis = d3.svg.axis()
+                .scale(x1)
+                .orient('bottom');
+
+            var yAxis = d3.svg.axis()
+                .scale(y1)
+                .orient('left');
+
+            var xInterval = chartW / _data.length;
+
+            if(!svg) {
+                svg = d3.select(this)
+                    .append('svg')
+                    .classed('chart', true);
+                var container = svg.append('g').classed('container-group', true);
+                container.append('g').classed('chart-group', true);
+                container.append('g').classed('x-axis-group axis', true);
+                container.append('g').classed('y-axis-group axis', true);
+            }
+
+            svg.transition().attr({width: config.width, height: config.height})
+            svg.select('.container-group')
+                .attr({transform: 'translate(' + config.margin.left + ',' + config.margin.top + ')'});
+
+            svg.select('.x-axis-group.axis')
+                .attr({transform: 'translate(0,' + (chartH) + ')'})
+                .transition()
+                .call(xAxis);
+
+            svg.select('.y-axis-group.axis')
+                .transition()
+                .call(yAxis);
+
+            // Define the line
+            var valueline = d3.svg.line()
+                .x(function(d,i) { return (xInterval*i + config.margin.left); })
+                .y(function(d) { return y1(d.telemetry.damod_data[telemetry_key]) + config.margin.top; });
+
+            // Add the valueline path.
+            svg.append("path")
+                .attr("class", "line")
+                .attr("d", valueline(_data));
+
+                // Add the scatterplot
+            svg.selectAll("dot")
+                .data(_data)
+              .enter().append("circle")
+                .attr("r", 3.5)
+                .attr("cx", function(d, i) { return xInterval*i + config.margin.left })
+                .attr("cy", function(d) { return y1(d.telemetry.damod_data[telemetry_key]) + config.margin.top; });
+
+        });
     }
+    exports.config = function(_newConfig) {
+        if (!arguments.length) return width;
+        for(var x in _newConfig) if(x in config) config[x] = _newConfig[x];
+        return this;
+    };
+    d3.rebind(exports, dispatch, 'on');
+    return exports;
+};
+
+
+// Telemetry Viz View
+/////////////////////////////////////
+
+var TelemetryVizView = Backbone.View.extend({
+    el: ".chart",
+    chart: null,
+    chartSelection: null,
+    initialize: function() {
+        var that = this;
+        this.model.fetch();
+        _.bindAll(this, 'render', 'update');
+        this.model.bind('change:data', this.render);
+        this.model.bind('change:config', this.update);
+        chart = d3.custom.barChart();
+        chart.config(this.model.get('config'));
+        chart.on('customHover', function(d, i){ console.log('hover', d, i); });
+        this.renderPlaceholder();
+    },
+    events: {
+        "click .telemetry-key": "update",
+    },
+    renderPlaceholder: function() {
+        this.chartSelection = d3.select(this.el)
+            .datum([{key: '', value: 0}])
+            .call(d3.custom.barChart(this.model.get('data')[0].appendix[1].key));
+    },
+    render: function() {
+        console.log(this.model.get('data')[0].appendix[1]);
+        this.chartSelection = d3.select(this.el)
+            .datum(this.model.get('data'))
+            .call(d3.custom.barChart(this.model.get('data')[0].appendix[1].key));
+    },
+    update: function(e){
+        d3.select("svg").remove();
+        var telemetry_key = $(e.currentTarget).attr('id').substring(1);
+        this.chartSelection.call(d3.custom.barChart(telemetry_key));
+    },
+});
+
+// Telemetry Data
+/////////////////////////////////////
+
+var TelemetryData = Backbone.Model.extend({
+    url:"/api/telemetry/?satellite=99999",
+    defaults: {
+        data: [],
+        dimension: {},
+        config: {height: 500, width: 700}
+    },
+    parse: function(_json) {
+        var data = _json;
+        this.set({data: data});
+    },
 });
 
 // Rendering
+/////////////////////////////////////
 
-var telemetryDescriptors = new TelemetryDescriptors(); //startData);
-telemetryDescriptors.fetch(); /*({
-  success: function(){
-    //renderCollection(); // some callback to do stuff with the collection you made
-  },
-  error: function(){
-  }
-});
-*/
-var telemetryDescriptorsView = new TelemetryDescriptorsView({ collection: telemetryDescriptors });
-telemetryDescriptorsView.render();
+var telemetryDataModel = new TelemetryData();
+var telemetryVizView = new TelemetryVizView({model: telemetryDataModel})
 
 
-var telemetryData = new TelemetryData(); //startData);
-telemetryData.fetch();
-var telemetryTimeView = new TelemetryTimeView({ collection: telemetryData });
-telemetryTimeView.render();
+// Buttons view
+/////////////////////////////////////
 
-
-
-/************************************
-D3 Collection
-************************************/
-
-/*var TelemetryViz = Backbone.View.extend({
-
-  "el": "#telemetry-viz",
-
-  initialize: function() {
-    // Container el
-  }
-
-  render: function() {
-    // On changes in collection, render
-  }
-
-  frame: function() {
-    // on time draw
-  },
- 
-
-})*/
-
-
-var w = 440,
-    h = 200;
-
-
-var DataPoint = Backbone.Model.extend({
-
-    initialize: function(x) {
-        this.set({
-            x: x
-        });
+var ControlView = Backbone.View.extend({
+    el: ".control",
+    events: {
+        "click .update-data": "updateData",
+        "click .update-config": "updateConfig",
     },
-
-    type: "point",
-
-    randomize: function() {
-        this.set({
-            x: Math.round(Math.random() * 10)
-        });
+    updateData: function() {
+        var that = this
+        var newData = d3.range(this._randomInt(10)).map(function(d, i){ return that._randomInt(100); });
+        this.model.set({data: newData});
+    },
+    updateConfig: function() {
+        var newConfig = {width: this._randomInt(600, 100)};
+        this.model.set({config: newConfig});
+    },
+    _randomInt: function(_maxSize, _minSize){ 
+        var minSize = _minSize || 1;
+        return ~~(Math.random() * (_maxSize - minSize)) + minSize; 
     }
-
 });
 
-var DataSeries = Backbone.Collection.extend({
-
-    model: Telemetry,
-
-    fetch: function() {
-        this.reset();
-        this.add([
-            new DataPoint(10),
-            new DataPoint(12),
-            new DataPoint(15),
-            new DataPoint(18)
-            ]);
-    },
-
-});
-
-var BarGraph = Backbone.View.extend({
-
-    "el": "#graph",
-
-    initialize: function() {
-
-        _.bindAll(this, "render");
-        this.collection.bind("change", this.render);
-
-        this.chart = d3.selectAll($(this.el)).append("svg").attr("class", "chart").attr("width", w).attr("height", h).append("g").attr("transform", "translate(10,15)");
-
-        this.collection.fetch();
-    },
-
-    render: function() {
-
-        var data = this.collection.models;
-
-        var x = d3.scale.linear().domain([0, d3.max(data.damod_data.EPS_V, function(d) {
-            return d.get("x");
-        })]).range([0, w - 10]);
-
-        var y = d3.scale.ordinal().domain([0, 1, 2, 3]).rangeBands([0, h - 20]);
-
-        var self = this;
-        var rect = this.chart.selectAll("rect").data(data.damod_data, function(d, i) {
-            return i;
-        });
-
-        rect.enter().insert("rect", "text").attr("y", function(d) {
-            return y(d.get("x"));
-        }).attr("width", function(d) {
-            return x(d.get("x"));
-        }).attr("height", y.rangeBand());
-
-        rect.transition().duration(1000).attr("width", function(d) {
-            return x(d.get("x"));
-        }).attr("height", y.rangeBand());
-
-        rect.exit().remove();
-        
-        var text = this.chart.selectAll("text").data(data.damod_data, function(d, i) {
-            return i;
-        });
-
-       text.enter().append("text")
-        .attr("x", function(d) {
-            return x(d.get("x"));
-        })
-        .attr("y", function(d,i) { return y(i) + y.rangeBand() / 2; })
-        .attr("dx", -3) // padding-right
-        .attr("dy", ".35em") // vertical-align: middle
-        .attr("text-anchor", "end") // text-align: right
-           .text(function(d) { return d.get("x");});
-   
-        /*this.chart.selectAll("line").data(x.ticks(10)).enter().append("line").attr("x1", x).attr("x2", x).attr("y1", 0).attr("y2", h - 10).style("stroke", "#ccc");
-
-        this.chart.selectAll("line").data(x.ticks(10)).attr("x1", x).attr("x2", x);
-
-        this.chart.selectAll("line").data(x.ticks(10)).exit().remove();
-
-        this.chart.selectAll(".rule").data(x.ticks(10)).enter().append("text").attr("class", "rule").attr("x", x).attr("y", 0).attr("dy", -3).attr("text-anchor", "middle").text(String);
-
-        this.chart.selectAll(".rule").data(x.ticks(10)).attr("x1", x).text(String);
-
-        this.chart.selectAll(".rule").data(x.ticks(10)).exit().remove();*/
-    },
-
-
-});
-
-
-
-    var dataSeries = new DataSeries();
-    console.log(telemetryData);
-    new BarGraph({
-        collection: telemetryData
-    }).render();
-
+var controlView = new ControlView({model: telemetryDataModel});
