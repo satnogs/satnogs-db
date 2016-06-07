@@ -19,7 +19,7 @@ var TelemetryCollection = Backbone.Collection.extend({
  
 var TelemetryDescriptors = TelemetryCollection.extend({
     parse: function(response){
-        return response.appendix;
+        return response[0].appendix;
     }
  });
 
@@ -32,52 +32,32 @@ var TelemetryData = TelemetryCollection.extend({
     }
  });
 
-
 // Views 
 var TelemetryDescriptorsView = Backbone.View.extend({
     el: "#telemetry-descriptors",
     template: _.template($('#telemetryDescriptorsTemplate').html()),
     initialize: function(){
-        this.listenTo(this.collection,"add", this.renderItem);          
+        this.listenTo(this.collection, 'add reset change remove', this.renderItem);
+        this.collection.fetch();
     },
     render: function () {
         this.collection.each(function(model){
-             var telemetryDescriptorsTemplate = this.template(model.toJSON());
-             this.$el.append(telemetryDescriptorsTemplate);
+            this.$el.append(this.template(model.toJSON()));
         }, this);        
         return this;
     },
-    renderItem: function(telemetryDescriptors) {
-         var telemetryDescriptorsTemplate = this.template(telemetryDescriptors.toJSON());
-         this.$el.append(telemetryDescriptorsTemplate);        
+    renderItem: function (model) {
+        this.$el.append(this.template(model.toJSON()));
     }
 });
 
+var telemetryDescriptorsView = new TelemetryDescriptorsView({ collection: new TelemetryDescriptors() });
 
-var TelemetryTimeView = Backbone.View.extend({
-    el: "#telemetry-viz",
-    template: _.template($('#telemetryYAxisTemplate').html()),
-    initialize: function(){
-        this.listenTo(this.collection,"add", this.renderItem);          
-    },
-    render: function () {
-        this.collection.each(function(model){
-             var telemetryYAxisTemplate = this.template(model.toJSON());
-             this.$el.append(telemetryYAxisTemplate);
-        }, this);        
-        return this;
-    },
-    renderItem: function(telemetryYAxis) {
-         var telemetryYAxisTemplate = this.template(telemetryYAxis.toJSON());
-         this.$el.append(telemetryYAxisTemplate);        
-    }
-});
+////////// Telemetry D3 Viz
 
-
-////////// Point line graph
 d3.custom = {};
 
-d3.custom.barChart = function module() {
+d3.custom.barChart = function module(telemetry_key) {
     var config = {
         margin: {top: 20, right: 20, bottom: 40, left: 40},
         width: 700,
@@ -92,14 +72,12 @@ d3.custom.barChart = function module() {
             var chartW = config.width - config.margin.left - config.margin.right,
                 chartH = config.height - config.margin.top - config.margin.bottom;
 
-                console.log(chartH);
-
             var x1 = d3.scale.ordinal()
                 .domain(_data.map(function(d, i){ return d.telemetry.observation_datetime ; }))
                 .rangeRoundBands([0, chartW], .1);
 
             var y1 = d3.scale.linear()
-                .domain([0, d3.max(_data, function(d, i){ return +d.telemetry.damod_data.eps_t; })])
+                .domain([0, d3.max(_data, function(d, i){ return +d.telemetry.damod_data[telemetry_key]; })])
                 .range([chartH, 0]);
 
             var xAxis = d3.svg.axis()
@@ -135,31 +113,10 @@ d3.custom.barChart = function module() {
                 .transition()
                 .call(yAxis);
 
-          /*  var barW = x1.rangeBand();
-            var bars = svg.select('.chart-group')
-                .selectAll('.bar')
-                .data(_data);
-            bars.enter().append('rect')
-                .classed('bar', true)
-                .attr({x: chartW,
-                    width: barW,
-                    y: function(d, i) { return y1(d.telemetry.damod_data.eps_t) },
-                    height: function(d, i) { return (chartH - y1(d.telemetry.damod_data.eps_t)); }
-                })
-                .on('mouseover', dispatch.customHover);
-            bars.transition()
-                .attr({
-                    width: barW,
-                    x: function(d, i) { return x1(i); },
-                  //  y: function(d, i) { return y1(+d); },
-                    //height: function(d, i) { return chartH - y1(+d); }
-                });
-            bars.exit().transition().style({opacity: 0}).remove();*/
-
             // Define the line
             var valueline = d3.svg.line()
                 .x(function(d,i) { return (xInterval*i + config.margin.left); })
-                .y(function(d) { return y1(d.telemetry.damod_data.eps_t) + config.margin.top; });
+                .y(function(d) { return y1(d.telemetry.damod_data[telemetry_key]) + config.margin.top; });
 
             // Add the valueline path.
             svg.append("path")
@@ -172,7 +129,7 @@ d3.custom.barChart = function module() {
               .enter().append("circle")
                 .attr("r", 3.5)
                 .attr("cx", function(d, i) { return xInterval*i + config.margin.left })
-                .attr("cy", function(d) { return y1(d.telemetry.damod_data.eps_t) + config.margin.top; });
+                .attr("cy", function(d) { return y1(d.telemetry.damod_data[telemetry_key]) + config.margin.top; });
 
         });
     }
@@ -185,10 +142,11 @@ d3.custom.barChart = function module() {
     return exports;
 };
 
-// Bar chart view
+
+// Telemetry Viz View
 /////////////////////////////////////
 
-var LineGraphView = Backbone.View.extend({
+var TelemetryVizView = Backbone.View.extend({
     el: ".chart",
     chart: null,
     chartSelection: null,
@@ -203,20 +161,49 @@ var LineGraphView = Backbone.View.extend({
         chart.on('customHover', function(d, i){ console.log('hover', d, i); });
         this.renderPlaceholder();
     },
+    events: {
+        "click .telemetry-key": "update",
+    },
     renderPlaceholder: function() {
         this.chartSelection = d3.select(this.el)
             .datum([{key: '', value: 0}])
-            .call(chart);
+            .call(d3.custom.barChart(this.model.get('data')[0].appendix[1].key));
     },
     render: function() {
+        console.log(this.model.get('data')[0].appendix[1]);
         this.chartSelection = d3.select(this.el)
             .datum(this.model.get('data'))
-            .call(chart);
+            .call(d3.custom.barChart(this.model.get('data')[0].appendix[1].key));
     },
-    update: function() {
-        this.chartSelection.call(chart.config(this.model.get('config')));
-    }
+    update: function(e){
+        d3.select("svg").remove();
+        var telemetry_key = $(e.currentTarget).attr('id').substring(1);
+        this.chartSelection.call(d3.custom.barChart(telemetry_key));
+    },
 });
+
+// Telemetry Data
+/////////////////////////////////////
+
+var TelemetryData = Backbone.Model.extend({
+    url:"/api/telemetry/?satellite=99999",
+    defaults: {
+        data: [],
+        dimension: {},
+        config: {height: 500, width: 700}
+    },
+    parse: function(_json) {
+        var data = _json;
+        this.set({data: data});
+    },
+});
+
+// Rendering
+/////////////////////////////////////
+
+var telemetryDataModel = new TelemetryData();
+var telemetryVizView = new TelemetryVizView({model: telemetryDataModel})
+
 
 // Buttons view
 /////////////////////////////////////
@@ -242,37 +229,4 @@ var ControlView = Backbone.View.extend({
     }
 });
 
-// Bar chart data
-/////////////////////////////////////
-
-var LineGraphData = Backbone.Model.extend({
-    url:"/api/telemetry/?satellite=99999",
-    defaults: {
-        data: [],
-        dimension: {},
-        config: {height: 500, width: 700}
-    },
-    parse: function(_json) {
-        var data = _json;
-        this.set({data: data});
-    },
-});
-
-// Usage
-/////////////////////////////////////
-
-var telemetryDescriptors = new TelemetryDescriptors(); //startData);
-telemetryDescriptors.fetch(); 
-var telemetryDescriptorsView = new TelemetryDescriptorsView({ collection: telemetryDescriptors });
-telemetryDescriptorsView.render();
-
-var telemetryData = new TelemetryData(); //startData);
-telemetryData.fetch();
-
-var telemetryTimeView = new TelemetryTimeView({ collection: telemetryData });
-telemetryTimeView.render();
-
-var lineGraphModel = new LineGraphData();
-var controlView = new ControlView({model: lineGraphModel});
-var lineGraphView = new LineGraphView({model: lineGraphModel})
-
+var controlView = new ControlView({model: telemetryDataModel});

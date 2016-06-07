@@ -268,26 +268,18 @@
             </div>
         </div>
         <div class="row panel-body">
-          <div class="col-md-3 panel-satellite">
-            <ul id="telemetry-descriptors">
-            </ul>
-          </div>
-          <div class="col-md-9 panel-satellite">          
-            <div id="telemetry-viz">
+          <div class="col-md-12 panel-satellite">
+            <div class="chart">
+              <div class="col-md-3 panel-satellite">
+                <ul id="telemetry-descriptors">
+                </ul>
+              </div>
             </div>
           </div>
-
-          <div id="telemetry-graph">
-          </div>
-
-          <div class="control">
-  <button class="update-data">Update Data</button>
-  <button class="update-config">Update Config</button>
-</div>
-        <div class="chart"></div>
+        </div>
           
           <script id="telemetryDescriptorsTemplate" type="text/template">
-              <li class="list-group-item"><a href="#<%- Key %>"><%- Description %></a></li>
+              <li class="list-group-item telemetry-key" id="#<%- key %>"><%- description %></li>
           </script>
 
           <script id="telemetryYAxisTemplate" type="text/template">
