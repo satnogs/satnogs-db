@@ -1,7 +1,7 @@
 $(document).ready(function() {
     'use strict';
 
-    var items = new Array();
+    var items = [];
     $('div.satellite-group-item').each(function(i, obj) {
         items.push(obj);
     });
