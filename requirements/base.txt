@@ -21,7 +21,7 @@ django-crispy-forms==1.6.0
 Pillow==3.3.0
 
 # API
-djangorestframework==3.3.3
+djangorestframework==3.4.0
 markdown==2.6.6
 django-filter==0.13.0
 
