@@ -1,6 +1,7 @@
 {% extends "base/home.html" %}
 
 {% load tags %}
+{% load staticfiles %}
 
 {% block title %} - Suggest{% endblock %}
 
@@ -280,6 +281,10 @@
       </div>
     </div>
   </div>
+         
+  <script id="telemetryDescriptorsTemplate" type="text/template">
+      <li class="list-group-item active telemetry-key" id="<%- key %>"><%- description %></li>
+  </script>
 
   <!-- Suggestion Modal -->
   <div class="modal fade" id="NewSuggestionModal" tabindex="-1" role="dialog" aria-labelledby="NewSuggestionModalLabel" aria-hidden="true">
@@ -357,5 +362,14 @@
     </div>
   </div>
 
+
+{% endblock %}
+
+
+{% block javascript %}
+
+    <script src="{% static 'bower_components/underscore/underscore-min.js' %}"></script>
+    <script src="{% static 'bower_components/backbone/backbone-min.js' %}"></script>
+    <script src="{% static 'bower_components/d3/d3.min.js' %}"></script>
 
 {% endblock %}
