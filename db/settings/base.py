@@ -19,10 +19,16 @@ THIRD_PARTY_APPS = (
     'allauth.account',
     'crispy_forms',
     'compressor',
+    'djangobower',
 )
 LOCAL_APPS = (
     'db.base',
     'db.api',
+)
+BOWER_INSTALLED_APPS = (
+    'underscore',
+    'backbone',
+    'd3#3.5.17',
 )
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -100,11 +106,15 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
+    'djangobower.finders.BowerFinder',
 )
 MEDIA_ROOT = path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 SATELLITE_DEFAULT_IMAGE = '/static/img/sat.png'
+
+# Django-Bower
+BOWER_COMPONENTS_ROOT = path.join(BASE_DIR, 'static')
 
 # App conf
 ROOT_URLCONF = 'db.urls'

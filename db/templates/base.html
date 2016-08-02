@@ -112,6 +112,9 @@
     {% compress js %}
       <script src="{% static 'js/lib/jquery-1.11.2.min.js' %}"></script>
       <script src="{% static 'js/lib/bootstrap.min.js' %}"></script>
+      <script src="{% static 'bower_components/underscore/underscore-min.js' %}"></script>
+      <script src="{% static 'bower_components/backbone/backbone-min.js' %}"></script>
+      <script src="{% static 'bower_components/d3/d3.min.js' %}"></script>
       <script src="{% static 'js/app.js' %}"></script>
       {% block javascript %}
       {% endblock javascript %}
