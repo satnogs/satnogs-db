@@ -72,7 +72,7 @@ d3.custom.barChart = function module(telemetry_key) {
                 .domain(_data.map(function(d, i){ 
                     return i ;
                 }))
-                .rangeRoundBands([0, chartW], .1);
+                .rangeRoundBands([0, chartW], 0.1);
 
             var y1 = d3.scale.linear()
                 .domain([0, d3.max(_data, function(d, i){ return +d.telemetry.damod_data[telemetry_key]; })])
@@ -99,7 +99,7 @@ d3.custom.barChart = function module(telemetry_key) {
                 container.append('g').classed('y-axis-group axis', true);
             }
 
-            svg.transition().attr({width: config.width, height: config.height})
+            svg.transition().attr({width: config.width, height: config.height});
             svg.select('.container-group')
                 .attr({transform: 'translate(' + config.margin.left + ',' + config.margin.top + ')'});
 
@@ -140,7 +140,7 @@ d3.custom.barChart = function module(telemetry_key) {
                 .data(_data)
               .enter().append("circle")
                 .attr("r", 3.5)
-                .attr("cx", function(d, i) { return xInterval*i + config.margin.left })
+                .attr("cx", function(d, i) { return xInterval*i + config.margin.left; })
                 .attr("cy", function(d) { return y1(d.telemetry.damod_data[telemetry_key]) + config.margin.top; });
 
         });
