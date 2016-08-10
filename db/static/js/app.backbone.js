@@ -1,9 +1,13 @@
+// Retreive Satellite Id
+
+var satelliteId = (window.location.pathname).replace(/\D/g,'');
+
 // Models
 
 var Telemetry = Backbone.Model.extend({});
 
 var TelemetryData = Backbone.Model.extend({
-    url:"/api/telemetry/?satellite=99999",
+    url:"/api/telemetry/?satellite=" + satelliteId,
     defaults: {
         data: [],
         dimension: {},
@@ -15,11 +19,10 @@ var TelemetryData = Backbone.Model.extend({
     },
 });
 
-
 // Collections
 
 var TelemetryCollection = Backbone.Collection.extend({
-    url:"/api/telemetry/?satellite=99999"
+    url:"/api/telemetry/?satellite=" + satelliteId
 });
  
 var TelemetryDescriptors = TelemetryCollection.extend({
