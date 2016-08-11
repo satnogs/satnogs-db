@@ -22,4 +22,4 @@ nosetests.xml
 # Media & Static
 media
 /staticfiles/*
-db/static/bower_components/
+db/static/lib/

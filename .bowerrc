@@ -1,0 +1,5 @@
+{
+    "directory": "db/static/lib",
+    "interactive": false,
+    "allow_root": true
+}

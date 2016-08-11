@@ -26,8 +26,10 @@ LOCAL_APPS = (
     'db.api',
 )
 BOWER_INSTALLED_APPS = (
-    'underscore',
-    'backbone',
+    'jquery#2.1.4',
+    'bootstrap#3.3.6',
+    'underscore#1.8.3',
+    'backbone#1.3.3',
     'd3#3.5.17',
 )
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -112,9 +114,6 @@ MEDIA_ROOT = path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 SATELLITE_DEFAULT_IMAGE = '/static/img/sat.png'
-
-# Django-Bower
-BOWER_COMPONENTS_ROOT = path.join(BASE_DIR, 'static')
 
 # App conf
 ROOT_URLCONF = 'db.urls'
