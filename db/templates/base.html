@@ -9,8 +9,8 @@
     <title>SatNOGS DB{% block title %}{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% compress css %}
-      <link rel="stylesheet" href="{% static 'css/lib/bootstrap.min.css' %}">
-      <link rel="stylesheet" href="{% static 'css/lib/bootstrap-theme.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/dist/css/bootstrap.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/dist/css/bootstrap.min.css' %}">
       <link rel="stylesheet" href="{% static 'css/app.css' %}">
       {% block css %}
       {% endblock %}
@@ -110,8 +110,8 @@
     </footer>
 
     {% compress js %}
-      <script src="{% static 'js/lib/jquery-1.11.2.min.js' %}"></script>
-      <script src="{% static 'js/lib/bootstrap.min.js' %}"></script>
+      <script src="{% static 'lib/jquery/dist/jquery.min.js' %}"></script>
+      <script src="{% static 'lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
       <script src="{% static 'js/app.js' %}"></script>
       {% block javascript %}
       {% endblock javascript %}

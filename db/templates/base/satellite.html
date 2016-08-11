@@ -1,26 +1,48 @@
 {% extends "base/home.html" %}
 
 {% load tags %}
+{% load staticfiles %}
 
 {% block title %} - Suggest{% endblock %}
 
 {% block top %}{% endblock %}
 
 {% block content %}
+
+  <!-- Satellite Overview Section -->
   <div class="row">
     <div class="col-md-12 satellite-panels">
       <div class="panel panel-default panel-satellite">
+        <div class="panel-heading">
+          <div class="satellite-title">
+            {{ satellite }}
+          </div>
+        </div>
         <div class="row panel-body">
           <div class="col-md-3 panel-satellite">
-            <div class="satellite-title">
-              {{ satellite }}
-            </div>
             <div>
               {{ satellite.names }}
             </div>
             <div>
               <img src="{{ satellite.get_image }}" alt="{{ satellite.name }}" class="satellite-img-full">
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transmitters Section -->
+  <div class="row">
+    <div class="col-md-12 satellite-panels">
+      <div class="panel panel-default panel-satellite">
+        <div class="panel-heading">
+          <div class="satellite-title">
+            Transmitters
+          </div>
+        </div>
+        <div class="row panel-body">
+          <div class="col-md-3 panel-satellite">
             {% if suggestions %}
               <div class="suggestions-counter label label-primary">
                 {{ suggestions.count }} suggestion{{ suggestions.count|pluralize }} pending
@@ -237,6 +259,33 @@
     </div>
   </div>
 
+  <!-- Telemetry Section -->
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 satellite-panels">
+      <div class="panel panel-default panel-satellite">
+        <div class="panel-heading">
+          <div class="satellite-title" id="telemetry-block" data-satid="{{ satellite.norad_cat_id }}">
+            Telemetry
+          </div>
+        </div>
+        <div class="row panel-body">
+          <div class="panel-satellite chart">
+            <div class="col-md-3 panel-satellite">
+              <ul id="telemetry-descriptors">
+              </ul>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script id="telemetryDescriptorsTemplate" type="text/template">
+    <li class="list-group-item active telemetry-key" id="<%- key %>"><%- description %></li>
+  </script>
+
   <!-- Suggestion Modal -->
   <div class="modal fade" id="NewSuggestionModal" tabindex="-1" role="dialog" aria-labelledby="NewSuggestionModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -312,4 +361,14 @@
       </div>
     </div>
   </div>
+
+
+{% endblock %}
+
+
+{% block javascript %}
+  <script src="{% static 'lib/underscore/underscore-min.js' %}"></script>
+  <script src="{% static 'lib/backbone/backbone-min.js' %}"></script>
+  <script src="{% static 'lib/d3/d3.min.js' %}"></script>
+  <script src="{% static 'js/app.backbone.js' %}"></script>
 {% endblock %}

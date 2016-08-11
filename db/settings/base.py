@@ -19,10 +19,18 @@ THIRD_PARTY_APPS = (
     'allauth.account',
     'crispy_forms',
     'compressor',
+    'djangobower',
 )
 LOCAL_APPS = (
     'db.base',
     'db.api',
+)
+BOWER_INSTALLED_APPS = (
+    'jquery#2.1.4',
+    'bootstrap#3.3.6',
+    'underscore#1.8.3',
+    'backbone#1.3.3',
+    'd3#3.5.17',
 )
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -100,6 +108,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
+    'djangobower.finders.BowerFinder',
 )
 MEDIA_ROOT = path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
