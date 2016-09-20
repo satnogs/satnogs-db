@@ -24,7 +24,7 @@ Pillow==3.3.1
 # API
 djangorestframework==3.4.6
 markdown==2.6.6
-django-filter==0.14.0
+django-filter==0.15.0
 
 # Astronomy
 git+https://github.com/comzeradd/orbit.git@cache#egg=orbit
