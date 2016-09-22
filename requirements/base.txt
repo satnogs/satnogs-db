@@ -1,21 +1,21 @@
 # Basic stuff
-django==1.9.8
+django==1.10.1
 django-shortuuidfield==0.1.3
-django-compressor==2.0
-django-jsonfield==1.0.0
+django-compressor==2.1
+django-jsonfield==1.0.1
 django-bower==5.1.0
 
 # Configuration
 django-dotenv==1.4.1
 dj-database-url==0.4.1
-opbeat==3.3.4
+opbeat==3.4.0
 
 # Security
 django-braces==1.9.0
 django-secure==1.0.1
 
 # Users
-django-allauth==0.25.2
+django-allauth==0.27.0
 django-crispy-forms==1.6.0
 
 # Images
@@ -24,7 +24,7 @@ Pillow==3.3.0
 # API
 djangorestframework==3.4.0
 markdown==2.6.6
-django-filter==0.13.0
+django-filter==0.15.0
 
 # Astronomy
 git+https://github.com/comzeradd/orbit.git@cache#egg=orbit
