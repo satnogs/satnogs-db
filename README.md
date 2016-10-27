@@ -13,7 +13,7 @@ See the [documentation](http://docs.satnogs.org/db/).
 
 ## Current Development
 
-[![kanban](https://img.shields.io/badge/kanban-board-red.svg)](https://huboard.com/satnogs/satnogs-db)
+[![kanban](https://img.shields.io/badge/kanban-board-red.svg)](https://github.com/satnogs/satnogs-db/projects/1)
 [![travis](https://img.shields.io/travis/satnogs/satnogs-db/dev.svg?label=tests)](http://travis-ci.org/satnogs/satnogs-db/)
 [![requirements](https://img.shields.io/requires/github/satnogs/satnogs-db.svg?branch=dev)](https://requires.io/github/satnogs/satnogs-db/requirements/?branch=dev)
 
