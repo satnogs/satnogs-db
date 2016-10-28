@@ -26,12 +26,8 @@ LOCAL_APPS = (
     'db.api',
 )
 BOWER_INSTALLED_APPS = (
-    'jquery#2.1.4',
-    'bootstrap#3.3.6',
-    'underscore#1.8.3',
-    'backbone#1.3.3',
-    'd3#3.5.17',
 )
+
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 # Middlware
