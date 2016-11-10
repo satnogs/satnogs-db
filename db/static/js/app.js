@@ -21,4 +21,7 @@ $(document).ready(function() {
             $('.satellite-group-item').show();
         }
     });
+
+    // Enable tooltips
+    $('[data-toggle="tooltip"]').tooltip();
 });

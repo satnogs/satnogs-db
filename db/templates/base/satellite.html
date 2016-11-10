@@ -87,16 +87,16 @@
                           {% include "includes/field.html" with name="Baud" value=transmitter.baud %}
                         {% endif %}
                         {% if transmitter.uplink_low %}
-                          {% include "includes/field.html" with name="Uplink Low" value=transmitter.uplink_low|frq %}
+                          {% include "includes/field.html" with name="Uplink Low" value=transmitter.uplink_low|frq hz=transmitter.uplink_low %}
                         {% endif %}
                         {% if transmitter.uplink_high %}
-                          {% include "includes/field.html" with name="Uplink High" value=transmitter.uplink_high|frq %}
+                          {% include "includes/field.html" with name="Uplink High" value=transmitter.uplink_high|frq hz=transmitter.uplink_high %}
                         {% endif %}
                         {% if transmitter.downlink_low %}
-                          {% include "includes/field.html" with name="Downlink Low" value=transmitter.downlink_low|frq %}
+                          {% include "includes/field.html" with name="Downlink Low" value=transmitter.downlink_low|frq hz=transmitter.downlink_low %}
                         {% endif %}
                         {% if transmitter.downlink_high %}
-                          {% include "includes/field.html" with name="Downlink High" value=transmitter.downlink_high|frq %}
+                          {% include "includes/field.html" with name="Downlink High" value=transmitter.downlink_high|frq hz=transmitter.downlink_high %}
                         {% endif %}
                       </div>
                     </div>
@@ -225,16 +225,16 @@
                             {% include "includes/field.html" with name="Baud" value=suggestion.baud original=suggestion.transmitter.baud %}
                           {% endif %}
                           {% if suggestion.uplink_low %}
-                            {% include "includes/field.html" with name="Uplink Low" value=suggestion.uplink_low|frq original=suggestion.transmitter.uplink_low|frq %}
+                            {% include "includes/field.html" with name="Uplink Low" value=suggestion.uplink_low|frq original=suggestion.transmitter.uplink_low|frq hz=transmitter.uplink_low %}
                           {% endif %}
                           {% if suggestion.uplink_high %}
-                            {% include "includes/field.html" with name="Uplink High" value=suggestion.uplink_high|frq original=suggestion.transmitter.uplink_high|frq %}
+                            {% include "includes/field.html" with name="Uplink High" value=suggestion.uplink_high|frq original=suggestion.transmitter.uplink_high|frq hz=transmitter.uplink_high %}
                           {% endif %}
                           {% if suggestion.downlink_low %}
-                            {% include "includes/field.html" with name="Downlink Low" value=suggestion.downlink_low|frq original=suggestion.transmitter.downlink_low|frq %}
+                            {% include "includes/field.html" with name="Downlink Low" value=suggestion.downlink_low|frq original=suggestion.transmitter.downlink_low|frq hz=transmitter.downlink_low %}
                           {% endif %}
                           {% if suggestion.downlink_high %}
-                            {% include "includes/field.html" with name="Downlink High" value=suggestion.downlink_high|frq original=suggestion.transmitter.downlink_high|frq %}
+                            {% include "includes/field.html" with name="Downlink High" value=suggestion.downlink_high|frq original=suggestion.transmitter.downlink_high|frq hz=transmitter.downlink_high %}
                           {% endif %}
                           {% if suggestion.citation %}
                             {% include "includes/field.html" with name="Citation" value=suggestion.citation|urlizetrunc:35 %}
