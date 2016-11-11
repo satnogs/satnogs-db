@@ -1,5 +1,6 @@
 from django import template
 from django.core.urlresolvers import reverse
+from django.utils.html import format_html
 
 register = template.Library()
 
@@ -17,6 +18,9 @@ def frq(value):
         to_format = float(value)
     except (TypeError, ValueError):
         return ''
-    formatted = format(float(to_format) / 1000000, '.3f')
-    formatted = formatted + ' Mhz'
+    prec = to_format / 1000
+    formatted = format(to_format / 1000000, '.3f')
+    if not prec.is_integer():
+        point = str(prec - int(prec))[2:]
+        formatted = format_html('{0}<small>{1}</small> MHz', formatted, point)
     return formatted

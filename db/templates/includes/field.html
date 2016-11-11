@@ -2,7 +2,7 @@
   <div class="col-md-6">
     <span class="label label-default">{{ name }}</span>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6" {% if hz %}data-toggle="tooltip" data-placement="bottom" title="{{ hz }} Hz"{% endif %}>
     {{ value }}
       {% if original %}
         <div class="text-muted">{{ original }}</div>
