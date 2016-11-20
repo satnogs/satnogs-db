@@ -180,7 +180,6 @@ d3.custom.barChart = function module(telemetry_key, unit) {
         for(var x in _newConfig) if(x in config) config[x] = _newConfig[x];
         return this;
     };
-    d3.rebind(exports, dispatch, 'on');
     return exports;
 };
 
@@ -202,7 +201,6 @@ var TelemetryVizView = Backbone.View.extend({
         this.model.bind('change:config', this.update);
         chart = d3.custom.barChart();
         chart.config(this.model.get('config'));
-        chart.on('customHover', function(d, i){ console.log('hover', d, i); });
         this.renderPlaceholder();
     },
     events: {
