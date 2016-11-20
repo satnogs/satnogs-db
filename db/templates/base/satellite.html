@@ -281,7 +281,9 @@
   </div>
 
   <script id="telemetryDescriptorsTemplate" type="text/template">
-    <li class="list-group-item active telemetry-key" id="<%- key %>" data-unit="<%- unit %>"><%- description %></li>
+    <% if (description !== "Status") { %>
+      <li class="list-group-item telemetry-key" id="<%- key %>" data-unit="<%- unit %>"><%- description %></li>
+    <% } %>
   </script>
 
   <!-- Suggestion Modal -->
