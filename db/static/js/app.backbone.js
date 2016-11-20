@@ -107,6 +107,10 @@ d3.custom.barChart = function module(telemetry_key, unit) {
             }
 
             svg.transition().attr({width: config.width, height: config.height});
+
+            svg.attr("preserveAspectRatio", "xMinYMin meet");
+            svg.attr("viewBox", "0 0 700 500");
+
             svg.select('.container-group')
                 .attr({transform: 'translate(' + config.margin.left + ',' + config.margin.top + ')'});
 
