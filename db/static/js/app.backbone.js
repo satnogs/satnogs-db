@@ -14,8 +14,12 @@ var TelemetryData = Backbone.Model.extend({
         config: {height: 500, width: 700}
     },
     parse: function(_json) {
-        var data = _json;
-        this.set({data: data});
+        if(_json.length < 1) {
+            $('#telemetry').hide();
+        } else {
+            var data = _json;
+            this.set({data: data});
+        }
     },
 });
 
