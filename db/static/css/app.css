@@ -263,3 +263,20 @@ footer {
 .chart {
     min-height: 500px;
 }
+
+.circle {
+    fill: #286090;
+    cursor: pointer;
+}
+
+.chart-tooltip {
+    position: absolute;
+    background: #286090;
+    color: #fff;
+    font-family: 'ClearSans';
+    font-size: 12px;
+    text-align: center;
+    padding: 5px 5px 6px 5px;
+    border: 0px;
+    border-radius: 3px;
+}

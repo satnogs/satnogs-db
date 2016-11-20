@@ -64,7 +64,10 @@ d3.custom.barChart = function module(telemetry_key, unit) {
     };
     var svg;
 
-    var dispatch = d3.dispatch('customHover');
+    // Define the div for the tooltip
+    var div = d3.select("body").append("div")
+        .attr("class", "chart-tooltip")
+        .style("opacity", 0);
 
     function exports(_selection) {
         _selection.each(function(_data) {
@@ -146,8 +149,21 @@ d3.custom.barChart = function module(telemetry_key, unit) {
               .enter().append("circle")
                 .attr("r", 3.5)
                 .attr("cx", function(d, i) { return xInterval*i + config.margin.left; })
-                .attr("cy", function(d) { return y1(d.telemetry.damod_data[telemetry_key]) + config.margin.top; });
-
+                .attr("cy", function(d) { return y1(d.telemetry.damod_data[telemetry_key]) + config.margin.top; })
+                .attr("class", "circle")
+                .on("mouseover", function(d) {
+                    div.transition()
+                        .duration(200)
+                        .style("opacity", 1);
+                    div.html(d.telemetry.damod_data[telemetry_key] + ' (' + unit + ')')
+                       .style("left", (d3.event.pageX) + "px")
+                       .style("top", (d3.event.pageY - 26) + "px");
+                    })
+                .on("mouseout", function(d) {
+                    div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
         });
     }
     exports.config = function(_newConfig) {
@@ -194,7 +210,7 @@ var TelemetryVizView = Backbone.View.extend({
             .call(d3.custom.barChart(this.model.get('data')[0].appendix[1].key, this.model.get('data')[0].appendix[1].unit));
     },
     update: function(e){
-        d3.select("svg").remove();
+        d3.select('svg').remove();
         this.chartSelection.call(d3.custom.barChart($(e.currentTarget).attr('id'), $(e.currentTarget).data("unit")));
     },
 });
