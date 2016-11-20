@@ -255,3 +255,11 @@ footer {
 .stage-notice a {
     color: #ffff00;
 }
+
+
+/* Telemetry D3 visualisation
+============================= */
+
+.chart {
+    min-height: 500px;
+}
