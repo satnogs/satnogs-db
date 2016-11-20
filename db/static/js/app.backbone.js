@@ -75,7 +75,7 @@ d3.custom.barChart = function module(telemetry_key) {
                 .domain(_data.map(function(d, i){
                     return parseDate(d.telemetry.observation_datetime);
                 }))
-                .rangeRoundBands([0, chartW], 0.1);
+                .range([0, chartW]);
 
             var y1 = d3.scale.linear()
                 .domain([0, d3.max(_data, function(d, i){ return +d.telemetry.damod_data[telemetry_key]; })])
@@ -90,7 +90,7 @@ d3.custom.barChart = function module(telemetry_key) {
                 .scale(y1)
                 .orient('left');
 
-            var xInterval = chartW / _data.length;
+            var xInterval = chartW / (_data.length -1);
 
             if(!svg) {
                 svg = d3.select(this)
