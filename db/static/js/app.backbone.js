@@ -49,6 +49,7 @@ var TelemetryDescriptorsView = Backbone.View.extend({
     },
     renderItem: function (model) {
         this.$el.append(this.template(model.toJSON()));
+        $("#bat_v").addClass('active');
     }
 });
 
@@ -212,6 +213,9 @@ var TelemetryVizView = Backbone.View.extend({
     update: function(e){
         d3.select('svg').remove();
         this.chartSelection.call(d3.custom.barChart($(e.currentTarget).attr('id'), $(e.currentTarget).data("unit")));
+        var active = $(e.currentTarget);
+        active.addClass('active');
+        $('li').not(active).removeClass('active');
     },
 });
 
