@@ -161,7 +161,7 @@ d3.custom.barChart = function module(telemetry_key) {
 
 
 function parseDate (date) {
-    var res = date.substring(9 ,11) + ':' + date.substring(11 ,13) + ':' + date.substring(13 ,15) + ' ' + date.substring(4,6) + '/' + date.substring(6,8) + '/' + date.substring(0,4);
+    var res = date.substring(4,6) + '/' + date.substring(6,8) + '/' + date.substring(0,4) + ' ' + date.substring(9 ,11) + ':' + date.substring(11 ,13) + ':' + date.substring(13 ,15);
     return res;
 }
 
