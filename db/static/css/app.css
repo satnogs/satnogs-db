@@ -256,6 +256,7 @@ footer {
     color: #ffff00;
 }
 
+
 /* Statistics page
 ==================== */
 .stats {
@@ -271,4 +272,12 @@ footer {
     display: block;
     font-size:  2em;
     font-weight: bold;
+}
+
+
+/* Telemetry D3 visualisation
+============================= */
+
+.chart {
+    min-height: 500px;
 }
