@@ -56,7 +56,7 @@ var TelemetryDescriptorsView = Backbone.View.extend({
 
 d3.custom = {};
 
-d3.custom.barChart = function module(telemetry_key) {
+d3.custom.barChart = function module(telemetry_key, unit) {
     var config = {
         margin: {top: 20, right: 20, bottom: 60, left: 60},
         width: 700,
@@ -128,7 +128,7 @@ d3.custom.barChart = function module(telemetry_key) {
                 .attr("x", 0 - (chartH / 2))
                 .attr("dy", "1em")
                 .style("text-anchor", "middle")
-                .text("Value");
+                .text("Value (" + unit + ")");
 
             // Define the line
             var valueline = d3.svg.line()
@@ -186,16 +186,16 @@ var TelemetryVizView = Backbone.View.extend({
     renderPlaceholder: function() {
         this.chartSelection = d3.select(this.el)
             .datum([{key: '', value: 0}])
-            .call(d3.custom.barChart(this.model.get('data')[0].appendix[1].key));
+            .call(d3.custom.barChart(this.model.get('data')[0].appendix[1].key, this.model.get('data')[0].appendix[1].unit));
     },
     render: function() {
         this.chartSelection = d3.select(this.el)
             .datum(this.model.get('data'))
-            .call(d3.custom.barChart(this.model.get('data')[0].appendix[1].key));
+            .call(d3.custom.barChart(this.model.get('data')[0].appendix[1].key, this.model.get('data')[0].appendix[1].unit));
     },
     update: function(e){
         d3.select("svg").remove();
-        this.chartSelection.call(d3.custom.barChart($(e.currentTarget).attr('id')));
+        this.chartSelection.call(d3.custom.barChart($(e.currentTarget).attr('id'), $(e.currentTarget).data("unit")));
     },
 });
 
