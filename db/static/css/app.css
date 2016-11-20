@@ -282,6 +282,14 @@ footer {
     min-height: 500px;
 }
 
+svg.chart {
+    margin: 10px 50px;
+}
+
+#telemetry-descriptors {
+    padding: 0;
+}
+
 .telemetry-key {
     cursor: pointer;
 }
