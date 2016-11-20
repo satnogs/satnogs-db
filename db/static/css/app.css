@@ -282,6 +282,10 @@ footer {
     min-height: 500px;
 }
 
+.telemetry-key {
+    cursor: pointer;
+}
+
 .circle {
     fill: #286090;
     cursor: pointer;
