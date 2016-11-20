@@ -73,7 +73,7 @@ d3.custom.barChart = function module(telemetry_key) {
 
             var x1 = d3.scale.ordinal()
                 .domain(_data.map(function(d, i){
-                    return i ;
+                    return parseDate(d.telemetry.observation_datetime);
                 }))
                 .rangeRoundBands([0, chartW], 0.1);
 
@@ -115,8 +115,10 @@ d3.custom.barChart = function module(telemetry_key) {
                 .transition()
                 .call(yAxis);
 
+
+            // Axis labels
             svg.append("text")
-                    .attr("transform", "translate(" + (chartW / 2) + " ," + (chartH + config.margin.bottom + config.margin.top) + ")")
+                    .attr("transform", "translate(" + (chartW + config.margin.right + 18) + " ," + (chartH + 10) + ")")
                     .style("text-anchor", "middle")
                     .text("Observation Datetime");
 
