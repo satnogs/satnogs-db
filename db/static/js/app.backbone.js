@@ -59,7 +59,7 @@ d3.custom = {};
 
 d3.custom.barChart = function module(telemetry_key, unit) {
     var config = {
-        margin: {top: 20, right: 20, bottom: 60, left: 60},
+        margin: {top: 20, right: 20, bottom: 115, left: 100},
         width: 700,
         height: 500
     };
@@ -123,6 +123,10 @@ d3.custom.barChart = function module(telemetry_key, unit) {
                 .transition()
                 .call(yAxis);
 
+            svg.selectAll(".x-axis-group.axis text")  // select all the text elements for the xaxis
+                .attr("transform", function(d) {
+                    return "translate(-50,50)rotate(-45)";
+                });
 
             // Axis labels
             svg.append("text")
@@ -132,7 +136,7 @@ d3.custom.barChart = function module(telemetry_key, unit) {
 
             svg.append("text")
                 .attr("transform", "rotate(-90)")
-                .attr("y", 0)
+                .attr("y", 40)
                 .attr("x", 0 - (chartH / 2))
                 .attr("dy", "1em")
                 .style("text-anchor", "middle")
@@ -151,8 +155,8 @@ d3.custom.barChart = function module(telemetry_key, unit) {
             // Add the scatterplot
             svg.selectAll("dot")
                 .data(_data)
-              .enter().append("circle")
-                .attr("r", 3.5)
+                .enter().append("circle")
+                .attr("r", 4)
                 .attr("cx", function(d, i) { return xInterval*i + config.margin.left; })
                 .attr("cy", function(d) { return y1(d.telemetry.damod_data[telemetry_key]) + config.margin.top; })
                 .attr("class", "circle")

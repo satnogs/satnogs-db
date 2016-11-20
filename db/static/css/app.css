@@ -282,6 +282,11 @@ footer {
     min-height: 500px;
 }
 
+.chart text {
+    color: #333;
+    font-size: 12px;
+}
+
 svg.chart {
     margin: 10px 50px;
 }
@@ -309,4 +314,14 @@ svg.chart {
     padding: 5px 5px 6px 5px;
     border: 0px;
     border-radius: 3px;
+}
+
+.tick line, .domain {
+  fill: none;
+  stroke: #ddd;
+}
+
+.line {
+    stroke: #286090;
+    stroke-width: 2;
 }
