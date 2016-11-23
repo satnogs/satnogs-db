@@ -325,18 +325,18 @@
 },
 {
     "fields": {
-        "baud": 0.0,
+        "baud": 1200.0,
         "satellite": 11,
         "uuid": "fpLBtCB3kRcf5uFWvSonsC",
         "uplink_low": null,
-        "downlink_low": 437400000,
+        "downlink_low": 437470000,
         "alive": true,
         "approved": true,
-        "mode": 6,
-        "invert": true,
+        "mode": 2,
+        "invert": false,
         "uplink_high": null,
         "downlink_high": null,
-        "description": "Mode U Beacon"
+        "description": "Mode U TLM"
     },
     "model": "base.transmitter",
     "pk": 21
@@ -402,7 +402,7 @@
         "uuid": "iQTQN82FXUCVSFmkYfohh5",
         "uplink_low": null,
         "downlink_low": 145936000,
-        "alive": true,
+        "alive": false,
         "approved": true,
         "mode": null,
         "invert": true,
@@ -420,7 +420,7 @@
         "uuid": "9F84Wpixu87uciHwKzx8tU",
         "uplink_low": 435220000,
         "downlink_low": 145870000,
-        "alive": true,
+        "alive": false,
         "approved": true,
         "mode": null,
         "invert": true,
@@ -435,28 +435,10 @@
     "fields": {
         "baud": 0.0,
         "satellite": 14,
-        "uuid": "7ZnAwpRgAPpoa5uTrjh9Ge",
-        "uplink_low": null,
-        "downlink_low": 145860000,
-        "alive": true,
-        "approved": true,
-        "mode": null,
-        "invert": true,
-        "uplink_high": null,
-        "downlink_high": null,
-        "description": "Dutch Beacon CW"
-    },
-    "model": "base.transmitter",
-    "pk": 28
-},
-{
-    "fields": {
-        "baud": 0.0,
-        "satellite": 14,
         "uuid": "Ja4nCimS64XJQaTCuaJRZh",
         "uplink_low": 435225000,
         "downlink_low": 145875000,
-        "alive": true,
+        "alive": false,
         "approved": true,
         "mode": null,
         "invert": true,
@@ -487,15 +469,15 @@
 },
 {
     "fields": {
-        "baud": 0.0,
+        "baud": 1200.0,
         "satellite": 15,
         "uuid": "BykbvfhDt8p3ieh8Nr8SYm",
         "uplink_low": null,
-        "downlink_low": 437425000,
+        "downlink_low": 437345000,
         "alive": true,
         "approved": true,
-        "mode": 6,
-        "invert": true,
+        "mode": 2,
+        "invert": false,
         "uplink_high": null,
         "downlink_high": null,
         "description": "Mode U TLM"
@@ -548,7 +530,7 @@
         "downlink_low": 437475000,
         "alive": true,
         "approved": true,
-        "mode": 8,
+        "mode": 39,
         "invert": true,
         "uplink_high": null,
         "downlink_high": null,
@@ -556,42 +538,6 @@
     },
     "model": "base.transmitter",
     "pk": 34
-},
-{
-    "fields": {
-        "baud": 0.0,
-        "satellite": 17,
-        "uuid": "nvAxvDLCZ5Tkm9hmPBGCZH",
-        "uplink_low": null,
-        "downlink_low": 145868000,
-        "alive": true,
-        "approved": true,
-        "mode": 9,
-        "invert": true,
-        "uplink_high": null,
-        "downlink_high": null,
-        "description": "Mode V BPSK TLM primary"
-    },
-    "model": "base.transmitter",
-    "pk": 35
-},
-{
-    "fields": {
-        "baud": 0.0,
-        "satellite": 17,
-        "uuid": "KSvJvnzcsf8CCr5whUygya",
-        "uplink_low": null,
-        "downlink_low": 145930000,
-        "alive": true,
-        "approved": true,
-        "mode": 9,
-        "invert": true,
-        "uplink_high": null,
-        "downlink_high": null,
-        "description": "Mode V BPSK TLM secondary"
-    },
-    "model": "base.transmitter",
-    "pk": 36
 },
 {
     "fields": {
@@ -610,24 +556,6 @@
     },
     "model": "base.transmitter",
     "pk": 37
-},
-{
-    "fields": {
-        "baud": 0.0,
-        "satellite": 18,
-        "uuid": "k684vNNWvVqJQM2TzZ4PhG",
-        "uplink_low": null,
-        "downlink_low": 437485000,
-        "alive": true,
-        "approved": true,
-        "mode": null,
-        "invert": true,
-        "uplink_high": null,
-        "downlink_high": null,
-        "description": "Mode U SSTV"
-    },
-    "model": "base.transmitter",
-    "pk": 38
 },
 {
     "fields": {
@@ -728,7 +656,7 @@
         "downlink_low": 437425000,
         "alive": true,
         "approved": true,
-        "mode": 8,
+        "mode": 39,
         "invert": true,
         "uplink_high": null,
         "downlink_high": null,
@@ -758,92 +686,20 @@
 {
     "fields": {
         "baud": 0.0,
-        "satellite": 22,
-        "uuid": "MbPzY2tZLnAqPHAELprZt4",
-        "uplink_low": null,
-        "downlink_low": 437505000,
-        "alive": true,
-        "approved": true,
-        "mode": null,
-        "invert": true,
-        "uplink_high": null,
-        "downlink_high": null,
-        "description": "CW Beacon"
-    },
-    "model": "base.transmitter",
-    "pk": 46
-},
-{
-    "fields": {
-        "baud": 0.0,
-        "satellite": 22,
-        "uuid": "QXy3Mi9DCV5moRCxw3dxgb",
-        "uplink_low": null,
-        "downlink_low": 437505000,
-        "alive": true,
-        "approved": true,
-        "mode": null,
-        "invert": true,
-        "uplink_high": null,
-        "downlink_high": null,
-        "description": "FSK 1k2 Beacon"
-    },
-    "model": "base.transmitter",
-    "pk": 47
-},
-{
-    "fields": {
-        "baud": 0.0,
-        "satellite": 23,
-        "uuid": "EojzB5Mx7Tk8n7oKTNBJcC",
-        "uplink_low": null,
-        "downlink_low": 436000000,
-        "alive": true,
-        "approved": true,
-        "mode": null,
-        "invert": true,
-        "uplink_high": null,
-        "downlink_high": null,
-        "description": "CW Beacon"
-    },
-    "model": "base.transmitter",
-    "pk": 48
-},
-{
-    "fields": {
-        "baud": 0.0,
         "satellite": 23,
         "uuid": "ZwdQUwqRbFETGnLAxoH9JF",
         "uplink_low": null,
-        "downlink_low": 436000000,
+        "downlink_low": 435950000,
         "alive": true,
         "approved": true,
-        "mode": null,
+        "mode": 38,
         "invert": true,
         "uplink_high": null,
         "downlink_high": null,
-        "description": "GMSK 4k8 9k6"
+        "description": "GMSK 4k8"
     },
     "model": "base.transmitter",
     "pk": 49
-},
-{
-    "fields": {
-        "baud": 0.0,
-        "satellite": 24,
-        "uuid": "ozVyJXXBodJDu4dio4vAzV",
-        "uplink_low": null,
-        "downlink_low": 437325000,
-        "alive": true,
-        "approved": true,
-        "mode": null,
-        "invert": true,
-        "uplink_high": null,
-        "downlink_high": null,
-        "description": "CW Beacon"
-    },
-    "model": "base.transmitter",
-    "pk": 50
 },
 {
     "fields": {
@@ -906,7 +762,7 @@
         "uuid": "DMfzzRQEHk98K7diJ3wo27",
         "uplink_low": 145925000,
         "downlink_low": 435715000,
-        "alive": true,
+        "alive": false,
         "approved": true,
         "mode": null,
         "invert": true,
@@ -924,7 +780,7 @@
         "uuid": "xVq7syPGptNE56YpFTAgGh",
         "uplink_low": 145825000,
         "downlink_low": 435675000,
-        "alive": true,
+        "alive": false,
         "approved": true,
         "mode": 2,
         "invert": true,
@@ -1024,42 +880,6 @@
     },
     "model": "base.transmitter",
     "pk": 60
-},
-{
-    "fields": {
-        "baud": 0.0,
-        "satellite": 35,
-        "uuid": "YpAL97NoEZsDuzWdbAMKzF",
-        "uplink_low": 437438300,
-        "downlink_low": 437438300,
-        "alive": true,
-        "approved": true,
-        "mode": 1,
-        "invert": true,
-        "uplink_high": null,
-        "downlink_high": null,
-        "description": "AFSK 1200"
-    },
-    "model": "base.transmitter",
-    "pk": 61
-},
-{
-    "fields": {
-        "baud": 0.0,
-        "satellite": 43,
-        "uuid": "KVx23PsGcpXJ5JymDXbETC",
-        "uplink_low": null,
-        "downlink_low": 145935000,
-        "alive": true,
-        "approved": true,
-        "mode": null,
-        "invert": true,
-        "uplink_high": null,
-        "downlink_high": null,
-        "description": "BPSK Telemetry"
-    },
-    "model": "base.transmitter",
-    "pk": 62
 },
 {
     "fields": {
@@ -1176,7 +996,7 @@
         "uuid": "9NWcFmJGg2MpuTLqhd3weM",
         "uplink_low": null,
         "downlink_low": 437435000,
-        "alive": true,
+        "alive": false,
         "approved": true,
         "mode": 2,
         "invert": false,
@@ -1214,7 +1034,7 @@
         "downlink_low": 437822000,
         "alive": true,
         "approved": true,
-        "mode": 3,
+        "mode": 47,
         "invert": false,
         "uplink_high": null,
         "downlink_high": null,
@@ -1232,7 +1052,7 @@
         "downlink_low": 145815000,
         "alive": true,
         "approved": true,
-        "mode": 3,
+        "mode": 47,
         "invert": false,
         "uplink_high": null,
         "downlink_high": null,
@@ -1266,7 +1086,7 @@
         "uuid": "XY7os9TuqubxKYK7CrqEjK",
         "uplink_low": null,
         "downlink_low": 437325000,
-        "alive": true,
+        "alive": false,
         "approved": true,
         "mode": 6,
         "invert": false,
@@ -1294,5 +1114,3371 @@
     },
     "model": "base.transmitter",
     "pk": 75
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 59,
+        "uuid": "ecmM575wCsfnP4UyZPLnoP",
+        "uplink_low": null,
+        "downlink_low": 437250000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 76
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 61,
+        "uuid": "NSXo8tGxmxpTUMsmSH34FF",
+        "uplink_low": null,
+        "downlink_low": 437445000,
+        "alive": true,
+        "approved": true,
+        "mode": 22,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "AX.25 beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 77
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 56,
+        "uuid": "ViBdvztMKTCQJ46ozB35RN",
+        "uplink_low": null,
+        "downlink_low": 437270000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "FSK Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 78
+},
+{
+    "fields": {
+        "baud": 0.0,
+        "satellite": 23,
+        "uuid": "tqyx9wEiZwkdUBXuCeud5C",
+        "uplink_low": null,
+        "downlink_low": 435950000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": true,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 79
+},
+{
+    "fields": {
+        "baud": 0.0,
+        "satellite": 43,
+        "uuid": "Pt4MFHSC8UFHu3aTQTLz9K",
+        "uplink_low": null,
+        "downlink_low": 145935000,
+        "alive": true,
+        "approved": true,
+        "mode": 47,
+        "invert": true,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "BPSK Telemetry"
+    },
+    "model": "base.transmitter",
+    "pk": 80
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 51,
+        "uuid": "8r24GV63wBsaB5GpAVC4cB",
+        "uplink_low": null,
+        "downlink_low": 437481000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "FSK Stream"
+    },
+    "model": "base.transmitter",
+    "pk": 81
+},
+{
+    "fields": {
+        "baud": 0.0,
+        "satellite": 18,
+        "uuid": "nJWyfQ4aLw7GVKboLhni6j",
+        "uplink_low": null,
+        "downlink_low": 437485000,
+        "alive": true,
+        "approved": true,
+        "mode": 5,
+        "invert": true,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U SSTV"
+    },
+    "model": "base.transmitter",
+    "pk": 82
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 64,
+        "uuid": "QE9FpDcXwx383HzouMDGCL",
+        "uplink_low": null,
+        "downlink_low": 145880000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 83
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 17,
+        "uuid": "2GyWowDxwCzVjbUW5H2R5Y",
+        "uplink_low": null,
+        "downlink_low": 145868000,
+        "alive": true,
+        "approved": true,
+        "mode": 47,
+        "invert": true,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode V BPSK TLM primary"
+    },
+    "model": "base.transmitter",
+    "pk": 84
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 17,
+        "uuid": "nGjcbveXh7NUBQvuR2TaaC",
+        "uplink_low": null,
+        "downlink_low": 145930000,
+        "alive": true,
+        "approved": true,
+        "mode": 47,
+        "invert": true,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode V BPSK TLM secondary"
+    },
+    "model": "base.transmitter",
+    "pk": 85
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 46,
+        "uuid": "ZJBvFCm6u4wBLVs6JSAad7",
+        "uplink_low": null,
+        "downlink_low": 145980000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW TLM beacon callsign 4X4HSL"
+    },
+    "model": "base.transmitter",
+    "pk": 86
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 46,
+        "uuid": "D5hpsmx8LgSCS3u9rpLMVC",
+        "uplink_low": null,
+        "downlink_low": 145980000,
+        "alive": true,
+        "approved": true,
+        "mode": 47,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "BPSK TLM 1k2 callsign 4X4HSL"
+    },
+    "model": "base.transmitter",
+    "pk": 87
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 57,
+        "uuid": "7AchptE4yLHTtdLHSZQR4o",
+        "uplink_low": null,
+        "downlink_low": 145840000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW TLM beacon callsign UKUBE-1"
+    },
+    "model": "base.transmitter",
+    "pk": 88
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 57,
+        "uuid": "HWdDcVRpjQJCxMbtRkL5em",
+        "uplink_low": null,
+        "downlink_low": 145840000,
+        "alive": true,
+        "approved": true,
+        "mode": 47,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "BPSK TLM 1k2 callsign UKUBE-1"
+    },
+    "model": "base.transmitter",
+    "pk": 89
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 45,
+        "uuid": "3ZmFouEWtLL2usuzqpC8Fc",
+        "uplink_low": null,
+        "downlink_low": 437525000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 90
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 35,
+        "uuid": "MTMEfksHRarmn9mxBJuEF4",
+        "uplink_low": 437438300,
+        "downlink_low": 437438300,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": true,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "AFSK 1200"
+    },
+    "model": "base.transmitter",
+    "pk": 91
+},
+{
+    "fields": {
+        "baud": 0.0,
+        "satellite": 24,
+        "uuid": "WjSuDmnkX32dASG7NqajhU",
+        "uplink_low": null,
+        "downlink_low": 437325000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": true,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 92
+},
+{
+    "fields": {
+        "baud": 0.0,
+        "satellite": 14,
+        "uuid": "2FLxMzHDWYXqgmKF7XX9Me",
+        "uplink_low": null,
+        "downlink_low": 145860000,
+        "alive": false,
+        "approved": true,
+        "mode": 6,
+        "invert": true,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Dutch Beacon CW"
+    },
+    "model": "base.transmitter",
+    "pk": 93
+},
+{
+    "fields": {
+        "baud": 0.0,
+        "satellite": 22,
+        "uuid": "umF8WmqmSSiMVnfbPUwNh4",
+        "uplink_low": null,
+        "downlink_low": 437505000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": true,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 94
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 22,
+        "uuid": "HtEGx3wfyNjXDxoFEvBTrc",
+        "uplink_low": null,
+        "downlink_low": 437505000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": true,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "FSK 1k2 Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 95
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 69,
+        "uuid": "zpkkyWwnuxe7Xm8UB7AjbL",
+        "uplink_low": null,
+        "downlink_low": 437425000,
+        "alive": false,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 96
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 69,
+        "uuid": "h7kmKuE4VKtD26nRNsyBon",
+        "uplink_low": null,
+        "downlink_low": 437425000,
+        "alive": false,
+        "approved": true,
+        "mode": 36,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "1k2 GMSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 97
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 69,
+        "uuid": "ESwmxg9fmJ7rMrSKCZmQVG",
+        "uplink_low": null,
+        "downlink_low": 437425000,
+        "alive": false,
+        "approved": true,
+        "mode": 39,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 GMSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 98
+},
+{
+    "fields": {
+        "baud": 19200.0,
+        "satellite": 70,
+        "uuid": "HA6JFSKUqqfCLDuKtZMiQb",
+        "uplink_low": null,
+        "downlink_low": 437250000,
+        "alive": true,
+        "approved": true,
+        "mode": 48,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 100
+},
+{
+    "fields": {
+        "baud": 4800.0,
+        "satellite": 38,
+        "uuid": "xAU7UCMqYdVNPDtbej2aeJ",
+        "uplink_low": null,
+        "downlink_low": 437250000,
+        "alive": true,
+        "approved": true,
+        "mode": 32,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "4k8 MSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 101
+},
+{
+    "fields": {
+        "baud": 4800.0,
+        "satellite": 69,
+        "uuid": "RA3Ab8prVBJXZYfjsQGUsF",
+        "uplink_low": null,
+        "downlink_low": 437425000,
+        "alive": false,
+        "approved": true,
+        "mode": 46,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "4k8 BFSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 102
+},
+{
+    "fields": {
+        "baud": 4800.0,
+        "satellite": 71,
+        "uuid": "jtYNPDnTgVFswZdLNijeWV",
+        "uplink_low": null,
+        "downlink_low": 435645000,
+        "alive": true,
+        "approved": true,
+        "mode": 38,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "4k8 GMSK Camera"
+    },
+    "model": "base.transmitter",
+    "pk": 103
+},
+{
+    "fields": {
+        "baud": 4800.0,
+        "satellite": 72,
+        "uuid": "KbEUEaZmz8PmhJ9XZ7CeCZ",
+        "uplink_low": null,
+        "downlink_low": 437645000,
+        "alive": true,
+        "approved": true,
+        "mode": 38,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "4k8 GMSK AIS"
+    },
+    "model": "base.transmitter",
+    "pk": 104
+},
+{
+    "fields": {
+        "baud": 4800.0,
+        "satellite": 73,
+        "uuid": "Cs8TM5KQKrhN8ySefgatYb",
+        "uplink_low": null,
+        "downlink_low": 435645000,
+        "alive": true,
+        "approved": true,
+        "mode": 38,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "4k8 GMSK ADS-B"
+    },
+    "model": "base.transmitter",
+    "pk": 105
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 74,
+        "uuid": "oxQ2jWYfhGivZfjbXdyz4H",
+        "uplink_low": 435030000,
+        "downlink_low": 145665000,
+        "alive": true,
+        "approved": true,
+        "mode": 9,
+        "invert": false,
+        "uplink_high": 435050000,
+        "downlink_high": 145685000,
+        "description": "Linear Transponder"
+    },
+    "model": "base.transmitter",
+    "pk": 106
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 74,
+        "uuid": "XWkgoTzbierFtJcCBZxPv4",
+        "uplink_low": null,
+        "downlink_low": 145640000,
+        "alive": true,
+        "approved": true,
+        "mode": 39,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 GMSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 107
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 74,
+        "uuid": "RdYt6csXh5XGEhh7UBxENH",
+        "uplink_low": null,
+        "downlink_low": 145660000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW TLM 22wpm"
+    },
+    "model": "base.transmitter",
+    "pk": 108
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 75,
+        "uuid": "h922BguPKYt56S4JSV87WL",
+        "uplink_low": 435090000,
+        "downlink_low": 145730000,
+        "alive": false,
+        "approved": true,
+        "mode": 9,
+        "invert": false,
+        "uplink_high": 435110000,
+        "downlink_high": 145750000,
+        "description": "Linear Transponder"
+    },
+    "model": "base.transmitter",
+    "pk": 109
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 75,
+        "uuid": "fhM8LwHgZaPL6MjtjLL4MC",
+        "uplink_low": null,
+        "downlink_low": 145705000,
+        "alive": false,
+        "approved": true,
+        "mode": 39,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 GMSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 110
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 75,
+        "uuid": "HReEBxwoWJDuuvF5CfiyET",
+        "uplink_low": null,
+        "downlink_low": 145725000,
+        "alive": false,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW TLM 22wpm"
+    },
+    "model": "base.transmitter",
+    "pk": 111
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 76,
+        "uuid": "6PkyCNyEaqRbADNZXj94WM",
+        "uplink_low": 435150000,
+        "downlink_low": 145795000,
+        "alive": true,
+        "approved": true,
+        "mode": 9,
+        "invert": false,
+        "uplink_high": 435170000,
+        "downlink_high": 145815000,
+        "description": "Linear Transponder"
+    },
+    "model": "base.transmitter",
+    "pk": 112
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 76,
+        "uuid": "GKvyYnXuEeNMhviHYHBDh9",
+        "uplink_low": null,
+        "downlink_low": 145770000,
+        "alive": true,
+        "approved": true,
+        "mode": 39,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 GMSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 113
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 76,
+        "uuid": "gtzv79Zp7kPymUekFaA2w4",
+        "uplink_low": null,
+        "downlink_low": 145790000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW TLM 22wpm"
+    },
+    "model": "base.transmitter",
+    "pk": 114
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 77,
+        "uuid": "hqdRQnR5w4LrN5ag2f7NXB",
+        "uplink_low": 435210000,
+        "downlink_low": 145860000,
+        "alive": false,
+        "approved": true,
+        "mode": 9,
+        "invert": false,
+        "uplink_high": 435230000,
+        "downlink_high": 145880000,
+        "description": "Linear Transponder"
+    },
+    "model": "base.transmitter",
+    "pk": 115
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 77,
+        "uuid": "bzvvEibPpi3aRsrUjBTH7V",
+        "uplink_low": null,
+        "downlink_low": 145835000,
+        "alive": false,
+        "approved": true,
+        "mode": 39,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 GMSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 116
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 77,
+        "uuid": "V76m6YW7nVsTrgCboMVHEb",
+        "uplink_low": null,
+        "downlink_low": 145855000,
+        "alive": false,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW TLM 22wpm"
+    },
+    "model": "base.transmitter",
+    "pk": 117
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 78,
+        "uuid": "BZVHvyW5jm2owcx7L5gYt8",
+        "uplink_low": 435270000,
+        "downlink_low": 145915000,
+        "alive": false,
+        "approved": true,
+        "mode": 9,
+        "invert": false,
+        "uplink_high": 435290000,
+        "downlink_high": 145935000,
+        "description": "Linear Transponder"
+    },
+    "model": "base.transmitter",
+    "pk": 118
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 78,
+        "uuid": "gz28Jj9NyRm7jMb5UK5Pv5",
+        "uplink_low": null,
+        "downlink_low": 145890000,
+        "alive": false,
+        "approved": true,
+        "mode": 39,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 GMSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 119
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 78,
+        "uuid": "FPQ2bkVNhx8T5NCeg8grn8",
+        "uplink_low": null,
+        "downlink_low": 145910000,
+        "alive": false,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW TLM 22wpm"
+    },
+    "model": "base.transmitter",
+    "pk": 120
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 79,
+        "uuid": "pr9DVsgPMkAx8moihfWTFV",
+        "uplink_low": 435330000,
+        "downlink_low": 145980000,
+        "alive": true,
+        "approved": true,
+        "mode": 9,
+        "invert": false,
+        "uplink_high": 435350000,
+        "downlink_high": 146000000,
+        "description": "Linear Transponder"
+    },
+    "model": "base.transmitter",
+    "pk": 121
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 79,
+        "uuid": "MQpfemiY9Pxga9ehRkmd9R",
+        "uplink_low": null,
+        "downlink_low": 145955000,
+        "alive": true,
+        "approved": true,
+        "mode": 39,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 GMSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 122
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 79,
+        "uuid": "JF5HmyNqCqa5zb76EiaHgL",
+        "uplink_low": null,
+        "downlink_low": 145975000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW TLM 22wpm"
+    },
+    "model": "base.transmitter",
+    "pk": 123
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 80,
+        "uuid": "EifSE4XNdP9LyoFNcbcNJo",
+        "uplink_low": null,
+        "downlink_low": 145475000,
+        "alive": true,
+        "approved": true,
+        "mode": 39,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 GMSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 124
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 80,
+        "uuid": "UMxxEUjkahmhdywka7FTwe",
+        "uplink_low": null,
+        "downlink_low": 437950000,
+        "alive": true,
+        "approved": true,
+        "mode": 39,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 GMSK TLM 440"
+    },
+    "model": "base.transmitter",
+    "pk": 125
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 81,
+        "uuid": "cpsxRoz8S2dndbyCX8BEDX",
+        "uplink_low": null,
+        "downlink_low": 437200000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 126
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 81,
+        "uuid": "q6CVKJirfoUjNzD2A4rxsk",
+        "uplink_low": 144350000,
+        "downlink_low": 437225000,
+        "alive": true,
+        "approved": true,
+        "mode": 1,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "FM Transponder"
+    },
+    "model": "base.transmitter",
+    "pk": 127
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 81,
+        "uuid": "xHDr7c3A7TuTPFcVvHKQuN",
+        "uplink_low": 144390000,
+        "downlink_low": 144390000,
+        "alive": true,
+        "approved": true,
+        "mode": 4,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "APRS Digipeater"
+    },
+    "model": "base.transmitter",
+    "pk": 128
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 82,
+        "uuid": "oBKWA5oi4RtLDJMDnKWx59",
+        "uplink_low": null,
+        "downlink_low": 437300000,
+        "alive": true,
+        "approved": true,
+        "mode": 22,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 129
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 83,
+        "uuid": "uGkkYgeaLDPKLTWHsPB8zY",
+        "uplink_low": null,
+        "downlink_low": 145980000,
+        "alive": false,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 130
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 83,
+        "uuid": "Mp7c66GDw8rsGuqBiwaN2h",
+        "uplink_low": null,
+        "downlink_low": 437365000,
+        "alive": false,
+        "approved": true,
+        "mode": 30,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "1k2 MSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 131
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 50,
+        "uuid": "yzLZeFypEj65qUKis3XrTd",
+        "uplink_low": null,
+        "downlink_low": 145975000,
+        "alive": true,
+        "approved": true,
+        "mode": 47,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "1k2 BPSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 132
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 52,
+        "uuid": "wnYjL6yjW3wxsVUhqS2duM",
+        "uplink_low": null,
+        "downlink_low": 145825000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "1k2 AFSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 133
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 52,
+        "uuid": "FtxHUM8pqr6Ep95RehAouX",
+        "uplink_low": 145825000,
+        "downlink_low": 145825000,
+        "alive": true,
+        "approved": true,
+        "mode": 4,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "APRS Digipeater"
+    },
+    "model": "base.transmitter",
+    "pk": 134
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 52,
+        "uuid": "u9hJGiCLG6Sc2Bmgtxnn7i",
+        "uplink_low": 28120000,
+        "downlink_low": 435350000,
+        "alive": true,
+        "approved": true,
+        "mode": 40,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PSK31 Transponder"
+    },
+    "model": "base.transmitter",
+    "pk": 135
+},
+{
+    "fields": {
+        "baud": 19200.0,
+        "satellite": 55,
+        "uuid": "nKnqokquVoKFRAJcePjqjj",
+        "uplink_low": null,
+        "downlink_low": 437230000,
+        "alive": true,
+        "approved": true,
+        "mode": 48,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "19k2 GMSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 137
+},
+{
+    "fields": {
+        "baud": 19200.0,
+        "satellite": 54,
+        "uuid": "LuVHGVKfLRH9R7Qtu7WtWA",
+        "uplink_low": null,
+        "downlink_low": 437405000,
+        "alive": true,
+        "approved": true,
+        "mode": 48,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "19k2 GMSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 138
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 58,
+        "uuid": "3J35SxuePody8TvfrFv7U7",
+        "uplink_low": null,
+        "downlink_low": 438225000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 140
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 60,
+        "uuid": "nP9SjSXhoLLLi4Xso84aER",
+        "uplink_low": null,
+        "downlink_low": 145980000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 141
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 62,
+        "uuid": "mGn8cGayGiNWSoihVSBMqn",
+        "uplink_low": null,
+        "downlink_low": 145865000,
+        "alive": true,
+        "approved": true,
+        "mode": 47,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "1k2 BPSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 142
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 63,
+        "uuid": "X9Xu5Zcwr79Yu9v86PfCWX",
+        "uplink_low": null,
+        "downlink_low": 437675000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 143
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 65,
+        "uuid": "UjwbNjkRnNJnMyHSMRW8ja",
+        "uplink_low": null,
+        "downlink_low": 437426000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 144
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 66,
+        "uuid": "oepFFUCo6qxWgQckFGWt8H",
+        "uplink_low": null,
+        "downlink_low": 435000000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 145
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 2,
+        "uuid": "aBPWui23BqUhVc62nySNuQ",
+        "uplink_low": null,
+        "downlink_low": 145825000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "1k2 AFSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 146
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 85,
+        "uuid": "E2zRt9cEPo2uzATaRXX8zi",
+        "uplink_low": null,
+        "downlink_low": 437432000,
+        "alive": true,
+        "approved": true,
+        "mode": 30,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "1k2 MSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 147
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 26,
+        "uuid": "FNcx4kGjkFYau3YHhjCbFE",
+        "uplink_low": null,
+        "downlink_low": 437305000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW TLM 19wpm"
+    },
+    "model": "base.transmitter",
+    "pk": 148
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 68,
+        "uuid": "fZHi59dXRTTtGPZC6EVL6i",
+        "uplink_low": null,
+        "downlink_low": 437372000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 149
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 32,
+        "uuid": "p7t87ZPTo5NTCxpY5P2bm5",
+        "uplink_low": null,
+        "downlink_low": 437568000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 150
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 33,
+        "uuid": "xfcdPcSWKbqzRDxZZ79yhX",
+        "uplink_low": null,
+        "downlink_low": 437485000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 151
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 86,
+        "uuid": "WoaWzeKLVSn4dmV5BtEMQQ",
+        "uplink_low": null,
+        "downlink_low": 437385000,
+        "alive": false,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 152
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 44,
+        "uuid": "D7iEeEbjNj49tusqHgpL4g",
+        "uplink_low": null,
+        "downlink_low": 437385000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 153
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 42,
+        "uuid": "WvVrtfb4nKtEr3sJGqZdT",
+        "uplink_low": null,
+        "downlink_low": 437445000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 154
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 87,
+        "uuid": "8ugpLNzAj7oXw4AToDGeCW",
+        "uplink_low": null,
+        "downlink_low": 437305000,
+        "alive": false,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 155
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 88,
+        "uuid": "SPN3qoyK8tQdYCPsTdBcBA",
+        "uplink_low": null,
+        "downlink_low": 437425000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "1k2 AFSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 156
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 89,
+        "uuid": "EXWmZRvHRKhrq9ctSa6cpG",
+        "uplink_low": 435180000,
+        "downlink_low": 145980000,
+        "alive": true,
+        "approved": true,
+        "mode": 1,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "FM Transponder"
+    },
+    "model": "base.transmitter",
+    "pk": 157
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 90,
+        "uuid": "mjsHcYajEgbiS9cbKfecGo",
+        "uplink_low": null,
+        "downlink_low": 137620000,
+        "alive": true,
+        "approved": true,
+        "mode": 44,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "APT Downlink"
+    },
+    "model": "base.transmitter",
+    "pk": 158
+},
+{
+    "fields": {
+        "baud": 665000.0,
+        "satellite": 90,
+        "uuid": "xZGr4cmYu52twSzcWLhZwD",
+        "uplink_low": null,
+        "downlink_low": null,
+        "alive": true,
+        "approved": true,
+        "mode": 45,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": 1702500000,
+        "description": "HRPT Downlink"
+    },
+    "model": "base.transmitter",
+    "pk": 159
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 91,
+        "uuid": "u2h8AaSR7ZJPreFgVDtcfP",
+        "uplink_low": null,
+        "downlink_low": 137912500,
+        "alive": true,
+        "approved": true,
+        "mode": 44,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "APT Downlink"
+    },
+    "model": "base.transmitter",
+    "pk": 160
+},
+{
+    "fields": {
+        "baud": 665000.0,
+        "satellite": 91,
+        "uuid": "VMgQAxw3Wvi6gnLkkULzJg",
+        "uplink_low": null,
+        "downlink_low": null,
+        "alive": true,
+        "approved": true,
+        "mode": 45,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": 1707000000,
+        "description": "HRPT Downlink"
+    },
+    "model": "base.transmitter",
+    "pk": 161
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 92,
+        "uuid": "kE4VaYKpnFmzEquEjKKi8D",
+        "uplink_low": null,
+        "downlink_low": 137100000,
+        "alive": true,
+        "approved": true,
+        "mode": 44,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "APT Downlink"
+    },
+    "model": "base.transmitter",
+    "pk": 162
+},
+{
+    "fields": {
+        "baud": 665000.0,
+        "satellite": 92,
+        "uuid": "ksYESeTyhekG4CGeNT9wpm",
+        "uplink_low": null,
+        "downlink_low": 1698000000,
+        "alive": true,
+        "approved": true,
+        "mode": 45,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "HRPT Downlink"
+    },
+    "model": "base.transmitter",
+    "pk": 163
+},
+{
+    "fields": {
+        "baud": 3500000.0,
+        "satellite": 96,
+        "uuid": "E79pjmvfMXSHiAv8eGuEik",
+        "uplink_low": null,
+        "downlink_low": null,
+        "alive": true,
+        "approved": true,
+        "mode": null,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": 1701300000,
+        "description": "AHRPT Downlink"
+    },
+    "model": "base.transmitter",
+    "pk": 164
+},
+{
+    "fields": {
+        "baud": 3500000.0,
+        "satellite": 97,
+        "uuid": "9PPph8gNaDCurhNEh9gfvZ",
+        "uplink_low": null,
+        "downlink_low": null,
+        "alive": true,
+        "approved": true,
+        "mode": null,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": 1701300000,
+        "description": "AHRPT Downlink"
+    },
+    "model": "base.transmitter",
+    "pk": 165
+},
+{
+    "fields": {
+        "baud": 4200000.0,
+        "satellite": 93,
+        "uuid": "SEtMDM3FujKpcBeVe6j38L",
+        "uplink_low": null,
+        "downlink_low": null,
+        "alive": true,
+        "approved": true,
+        "mode": null,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": 1704500000,
+        "description": "AHRPT Downlink"
+    },
+    "model": "base.transmitter",
+    "pk": 166
+},
+{
+    "fields": {
+        "baud": 4200000.0,
+        "satellite": 94,
+        "uuid": "f2iccrWcBsskw6uWeab5LA",
+        "uplink_low": null,
+        "downlink_low": 1704500000,
+        "alive": true,
+        "approved": true,
+        "mode": 17,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "AHRPT Downlink"
+    },
+    "model": "base.transmitter",
+    "pk": 167
+},
+{
+    "fields": {
+        "baud": 4200000.0,
+        "satellite": 95,
+        "uuid": "roUHxm5XRFAYLsdpzRBqx",
+        "uplink_low": null,
+        "downlink_low": 1701400000,
+        "alive": true,
+        "approved": true,
+        "mode": 17,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "AHRPT Downlink"
+    },
+    "model": "base.transmitter",
+    "pk": 168
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 103,
+        "uuid": "c2yGXJPJH5jXjQ3dcyhWXH",
+        "uplink_low": null,
+        "downlink_low": 437375000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 182
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 103,
+        "uuid": "vsY59x3TnTeSArEiFKwPqE",
+        "uplink_low": null,
+        "downlink_low": 437375000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "1k2 AFSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 183
+},
+{
+    "fields": {
+        "baud": 100000.0,
+        "satellite": 103,
+        "uuid": "qJQUey2riSEzVAfTzNpc5d",
+        "uplink_low": null,
+        "downlink_low": 2400300000,
+        "alive": true,
+        "approved": true,
+        "mode": 50,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "S-Band TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 184
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 101,
+        "uuid": "bGY3GV449zGjSezkRjDVFD",
+        "uplink_low": null,
+        "downlink_low": 437094000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 185
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 101,
+        "uuid": "f6CupQE36AJzHTKeLZrToC",
+        "uplink_low": null,
+        "downlink_low": 437100000,
+        "alive": true,
+        "approved": true,
+        "mode": 39,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 GMSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 186
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 101,
+        "uuid": "zbWxmgQtpiurQLbfXj879E",
+        "uplink_low": 145815000,
+        "downlink_low": null,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Message Exchange Service Uplink"
+    },
+    "model": "base.transmitter",
+    "pk": 187
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 102,
+        "uuid": "C3zhr7czgjTcyyDwKsZiQ5",
+        "uplink_low": null,
+        "downlink_low": 437423000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 188
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 102,
+        "uuid": "mLxt93FKx9r5gqKbxtuybR",
+        "uplink_low": null,
+        "downlink_low": 437425000,
+        "alive": true,
+        "approved": true,
+        "mode": 39,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "9k6 GMSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 189
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 102,
+        "uuid": "8uiR46SDw9MXDKAArVDAq8",
+        "uplink_low": 14584000,
+        "downlink_low": null,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Message Exchange Service Uplink"
+    },
+    "model": "base.transmitter",
+    "pk": 190
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 100,
+        "uuid": "6QrKoGhVmVAVnsw8SsdQgG",
+        "uplink_low": null,
+        "downlink_low": null,
+        "alive": false,
+        "approved": true,
+        "mode": 22,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": 436250000,
+        "description": "Telemetry"
+    },
+    "model": "base.transmitter",
+    "pk": 191
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 10,
+        "uuid": "BqpECGKvLsn7idjEFTBg55",
+        "uplink_low": 145850,
+        "downlink_low": 436788000,
+        "alive": true,
+        "approved": true,
+        "mode": 1,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Freq drift downlink"
+    },
+    "model": "base.transmitter",
+    "pk": 192
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 10,
+        "uuid": "hw5xydfEVYh6Y33SA63MEe",
+        "uplink_low": null,
+        "downlink_low": 436790000,
+        "alive": true,
+        "approved": true,
+        "mode": 1,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Freq drift downlink 2"
+    },
+    "model": "base.transmitter",
+    "pk": 193
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 10,
+        "uuid": "DQGsM3wEZkDtTKxLMK3gqg",
+        "uplink_low": null,
+        "downlink_low": 436793600,
+        "alive": true,
+        "approved": true,
+        "mode": 1,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - Mode V/U FM Voice"
+    },
+    "model": "base.transmitter",
+    "pk": 195
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 85,
+        "uuid": "tJ7KvHwqyU7UxufWZzrYZ6",
+        "uplink_low": null,
+        "downlink_low": 437429500,
+        "alive": true,
+        "approved": true,
+        "mode": 30,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 1k2 MSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 196
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 44,
+        "uuid": "gBpooS3AUqyvkhCpRQvvW5",
+        "uplink_low": null,
+        "downlink_low": 437384000,
+        "alive": true,
+        "approved": true,
+        "mode": 18,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 200
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 29,
+        "uuid": "vYCZHtGQcfFqzT9fNTT6ei",
+        "uplink_low": null,
+        "downlink_low": 437501000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 1k2 AFSK KISS"
+    },
+    "model": "base.transmitter",
+    "pk": 201
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 104,
+        "uuid": "9KeB2ZXuBaUMjcK6TtvUdh",
+        "uplink_low": null,
+        "downlink_low": 437375500,
+        "alive": true,
+        "approved": true,
+        "mode": 39,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 9k6 GMSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 204
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 65,
+        "uuid": "TfCk7i5Hmy2PEFd2kXvFjh",
+        "uplink_low": null,
+        "downlink_low": 437421500,
+        "alive": true,
+        "approved": true,
+        "mode": 18,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 205
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 59,
+        "uuid": "J9oQxM9AS9NddRQKE4u9Jg",
+        "uplink_low": null,
+        "downlink_low": 437513000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 207
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 1,
+        "uuid": "fzWGFa9mewYwf6DWHhZ7BD",
+        "uplink_low": null,
+        "downlink_low": 145972240,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 208
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 43,
+        "uuid": "iaFXdQm4DRNGMthivNwaJm",
+        "uplink_low": null,
+        "downlink_low": 145935300,
+        "alive": true,
+        "approved": true,
+        "mode": 47,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 1k2 BPSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 209
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 53,
+        "uuid": "KsFooqFcsjCEbfR9Wxm3qf",
+        "uplink_low": 145825000,
+        "downlink_low": 437975000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "APRS Transponder"
+    },
+    "model": "base.transmitter",
+    "pk": 210
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 53,
+        "uuid": "dfwBETuBLJf8mrcXwUSTDo",
+        "uplink_low": 28120000,
+        "downlink_low": 435350000,
+        "alive": true,
+        "approved": true,
+        "mode": 40,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PSK31 Transponder"
+    },
+    "model": "base.transmitter",
+    "pk": 211
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 11,
+        "uuid": "mqQF9JxmD4KB6MqTVXqQBQ",
+        "uplink_low": null,
+        "downlink_low": 436835820,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 212
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 12,
+        "uuid": "aBHGFxMopeCscUYRyiYdXC",
+        "uplink_low": null,
+        "downlink_low": 436848700,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 214
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 16,
+        "uuid": "SqKWM4e6CfqZ9JryAZcJTf",
+        "uplink_low": null,
+        "downlink_low": 437274600,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 216
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 18,
+        "uuid": "N7SGiqMhkHpjfjeGh42wvX",
+        "uplink_low": null,
+        "downlink_low": 437485700,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 217
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 35,
+        "uuid": "H9TS3AzVUNiR9vsJUPf4b5",
+        "uplink_low": null,
+        "downlink_low": 437437500,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 1k2 AFSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 218
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 17,
+        "uuid": "RGrApAMv8gLbweTgXRhZGa",
+        "uplink_low": null,
+        "downlink_low": 145867440,
+        "alive": true,
+        "approved": true,
+        "mode": 47,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 1k2 BPSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 219
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 50,
+        "uuid": "nHWtq7t2BfC8pNYYpi4ZwS",
+        "uplink_low": null,
+        "downlink_low": 145973700,
+        "alive": true,
+        "approved": true,
+        "mode": 47,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 1k2 BPSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 220
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 46,
+        "uuid": "LyLQ3K5KTts6gJGQTVuSDP",
+        "uplink_low": null,
+        "downlink_low": 145981400,
+        "alive": true,
+        "approved": true,
+        "mode": 47,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 1k2 BPSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 221
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 58,
+        "uuid": "g2PQTyQ6gv4kudov7KoSQc",
+        "uplink_low": null,
+        "downlink_low": 438226000,
+        "alive": true,
+        "approved": true,
+        "mode": 28,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 9k6 GFSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 222
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 67,
+        "uuid": "kqz8WTaMy2qQYfrgHJaqBi",
+        "uplink_low": null,
+        "downlink_low": 437507000,
+        "alive": true,
+        "approved": true,
+        "mode": 28,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "GFSK9K6 TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 223
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 56,
+        "uuid": "eJs9KnfVMdL5At8igBjqLS",
+        "uplink_low": null,
+        "downlink_low": 437269600,
+        "alive": true,
+        "approved": true,
+        "mode": 22,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 224
+},
+{
+    "fields": {
+        "baud": 19200.0,
+        "satellite": 54,
+        "uuid": "3yb6JvcxM3w3cumHiQhQt6",
+        "uplink_low": null,
+        "downlink_low": 437397000,
+        "alive": true,
+        "approved": true,
+        "mode": 51,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 19k2 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 225
+},
+{
+    "fields": {
+        "baud": 19200.0,
+        "satellite": 55,
+        "uuid": "tfqRdP93FEm36tirADWWQR",
+        "uplink_low": null,
+        "downlink_low": 437220000,
+        "alive": true,
+        "approved": true,
+        "mode": 51,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 19k2 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 226
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 6,
+        "uuid": "aMa57NYD6NUiscifgX7YDa",
+        "uplink_low": null,
+        "downlink_low": 435796520,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 228
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 89,
+        "uuid": "ZyjKNJ9KqnTHBCUzAPN5G5",
+        "uplink_low": null,
+        "downlink_low": 145978500,
+        "alive": true,
+        "approved": true,
+        "mode": 21,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - FSK Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 229
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 38,
+        "uuid": "ULXxBCypZh4f2qPnJeg6WH",
+        "uplink_low": null,
+        "downlink_low": 437252500,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 230
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 51,
+        "uuid": "PMnr7eXunTq4zsS3WnbqxV",
+        "uplink_low": null,
+        "downlink_low": 437480000,
+        "alive": true,
+        "approved": true,
+        "mode": 22,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 231
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 25,
+        "uuid": "sHF8qxLN4VmfWpKpXqXxRU",
+        "uplink_low": null,
+        "downlink_low": 435789790,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 232
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 4,
+        "uuid": "QGvTCQfY3a4iLd7vrKxxjf",
+        "uplink_low": null,
+        "downlink_low": 435872600,
+        "alive": true,
+        "approved": true,
+        "mode": 47,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 1k2 BPSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 233
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 21,
+        "uuid": "MquDcKUEW6mR3VP3M2vAdQ",
+        "uplink_low": null,
+        "downlink_low": 437387450,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 234
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 106,
+        "uuid": "WJmmGFBv75YH2JUR2RaHBN",
+        "uplink_low": null,
+        "downlink_low": 437325000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "AFSK1K2 TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 235
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 105,
+        "uuid": "Dvhbn7HJzGo5hEFJ2kEiFd",
+        "uplink_low": null,
+        "downlink_low": 437650000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 236
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 62,
+        "uuid": "s8jpdkUffam9RxRArizMQd",
+        "uplink_low": null,
+        "downlink_low": 145867100,
+        "alive": true,
+        "approved": true,
+        "mode": 47,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 1k2 BPSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 237
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 82,
+        "uuid": "dT5BBeo3b7FsPumKboBNch",
+        "uplink_low": null,
+        "downlink_low": 437300800,
+        "alive": true,
+        "approved": true,
+        "mode": 22,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 238
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 9,
+        "uuid": "v5NW6by7m6NoK7gC2XCGyF",
+        "uplink_low": null,
+        "downlink_low": 145826800,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 1k2 AFSK APRS"
+    },
+    "model": "base.transmitter",
+    "pk": 239
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 20,
+        "uuid": "MLBshLfC6cFP4AsoaR2MWh",
+        "uplink_low": null,
+        "downlink_low": 437249600,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 240
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 63,
+        "uuid": "DWCqS7EMmVoFQKAi9nvJpg",
+        "uplink_low": null,
+        "downlink_low": 437676000,
+        "alive": true,
+        "approved": true,
+        "mode": 22,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 241
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 47,
+        "uuid": "qgm5DPSVdJ86YzehiYWQcX",
+        "uplink_low": null,
+        "downlink_low": 145813660,
+        "alive": true,
+        "approved": true,
+        "mode": 47,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 1k2 BPSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 242
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 64,
+        "uuid": "6DQp67crsBzih2LWRGFNFM",
+        "uplink_low": null,
+        "downlink_low": 145878740,
+        "alive": true,
+        "approved": true,
+        "mode": 47,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 1k2 BPSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 243
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 13,
+        "uuid": "FyC3BE75BxrFU25Lk5XLCN",
+        "uplink_low": null,
+        "downlink_low": 435352800,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 244
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 19,
+        "uuid": "4vRcttnce4Z3nhfsQQt8kM",
+        "uplink_low": null,
+        "downlink_low": 435315700,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 245
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 33,
+        "uuid": "KRqcrmSVuDcWj5f2ZycKSf",
+        "uplink_low": null,
+        "downlink_low": 437499500,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 246
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 45,
+        "uuid": "LerwMDzsm3Pq7y4KdZJRGW",
+        "uplink_low": null,
+        "downlink_low": 437525640,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 247
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 45,
+        "uuid": "cobJpvgUcKgMdjQRJjzzMS",
+        "uplink_low": null,
+        "downlink_low": 437526360,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 1k2 AFSK"
+    },
+    "model": "base.transmitter",
+    "pk": 248
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 32,
+        "uuid": "gARcXTNSbfooFar8WeS3yP",
+        "uplink_low": null,
+        "downlink_low": 437567800,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 9k6 AFSK"
+    },
+    "model": "base.transmitter",
+    "pk": 249
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 22,
+        "uuid": "qkFttEau6SfHo2jM3kcftm",
+        "uplink_low": null,
+        "downlink_low": 437500700,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 250
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 22,
+        "uuid": "yA9kEtgExZb7QvBrpWxu7",
+        "uplink_low": null,
+        "downlink_low": 437501740,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 1k2 AFSK"
+    },
+    "model": "base.transmitter",
+    "pk": 251
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 66,
+        "uuid": "m3AudrFo7YRXBGjH6GovDQ",
+        "uplink_low": null,
+        "downlink_low": 435001000,
+        "alive": true,
+        "approved": true,
+        "mode": 21,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - 9k6 FSK TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 252
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 57,
+        "uuid": "VkmkGr2WyemjUFRGmyA6yP",
+        "uplink_low": null,
+        "downlink_low": 145841940,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 253
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 74,
+        "uuid": "vW5mPKSJirXyyaGDsH56AP",
+        "uplink_low": null,
+        "downlink_low": 145660080,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "PE0SAT - CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 254
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 36,
+        "uuid": "SceFq4oXTQbAsaugQsnwuG",
+        "uplink_low": null,
+        "downlink_low": 437356000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "AFSK1K2 TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 255
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 107,
+        "uuid": "HzG7GJEdAUZ4aYbHBUWyad",
+        "uplink_low": null,
+        "downlink_low": 145870000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "CW Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 256
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 8,
+        "uuid": "4ACt6xLkArN9jyBMVmY6Bm",
+        "uplink_low": null,
+        "downlink_low": 437025000,
+        "alive": true,
+        "approved": true,
+        "mode": 1,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Tomsk-TPU-120"
+    },
+    "model": "base.transmitter",
+    "pk": 257
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 105,
+        "uuid": "rLMH4E6ueaCTs37sKD86FU",
+        "uplink_low": null,
+        "downlink_low": 437650000,
+        "alive": true,
+        "approved": true,
+        "mode": 32,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 259
+},
+{
+    "fields": {
+        "baud": 1000000.0,
+        "satellite": 105,
+        "uuid": "uArwdNpSBqfcS4GNj2ZfAA",
+        "uplink_low": null,
+        "downlink_low": 2404000000,
+        "alive": true,
+        "approved": true,
+        "mode": 42,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 260
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 106,
+        "uuid": "Jd69E6WhfsdUPWGYrCkDmX",
+        "uplink_low": 435880000,
+        "downlink_low": 145880000,
+        "alive": true,
+        "approved": true,
+        "mode": 1,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "U/V FM Voice (PL 88.5Hz)"
+    },
+    "model": "base.transmitter",
+    "pk": 261
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 106,
+        "uuid": "x4TAmrVLwZo3hx946fHi44",
+        "uplink_low": 145825000,
+        "downlink_low": 145825000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "APRS"
+    },
+    "model": "base.transmitter",
+    "pk": 262
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 108,
+        "uuid": "y7giaXsnzKuXdDjTmygj99",
+        "uplink_low": null,
+        "downlink_low": 437025000,
+        "alive": true,
+        "approved": true,
+        "mode": 21,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U TLM 1k2 BFSK/CW"
+    },
+    "model": "base.transmitter",
+    "pk": 269
+},
+{
+    "fields": {
+        "baud": 4800.0,
+        "satellite": 109,
+        "uuid": "sk98c5TotS9n4ADNkTNFjP",
+        "uplink_low": null,
+        "downlink_low": 437525000,
+        "alive": true,
+        "approved": true,
+        "mode": 38,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 270
+},
+{
+    "fields": {
+        "baud": 2400.0,
+        "satellite": 110,
+        "uuid": "gLqPtHih2tVFTcPndPK3zR",
+        "uplink_low": null,
+        "downlink_low": 145980000,
+        "alive": true,
+        "approved": true,
+        "mode": 50,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 271
+},
+{
+    "fields": {
+        "baud": 40000.0,
+        "satellite": 111,
+        "uuid": "vbwB8JMQHhZSDrMH5TGYBK",
+        "uplink_low": null,
+        "downlink_low": 437445000,
+        "alive": true,
+        "approved": true,
+        "mode": 51,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U TLM FSK 40k"
+    },
+    "model": "base.transmitter",
+    "pk": 272
+},
+{
+    "fields": {
+        "baud": 40000.0,
+        "satellite": 112,
+        "uuid": "JvZyP4BkTz7azt5JRqoXxF",
+        "uplink_low": null,
+        "downlink_low": 436445000,
+        "alive": true,
+        "approved": true,
+        "mode": 51,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U TLM FSK 40k"
+    },
+    "model": "base.transmitter",
+    "pk": 273
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 112,
+        "uuid": "b3thjacpwnuTQA3XNePnn9",
+        "uplink_low": null,
+        "downlink_low": 145900000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode V Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 274
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 112,
+        "uuid": "P3bU8XcEbeaYMEA5SC9is9",
+        "uplink_low": 436935000,
+        "downlink_low": 145935000,
+        "alive": true,
+        "approved": true,
+        "mode": 9,
+        "invert": true,
+        "uplink_high": 436965000,
+        "downlink_high": 145965000,
+        "description": "Mode U/V Linear"
+    },
+    "model": "base.transmitter",
+    "pk": 275
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 113,
+        "uuid": "zp8ej2X6sxfzQudQW4LVfV",
+        "uplink_low": null,
+        "downlink_low": 437100000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 276
+},
+{
+    "fields": {
+        "baud": 115200.0,
+        "satellite": 113,
+        "uuid": "WQNpNkMYJ6isL6jfh2uNaS",
+        "uplink_low": null,
+        "downlink_low": 2401200000,
+        "alive": true,
+        "approved": true,
+        "mode": 51,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": 2431200000,
+        "description": "Mode S TLM 115k2 Spread Spectrum FSK"
+    },
+    "model": "base.transmitter",
+    "pk": 277
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 114,
+        "uuid": "5VDMqoeFeGZtgTBLkYfk8N",
+        "uplink_low": null,
+        "downlink_low": 437100000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 278
+},
+{
+    "fields": {
+        "baud": 115200.0,
+        "satellite": 114,
+        "uuid": "XA9JCovxQ7DWDKtyFAkLFK",
+        "uplink_low": null,
+        "downlink_low": 2401200000,
+        "alive": true,
+        "approved": true,
+        "mode": 51,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": 2431200000,
+        "description": "Mode S TLM 115k2 Spread Spectrum FSK"
+    },
+    "model": "base.transmitter",
+    "pk": 279
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 115,
+        "uuid": "9SVHXT4JpmrFzAKcKigSK5",
+        "uplink_low": null,
+        "downlink_low": 437800000,
+        "alive": false,
+        "approved": true,
+        "mode": 1,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U FM SSTV Robot36"
+    },
+    "model": "base.transmitter",
+    "pk": 280
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 116,
+        "uuid": "6fsEpVtgzuqxqG5dHpcuFY",
+        "uplink_low": null,
+        "downlink_low": 437485000,
+        "alive": true,
+        "approved": true,
+        "mode": 22,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 281
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 117,
+        "uuid": "og83T5QMRowBS4XoKSyKNE",
+        "uplink_low": null,
+        "downlink_low": 437345000,
+        "alive": true,
+        "approved": true,
+        "mode": 22,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 282
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 118,
+        "uuid": "gEDKtJFX6d7kM6xUAM4MJ8",
+        "uplink_low": null,
+        "downlink_low": 437425000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 283
+},
+{
+    "fields": {
+        "baud": 9600.0,
+        "satellite": 118,
+        "uuid": "HhPiuNj3whyDNCFCYBDykV",
+        "uplink_low": null,
+        "downlink_low": 437425000,
+        "alive": true,
+        "approved": true,
+        "mode": 22,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 284
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 119,
+        "uuid": "MmBxtexG8v8sBPxKzeEqSc",
+        "uplink_low": null,
+        "downlink_low": 437485000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 285
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 119,
+        "uuid": "MB7ver9P2WRaREiQtGJ9iU",
+        "uplink_low": null,
+        "downlink_low": 437485000,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 286
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 120,
+        "uuid": "dRqxGytS4w53tadvVFsy5V",
+        "uplink_low": null,
+        "downlink_low": 145980000,
+        "alive": true,
+        "approved": true,
+        "mode": 6,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode V Beacon"
+    },
+    "model": "base.transmitter",
+    "pk": 287
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 120,
+        "uuid": "svkDc6PsrFPJ4E2yXKuWcS",
+        "uplink_low": 435045000,
+        "downlink_low": 145950000,
+        "alive": true,
+        "approved": true,
+        "mode": null,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode U/V D-STAR"
+    },
+    "model": "base.transmitter",
+    "pk": 288
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 34,
+        "uuid": "BhZeqihzoRqZ4wiDAXfjQf",
+        "uplink_low": null,
+        "downlink_low": 435950000,
+        "alive": true,
+        "approved": true,
+        "mode": 38,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "GMSK 4k8 TLM"
+    },
+    "model": "base.transmitter",
+    "pk": 291
+},
+{
+    "fields": {
+        "baud": 4000.0,
+        "satellite": 121,
+        "uuid": "d8JYc2pWsM8JcWTfp2Fpe4",
+        "uplink_low": 2114000000,
+        "downlink_low": 2296000000,
+        "alive": true,
+        "approved": true,
+        "mode": 50,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Radio A&B"
+    },
+    "model": "base.transmitter",
+    "pk": 292
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 8,
+        "uuid": "yPvKr7jdJZLHsHukp8dDQF",
+        "uplink_low": null,
+        "downlink_low": null,
+        "alive": true,
+        "approved": true,
+        "mode": 2,
+        "invert": false,
+        "uplink_high": 437550000,
+        "downlink_high": 437550000,
+        "description": "Mode U APRS Digi"
+    },
+    "model": "base.transmitter",
+    "pk": 294
+},
+{
+    "fields": {
+        "baud": 4200.0,
+        "satellite": 123,
+        "uuid": "PmpfC58q77fDfToUgwbJsZ",
+        "uplink_low": null,
+        "downlink_low": 1545952500,
+        "alive": true,
+        "approved": true,
+        "mode": 50,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Outernet Asia/Pacific"
+    },
+    "model": "base.transmitter",
+    "pk": 296
+},
+{
+    "fields": {
+        "baud": null,
+        "satellite": 124,
+        "uuid": "LAx8UQA9zvxdCnUnYmGffC",
+        "uplink_low": null,
+        "downlink_low": 437646000,
+        "alive": true,
+        "approved": true,
+        "mode": 22,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode 9600bps FSK"
+    },
+    "model": "base.transmitter",
+    "pk": 297
+},
+{
+    "fields": {
+        "baud": 1200.0,
+        "satellite": 125,
+        "uuid": "FZJsiKhdoSGUDKMbg7si7f",
+        "uplink_low": null,
+        "downlink_low": 145970000,
+        "alive": true,
+        "approved": true,
+        "mode": 47,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode V Telemetry"
+    },
+    "model": "base.transmitter",
+    "pk": 305
+},
+{
+    "fields": {
+        "baud": 115200.0,
+        "satellite": 125,
+        "uuid": "CHiCDm8uqmwLJ3uQqprm3U",
+        "uplink_low": null,
+        "downlink_low": 2401000000,
+        "alive": true,
+        "approved": true,
+        "mode": 52,
+        "invert": false,
+        "uplink_high": null,
+        "downlink_high": null,
+        "description": "Mode S Telemetry"
+    },
+    "model": "base.transmitter",
+    "pk": 306
 }
 ]
