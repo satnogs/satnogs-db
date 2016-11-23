@@ -10,6 +10,10 @@ class Command(BaseCommand):
         self.stdout.write("Creating database...")
         call_command('migrate')
 
+        # Bower
+        self.stdout.write("Downloading frontend libraries...")
+        call_command('bower_install')
+
         #  Initial data
         self.stdout.write("Creating fixtures...")
         call_command('loaddata', 'modes')
