@@ -322,6 +322,7 @@ svg.chart {
 }
 
 .line {
+    fill: none;
     stroke: #286090;
     stroke-width: 2;
 }
