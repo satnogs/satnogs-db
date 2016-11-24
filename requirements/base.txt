@@ -18,14 +18,14 @@ django-braces==1.10.0
 django-secure==1.0.1
 
 # Users
-django-allauth==0.28.0
+django-allauth==0.29.0
 django-crispy-forms==1.6.1
 
 # Images
 Pillow==3.4.2
 
 # API
-djangorestframework==3.5.2
+djangorestframework==3.5.3
 markdown==2.6.7
 django-filter==0.15.3
 
