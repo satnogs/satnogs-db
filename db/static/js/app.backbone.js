@@ -88,7 +88,7 @@ d3.custom.barChart = function module(telemetry_key, unit) {
                 .rangePoints([0, chartW]);
 
             var y1 = d3.scale.linear()
-                .domain([0, d3.max(_data, function(d, i){ return +d.telemetry.damod_data[telemetry_key]; })])
+                .domain(d3.extent(_data, function(d, i){ return +d.telemetry.damod_data[telemetry_key]; }))
                 .range([chartH, 0])
                 .nice(4);
 
@@ -213,12 +213,12 @@ var TelemetryVizView = Backbone.View.extend({
     renderPlaceholder: function() {
         this.chartSelection = d3.select(this.el)
             .datum([{key: '', value: 0}])
-            .call(d3.custom.barChart(this.model.get('data')[0].appendix[1].key, this.model.get('data')[0].appendix[1].unit));
+            .call(d3.custom.barChart(this.model.get('data')[0].appendix[0].key, this.model.get('data')[0].appendix[1].unit));
     },
     render: function() {
         this.chartSelection = d3.select(this.el)
             .datum(this.model.get('data'))
-            .call(d3.custom.barChart(this.model.get('data')[0].appendix[1].key, this.model.get('data')[0].appendix[1].unit));
+            .call(d3.custom.barChart(this.model.get('data')[0].appendix[0].key, this.model.get('data')[0].appendix[1].unit));
     },
     update: function(e){
         d3.select('svg').remove();
