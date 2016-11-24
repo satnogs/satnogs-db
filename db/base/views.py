@@ -6,7 +6,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseNotFound, HttpResponseServerError, HttpResponse
+from django.http import HttpResponseNotFound, HttpResponseServerError, HttpResponse, JsonResponse
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
@@ -114,3 +114,123 @@ def about(request):
 def faq(request):
     """View to render faq page."""
     return render(request, 'base/faq.html')
+
+
+def statistics(request):
+    """View to create statistics endpoint."""
+    satellites = Satellite.objects.all()
+    transmitters = Transmitter.objects.all()
+    modes = Mode.objects.all()
+
+    total_satellites = satellites.count()
+    total_transmitters = transmitters.count()
+    alive_transmitters = transmitters.filter(alive=True).count()
+    alive_transmitters_percentage = '{0}%'.format((alive_transmitters / total_transmitters) * 100)
+
+    total_modes = []
+    for mode in modes:
+        tr = transmitters.filter(mode=mode).count()
+        data = {
+            'name': mode.name,
+            'count': tr
+        }
+        total_modes.append(data)
+
+    bands = []
+
+    # <30.000.000 - HF
+    filtered = transmitters.filter(downlink_low__lt=30000000).count()
+    bands.append({
+        'name': 'HF',
+        'count': filtered
+    })
+
+    # 30.000.000 ~ 300.000.000 - VHF
+    filtered = transmitters.filter(downlink_low__gte=30000000,
+                                   downlink_low__lt=300000000).count()
+    bands.append({
+        'name': 'VHF',
+        'count': filtered
+    })
+    bands.append(data)
+
+    # 300.000.000 ~ 1.000.000.000 - UHF
+    filtered = transmitters.filter(downlink_low__gte=300000000,
+                                   downlink_low__lt=1000000000).count()
+    bands.append({
+        'name': 'UHF',
+        'count': filtered
+    })
+    bands.append(data)
+
+    # 1G ~ 2G - L
+    filtered = transmitters.filter(downlink_low__gte=1000000000,
+                                   downlink_low__lt=2000000000).count()
+    bands.append({
+        'name': 'L',
+        'count': filtered
+    })
+    bands.append(data)
+
+    # 2G ~ 4G - S
+    filtered = transmitters.filter(downlink_low__gte=2000000000,
+                                   downlink_low__lt=4000000000).count()
+    bands.append({
+        'name': 'S',
+        'count': filtered
+    })
+    bands.append(data)
+
+    # 4G ~ 8G - C
+    filtered = transmitters.filter(downlink_low__gte=4000000000,
+                                   downlink_low__lt=8000000000).count()
+    bands.append({
+        'name': 'C',
+        'count': filtered
+    })
+    bands.append(data)
+
+    # 8G ~ 12G - X
+    filtered = transmitters.filter(downlink_low__gte=8000000000,
+                                   downlink_low__lt=12000000000).count()
+    bands.append({
+        'name': 'X',
+        'count': filtered
+    })
+    bands.append(data)
+
+    # 12G ~ 18G - Ku
+    filtered = transmitters.filter(downlink_low__gte=12000000000,
+                                   downlink_low__lt=18000000000).count()
+    bands.append({
+        'name': 'Ku',
+        'count': filtered
+    })
+    bands.append(data)
+
+    # 18G ~ 27G - K
+    filtered = transmitters.filter(downlink_low__gte=18000000000,
+                                   downlink_low__lt=27000000000).count()
+    bands.append({
+        'name': 'K',
+        'count': filtered
+    })
+    bands.append(data)
+
+    # 27G ~ 40G - Ka
+    filtered = transmitters.filter(downlink_low__gte=27000000000,
+                                   downlink_low__lt=40000000000).count()
+    bands.append({
+        'name': 'Ka',
+        'count': filtered
+    })
+    bands.append(data)
+
+    statistics = {
+        'total_satellites': total_satellites,
+        'transmitters': total_transmitters,
+        'transmitters_alive': alive_transmitters_percentage,
+        'modes': total_modes,
+        'bands': bands
+    }
+    return JsonResponse(statistics, safe=False)
