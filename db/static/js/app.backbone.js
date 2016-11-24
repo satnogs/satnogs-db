@@ -53,7 +53,7 @@ var TelemetryDescriptorsView = Backbone.View.extend({
     },
     renderItem: function (model) {
         this.$el.append(this.template(model.toJSON()));
-        $("#bat_v").addClass('active');
+        $('#telemetry-descriptors li:first-child').addClass('active');
     }
 });
 
@@ -79,11 +79,13 @@ d3.custom.barChart = function module(telemetry_key, unit) {
             var chartW = config.width - config.margin.left - config.margin.right,
                 chartH = config.height - config.margin.top - config.margin.bottom;
 
+            var xInterval = chartW / (_data.length - 1);
+
             var x1 = d3.scale.ordinal()
                 .domain(_data.map(function(d, i){
                     return parseDate(d.telemetry.observation_datetime);
                 }))
-                .range([0, chartW]);
+                .rangePoints([0, chartW]);
 
             var y1 = d3.scale.linear()
                 .domain([0, d3.max(_data, function(d, i){ return +d.telemetry.damod_data[telemetry_key]; })])
@@ -97,8 +99,6 @@ d3.custom.barChart = function module(telemetry_key, unit) {
             var yAxis = d3.svg.axis()
                 .scale(y1)
                 .orient('left');
-
-            var xInterval = chartW / (_data.length -1);
 
             if(!svg) {
                 svg = d3.select(this)
