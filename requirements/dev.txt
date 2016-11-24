@@ -3,4 +3,4 @@
 
 # Debug & Testing
 factory-boy==2.7.0
-flake8==3.0.4
+flake8==3.2.1
