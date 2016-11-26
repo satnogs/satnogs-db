@@ -255,3 +255,20 @@ footer {
 .stage-notice a {
     color: #ffff00;
 }
+
+/* Statistics page
+==================== */
+.stats {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.stats-hud {
+  padding: 15px;
+}
+
+.stats-hud-num {
+    display: block;
+    font-size:  2em;
+    font-weight: bold;
+}

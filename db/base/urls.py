@@ -10,5 +10,6 @@ base_urlpatterns = ([
     url(r'^satellite/(?P<norad>[0-9]+)/$', views.satellite, name='satellite'),
     url(r'^suggestion/$', views.suggestion, name='suggestion'),
     url(r'^statistics/$', views.statistics, name='statistics'),
+    url(r'^stats/$', views.stats, name='stats'),
     url(r'^robots\.txt$', views.robots, name='robots'),
 ])

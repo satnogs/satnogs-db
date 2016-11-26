@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load tags %}
+{% load staticfiles %}
+
+{% block title %} - Stats{% endblock %}
+
+{% block content %}
+  <div class="row text">
+    <div class="col-md-12">
+      <h2>Statistics</h2>
+    </div>
+  </div>
+  <div class="row stats">
+    <div class="col-md-4">
+      <canvas id="modes" width="300" height="300"></canvas>
+    </div>
+    <div class="col-md-4">
+      <canvas id="bands" width="300" height="300"></canvas>
+    </div>
+    <div class="col-md-4">
+      <div class="row">
+        <p class="stats-hud">
+          Total satellites
+          <span class="stats-hud-num" id="stats-satellites">120</span>
+        </p>
+      </div>
+      <div class="row">
+        <p class="stats-hud">
+          Total transmitters
+          <span class="stats-hud-num" id="stats-transmitters">230</span>
+        </p>
+      </div>
+      <div class="row">
+        <p class="stats-hud">
+          Alive transmitters
+          <span class="stats-hud-num" id="stats-alive"></span>
+        </p>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block javascript %}
+  <script src="{% static 'lib/chart.js/dist/Chart.min.js' %}"></script>
+  <script src="{% static 'js/stats.js' %}"></script>
+{% endblock %}
