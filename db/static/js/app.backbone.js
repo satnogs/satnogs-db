@@ -4,15 +4,8 @@ var satelliteId = $('#telemetry-block').data('satid');
 
 // Models
 
-var Telemetry = Backbone.Model.extend({});
-
 var TelemetryData = Backbone.Model.extend({
     url:"/api/telemetry/?satellite=" + satelliteId,
-    defaults: {
-        data: [],
-        dimension: {},
-        config: {height: 500, width: 700}
-    },
     parse: function(_json) {
         if(_json.length < 1) {
             $('#telemetry').hide();
@@ -44,12 +37,6 @@ var TelemetryDescriptorsView = Backbone.View.extend({
     initialize: function(){
         this.listenTo(this.collection, 'add reset change remove', this.renderItem);
         this.collection.fetch();
-    },
-    render: function () {
-        this.collection.each(function(model){
-            this.$el.append(this.template(model.toJSON()));
-        }, this);
-        return this;
     },
     renderItem: function (model) {
         this.$el.append(this.template(model.toJSON()));
@@ -179,11 +166,6 @@ d3.custom.barChart = function module(telemetry_key, unit) {
                 });
         });
     }
-    exports.config = function(_newConfig) {
-        if (!arguments.length) return width;
-        for(var x in _newConfig) if(x in config) config[x] = _newConfig[x];
-        return this;
-    };
     return exports;
 };
 
@@ -202,23 +184,15 @@ var TelemetryVizView = Backbone.View.extend({
         this.model.fetch();
         _.bindAll(this, 'render', 'update');
         this.model.bind('change:data', this.render);
-        this.model.bind('change:config', this.update);
         chart = d3.custom.barChart();
-        chart.config(this.model.get('config'));
-        this.renderPlaceholder();
     },
     events: {
         "click .telemetry-key": "update",
     },
-    renderPlaceholder: function() {
-        this.chartSelection = d3.select(this.el)
-            .datum([{key: '', value: 0}])
-            .call(d3.custom.barChart(this.model.get('data')[0].appendix[0].key, this.model.get('data')[0].appendix[1].unit));
-    },
     render: function() {
         this.chartSelection = d3.select(this.el)
             .datum(this.model.get('data'))
-            .call(d3.custom.barChart(this.model.get('data')[0].appendix[0].key, this.model.get('data')[0].appendix[1].unit));
+            .call(d3.custom.barChart(this.model.get('data')[0].appendix[0].key, this.model.get('data')[0].appendix[0].unit));
     },
     update: function(e){
         d3.select('svg').remove();
@@ -229,10 +203,7 @@ var TelemetryVizView = Backbone.View.extend({
     },
 });
 
-
-
 // Fetch data and render views
 
 var telemetryDescriptorsView = new TelemetryDescriptorsView({ collection: new TelemetryDescriptors() });
-var telemetryDataModel = new TelemetryData();
-var telemetryVizView = new TelemetryVizView({model: telemetryDataModel});
+var telemetryVizView = new TelemetryVizView({model: new TelemetryData()});
