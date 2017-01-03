@@ -326,3 +326,31 @@ svg.chart {
     stroke: #286090;
     stroke-width: 2;
 }
+
+/* Telemetry Datepicker */
+
+.datepicker {
+    border-radius: 3px;    
+    padding-bottom: 25px;
+}
+
+.datepicker input {
+    font-family: 'ClearSans';
+    font-size: 13px;
+    padding: 5px 10px;
+    border: none;
+    box-shadow: inset 0px 0px 8px rgba(0,0,0,0.3);  
+    border-bottom-right-radius: 3px;    
+    border-top-right-radius: 3px;    
+    cursor: pointer;
+}
+
+.datepicker .input-group-addon {
+    background: #777;
+    color: #fff;
+    border: none;
+}
+
+.daterangepicker {
+    font-size: 13px;
+}
