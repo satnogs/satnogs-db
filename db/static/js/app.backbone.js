@@ -1,59 +1,12 @@
-// Retreive Satellite Id
+// D3 visualisation
 
-var satelliteId = $('#telemetry-block').data('satid');
-
-// Models
-
-var TelemetryData = Backbone.Model.extend({
-    url:"/api/telemetry/?satellite=" + satelliteId,
-    parse: function(_json) {
-        if(_json.length < 1) {
-            $('#telemetry').hide();
-        } else {
-            var data = _json;
-            this.set({data: data});
-        }
-    },
-});
-
-// Collections
-
-var TelemetryCollection = Backbone.Collection.extend({
-    url:"/api/telemetry/?satellite=" + satelliteId
-});
-
-var TelemetryDescriptors = TelemetryCollection.extend({
-    parse: function(response){
-        return response[0].appendix;
-    }
- });
-
-
-// Views
-
-var TelemetryDescriptorsView = Backbone.View.extend({
-    el: "#telemetry-descriptors",
-    template: _.template($('#telemetryDescriptorsTemplate').html()),
-    initialize: function(){
-        this.listenTo(this.collection, 'add reset change remove', this.renderItem);
-        this.collection.fetch();
-    },
-    renderItem: function (model) {
-        this.$el.append(this.template(model.toJSON()));
-        $('#telemetry-descriptors li:first-child').addClass('active');
-    }
-});
-
-// D3 Visualisation
-
-d3.custom = {};
-
-d3.custom.barChart = function module(telemetry_key, unit) {
+d3.lineChart = function(telemetry_key, unit) {
     var config = {
         margin: {top: 20, right: 20, bottom: 115, left: 100},
         width: 700,
         height: 500
     };
+
     var svg;
 
     // Define the div for the tooltip
@@ -61,8 +14,8 @@ d3.custom.barChart = function module(telemetry_key, unit) {
         .attr("class", "chart-tooltip")
         .style("opacity", 0);
 
-    function exports(_selection) {
-        _selection.each(function(_data) {
+    function render(selection) {
+        selection.each(function(_data) {
             var chartW = config.width - config.margin.left - config.margin.right,
                 chartH = config.height - config.margin.top - config.margin.bottom;
 
@@ -98,9 +51,6 @@ d3.custom.barChart = function module(telemetry_key, unit) {
             }
 
             svg.transition().attr({width: config.width, height: config.height});
-
-            svg.attr("preserveAspectRatio", "xMinYMin meet");
-            svg.attr("viewBox", "0 0 700 500");
 
             svg.select('.container-group')
                 .attr({transform: 'translate(' + config.margin.left + ',' + config.margin.top + ')'});
@@ -166,37 +116,72 @@ d3.custom.barChart = function module(telemetry_key, unit) {
                 });
         });
     }
-    return exports;
+    return render;
 };
 
+// Retreive Satellite Id
 
-function parseDate (date) {
-    var res = date.substring(4,6) + '/' + date.substring(6,8) + '/' + date.substring(0,4) + ' ' + date.substring(9 ,11) + ':' + date.substring(11 ,13) + ':' + date.substring(13 ,15);
-    return res;
-}
+var satelliteId = $('#telemetry-block').data('satid');
 
-var TelemetryVizView = Backbone.View.extend({
+// Backbone Models
+
+var TelemetryData = Backbone.Model.extend({});
+
+// Backbone Collections
+
+var TelemetryCollection = Backbone.Collection.extend({
+    url:"/api/telemetry/?satellite=" + satelliteId
+});
+
+var TelemetryDescriptors = TelemetryCollection.extend({
+    parse: function(response){
+        return response[0].appendix;
+    }
+});
+
+var TelemetryValues = TelemetryCollection.extend({
+    comparator: function(collection){
+        return( collection.get('telemetry').observation_datetime );
+    }
+});
+
+// Backbone Views
+
+var TelemetryDescriptorsView = Backbone.View.extend({
+    el: "#telemetry-descriptors",
+    template: _.template($('#telemetryDescriptorsTemplate').html()),
+    initialize: function(){
+        this.listenTo(this.collection, 'add reset change remove', this.renderItem);
+        this.collection.fetch();
+    },
+    renderItem: function (model) {
+        this.$el.append(this.template(model.toJSON()));
+        $('#telemetry-descriptors li:first-child').addClass('active');
+    }
+});
+
+var TelemetryChartView = Backbone.View.extend({
     el: ".chart",
     chart: null,
     chartSelection: null,
     initialize: function() {
-        var that = this;
-        this.model.fetch();
+        this.collection.fetch();
         _.bindAll(this, 'render', 'update');
-        this.model.bind('change:data', this.render);
-        chart = d3.custom.barChart();
+        this.collection.on('update reset', this.render);
+        chart = d3.lineChart();
     },
     events: {
         "click .telemetry-key": "update",
     },
     render: function() {
+        var data = this.collection.toJSON();
         this.chartSelection = d3.select(this.el)
-            .datum(this.model.get('data'))
-            .call(d3.custom.barChart(this.model.get('data')[0].appendix[0].key, this.model.get('data')[0].appendix[0].unit));
+            .datum(data)
+            .call(d3.lineChart(data[0].appendix[0].key, data[0].appendix[0].unit));
     },
     update: function(e){
         d3.select('svg').remove();
-        this.chartSelection.call(d3.custom.barChart($(e.currentTarget).attr('id'), $(e.currentTarget).data("unit")));
+        this.chartSelection.call(d3.lineChart($(e.currentTarget).data("key"), $(e.currentTarget).data("unit")));
         var active = $(e.currentTarget);
         active.addClass('active');
         $('li').not(active).removeClass('active');
@@ -206,4 +191,13 @@ var TelemetryVizView = Backbone.View.extend({
 // Fetch data and render views
 
 var telemetryDescriptorsView = new TelemetryDescriptorsView({ collection: new TelemetryDescriptors() });
-var telemetryVizView = new TelemetryVizView({model: new TelemetryData()});
+var telemetryChartView = new TelemetryChartView({collection: new TelemetryValues});
+
+
+// Parse datetime values
+
+function parseDate (date) {
+    var res = date.substring(4,6) + '/' + date.substring(6,8) + '/' + date.substring(0,4) + ' ' + date.substring(9 ,11) + ':' + date.substring(11 ,13) + ':' + date.substring(13 ,15);
+    return res;
+}
+
