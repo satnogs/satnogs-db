@@ -142,6 +142,15 @@ var TelemetryDescriptors = TelemetryCollection.extend({
 var TelemetryValues = TelemetryCollection.extend({
     comparator: function(collection){
         return( collection.get('telemetry').observation_datetime );
+    },
+    byDate: function (start_date, end_date) {
+        filtered = this.filter(function (model) {
+            var date = parseDateFilter(model.get('telemetry').observation_datetime);
+            return (
+                date >= start_date && date <= end_date
+            )
+        });
+        return new TelemetryValues(filtered);
     }
 });
 
@@ -201,3 +210,7 @@ function parseDate (date) {
     return res;
 }
 
+function parseDateFilter (date) {
+    var res = date.substring(0,8);
+    return res;
+}
