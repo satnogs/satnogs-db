@@ -9,6 +9,7 @@
     "bootstrap": "3.3.x",
     "underscore": "1.8.x",
     "backbone": "1.3.x",
-    "d3": "3.5.x"
+    "d3": "3.5.x",
+    "moment": "^2.17.1"
   }
 }

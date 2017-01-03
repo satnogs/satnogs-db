@@ -271,6 +271,10 @@
         <div class="row panel-body">
           <div class="panel-satellite chart">
             <div class="col-md-3 panel-satellite">
+              <div class="input-group datepicker">
+                <span class="input-group-addon">Date range</span>
+                <input type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
+              </div>
               <ul id="telemetry-descriptors">
               </ul>
             </div>
@@ -368,5 +372,9 @@
   <script src="{% static 'lib/underscore/underscore-min.js' %}"></script>
   <script src="{% static 'lib/backbone/backbone-min.js' %}"></script>
   <script src="{% static 'lib/d3/d3.min.js' %}"></script>
-  <script src="{% static 'js/app.backbone.js' %}"></script>
+  <script src="{% static 'lib/moment/moment.js' %}"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+  <script src="{% static 'js/app.backbone.js' %}"></script>  
+
 {% endblock %}
