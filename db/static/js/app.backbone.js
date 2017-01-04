@@ -26,15 +26,17 @@ d3.lineChart = function(telemetry_key, unit) {
                 }))
                 .rangePoints([0, chartW]);
 
+            var y1;
+
             switch(_data.length) {
                 case 1:
-                    var y1 = d3.scale.linear()
+                    y1 = d3.scale.linear()
                         .domain([0, d3.max(_data, function(d, i){ return +d.telemetry.damod_data[telemetry_key]; })])
                         .range([chartH, 0])
                         .nice(4);
                     break;
                 default:
-                    var y1 = d3.scale.linear()
+                    y1 = d3.scale.linear()
                     .domain(d3.extent(_data, function(d, i){ return +d.telemetry.damod_data[telemetry_key]; }))
                     .range([chartH, 0])
                     .nice(4);
@@ -184,9 +186,7 @@ var TelemetryValues = TelemetryCollection.extend({
     byDate: function (start_date, end_date) {
         filtered = this.filter(function (model) {
             var date = parseDateFilter(model.get('telemetry').observation_datetime);
-            return (
-                date >= start_date && date <= end_date
-            )
+            return ( date >= start_date && date <= end_date );
         });
         return new TelemetryValues(filtered);
     }
