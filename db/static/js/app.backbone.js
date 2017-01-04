@@ -175,7 +175,7 @@ var TelemetryCollection = Backbone.Collection.extend({
 
 var TelemetryDescriptors = TelemetryCollection.extend({
     parse: function(response){
-        if(response.length != 0) {
+        if(response.length !== 0) {
             return response[0].appendix;
         }
     }
