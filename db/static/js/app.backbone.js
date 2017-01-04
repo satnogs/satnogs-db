@@ -15,12 +15,10 @@ d3.lineChart = function(telemetry_key, unit) {
         .style("opacity", 0);
 
     function render(selection) {
-        console.log(selection.length);
         selection.each(function(_data) {
             var chartW = config.width - config.margin.left - config.margin.right,
                 chartH = config.height - config.margin.top - config.margin.bottom;
 
-            var xInterval = chartW / (_data.length - 1);
 
             var x1 = d3.scale.ordinal()
                 .domain(_data.map(function(d, i){
@@ -28,10 +26,21 @@ d3.lineChart = function(telemetry_key, unit) {
                 }))
                 .rangePoints([0, chartW]);
 
-            var y1 = d3.scale.linear()
-                .domain(d3.extent(_data, function(d, i){ return +d.telemetry.damod_data[telemetry_key]; }))
-                .range([chartH, 0])
-                .nice(4);
+            var y1;
+
+            switch(_data.length) {
+                case 1:
+                    y1 = d3.scale.linear()
+                        .domain([0, d3.max(_data, function(d, i){ return +d.telemetry.damod_data[telemetry_key]; })])
+                        .range([chartH, 0])
+                        .nice(4);
+                    break;
+                default:
+                    y1 = d3.scale.linear()
+                    .domain(d3.extent(_data, function(d, i){ return +d.telemetry.damod_data[telemetry_key]; }))
+                    .range([chartH, 0])
+                    .nice(4);
+            }
 
             var xAxis = d3.svg.axis()
                 .scale(x1)
@@ -84,37 +93,67 @@ d3.lineChart = function(telemetry_key, unit) {
                 .style("text-anchor", "middle")
                 .text("Value (" + unit + ")");
 
-            // Define the line
-            var valueline = d3.svg.line()
-                .x(function(d,i) { return (xInterval*i + config.margin.left); })
-                .y(function(d) { return y1(d.telemetry.damod_data[telemetry_key]) + config.margin.top; });
+            switch(_data.length) {
+                case 1:
+                    // Add the scatterplot
+                    svg.selectAll("dot")
+                        .data(_data)
+                        .enter().append("circle")
+                        .attr("r", 4)
+                        .attr("cx", function(d, i) { return chartW / 2 + config.margin.left; })
+                        .attr("cy", function(d) { return y1(d.telemetry.damod_data[telemetry_key]) + config.margin.top; })
+                        .attr("class", "circle")
+                        .on("mouseover", function(d) {
+                            div.transition()
+                                .duration(200)
+                                .style("opacity", 1);
+                            div.html(d.telemetry.damod_data[telemetry_key] + ' (' + unit + ')')
+                               .style("left", (d3.event.pageX) + "px")
+                               .style("top", (d3.event.pageY - 26) + "px");
+                            })
+                        .on("mouseout", function(d) {
+                            div.transition()
+                                .duration(500)
+                                .style("opacity", 0);
+                        });
+                    break;
+                default:
+                    var xInterval = chartW / (_data.length - 1);
 
-            // Add the valueline path
-            svg.append("path")
-                .attr("class", "line")
-                .attr("d", valueline(_data));
+                    // Define the line
+                    var valueline = d3.svg.line()
+                        .x(function(d,i) { return (xInterval*i + config.margin.left); })
+                        .y(function(d) { return y1(d.telemetry.damod_data[telemetry_key]) + config.margin.top; });
 
-            // Add the scatterplot
-            svg.selectAll("dot")
-                .data(_data)
-                .enter().append("circle")
-                .attr("r", 4)
-                .attr("cx", function(d, i) { return xInterval*i + config.margin.left; })
-                .attr("cy", function(d) { return y1(d.telemetry.damod_data[telemetry_key]) + config.margin.top; })
-                .attr("class", "circle")
-                .on("mouseover", function(d) {
-                    div.transition()
-                        .duration(200)
-                        .style("opacity", 1);
-                    div.html(d.telemetry.damod_data[telemetry_key] + ' (' + unit + ')')
-                       .style("left", (d3.event.pageX) + "px")
-                       .style("top", (d3.event.pageY - 26) + "px");
-                    })
-                .on("mouseout", function(d) {
-                    div.transition()
-                        .duration(500)
-                        .style("opacity", 0);
-                });
+                    // Add the valueline path
+                    svg.append("path")
+                        .attr("class", "line")
+                        .attr("d", valueline(_data));
+
+                    // Add the scatterplot
+                    svg.selectAll("dot")
+                        .data(_data)
+                        .enter().append("circle")
+                        .attr("r", 4)
+                        .attr("cx", function(d, i) { return xInterval*i + config.margin.left; })
+                        .attr("cy", function(d) { return y1(d.telemetry.damod_data[telemetry_key]) + config.margin.top; })
+                        .attr("class", "circle")
+                        .on("mouseover", function(d) {
+                            div.transition()
+                                .duration(200)
+                                .style("opacity", 1);
+                            div.html(d.telemetry.damod_data[telemetry_key] + ' (' + unit + ')')
+                               .style("left", (d3.event.pageX) + "px")
+                               .style("top", (d3.event.pageY - 26) + "px");
+                            })
+                        .on("mouseout", function(d) {
+                            div.transition()
+                                .duration(500)
+                                .style("opacity", 0);
+                        });
+
+            }
+
         });
     }
     return render;
@@ -147,9 +186,7 @@ var TelemetryValues = TelemetryCollection.extend({
     byDate: function (start_date, end_date) {
         filtered = this.filter(function (model) {
             var date = parseDateFilter(model.get('telemetry').observation_datetime);
-            return (
-                date >= start_date && date <= end_date
-            )
+            return ( date >= start_date && date <= end_date );
         });
         return new TelemetryValues(filtered);
     }
