@@ -15,6 +15,7 @@ d3.lineChart = function(telemetry_key, unit) {
         .style("opacity", 0);
 
     function render(selection) {
+        console.log(selection.length);
         selection.each(function(_data) {
             var chartW = config.width - config.margin.left - config.margin.right,
                 chartH = config.height - config.margin.top - config.margin.bottom;
@@ -43,7 +44,7 @@ d3.lineChart = function(telemetry_key, unit) {
             if(!svg) {
                 svg = d3.select(this)
                     .append('svg')
-                    .classed('chart', true);
+                    .classed('svg-chart', true);
                 var container = svg.append('g').classed('container-group', true);
                 container.append('g').classed('chart-group', true);
                 container.append('g').classed('x-axis-group axis', true);
@@ -182,11 +183,19 @@ var TelemetryChartView = Backbone.View.extend({
         "click .telemetry-key": "updateKey",
     },
     render: function() {
-        d3.select('svg').remove();
-        var data = this.collection.toJSON();
-        this.chartSelection = d3.select(this.el)
-            .datum(data)
-            .call(d3.lineChart(data[0].appendix[0].key, data[0].appendix[0].unit));
+        if (this.collection.length > 0) {
+            $('#telemetry-descriptors').show();
+            $('#data-available').empty();
+            d3.select('svg').remove();
+            var data = this.collection.toJSON();
+            this.chartSelection = d3.select(this.el)
+                .datum(data)
+                .call(d3.lineChart(data[0].appendix[0].key, data[0].appendix[0].unit));
+        } else {
+            $('#telemetry-descriptors').hide();
+            $('#data-available').html("<p>There is no data available for the selected dates.</p>");
+            d3.select('svg').remove();
+        }
     },
     updateKey: function(e){
         d3.select('svg').remove();
