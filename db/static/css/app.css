@@ -260,10 +260,6 @@ footer {
 /* Telemetry D3 visualisation
 ============================= */
 
-.chart {
-    min-height: 500px;
-}
-
 .chart text {
     color: #333;
     font-size: 12px;
