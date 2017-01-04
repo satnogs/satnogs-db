@@ -175,7 +175,9 @@ var TelemetryCollection = Backbone.Collection.extend({
 
 var TelemetryDescriptors = TelemetryCollection.extend({
     parse: function(response){
-        return response[0].appendix;
+        if(response.length !== 0) {
+            return response[0].appendix;
+        }
     }
 });
 
@@ -213,6 +215,8 @@ var TelemetryChartView = Backbone.View.extend({
     chartSelection: null,
     initialize: function() {
         this.collection.fetch();
+        this.updateDates(moment().subtract(7, 'days').format('YYYY/MM/DD'), moment().format('YYYY/MM/DD'));
+        this.renderPlaceholder();
         this.collection.on('update filter', this.render, this);
         chart = d3.lineChart();
     },
@@ -229,10 +233,13 @@ var TelemetryChartView = Backbone.View.extend({
                 .datum(data)
                 .call(d3.lineChart(data[0].appendix[0].key, data[0].appendix[0].unit));
         } else {
-            $('#telemetry-descriptors').hide();
-            $('#data-available').html("<p>There is no data available for the selected dates.</p>");
-            d3.select('svg').remove();
+            this.renderPlaceholder();
         }
+    },
+    renderPlaceholder: function() {
+        $('#telemetry-descriptors').hide();
+        $('#data-available').html("<p>There is no data available for the selected dates.</p>");
+        d3.select('svg').remove();
     },
     updateKey: function(e){
         d3.select('svg').remove();
@@ -271,9 +278,12 @@ $('input[name="daterange"]').daterangepicker(
         locale: {
           format: 'YYYY/MM/DD'
         },
-        startDate: '2016/04/29',
-        endDate: '2016/05/01',
-        "autoApply": true,
+        dateLimit: {
+            "days": 60
+        },
+        autoApply: true,
+        startDate: moment().subtract(7, 'days').format('YYYY/MM/DD'),
+        endDate: moment().format('YYYY/MM/DD'),
     }, 
     function(start, end, label) {
         telemetryChartView.updateDates(start.format('YYYYMMDD'), end.format('YYYYMMDD'));
