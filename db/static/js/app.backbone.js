@@ -175,32 +175,37 @@ var TelemetryChartView = Backbone.View.extend({
     chartSelection: null,
     initialize: function() {
         this.collection.fetch();
-        _.bindAll(this, 'render', 'update');
-        this.collection.on('update reset', this.render);
+        this.collection.on('update filter', this.render, this);
         chart = d3.lineChart();
     },
     events: {
-        "click .telemetry-key": "update",
+        "click .telemetry-key": "updateKey",
     },
     render: function() {
+        d3.select('svg').remove();
         var data = this.collection.toJSON();
         this.chartSelection = d3.select(this.el)
             .datum(data)
             .call(d3.lineChart(data[0].appendix[0].key, data[0].appendix[0].unit));
     },
-    update: function(e){
+    updateKey: function(e){
         d3.select('svg').remove();
         this.chartSelection.call(d3.lineChart($(e.currentTarget).data("key"), $(e.currentTarget).data("unit")));
         var active = $(e.currentTarget);
         active.addClass('active');
         $('li').not(active).removeClass('active');
     },
+    updateDates: function(start_date, end_date){
+        this.collection = telemetryValues.byDate(start_date, end_date);
+        this.render();
+    },
 });
 
 // Fetch data and render views
 
 var telemetryDescriptorsView = new TelemetryDescriptorsView({ collection: new TelemetryDescriptors() });
-var telemetryChartView = new TelemetryChartView({collection: new TelemetryValues});
+var telemetryValues = new TelemetryValues();
+var telemetryChartView = new TelemetryChartView({collection: telemetryValues});
 
 
 // Parse datetime values
@@ -214,3 +219,17 @@ function parseDateFilter (date) {
     var res = date.substring(0,8);
     return res;
 }
+
+$('input[name="daterange"]').daterangepicker(
+    {
+        locale: {
+          format: 'YYYY/MM/DD'
+        },
+        startDate: '2016/04/29',
+        endDate: '2016/05/01',
+        "autoApply": true,
+    }, 
+    function(start, end, label) {
+        telemetryChartView.updateDates(start.format('YYYYMMDD'), end.format('YYYYMMDD'));
+    }
+);
