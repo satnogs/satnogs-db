@@ -256,6 +256,7 @@ footer {
     color: #ffff00;
 }
 
+
 /* Statistics page
 ==================== */
 .stats {
@@ -271,4 +272,81 @@ footer {
     display: block;
     font-size:  2em;
     font-weight: bold;
+}
+
+
+/* Telemetry D3 visualisation
+============================= */
+
+.chart text {
+    color: #333;
+    font-size: 12px;
+}
+
+svg.chart {
+    margin: 10px 50px;
+}
+
+#telemetry-descriptors {
+    padding: 0;
+}
+
+.telemetry-key {
+    cursor: pointer;
+}
+
+.circle {
+    fill: #286090;
+    cursor: pointer;
+}
+
+.chart-tooltip {
+    position: absolute;
+    background: #286090;
+    color: #fff;
+    font-family: 'ClearSans';
+    font-size: 12px;
+    text-align: center;
+    padding: 5px 5px 6px 5px;
+    border: 0px;
+    border-radius: 3px;
+}
+
+.tick line, .domain {
+  fill: none;
+  stroke: #ddd;
+}
+
+.line {
+    fill: none;
+    stroke: #286090;
+    stroke-width: 2;
+}
+
+/* Telemetry Datepicker */
+
+.datepicker {
+    border-radius: 3px;    
+    padding-bottom: 25px;
+}
+
+.datepicker input {
+    font-family: 'ClearSans';
+    font-size: 13px;
+    padding: 5px 10px;
+    border: none;
+    box-shadow: inset 0px 0px 8px rgba(0,0,0,0.3);  
+    border-bottom-right-radius: 3px;    
+    border-top-right-radius: 3px;    
+    cursor: pointer;
+}
+
+.datepicker .input-group-addon {
+    background: #777;
+    color: #fff;
+    border: none;
+}
+
+.daterangepicker {
+    font-size: 13px;
 }
