@@ -2,5 +2,5 @@
 -r base.txt
 
 # Debug & Testing
-factory-boy==2.7.0
+factory-boy==2.8.1
 flake8==3.2.1

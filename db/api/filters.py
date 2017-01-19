@@ -11,7 +11,7 @@ class TransmitterViewFilter(django_filters.FilterSet):
 
 class TelemetryViewFilter(django_filters.FilterSet):
     satellite = django_filters.NumberFilter(name='transmitter__satellite__norad_cat_id',
-                                            lookup_type='exact')
+                                            lookup_expr='exact')
 
     class Meta:
         model = DemodData
