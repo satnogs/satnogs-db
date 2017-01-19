@@ -106,7 +106,7 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
     'djangobower.finders.BowerFinder',
 )
-MEDIA_ROOT = path.join(BASE_DIR, 'media')
+MEDIA_ROOT = path.join(path.dirname(BASE_DIR), 'media')
 MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 SATELLITE_DEFAULT_IMAGE = '/static/img/sat.png'
