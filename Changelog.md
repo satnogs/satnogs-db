@@ -1,3 +1,12 @@
+## 0.8
+
+* Add telemetry decoding functionlity
+* Add telemetry UI per satellite
+* Add travis support
+* Switch to bower for static dependencies
+* Increase frq precision
+* Add stats visualizations
+
 ## 0.7
 
 * Provide initiliaze command for developers
