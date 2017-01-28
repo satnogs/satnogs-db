@@ -19,8 +19,8 @@
     <div class="col-md-12 satellite-panels">
       <div class="panel panel-default panel-satellite">
         <div class="panel-heading">
-          <div class="satellite-title" data-position-lat="{{ sat_position.lat }}"
-               data-position-lon="{{ sat_position.lon }}">
+          <div class="satellite-title" data-telemetry="{{ satellite.has_telemetry_data }}"
+               data-position-lat="{{ sat_position.lat }}" data-position-lon="{{ sat_position.lon }}">
             {{ satellite }}
           </div>
           {% if satellite.names %}
