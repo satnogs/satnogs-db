@@ -12,6 +12,7 @@
     "d3": "3.5.x",
     "chart.js": "^2.4.0",
     "moment": "2.10.6",
-    "bootstrap-daterangepicker": "2.1.x"
+    "bootstrap-daterangepicker": "2.1.x",
+    "mapbox.js": "2.2.x"
   }
 }
