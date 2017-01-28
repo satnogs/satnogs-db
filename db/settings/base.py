@@ -195,3 +195,10 @@ DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
 # NETWORK API
 NETWORK_API_ENDPOINT = getenv('NETWORK_API_ENDPOINT', 'https://network.satnogs.org/api/')
 DATA_FETCH_DAYS = getenv('DATA_FETCH_DAYS', 10)
+SATELLITE_POSITION_ENDPOINT = getenv('SATELLITE_POSITION_ENDPOINT',
+                                     'https://network.satnogs.org/satellite_position/')
+
+# Mapbox API
+MAPBOX_GEOCODE_URL = 'https://api.tiles.mapbox.com/v4/geocode/mapbox.places/'
+MAPBOX_MAP_ID = getenv('MAPBOX_MAP_ID', '')
+MAPBOX_TOKEN = getenv('MAPBOX_TOKEN', '')

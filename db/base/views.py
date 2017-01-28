@@ -1,4 +1,5 @@
 import logging
+import requests
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
@@ -52,9 +53,18 @@ def satellite(request, norad):
     suggestions = Suggestion.objects.filter(satellite=satellite)
     modes = Mode.objects.all()
 
+    url = '{0}{1}'.format(settings.SATELLITE_POSITION_ENDPOINT, norad)
+
+    try:
+        sat_position = requests.get(url).json()
+    except:
+        sat_position = ''
+
     return render(request, 'base/satellite.html', {'satellite': satellite,
-                                                   'suggestions': suggestions,
-                                                   'modes': modes})
+                                                   'suggestions': suggestions, 'modes': modes,
+                                                   'sat_position': sat_position,
+                                                   'mapbox_id': settings.MAPBOX_MAP_ID,
+                                                   'mapbox_token': settings.MAPBOX_TOKEN})
 
 
 @login_required

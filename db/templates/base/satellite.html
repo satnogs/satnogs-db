@@ -7,7 +7,8 @@
 
 {% block css %}
   <link rel="stylesheet" href="{% static 'lib/bootstrap-daterangepicker/daterangepicker.css' %}">
-{% endblock %}
+  <link rel="stylesheet" href="{% static 'lib/mapbox.js/mapbox.css' %}">
+{% endblock css %}
 
 {% block top %}{% endblock %}
 
@@ -18,18 +19,22 @@
     <div class="col-md-12 satellite-panels">
       <div class="panel panel-default panel-satellite">
         <div class="panel-heading">
-          <div class="satellite-title">
+          <div class="satellite-title" data-telemetry="{{ satellite.has_telemetry_data }}"
+               data-position-lat="{{ sat_position.lat }}" data-position-lon="{{ sat_position.lon }}">
             {{ satellite }}
           </div>
+          {% if satellite.names %}
+            <div class="satellite-names hidden-xs">{{ satellite.names }}</div>
+          {% endif %}
         </div>
         <div class="row panel-body">
-          <div class="col-md-3 panel-satellite">
-            <div>
-              {{ satellite.names }}
-            </div>
+          <div class="col-sm-3">
             <div>
               <img src="{{ satellite.get_image }}" alt="{{ satellite.name }}" class="satellite-img-full">
             </div>
+          </div>
+          <div class="col-sm-9">
+            <div id="map" data-mapboxid="{{ mapbox_id }}" data-mapboxtoken="{{ mapbox_token }}"></div>
           </div>
         </div>
       </div>
@@ -42,28 +47,26 @@
       <div class="panel panel-default panel-satellite">
         <div class="panel-heading">
           <div class="satellite-title">
-            Transmitters
-          </div>
-        </div>
-        <div class="row panel-body">
-          <div class="col-md-3 panel-satellite">
+            Transmitters <span class="badge">{{ satellite.transmitters.count }}</span>
             {% if suggestions %}
-              <div class="suggestions-counter label label-primary">
+              <div class="suggestions-counter label label-default">
                 {{ suggestions.count }} suggestion{{ suggestions.count|pluralize }} pending
               </div>
             {% endif %}
-            <div>
-              <button type="button"
-                      class="btn btn-primary"
-                      data-toggle="modal" data-target="#NewSuggestionModal">
-                Suggest New Transmitter
-              </button>
-            </div>
           </div>
-          <div class="col-md-9">
+          <div class="satellite-suggest pull-right">
+            <button type="button"
+                    class="btn btn-primary btn-sm"
+                    data-toggle="modal" data-target="#NewSuggestionModal">
+              <span class="glyphicon glyphicon-plus" title="Suggest edits"></span> Suggest New Transmitter
+            </button>
+          </div>
+        </div>
+        <div class="row panel-body">
+          <div class="col-md-12">
             <div class="row">
               {% for transmitter in satellite.transmitters.all %}
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <div class="panel {% if transmitter.alive %}panel-primary{% else %}panel-danger{% endif %} panel-transmitter">
                     <div class="panel-heading">
                       <h3 class="panel-title">
@@ -183,7 +186,7 @@
                     </div>
                   </div>
                 </div>
-                {% if forloop.counter|divisibleby:2 %}
+                {% if forloop.counter|divisibleby:3 %}
                   </div>
                    {% if not loop.last %}
                      <div class="row">
@@ -202,7 +205,7 @@
               <hr>
               <div class="row">
                 {% for suggestion in suggestions %}
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="panel panel-{% if suggestion.transmitter %}info{% else %}warning{% endif %} panel-transmitter">
                       <div class="panel-heading">
                         <h3 class="panel-title">
@@ -380,5 +383,7 @@
   <script src="{% static 'lib/d3/d3.min.js' %}"></script>
   <script src="{% static 'lib/moment/moment.js' %}"></script>
   <script src="{% static 'lib/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+  <script src="{% static 'lib/mapbox.js/mapbox.js' %}"></script>
   <script src="{% static 'js/app.backbone.js' %}"></script>
+  <script src="{% static 'js/map.js' %}"></script>
 {% endblock %}

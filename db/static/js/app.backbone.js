@@ -159,108 +159,6 @@ d3.lineChart = function(telemetry_key, unit) {
     return render;
 };
 
-// Retreive Satellite Id
-
-var satelliteId = $('#telemetry-block').data('satid');
-
-// Backbone Models
-
-var TelemetryData = Backbone.Model.extend({});
-
-// Backbone Collections
-
-var TelemetryCollection = Backbone.Collection.extend({
-    url:"/api/telemetry/?satellite=" + satelliteId
-});
-
-var TelemetryDescriptors = TelemetryCollection.extend({
-    parse: function(response){
-        if(response.length !== 0) {
-            return response[0].appendix;
-        }
-    }
-});
-
-var TelemetryValues = TelemetryCollection.extend({
-    comparator: function(collection){
-        return( collection.get('telemetry').observation_datetime );
-    },
-    byDate: function (start_date, end_date) {
-        filtered = this.filter(function (model) {
-            var date = parseDateFilter(model.get('telemetry').observation_datetime);
-            return ( date >= start_date && date <= end_date );
-        });
-        return new TelemetryValues(filtered);
-    }
-});
-
-// Backbone Views
-
-var TelemetryDescriptorsView = Backbone.View.extend({
-    el: "#telemetry-descriptors",
-    template: _.template($('#telemetryDescriptorsTemplate').html()),
-    initialize: function(){
-        this.listenTo(this.collection, 'add reset change remove', this.renderItem);
-        this.collection.fetch();
-    },
-    renderItem: function (model) {
-        this.$el.append(this.template(model.toJSON()));
-        $('#telemetry-descriptors li:first-child').addClass('active');
-    }
-});
-
-var TelemetryChartView = Backbone.View.extend({
-    el: ".chart",
-    chart: null,
-    chartSelection: null,
-    initialize: function() {
-        this.collection.fetch();
-        this.updateDates(moment().subtract(7, 'days').format('YYYY/MM/DD'), moment().format('YYYY/MM/DD'));
-        this.renderPlaceholder();
-        this.collection.on('update filter', this.render, this);
-        chart = d3.lineChart();
-    },
-    events: {
-        "click .telemetry-key": "updateKey",
-    },
-    render: function() {
-        if (this.collection.length > 0) {
-            $('#telemetry-descriptors').show();
-            $('#data-available').empty();
-            d3.select('svg').remove();
-            var data = this.collection.toJSON();
-            this.chartSelection = d3.select(this.el)
-                .datum(data)
-                .call(d3.lineChart(data[0].appendix[0].key, data[0].appendix[0].unit));
-        } else {
-            this.renderPlaceholder();
-        }
-    },
-    renderPlaceholder: function() {
-        $('#telemetry-descriptors').hide();
-        $('#data-available').html("<p>There is no data available for the selected dates.</p>");
-        d3.select('svg').remove();
-    },
-    updateKey: function(e){
-        d3.select('svg').remove();
-        this.chartSelection.call(d3.lineChart($(e.currentTarget).data("key"), $(e.currentTarget).data("unit")));
-        var active = $(e.currentTarget);
-        active.addClass('active');
-        $('li').not(active).removeClass('active');
-    },
-    updateDates: function(start_date, end_date){
-        this.collection = telemetryValues.byDate(start_date, end_date);
-        this.render();
-    },
-});
-
-// Fetch data and render views
-
-var telemetryDescriptorsView = new TelemetryDescriptorsView({ collection: new TelemetryDescriptors() });
-var telemetryValues = new TelemetryValues();
-var telemetryChartView = new TelemetryChartView({collection: telemetryValues});
-
-
 // Parse datetime values
 
 function parseDate (date) {
@@ -273,19 +171,129 @@ function parseDateFilter (date) {
     return res;
 }
 
-$('input[name="daterange"]').daterangepicker(
-    {
-        locale: {
-          format: 'YYYY/MM/DD'
+// Check if Satellite has telemetry data
+
+var has_telemetry_data = $('.satellite-title').data('telemetry');
+
+if (has_telemetry_data) {
+    $('#telemetry').show();
+
+    // Retreive Satellite id
+
+    var satelliteId = $('#telemetry-block').data('satid');
+
+
+    // Backbone Models
+
+    var TelemetryData = Backbone.Model.extend({});
+
+    // Backbone Collections
+
+    var TelemetryCollection = Backbone.Collection.extend({
+        url:"/api/telemetry/?satellite=" + satelliteId
+    });
+
+    var TelemetryDescriptors = TelemetryCollection.extend({
+        parse: function(response){
+            if(response.length !== 0) {
+                return response[0].appendix;
+            }
+        }
+    });
+
+    var TelemetryValues = TelemetryCollection.extend({
+        comparator: function(collection){
+            return( collection.get('telemetry').observation_datetime );
         },
-        dateLimit: {
-            "days": 60
+        byDate: function (start_date, end_date) {
+            filtered = this.filter(function (model) {
+                var date = parseDateFilter(model.get('telemetry').observation_datetime);
+                return ( date >= start_date && date <= end_date );
+            });
+            return new TelemetryValues(filtered);
+        }
+    });
+
+    // Backbone Views
+
+    var TelemetryDescriptorsView = Backbone.View.extend({
+        el: "#telemetry-descriptors",
+        template: _.template($('#telemetryDescriptorsTemplate').html()),
+        initialize: function(){
+            this.listenTo(this.collection, 'add reset change remove', this.renderItem);
+            this.collection.fetch();
         },
-        autoApply: true,
-        startDate: moment().subtract(7, 'days').format('YYYY/MM/DD'),
-        endDate: moment().format('YYYY/MM/DD'),
-    }, 
-    function(start, end, label) {
-        telemetryChartView.updateDates(start.format('YYYYMMDD'), end.format('YYYYMMDD'));
-    }
-);
+        renderItem: function (model) {
+            this.$el.append(this.template(model.toJSON()));
+            $('#telemetry-descriptors li:first-child').addClass('active');
+        }
+    });
+
+    var TelemetryChartView = Backbone.View.extend({
+        el: ".chart",
+        chart: null,
+        chartSelection: null,
+        initialize: function() {
+            this.collection.fetch();
+            this.updateDates(moment().subtract(7, 'days').format('YYYY/MM/DD'), moment().format('YYYY/MM/DD'));
+            this.renderPlaceholder();
+            this.collection.on('update filter', this.render, this);
+            chart = d3.lineChart();
+        },
+        events: {
+            "click .telemetry-key": "updateKey",
+        },
+        render: function() {
+            if (this.collection.length > 0) {
+                $('#telemetry-descriptors').show();
+                $('#data-available').empty();
+                d3.select('svg').remove();
+                var data = this.collection.toJSON();
+                this.chartSelection = d3.select(this.el)
+                    .datum(data)
+                    .call(d3.lineChart(data[0].appendix[0].key, data[0].appendix[0].unit));
+            } else {
+                this.renderPlaceholder();
+            }
+        },
+        renderPlaceholder: function() {
+            $('#telemetry-descriptors').hide();
+            $('#data-available').html("<p>There is no data available for the selected dates.</p>");
+            d3.select('svg').remove();
+        },
+        updateKey: function(e){
+            d3.select('svg').remove();
+            this.chartSelection.call(d3.lineChart($(e.currentTarget).data("key"), $(e.currentTarget).data("unit")));
+            var active = $(e.currentTarget);
+            active.addClass('active');
+            $('li').not(active).removeClass('active');
+        },
+        updateDates: function(start_date, end_date){
+            this.collection = telemetryValues.byDate(start_date, end_date);
+            this.render();
+        },
+    });
+
+    // Fetch data and render views
+
+    var telemetryDescriptorsView = new TelemetryDescriptorsView({ collection: new TelemetryDescriptors() });
+    var telemetryValues = new TelemetryValues();
+    var telemetryChartView = new TelemetryChartView({collection: telemetryValues});
+
+    $('input[name="daterange"]').daterangepicker(
+        {
+            locale: {
+              format: 'YYYY/MM/DD'
+            },
+            dateLimit: {
+                "days": 60
+            },
+            autoApply: true,
+            startDate: moment().subtract(7, 'days').format('YYYY/MM/DD'),
+            endDate: moment().format('YYYY/MM/DD'),
+        },
+        function(start, end, label) {
+            telemetryChartView.updateDates(start.format('YYYYMMDD'), end.format('YYYYMMDD'));
+        }
+    );
+}

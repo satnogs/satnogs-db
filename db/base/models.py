@@ -48,6 +48,13 @@ class Satellite(models.Model):
         pending = Suggestion.objects.filter(satellite=self.id).count()
         return pending
 
+    @property
+    def has_telemetry_data(self):
+        demoddata = 0
+        for transmitter in self.transmitters.all():
+            demoddata += DemodData.objects.filter(transmitter=transmitter).count()
+        return demoddata
+
     def __unicode__(self):
         return '{0} - {1}'.format(self.norad_cat_id, self.name)
 
