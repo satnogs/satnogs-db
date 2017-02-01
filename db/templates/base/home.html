@@ -63,9 +63,12 @@
               <div class="satellite-title">{{ sat.norad_cat_id }} - {{ sat.name }}</div>
               <div>{{ sat.names }}</div>
               <div class="satellite-transmitters">
-                {% for transmitter in sat.transmitters.all %}
+                {% for transmitter in sat.transmitters.all|slice:":5" %}
                   <span class="label label-default">{{ transmitter.description }}</span>
                 {% endfor %}
+                {% if sat.transmitters.all.count > 5 %}
+                  <span class="label label-default">+{{ sat.transmitters.all.count|add:"-5" }}</span>
+                {% endif %}
               </div>
             </div>
           </div>
