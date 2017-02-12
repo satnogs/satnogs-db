@@ -14,27 +14,27 @@
     <div class="col-md-4">
       <div class="row hidden-xs hidden-sm">
         <div class="{% if suggestions %}col-md-3{% else %}col-md-4{% endif %}">
-          <p class="stats">
+          <p class="statistics">
             <img src="{% static 'img/satellites.png' %}">
             {{ satellites.count }}
           </p>
         </div>
         <div class="{% if suggestions %}col-md-3{% else %}col-md-4{% endif %}">
-          <p class="stats">
+          <p class="statistics">
             <img src="{% static 'img/transmitters.png' %}">
             {{ transmitters }}
           </p>
         </div>
         {% if suggestions %}
           <div class="col-md-3">
-            <p class="stats">
+            <p class="statistics">
               <img src="{% static 'img/suggestions.png' %}">
               {{ suggestions }}
             </p>
           </div>
         {% endif %}
         <div class="{% if suggestions %}col-md-3{% else %}col-md-4{% endif %}">
-          <p class="stats">
+          <p class="statistics">
             <img src="{% static 'img/contributors.png' %}">
             {{ contributors }}
           </p>
