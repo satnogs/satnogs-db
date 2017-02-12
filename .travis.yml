@@ -1,9 +1,10 @@
 language: python
+dist: trusty
 python:
   - "2.7"
 install:
   - pip install flake8
-  - npm install -g jshint
+  - npm install -g eslint
 script:
   - flake8 .
-  - jshint .
+  - eslint 'db/static/js/*.js'

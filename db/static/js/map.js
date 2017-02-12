@@ -1,3 +1,5 @@
+/*global L */
+
 $(document).ready(function() {
     'use strict';
 
@@ -17,16 +19,16 @@ $(document).ready(function() {
     var geojson = {
         type: 'FeatureCollection',
         features: [{
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [lon, lat]
+            'type': 'Feature',
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [lon, lat]
             },
-            "properties": {
-                "icon": {
-                    "iconUrl": "/static/img/satellite-marker.png",
-                    "iconSize": [32, 32],
-                    "iconAnchor": [16, 16],
+            'properties': {
+                'icon': {
+                    'iconUrl': '/static/img/satellite-marker.png',
+                    'iconSize': [32, 32],
+                    'iconAnchor': [16, 16],
                 }
             }
         }]
