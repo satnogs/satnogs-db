@@ -7,7 +7,7 @@ $(document).ready(function() {
     });
 
     var t = $('input');
-    t.bind('propertychange keyup input paste', function(event) {
+    t.bind('propertychange keyup input paste', function() {
         var term = t.val().toLowerCase();
         if (term !== '') {
             $('.satellite-group-item').hide();
