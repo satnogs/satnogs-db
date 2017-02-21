@@ -8,7 +8,7 @@ RUN npm install -g bower
 RUN pip install --upgrade pip
 
 COPY ./requirements/ /tmp/requirements/
-RUN pip install -r /tmp/requirements/docker.txt
+RUN pip install --no-cache-dir --require-hashes --no-deps -r /tmp/requirements/docker.txt
 
 WORKDIR /app
 COPY . /app
