@@ -1,34 +1,56 @@
-# Basic stuff
-django==1.10.5
-django-shortuuidfield==0.1.3
-django-compressor==2.1.1
-django-jsonfield==1.0.1
-django-bower==5.2.0
+# Basic
+django==1.10.5 \
+    --hash=sha256:4541a60834f28f308ee7b6e96400feca905fb0de473eb9dad6847e98a36d86d4
+django-shortuuidfield==0.1.3 \
+    --hash=sha256:a292c0fe5538abe947b131e2b914edd9ac44afcc6a40eaec71448e6231a3ef00
+django-jsonfield==1.0.1 \
+    --hash=sha256:6c0afd5554739365b55d86e285cf966cc3a45682fff963463364ea1f6511ca3e
 
 # Cache
-redis==2.10.5
-django-redis-cache==1.7.1
+redis==2.10.5 \
+    --hash=sha256:97156b37d7cda4e7d8658be1148c983984e1a975090ba458cc7e244025191dbd
+django-redis-cache==1.7.1 \
+    --hash=sha256:2b4e3510bbcaf3d331975717afd6f15a36fbaf7622504599d2727dc99f90c64d
 
 # Configuration
-django-dotenv==1.4.1
-dj-database-url==0.4.2
-opbeat==3.5.2
+django-dotenv==1.4.1 \
+    --hash=sha256:2930f6b0c0955ac150e1ca9ac01e84afa71efdbb544dea7155f026e20e401305
+dj-database-url==0.4.2 \
+    --hash=sha256:e16d94c382ea0564c48038fa7fe8d9c890ef1ab1a8ec4cb48e732c124b9482fd
+opbeat==3.5.2 \
+    --hash=sha256:085f42cd2efd8fb4a394ab635fd35d0c270897b6a7303f5d347d7442f0d2bfbd
 
 # Security
-django-braces==1.11.0
-django-secure==1.0.1
+django-braces==1.11.0 \
+    --hash=sha256:6be8277a535565e2140f7b1eb83ec26aa8d181acc8bb046875142a2792e4babe
+django-secure==1.0.1 \
+    --hash=sha256:b14f6e1b1224e9de347aef4e53f00bdd85b505d08a3e28b6357e4c10e2ddf37b
+django-csp==3.2 \
+    --hash=sha256:7cec78ba7c426deba6d4bea188dcfc1a8b2609ad98dd539c365605c9ec2996b2
 
 # Users
-django-allauth==0.30.0
-django-crispy-forms==1.6.1
+django-allauth==0.30.0 \
+    --hash=sha256:231f1e980dee8ee56be4f64e6a4b77cb32b41d977e6ea6bd310b2c8c0bc354bb
+django-crispy-forms==1.6.1 \
+    --hash=sha256:18e904c7bd55c45201739cb343272767ff820263a1fca40a7b388006ce94910c
 
-# Images
-Pillow==4.0.0
+
+# Static
+django-bower==5.2.0 \
+    --hash=sha256:f1cf649842c0cb28f8aa28617e99fc7fb7773bac4e8886ee4e36962a38c99a6e
+django-compressor==2.1.1 \
+    --hash=sha256:6483f6091d614b2f3ddaa0d5061849e7bd40528f4f1fdf0d74e48df09e7c6699
+Pillow==4.0.0 \
+    --hash=sha256:a57f32a2f09ed61800e687aec0b2eebb095499116f50eff99e27e03ed9a8d776
 
 # API
-djangorestframework==3.5.4
-markdown==2.6.8
-django-filter==1.0.1
+djangorestframework==3.5.4 \
+    --hash=sha256:110afa12784ceadfb50808882689302d266785b51e3d13286744333ff6d78e60
+markdown==2.6.8 \
+    --hash=sha256:0ac8a81e658167da95d063a9279c9c1b2699f37c7c4153256a458b3a43860e33
+django-filter==1.0.1 \
+    --hash=sha256:7cca9dab22c72df734ba24fb81ca018fdb6d2020c840e758d473dcedd341aa7b
 
 # Astronomy
-git+https://github.com/comzeradd/orbit.git@cache#egg=orbit
+https://github.com/comzeradd/orbit/archive/0.2.1.tar.gz \
+    --hash=sha256:cb7c9d54c5bfba435d7b7cfa0563be64c859ae9169f1388eb5e2124774cf9a62

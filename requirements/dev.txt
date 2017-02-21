@@ -2,5 +2,7 @@
 -r base.txt
 
 # Debug & Testing
-factory-boy==2.8.1
-flake8==3.3.0
+factory-boy==2.8.1 \
+    --hash=sha256:246f7da9caf9bf855aaa73b4963353ccb147fdd3adcbc419fa29422c5b69dd4c
+flake8==3.3.0 \
+    --hash=sha256:83905eadba99f73fbfe966598aaf1682b3eb6755d2263c5b33a4e8367d60b0d1
