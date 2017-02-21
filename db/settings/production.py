@@ -12,6 +12,18 @@ INSTALLED_APPS = INSTALLED_APPS + (
     'opbeat.contrib.django',
 )
 
+# Cache
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': 'unix:/var/run/redis/redis.sock',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient'
+        },
+        'KEY_PREFIX': 'db-{0}'.format(ENVIRONMENT)
+    }
+}
+
 # Security
 SECURE_HSTS_SECONDS = 60
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
