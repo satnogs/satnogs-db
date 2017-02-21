@@ -16,7 +16,7 @@ INSTALLED_APPS = INSTALLED_APPS + (
 CACHES = {
     'default': {
         'BACKEND': 'redis_cache.RedisCache',
-        'LOCATION': 'unix:/var/run/redis/redis.sock',
+        'LOCATION': 'unix://var/run/redis/redis.sock',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient'
         },
