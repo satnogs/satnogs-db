@@ -20,6 +20,7 @@ THIRD_PARTY_APPS = (
     'crispy_forms',
     'compressor',
     'djangobower',
+    'csp',
 )
 LOCAL_APPS = (
     'db.base',
@@ -38,6 +39,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware',
 )
 
 # Email
@@ -188,6 +190,14 @@ REST_FRAMEWORK = {
 
 # Security
 SECRET_KEY = getenv('SECRET_KEY', 'changeme')
+CSP_DEFAULT_SRC = (
+    "'self'",
+    'https://*.mapbox.com',
+)
+CSP_SCRIPT_SRC = (
+    "'self'",
+    'https://*.google-analytics.com',
+)
 
 # Database
 DATABASE_URL = getenv('DATABASE_URL', 'sqlite:///db.sqlite3')

@@ -1,9 +1,7 @@
 # Basic stuff
 django==1.10.5
 django-shortuuidfield==0.1.3
-django-compressor==2.1.1
 django-jsonfield==1.0.1
-django-bower==5.2.0
 
 # Cache
 redis==2.10.5
@@ -17,12 +15,15 @@ opbeat==3.5.2
 # Security
 django-braces==1.11.0
 django-secure==1.0.1
+django-csp==3.2
 
 # Users
 django-allauth==0.30.0
 django-crispy-forms==1.6.1
 
-# Images
+# Static
+django-bower==5.2.0
+django-compressor==2.1.1
 Pillow==4.0.0
 
 # API
