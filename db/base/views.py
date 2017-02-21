@@ -11,6 +11,7 @@ from django.http import HttpResponseNotFound, HttpResponseServerError, HttpRespo
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
+from django.views.decorators.cache import cache_page
 
 from db.base.models import Mode, Transmitter, Satellite, Suggestion
 from db.base.forms import SuggestionForm
@@ -18,6 +19,7 @@ from db.base.forms import SuggestionForm
 logger = logging.getLogger('db')
 
 
+@cache_page(settings.CACHE_TTL)
 def home(request):
     """View to render home page."""
     satellites = Satellite.objects.all()
@@ -131,6 +133,7 @@ def stats(request):
     return render(request, 'base/stats.html')
 
 
+@cache_page(settings.CACHE_TTL)
 def statistics(request):
     """View to create statistics endpoint."""
     satellites = Satellite.objects.all()

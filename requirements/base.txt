@@ -5,6 +5,10 @@ django-compressor==2.1.1
 django-jsonfield==1.0.1
 django-bower==5.2.0
 
+# Cache
+redis==2.10.5
+django-redis-cache==1.7.1
+
 # Configuration
 django-dotenv==1.4.1
 dj-database-url==0.4.2
