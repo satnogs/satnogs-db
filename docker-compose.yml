@@ -19,4 +19,4 @@ web:
     - ALLOWED_HOSTS=*
     - DATABASE_URL=mysql://satnogsdb:satnogsdb@db/satnogsdb
   command:
-    ./docker/run-compose.sh
+    ./docker/run-docker.sh
