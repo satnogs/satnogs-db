@@ -5,6 +5,8 @@ db:
   - MYSQL_USER=satnogsdb
   - MYSQL_PASSWORD=satnogsdb
   - MYSQL_ROOT_PASSWORD=toor
+redis:
+  image: redis:3.2.8
 web:
   build: .
   ports:
@@ -13,8 +15,9 @@ web:
     - .:/app
   links:
     - db
+    - redis
   environment:
-    - DJANGO_SETTINGS_MODULE=db.settings.dev
+    - DJANGO_SETTINGS_MODULE=db.settings.docker
     - DEFAULT_FROM_EMAIL=noreply@example.com
     - ALLOWED_HOSTS=*
     - DATABASE_URL=mysql://satnogsdb:satnogsdb@db/satnogsdb
