@@ -1,10 +1,12 @@
-from jsonfield import JSONField
 from shortuuidfield import ShortUUIDField
 
-from django.core.validators import MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
+
+
+DATA_SOURCES = ['manual', 'network', 'api']
 
 
 class TransmitterApprovedManager(models.Manager):
@@ -31,7 +33,7 @@ class Satellite(models.Model):
     names = models.TextField(blank=True)
     image = models.ImageField(upload_to='satellites', blank=True,
                               help_text='Ideally: 250x250')
-    telemetry_schema = JSONField(blank=True)
+    telemetry_schema = models.JSONField(blank=True)
     telemetry_decoder = models.CharField(max_length=20, blank=True)
 
     class Meta:
@@ -108,6 +110,13 @@ class Suggestion(Transmitter):
 
 
 class DemodData(models.Model):
-    transmitter = models.ForeignKey(Transmitter)
-    data_id = models.PositiveIntegerField()
-    payload = JSONField()
+    satellite = models.ForeignKey(Satellite)
+    transmitter = models.ForeignKey(Transmitter, blank=True)
+    source = models.CharField(choices=zip(DATA_SOURCES, DATA_SOURCES),
+                              max_length=7, default='network')
+    data_id = models.PositiveIntegerField(blank=True)
+    payload_frame = models.TextField(blank=True)
+    payload_decoded = models.JSONField(blank=True)
+    observer = models.CharField(max_length=45)
+    lat = models.FloatField(validators=[MaxValueValidator(90), MinValueValidator(-90)])
+    lng = models.FloatField(validators=[MaxValueValidator(180), MinValueValidator(-180)])
