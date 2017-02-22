@@ -113,10 +113,7 @@
       <script src="{% static 'lib/jquery/dist/jquery.min.js' %}"></script>
       <script src="{% static 'lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
       <script src="{% static 'js/app.js' %}"></script>
-      {% block javascript %}
-      {% endblock javascript %}
-
-      <!-- Google Analytics -->
+      {% block javascript %}{% endblock javascript %}
       {{ analytics_code }}
     {% endcompress %}
 </body>

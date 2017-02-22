@@ -6,3 +6,21 @@ factory-boy==2.8.1 \
     --hash=sha256:246f7da9caf9bf855aaa73b4963353ccb147fdd3adcbc419fa29422c5b69dd4c
 flake8==3.3.0 \
     --hash=sha256:83905eadba99f73fbfe966598aaf1682b3eb6755d2263c5b33a4e8367d60b0d1
+faker==0.7.7 \
+    --hash=sha256:249d1bd8fddb80643d4dc91b72c6089c847ab2d0deead946a6d339209ac24146
+
+# Deps
+configparser==3.5.0 \
+    --hash=sha256:5308b47021bc2340965c371f0f058cc6971a04502638d4244225c49d80db273a
+pycodestyle==2.3.1 \
+    --hash=sha256:6c4245ade1edfad79c3446fadfc96b0de2759662dc29d07d80a6f27ad1ca6ba9
+pyflakes==1.5.0 \
+    --hash=sha256:cc5eadfb38041f8366128786b4ca12700ed05bbf1403d808e89d57d67a3875a7
+mccabe==0.6.1 \
+    --hash=sha256:ab8a6258860da4b6677da4bd2fe5dc2c659cff31b3ee4f7f5d64e79735b80d42
+enum34==1.1.6 \
+    --hash=sha256:6bd0f6ad48ec2aa117d3d141940d484deccda84d4fcd884f5c3d93c23ecd8c79
+ipaddress==1.0.18 \
+    --hash=sha256:d34cf15d95ce9a734560f7400a8bd2ac2606f378e2a1d0eadbf1c98707e7c74a
+python_dateutil==2.6.0 \
+    --hash=sha256:537bf2a8f8ce6f6862ad705cd68f9e405c0b5db014aa40fa29eab4335d4b1716
