@@ -1,6 +1,8 @@
 import requests
 from datetime import datetime, timedelta
+from pytz import timezone
 
+from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand
 from django.conf import settings
 
@@ -18,11 +20,14 @@ class Command(BaseCommand):
         params = {'start': start_date}
         response = requests.get(data_url, params=params)
 
-        satellites = Satellite.objects.exclude(telemetry_decoder__exact='')
+        satellites = Satellite.objects.all()
 
         for obj in response.json():
             norad_cat_id = obj['norad_cat_id']
             data_id = obj['id']
+            station = obj['station_name']
+            lat = obj['station_lat']
+            lng = obj['station_lng']
             try:
                 satellite = satellites.get(norad_cat_id=norad_cat_id)
             except Satellite.DoesNotExist:
@@ -30,17 +35,18 @@ class Command(BaseCommand):
             try:
                 transmitter = Transmitter.objects.get(uuid=obj['transmitter'])
             except Transmitter.DoesNotExist:
-                continue
-            demoddata = DemodData.objects.filter(data_id=data_id).delete()
+                transmitter = None
 
-            decoder_module = 'db.base.decoders.{0}'.format(satellite.telemetry_decoder)
-            decoder = __import__(decoder_module, fromlist='.')
+            DemodData.objects.filter(data_id=data_id).delete()
 
             for demoddata in obj['demoddata']:
                 payload_url = demoddata['payload_demod']
-                observation_datetime = payload_url.split('/')[-1]
-                payload = str(requests.get(payload_url).json())
-                telemetry = decoder.decode_payload(payload, observation_datetime, data_id)
-                for item in telemetry:
-                    DemodData.objects.create(payload=item, transmitter=transmitter,
-                                             data_id=data_id)
+                timestamp = datetime.strptime(payload_url.split('/')[-1].split('_')[0],
+                                              '%Y%m%dT%H%M%SZ').replace(tzinfo=timezone('UTC'))
+                frame = str(requests.get(payload_url).json())
+                payload_frame = ContentFile(frame, name='network')
+
+                DemodData.objects.create(satellite=satellite, transmitter=transmitter,
+                                         data_id=data_id, payload_frame=payload_frame,
+                                         timestamp=timestamp, source='network',
+                                         station=station, lat=lat, lng=lng)

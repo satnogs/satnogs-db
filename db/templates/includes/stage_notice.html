@@ -1,8 +1,8 @@
-<style>
-  #main-navbar {
-      margin-top: 50px;
-  }
-</style>
+{% load staticfiles %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/stage.css' %}">
+{% endblock %}
 
 <div class="stage-notice">
   This is the stage enviroment.

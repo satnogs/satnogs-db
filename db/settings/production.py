@@ -46,4 +46,3 @@ OPBEAT = {
     'APP_ID': os.getenv('OPBEAT_APPID', None),
     'SECRET_TOKEN': os.getenv('OPBEAT_SECRET', None),
 }
-GOOGLE_ANALYTICS_KEY = os.getenv('GOOGLE_ANALYTICS_KEY', None)

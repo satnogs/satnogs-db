@@ -6,7 +6,7 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
 
-from db.base.models import Mode, Satellite, Transmitter, Suggestion, DemodData
+from db.base.models import Mode, Satellite, Transmitter, Suggestion, DemodData, Telemetry
 
 logger = logging.getLogger('db')
 
@@ -97,11 +97,15 @@ class SuggestionAdmin(admin.ModelAdmin):
     transmitter_data.allow_tags = True
 
 
+@admin.register(Telemetry)
+class TelemetryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'decoder')
+
+
 @admin.register(DemodData)
 class DemodDataAdmin(admin.ModelAdmin):
-    list_display = ('id', 'data_id', 'satellite')
-    search_fields = ('data_id', 'transmitter')
-    readonly_fields = ('data_id', 'transmitter', 'payload')
+    list_display = ('id', 'satellite', 'source', 'station')
+    search_fields = ('transmitter__uuid', 'satellite__norad_cat_id', 'observer')
 
     def satellite(self, obj):
-        return obj.transmitter.satellite
+        return obj.satellite

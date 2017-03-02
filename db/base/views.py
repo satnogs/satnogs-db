@@ -15,6 +15,8 @@ from django.views.decorators.cache import cache_page
 
 from db.base.models import Mode, Transmitter, Satellite, Suggestion
 from db.base.forms import SuggestionForm
+from db.base.helpers import get_apikey
+
 
 logger = logging.getLogger('db')
 
@@ -228,3 +230,10 @@ def statistics(request):
         'band_data': band_data_sorted
     }
     return JsonResponse(statistics, safe=False)
+
+
+@login_required
+def users_edit(request):
+    """View to render user settings page."""
+    token = get_apikey(request.user)
+    return render(request, 'base/users_edit.html', {'token': token})

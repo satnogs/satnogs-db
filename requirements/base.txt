@@ -1,6 +1,7 @@
 # Basic
-django==1.10.5 \
-    --hash=sha256:4541a60834f28f308ee7b6e96400feca905fb0de473eb9dad6847e98a36d86d4
+Django==1.10.6 \
+    --hash=sha256:2cfb83859bfaa10e2bd586340bead27c69fdcaa21fa683a008cc712482c26726 \
+    --hash=sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 django-shortuuidfield==0.1.3 \
     --hash=sha256:a292c0fe5538abe947b131e2b914edd9ac44afcc6a40eaec71448e6231a3ef00
 django-jsonfield==1.0.1 \
@@ -19,6 +20,8 @@ dj-database-url==0.4.2 \
     --hash=sha256:e16d94c382ea0564c48038fa7fe8d9c890ef1ab1a8ec4cb48e732c124b9482fd
 opbeat==3.5.2 \
     --hash=sha256:085f42cd2efd8fb4a394ab635fd35d0c270897b6a7303f5d347d7442f0d2bfbd
+pytz==2016.10 \
+    --hash=sha256:a1ea35e87a63c7825846d5b5c81d23d668e8a102d3b1b465ce95afe1b3a2e065
 
 # Security
 django-braces==1.11.0 \
@@ -29,11 +32,12 @@ django-csp==3.2 \
     --hash=sha256:7cec78ba7c426deba6d4bea188dcfc1a8b2609ad98dd539c365605c9ec2996b2
 
 # Users
-django-allauth==0.30.0 \
-    --hash=sha256:231f1e980dee8ee56be4f64e6a4b77cb32b41d977e6ea6bd310b2c8c0bc354bb
+django-allauth==0.31.0 \
+    --hash=sha256:edfff4599cd5431e4af380ddb9fc66e7b923157dcac67cceb5604b3c58003907
+django-avatar==3.1.0 \
+    --hash=sha256:0e29c99e488061f9ef9cc1fb52306e31d849379fb63aa5acd2adeb400a106e84
 django-crispy-forms==1.6.1 \
     --hash=sha256:18e904c7bd55c45201739cb343272767ff820263a1fca40a7b388006ce94910c
-
 
 # Static
 django-bower==5.2.0 \
@@ -54,3 +58,35 @@ django-filter==1.0.1 \
 # Astronomy
 https://github.com/comzeradd/orbit/archive/0.2.1.tar.gz \
     --hash=sha256:cb7c9d54c5bfba435d7b7cfa0563be64c859ae9169f1388eb5e2124774cf9a62
+
+# Deps
+shortuuid==0.5.0 \
+    --hash=sha256:d08fd398f40f8baf87e15eef8355e92fa541bca4eb8465fefab7ee22f92711b9
+six==1.10.0 \
+    --hash=sha256:0ff78c403d9bccf5a425a6d31a12aa6b47f1c21ca4dc2573a7e2f32a97335eb1
+rcssmin==1.0.6 \
+    --hash=sha256:ca87b695d3d7864157773a61263e5abb96006e9ff0e021eff90cbe0e1ba18270
+rjsmin==1.0.12 \
+    --hash=sha256:dd9591aa73500b08b7db24367f8d32c6470021f39d5ab4e50c7c02e4401386f1
+django-appconf==1.0.2 \
+    --hash=sha256:ddab987d14b26731352c01ee69c090a4ebfc9141ed223bef039d79587f22acd9
+requests==2.13.0 \
+    --hash=sha256:1a720e8862a41aa22e339373b526f508ef0c8988baf48b84d3fc891a8e237efb
+requests_cache==0.4.13 \
+    --hash=sha256:e9270030becc739b0a7f7f834234c73a878b2d794122bf76f40055a22419eb67
+requests-oauthlib==0.8.0 \
+    --hash=sha256:50a8ae2ce8273e384895972b56193c7409601a66d4975774c60c2aed869639ca
+oauthlib==2.0.1 \
+    --hash=sha256:132ad46df25e53a84b33f1fd43f80e973cda2cb018cc0168d7d0c8c4d5cef9b5
+python-openid==2.2.5 \
+    --hash=sha256:92c51c3ecec846cbec4aeff11f9ff47303d4a63f93b0e6ac0ec02a091fed70ef
+lxml==3.7.3 \
+    --hash=sha256:9fd1aef1e6d834e5191383bd1db7a0b56a564905ab9060e30ee6964aabbb905a
+pyephem==3.7.6.0 \
+    --hash=sha256:143146da32a07a4cf9725b5656ba095d24978c22a0363414203e72c39bae52bd
+urllib3==1.20 \
+    --hash=sha256:b64c0faa183e9e9e76193146c4147e82a734982c6b6719dca851d6cc4ec90c01
+certifi==2017.1.23 \
+    --hash=sha256:f74a224a9860fd5a2e9757230a7ea3eba82d6d46914780abc18e70c8b58d4bf8
+olefile==0.44 \
+    --hash=sha256:61f2ca0cd0aa77279eb943c07f607438edf374096b66332fae1ee64a6f0f73ad

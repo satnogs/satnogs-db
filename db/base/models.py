@@ -1,10 +1,22 @@
-from jsonfield import JSONField
+from os import path
 from shortuuidfield import ShortUUIDField
+from uuid import uuid4
 
-from django.core.validators import MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
+
+from db.base.helpers import gridsquare
+
+DATA_SOURCES = ['manual', 'network', 'sids']
+
+
+def _name_payload_frame(instance, filename):
+    folder = 'payload_frames'
+    ext = 'raw'
+    filename = '{0}_{1}.{2}'.format(filename, uuid4().hex, ext)
+    return path.join(folder, filename)
 
 
 class TransmitterApprovedManager(models.Manager):
@@ -25,17 +37,15 @@ class Mode(models.Model):
 
 
 class Satellite(models.Model):
-    """Model for SatNOGS satellites."""
+    """Model for all the satellites."""
     norad_cat_id = models.PositiveIntegerField()
     name = models.CharField(max_length=45)
     names = models.TextField(blank=True)
     image = models.ImageField(upload_to='satellites', blank=True,
                               help_text='Ideally: 250x250')
-    telemetry_schema = JSONField(blank=True)
-    telemetry_decoder = models.CharField(max_length=20, blank=True)
 
     class Meta:
-        ordering = ["name"]
+        ordering = ['norad_cat_id']
 
     def get_image(self):
         if self.image and hasattr(self.image, 'url'):
@@ -50,16 +60,20 @@ class Satellite(models.Model):
 
     @property
     def has_telemetry_data(self):
-        demoddata = 0
-        for transmitter in self.transmitters.all():
-            demoddata += DemodData.objects.filter(transmitter=transmitter).count()
-        return demoddata
+        has_data = DemodData.objects.filter(satellite=self.id).count()
+        return has_data
+
+    @property
+    def has_telemetry_decoders(self):
+        has_decoders = Telemetry.objects.filter(satellite=self.id).exclude(decoder='').count()
+        return has_decoders
 
     def __unicode__(self):
         return '{0} - {1}'.format(self.norad_cat_id, self.name)
 
 
 class Transmitter(models.Model):
+    """Model for satellite transmitters."""
     uuid = ShortUUIDField(db_index=True, unique=True)
     description = models.TextField()
     alive = models.BooleanField(default=True)
@@ -95,6 +109,7 @@ class Transmitter(models.Model):
 
 
 class Suggestion(Transmitter):
+    """Model for transmitter suggestions."""
     citation = models.CharField(max_length=255, blank=True)
     user = models.ForeignKey(User, blank=True, null=True,
                              on_delete=models.SET_NULL)
@@ -107,7 +122,48 @@ class Suggestion(Transmitter):
         return self.description
 
 
+class Telemetry(models.Model):
+    """Model for satellite telemtry decoders."""
+    satellite = models.ForeignKey(Satellite, null=True, related_name='telemetries')
+    name = models.CharField(max_length=45)
+    schema = models.TextField(blank=True)
+    decoder = models.CharField(max_length=20, blank=True)
+
+    class Meta:
+        ordering = ['satellite__norad_cat_id']
+        verbose_name_plural = 'Telemetries'
+
+    def __unicode__(self):
+        return self.name
+
+
 class DemodData(models.Model):
-    transmitter = models.ForeignKey(Transmitter)
-    data_id = models.PositiveIntegerField()
-    payload = JSONField()
+    """Model for satellite for observation data."""
+    satellite = models.ForeignKey(Satellite, null=True, related_name='telemetry_data')
+    transmitter = models.ForeignKey(Transmitter, null=True, blank=True)
+    source = models.CharField(choices=zip(DATA_SOURCES, DATA_SOURCES),
+                              max_length=7, default='sids')
+    data_id = models.PositiveIntegerField(blank=True, null=True)
+    payload_frame = models.FileField(upload_to=_name_payload_frame, blank=True, null=True)
+    payload_decoded = models.TextField(blank=True)
+    payload_telemetry = models.ForeignKey(Telemetry, null=True, blank=True)
+    station = models.CharField(max_length=45, default='Unknown')
+    lat = models.FloatField(validators=[MaxValueValidator(90), MinValueValidator(-90)],
+                            default=0)
+    lng = models.FloatField(validators=[MaxValueValidator(180), MinValueValidator(-180)],
+                            default=0)
+    timestamp = models.DateTimeField(null=True)
+
+    class Meta:
+        ordering = ['-timestamp']
+
+    @property
+    def qthlocation(self):
+        try:
+            qth = gridsquare(self.lat, self.lng)
+        except:
+            qth = 'Unknown'
+        return qth
+
+    def __unicode__(self):
+        return 'data-for-{0}'.format(self.satellite.norad_cat_id)
