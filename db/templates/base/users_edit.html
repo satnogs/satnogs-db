@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load tags %}
+{% load staticfiles %}
+
+{% block title %} - Settings{% endblock %}
+
+
+{% block content %}
+  <div class="row text">
+    <div class="col-md-12">
+      <h2>Settings</h2>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div>You can use this token to interact with the API.</div>
+    <div>
+      <code>{{ token }}</code>
+    </div>
+  </div>
+</div>
+{% endblock content %}

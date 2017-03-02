@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load avatar_tags %}
 {% load tags %}
 {% load compress %}
 
@@ -9,10 +10,9 @@
     <title>SatNOGS DB{% block title %}{% endblock title %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% compress css %}
-      <link rel="stylesheet" type="text/css" href="{% static 'lib/bootstrap/dist/css/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{% static 'lib/bootstrap/dist/css/bootstrap.min.css' %}">
       <link rel="stylesheet" href="{% static 'css/app.css' %}">
-      {% block css %}
-      {% endblock %}
+      {% block css %}{% endblock %}
     {% endcompress %}
 
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
@@ -50,11 +50,12 @@
               <li class="dropdown">
                 <a href="#"
                    class="dropdown-toggle"
-                   data-toggle="dropdown">{{ request.user.username }}
+                   data-toggle="dropdown">{% avatar request.user 35 %} {{ request.user.username }}
                    <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                  <li><a href="{% url 'users_edit' %}">Settings</a></li>
+                  <li><a href="{% url 'account_logout' %}">Logout</a></li>
                 </ul>
               </li>
               {% else %}

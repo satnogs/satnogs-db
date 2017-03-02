@@ -11,5 +11,6 @@ base_urlpatterns = ([
     url(r'^suggestion/$', views.suggestion, name='suggestion'),
     url(r'^statistics/$', views.statistics, name='statistics'),
     url(r'^stats/$', views.stats, name='stats'),
+    url(r'^users/edit/$', views.users_edit, name='users_edit'),
     url(r'^robots\.txt$', views.robots, name='robots'),
 ])

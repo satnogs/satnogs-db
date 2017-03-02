@@ -1,0 +1,31 @@
+{% extends "avatar/base.html" %}
+{% load avatar_tags %}
+
+{% block content %}
+  <h2>Avatar</h2>
+
+  <div class="row">
+    <div class="col-md-1">
+      {% avatar user %}
+    </div>
+    <div class="col-md-9">
+      {% if not avatars %}
+        <p>You haven't uploaded an avatar yet. Showing what found at Gravatar.</p>
+      {% endif %}
+      <form class="form-avatar" enctype="multipart/form-data" method="POST" action="{% url 'avatar_add' %}">
+        {% csrf_token %}
+        {{ upload_avatar_form.as_p }}
+        <input type="submit" class="btn btn-sm btn-primary" value="Upload New Image">
+      </form>
+      {% if avatars %}
+        <form class="form-avatar" method="POST" action="{% url 'avatar_delete' %}">
+          {% csrf_token %}
+          {% for avatar in avatars %}
+            <input name="choices" value="{{ avatar.id }}" type="hidden">
+          {% endfor %}
+          <input type="submit" class="btn btn-sm btn-danger" value="Delete Current Avatar">
+        </form>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,3 +1,6 @@
+from rest_framework.authtoken.models import Token
+
+
 UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWX'
 LOWER = 'abcdefghijklmnopqrstuvwx'
 
@@ -27,3 +30,11 @@ def gridsquare(lat, lng):
                       grid_lat_field + grid_lon_subsq + grid_lat_subsq)
 
     return qth
+
+
+def get_apikey(user):
+    try:
+        token = Token.objects.get(user=user)
+    except:
+        token = Token.objects.create(user=user)
+    return token
