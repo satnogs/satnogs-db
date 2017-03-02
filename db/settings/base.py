@@ -14,7 +14,9 @@ DJANGO_APPS = (
     'django.contrib.admin',
 )
 THIRD_PARTY_APPS = (
+    'avatar',
     'rest_framework',
+    'rest_framework.authtoken',
     'allauth',
     'allauth.account',
     'crispy_forms',
@@ -183,6 +185,9 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
     ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
     'DEFAULT_FILTER_BACKENDS': (
         'rest_framework.filters.DjangoFilterBackend',
     )
@@ -197,6 +202,11 @@ CSP_DEFAULT_SRC = (
 CSP_SCRIPT_SRC = (
     "'self'",
     'https://*.google-analytics.com',
+)
+CSP_IMG_SRC = (
+    "'self'",
+    'https://*.gravatar.com',
+    'https://*.mapbox.com',
 )
 
 # Database
