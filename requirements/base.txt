@@ -1,6 +1,7 @@
 # Basic
-django==1.10.5 \
-    --hash=sha256:4541a60834f28f308ee7b6e96400feca905fb0de473eb9dad6847e98a36d86d4
+Django==1.10.6 \
+    --hash=sha256:2cfb83859bfaa10e2bd586340bead27c69fdcaa21fa683a008cc712482c26726 \
+    --hash=sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 django-shortuuidfield==0.1.3 \
     --hash=sha256:a292c0fe5538abe947b131e2b914edd9ac44afcc6a40eaec71448e6231a3ef00
 django-jsonfield==1.0.1 \
@@ -31,8 +32,8 @@ django-csp==3.2 \
     --hash=sha256:7cec78ba7c426deba6d4bea188dcfc1a8b2609ad98dd539c365605c9ec2996b2
 
 # Users
-django-allauth==0.30.0 \
-    --hash=sha256:231f1e980dee8ee56be4f64e6a4b77cb32b41d977e6ea6bd310b2c8c0bc354bb
+django-allauth==0.31.0 \
+    --hash=sha256:edfff4599cd5431e4af380ddb9fc66e7b923157dcac67cceb5604b3c58003907
 django-avatar==3.1.0 \
     --hash=sha256:0e29c99e488061f9ef9cc1fb52306e31d849379fb63aa5acd2adeb400a106e84
 django-crispy-forms==1.6.1 \
