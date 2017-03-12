@@ -48,8 +48,9 @@ Pillow==4.0.0 \
     --hash=sha256:a57f32a2f09ed61800e687aec0b2eebb095499116f50eff99e27e03ed9a8d776
 
 # API
-djangorestframework==3.5.4 \
-    --hash=sha256:110afa12784ceadfb50808882689302d266785b51e3d13286744333ff6d78e60
+djangorestframework==3.6.2 \
+    --hash=sha256:3dc4bb6377dd1d58d8e2adc908d4f2e3bca5d8d0fb8323c49f57c8c8d407f6ec \
+    --hash=sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 markdown==2.6.8 \
     --hash=sha256:0ac8a81e658167da95d063a9279c9c1b2699f37c7c4153256a458b3a43860e33
 django-filter==1.0.1 \
