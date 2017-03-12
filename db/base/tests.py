@@ -124,3 +124,19 @@ class HomeViewTest(TestCase):
     def test_home_page(self):
         response = self.client.get('/')
         self.assertContains(response, 'SatNOGS DB is, and will always be, an open database.')
+
+
+@pytest.mark.django_db(transaction=True)
+class SatelliteViewTest(TestCase):
+    """
+    Test to make sure the satellite page is working
+    """
+    satellite = None
+
+    def setUp(self):
+        self.satellite = SatelliteFactory()
+        self.satellite.save()
+
+    def test_satellite_page(self):
+        response = self.client.get('/satellite/%s/' % self.satellite.norad_cat_id)
+        self.assertContains(response, self.satellite.name)
