@@ -140,3 +140,33 @@ class SatelliteViewTest(TestCase):
     def test_satellite_page(self):
         response = self.client.get('/satellite/%s/' % self.satellite.norad_cat_id)
         self.assertContains(response, self.satellite.name)
+
+
+@pytest.mark.django_db(transaction=True)
+class AboutViewTest(TestCase):
+    """
+    Test to make sure the about page is working
+    """
+    def test_about_page(self):
+        response = self.client.get('/about/')
+        self.assertContains(response, 'SatNOGS DB is an effort to create an hollistic')
+
+
+@pytest.mark.django_db(transaction=True)
+class FaqViewTest(TestCase):
+    """
+    Test to make sure the faq page is working
+    """
+    def test_faq_page(self):
+        response = self.client.get('/faq/')
+        self.assertContains(response, 'How do I suggest a new transmitter?')
+
+
+@pytest.mark.django_db(transaction=True)
+class StatsViewTest(TestCase):
+    """
+    Test to make sure the stats page is working
+    """
+    def test_stats_page(self):
+        response = self.client.get('/stats/')
+        self.assertContains(response, 'Total satellites')
