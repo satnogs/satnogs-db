@@ -4,6 +4,7 @@ from uuid import uuid4
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django.conf import settings
 
@@ -17,6 +18,18 @@ def _name_payload_frame(instance, filename):
     ext = 'raw'
     filename = '{0}_{1}.{2}'.format(filename, uuid4().hex, ext)
     return path.join(folder, filename)
+
+
+def _gen_observer(sender, instance, created, **kwargs):
+    post_save.disconnect(_gen_observer, sender=DemodData)
+    try:
+        qth = gridsquare(instance.lat, instance.lng)
+    except:
+        instance.observer = 'Unknown'
+    else:
+        instance.observer = '{0}-{1}'.format(instance.station, qth)
+    instance.save()
+    post_save.connect(_gen_observer, sender=DemodData)
 
 
 class TransmitterApprovedManager(models.Manager):
@@ -148,6 +161,7 @@ class DemodData(models.Model):
     payload_decoded = models.TextField(blank=True)
     payload_telemetry = models.ForeignKey(Telemetry, null=True, blank=True)
     station = models.CharField(max_length=45, default='Unknown')
+    observer = models.CharField(max_length=60, blank=True)
     lat = models.FloatField(validators=[MaxValueValidator(90), MinValueValidator(-90)],
                             default=0)
     lng = models.FloatField(validators=[MaxValueValidator(180), MinValueValidator(-180)],
@@ -157,13 +171,7 @@ class DemodData(models.Model):
     class Meta:
         ordering = ['-timestamp']
 
-    @property
-    def qthlocation(self):
-        try:
-            qth = gridsquare(self.lat, self.lng)
-        except:
-            qth = 'Unknown'
-        return qth
-
     def __unicode__(self):
         return 'data-for-{0}'.format(self.satellite.norad_cat_id)
+
+post_save.connect(_gen_observer, sender=DemodData)
