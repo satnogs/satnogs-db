@@ -6,9 +6,10 @@
 {% block title %} - Stats{% endblock %}
 
 {% block content %}
+  <!-- Transmitter stats -->
   <div class="row text">
     <div class="col-md-12">
-      <h2>Statistics</h2>
+      <h2>Transmitters</h2>
     </div>
   </div>
   <div class="row stats">
@@ -39,6 +40,54 @@
       </div>
     </div>
   </div>
+
+  <hr>
+  <!-- Data paylod stats -->
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Data per satellite</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Norad ID</th>
+            <th>Name</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for sat in satellites %}
+            {% if sat.count != 0 %}
+              <tr>
+                <td>{{sat.norad_cat_id}}</td>
+                <td><a href="{% url 'satellite' norad=sat.norad_cat_id %}">{{sat.name}}</a></td>
+                <td>{{sat.count}}</td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <h2>Data per station</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for obs in observers %}
+            <tr>
+              <td>{{forloop.counter}}</td>
+              <td>{{obs.observer}}</td>
+              <td>{{obs.count}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
 {% endblock %}
 
 {% block javascript %}

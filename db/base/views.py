@@ -12,8 +12,9 @@ from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.views.decorators.cache import cache_page
+from django.db.models import Count
 
-from db.base.models import Mode, Transmitter, Satellite, Suggestion
+from db.base.models import Mode, Transmitter, Satellite, Suggestion, DemodData
 from db.base.forms import SuggestionForm
 from db.base.helpers import get_apikey
 
@@ -132,7 +133,16 @@ def faq(request):
 
 def stats(request):
     """View to render stats page."""
-    return render(request, 'base/stats.html')
+    satellites = Satellite.objects \
+                          .values('name', 'norad_cat_id') \
+                          .annotate(count=Count('telemetry_data')) \
+                          .order_by('-count')
+    observers = DemodData.objects \
+                         .values('observer') \
+                         .annotate(count=Count('observer')) \
+                         .order_by('-count')
+    return render(request, 'base/stats.html', {'satellites': satellites,
+                                               'observers': observers})
 
 
 @cache_page(settings.CACHE_TTL)
