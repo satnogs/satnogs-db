@@ -303,6 +303,7 @@ footer {
 
 .stats-hud {
     padding: 15px;
+    text-align: center;
 }
 
 .stats-hud-num {
