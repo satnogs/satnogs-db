@@ -1,3 +1,12 @@
+## 0.9
+* Add redis support for cache
+* Add dnd-helper for Do-Not-Track
+* Add CSP support
+* Use hashes for pip
+* First iteratio of SiDS support
+* Add API Key Tokens
+* Split fetch and decode telemetry data jobs
+
 ## 0.8
 
 * Add telemetry decoding functionlity
