@@ -12,7 +12,7 @@ from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.views.decorators.cache import cache_page
-from django.db.models import Count
+from django.db.models import Count, Max
 
 from db.base.models import Mode, Transmitter, Satellite, Suggestion, DemodData
 from db.base.forms import SuggestionForm
@@ -135,11 +135,13 @@ def stats(request):
     """View to render stats page."""
     satellites = Satellite.objects \
                           .values('name', 'norad_cat_id') \
-                          .annotate(count=Count('telemetry_data')) \
+                          .annotate(count=Count('telemetry_data'),
+                                    latest_payload=Max('telemetry_data__timestamp')) \
                           .order_by('-count')
     observers = DemodData.objects \
                          .values('observer') \
-                         .annotate(count=Count('observer')) \
+                         .annotate(count=Count('observer'),
+                                   latest_payload=Max('timestamp')) \
                          .order_by('-count')
     return render(request, 'base/stats.html', {'satellites': satellites,
                                                'observers': observers})

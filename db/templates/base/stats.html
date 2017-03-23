@@ -52,6 +52,7 @@
             <th>Norad ID</th>
             <th>Name</th>
             <th>Data</th>
+            <th>Latest</th>
           </tr>
         </thead>
         <tbody>
@@ -61,6 +62,7 @@
                 <td>{{sat.norad_cat_id}}</td>
                 <td><a href="{% url 'satellite' norad=sat.norad_cat_id %}">{{sat.name}}</a></td>
                 <td>{{sat.count}}</td>
+                <td>{{sat.latest_payload|date:"Y-m-d H:i:s"}}</td>
               </tr>
             {% endif %}
           {% endfor %}
@@ -75,6 +77,7 @@
             <th>#</th>
             <th>Name</th>
             <th>Data</th>
+            <th>Latest</th>
           </tr>
         </thead>
         <tbody>
@@ -83,6 +86,7 @@
               <td>{{forloop.counter}}</td>
               <td>{{obs.observer}}</td>
               <td>{{obs.count}}</td>
+              <td>{{obs.latest_payload|date:"Y-m-d H:i:s"}}</td>
             </tr>
           {% endfor %}
         </tbody>
