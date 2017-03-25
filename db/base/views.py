@@ -54,9 +54,21 @@ def robots(request):
 
 def satellite(request, norad):
     """View to render home page."""
-    satellite = get_object_or_404(Satellite, norad_cat_id=norad)
+    satellite_query = Satellite.objects \
+                               .annotate(latest_payload_time=Max('telemetry_data__timestamp'),
+                                         payload_frames_count=Count('telemetry_data'))
+    satellite = get_object_or_404(satellite_query, norad_cat_id=norad)
     suggestions = Suggestion.objects.filter(satellite=satellite)
     modes = Mode.objects.all()
+    telemetry_data_empty = DemodData.objects.filter(satellite__norad_cat_id=norad,
+                                                    payload_decoded__exact='').count()
+    telemetry_data_count = satellite.payload_frames_count - telemetry_data_empty
+
+    try:
+        latest_frame = DemodData.objects.get(satellite=satellite,
+                                             timestamp=satellite.latest_payload_time)
+    except:
+        latest_frame = ''
 
     url = '{0}{1}'.format(settings.SATELLITE_POSITION_ENDPOINT, norad)
 
@@ -66,7 +78,10 @@ def satellite(request, norad):
         sat_position = ''
 
     return render(request, 'base/satellite.html', {'satellite': satellite,
-                                                   'suggestions': suggestions, 'modes': modes,
+                                                   'suggestions': suggestions,
+                                                   'modes': modes,
+                                                   'latest_frame': latest_frame,
+                                                   'telemetry_data_count': telemetry_data_count,
                                                    'sat_position': sat_position,
                                                    'mapbox_id': settings.MAPBOX_MAP_ID,
                                                    'mapbox_token': settings.MAPBOX_TOKEN})

@@ -289,6 +289,13 @@
             </div>
           </div>
         </div>
+        <div class="panel-footer">
+           <span class="badge">Frames: {{ satellite.telemetry_data.count }}</span>
+           <span class="badge">Decoded: {{ telemetry_data_count }}</span>
+           Latest frame submitted on {{ latest_frame.timestamp|date:'Y-m-d H:i:s' }} by
+           {{ latest_frame.observer }}
+          </body>
+        </div>
       </div>
     </div>
   </div>

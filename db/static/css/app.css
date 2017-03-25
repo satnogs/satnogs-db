@@ -121,14 +121,6 @@ body {
     max-width: 20px;
 }
 
-.panel-satellite {
-    margin-top: 20px;
-}
-
-.panel-satellite > div {
-    margin-bottom: 10px;
-}
-
 .satellite-info {
     min-height: 100px;
 }
