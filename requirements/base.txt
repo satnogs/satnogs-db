@@ -53,8 +53,9 @@ djangorestframework==3.6.2 \
     --hash=sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 markdown==2.6.8 \
     --hash=sha256:0ac8a81e658167da95d063a9279c9c1b2699f37c7c4153256a458b3a43860e33
-django-filter==1.0.1 \
-    --hash=sha256:7cca9dab22c72df734ba24fb81ca018fdb6d2020c840e758d473dcedd341aa7b
+django-filter==1.0.2 \
+    --hash=sha256:11cc64a75c708ca72d03b8bafa2ee2908debc41ae942a55b01fdaed375b5ee14 \
+    --hash=sha256:a6a1b59fc7c9c5da17af1c5c98490f89d2df26b9501934a54d814414af9ee1ac
 
 # Astronomy
 https://github.com/comzeradd/orbit/archive/0.2.1.tar.gz \

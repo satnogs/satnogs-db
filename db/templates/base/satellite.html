@@ -20,11 +20,11 @@
       <div class="panel panel-default panel-satellite">
         <div class="panel-heading">
           <div class="satellite-title" data-telemetry="{{ satellite.has_telemetry_data }}"
-               data-position-lat="{{ sat_position.lat }}" data-position-lon="{{ sat_position.lon }}">
+               data-url="{% url 'satellite_position' satellite.norad_cat_id %}">
             {{ satellite }}
           </div>
           {% if satellite.names %}
-            <div class="satellite-names hidden-xs">{{ satellite.names }}</div>
+            <div class="satellite-names-full hidden-xs">{{ satellite.names }}</div>
           {% endif %}
         </div>
         <div class="row panel-body">
@@ -47,9 +47,9 @@
       <div class="panel panel-default panel-satellite">
         <div class="panel-heading">
           <div class="satellite-title">
-            Transmitters <span class="badge">{{ satellite.transmitters.count }}</span>
+            Transmitters <span class="badge hidden-xs">{{ satellite.transmitters.count }}</span>
             {% if suggestions %}
-              <div class="suggestions-counter label label-default">
+              <div class="suggestions-counter label label-default hidden-xs">
                 {{ suggestions.count }} suggestion{{ suggestions.count|pluralize }} pending
               </div>
             {% endif %}
@@ -58,7 +58,7 @@
             <button type="button"
                     class="btn btn-primary btn-sm"
                     data-toggle="modal" data-target="#NewSuggestionModal">
-              <span class="glyphicon glyphicon-plus" title="Suggest edits"></span> Suggest New Transmitter
+              <span class="glyphicon glyphicon-plus" title="Suggest edits"></span> Suggest <span class="hidden-xs">New Transmitter</span>
             </button>
           </div>
         </div>
@@ -382,7 +382,6 @@
 
 
 {% endblock %}
-
 
 {% block javascript %}
   <script src="{% static 'lib/underscore/underscore-min.js' %}"></script>

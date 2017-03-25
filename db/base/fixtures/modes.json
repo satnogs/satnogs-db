@@ -1,296 +1,303 @@
 [
 {
+    "model": "base.mode",
+    "pk": 1,
     "fields": {
         "name": "FM"
-    },
-    "model": "base.mode",
-    "pk": 1
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 2,
     "fields": {
         "name": "AFSK1k2"
-    },
-    "model": "base.mode",
-    "pk": 2
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 4,
     "fields": {
         "name": "APRS"
-    },
-    "model": "base.mode",
-    "pk": 4
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 5,
     "fields": {
         "name": "SSTV"
-    },
-    "model": "base.mode",
-    "pk": 5
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 6,
     "fields": {
         "name": "CW"
-    },
-    "model": "base.mode",
-    "pk": 6
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 7,
     "fields": {
         "name": "FMN"
-    },
-    "model": "base.mode",
-    "pk": 7
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 9,
     "fields": {
         "name": "USB"
-    },
-    "model": "base.mode",
-    "pk": 9
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 15,
     "fields": {
         "name": "GFSK4k8"
-    },
-    "model": "base.mode",
-    "pk": 15
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 17,
     "fields": {
         "name": "AHRPT"
-    },
-    "model": "base.mode",
-    "pk": 17
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 18,
     "fields": {
         "name": "AFSK9k6"
-    },
-    "model": "base.mode",
-    "pk": 18
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 19,
     "fields": {
         "name": "AM"
-    },
-    "model": "base.mode",
-    "pk": 19
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 20,
     "fields": {
         "name": "LSB"
-    },
-    "model": "base.mode",
-    "pk": 20
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 21,
     "fields": {
         "name": "FSK1k2"
-    },
-    "model": "base.mode",
-    "pk": 21
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 22,
     "fields": {
         "name": "FSK9k6"
-    },
-    "model": "base.mode",
-    "pk": 22
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 25,
     "fields": {
         "name": "APRS9k6"
-    },
-    "model": "base.mode",
-    "pk": 25
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 26,
     "fields": {
         "name": "GFSK1k2"
-    },
-    "model": "base.mode",
-    "pk": 26
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 27,
     "fields": {
         "name": "GFSK2k4"
-    },
-    "model": "base.mode",
-    "pk": 27
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 28,
     "fields": {
         "name": "GFSK9k6"
-    },
-    "model": "base.mode",
-    "pk": 28
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 29,
     "fields": {
         "name": "GFSK19k2"
-    },
-    "model": "base.mode",
-    "pk": 29
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 30,
     "fields": {
         "name": "MSK1k2"
-    },
-    "model": "base.mode",
-    "pk": 30
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 31,
     "fields": {
         "name": "MSK2k4"
-    },
-    "model": "base.mode",
-    "pk": 31
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 32,
     "fields": {
         "name": "MSK4k8"
-    },
-    "model": "base.mode",
-    "pk": 32
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 33,
     "fields": {
         "name": "MSK9k6"
-    },
-    "model": "base.mode",
-    "pk": 33
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 34,
     "fields": {
         "name": "MSK19k2"
-    },
-    "model": "base.mode",
-    "pk": 34
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 35,
     "fields": {
         "name": "MSK38k4"
-    },
-    "model": "base.mode",
-    "pk": 35
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 36,
     "fields": {
         "name": "GMSK1k2"
-    },
-    "model": "base.mode",
-    "pk": 36
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 37,
     "fields": {
         "name": "GMSK2k4"
-    },
-    "model": "base.mode",
-    "pk": 37
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 38,
     "fields": {
         "name": "GMSK4k8"
-    },
-    "model": "base.mode",
-    "pk": 38
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 39,
     "fields": {
         "name": "GMSK9k6"
-    },
-    "model": "base.mode",
-    "pk": 39
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 40,
     "fields": {
         "name": "PSK31"
-    },
-    "model": "base.mode",
-    "pk": 40
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 41,
     "fields": {
         "name": "PSK63"
-    },
-    "model": "base.mode",
-    "pk": 41
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 42,
     "fields": {
         "name": "QPSK31"
-    },
-    "model": "base.mode",
-    "pk": 42
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 43,
     "fields": {
         "name": "QPSK63"
-    },
-    "model": "base.mode",
-    "pk": 43
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 44,
     "fields": {
         "name": "APT"
-    },
-    "model": "base.mode",
-    "pk": 44
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 45,
     "fields": {
         "name": "HRPT"
-    },
-    "model": "base.mode",
-    "pk": 45
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 46,
     "fields": {
         "name": "FSK4k8"
-    },
-    "model": "base.mode",
-    "pk": 46
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 47,
     "fields": {
         "name": "BPSK1k2"
-    },
-    "model": "base.mode",
-    "pk": 47
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 48,
     "fields": {
         "name": "GMSK19k2"
-    },
-    "model": "base.mode",
-    "pk": 48
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 49,
     "fields": {
         "name": "AFSK"
-    },
-    "model": "base.mode",
-    "pk": 49
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 50,
     "fields": {
         "name": "BPSK"
-    },
-    "model": "base.mode",
-    "pk": 50
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 51,
     "fields": {
         "name": "FSK19k2"
-    },
-    "model": "base.mode",
-    "pk": 51
+    }
 },
 {
+    "model": "base.mode",
+    "pk": 52,
     "fields": {
         "name": "BPSK115k2"
-    },
+    }
+},
+{
     "model": "base.mode",
-    "pk": 52
+    "pk": 53,
+    "fields": {
+        "name": "LRPT"
+    }
 }
 ]

@@ -3,46 +3,48 @@
 $(document).ready(function() {
     'use strict';
 
+    var url = $('.satellite-title').data('url');
     var mapboxid = $('div#map').data('mapboxid');
     var mapboxtoken = $('div#map').data('mapboxtoken');
-    var lat = $('.satellite-title').data('position-lat');
-    var lon = $('.satellite-title').data('position-lon');
 
-    if (lat && lon) {
+    L.mapbox.accessToken = mapboxtoken;
+    L.mapbox.config.FORCE_HTTPS = true;
+    var map = L.mapbox.map('map', mapboxid, {
+        zoomControl: false
+    });
 
-        L.mapbox.accessToken = mapboxtoken;
-        L.mapbox.config.FORCE_HTTPS = true;
-        var map = L.mapbox.map('map', mapboxid, {
-            zoomControl: false
-        }).setView([lat, lon], 3);
+    var satIcon = L.icon({
+        iconUrl: '/static/img/satellite-marker.png',
+        iconSize: [32, 32],
+        iconAnchor: [16, 16]
+    });
 
-        var myLayer = L.mapbox.featureLayer().addTo(map);
+    var marker = L.marker([0, 0], {
+        icon: satIcon,
+        clickable: false
+    });
 
-        var geojson = {
-            type: 'FeatureCollection',
-            features: [{
-                'type': 'Feature',
-                'geometry': {
-                    'type': 'Point',
-                    'coordinates': [lon, lat]
-                },
-                'properties': {
-                    'icon': {
-                        'iconUrl': '/static/img/satellite-marker.png',
-                        'iconSize': [32, 32],
-                        'iconAnchor': [16, 16],
-                    }
-                }
-            }]
-        };
+    marker.addTo(map);
 
-        myLayer.on('layeradd', function(e) {
-            var marker = e.layer,
-                feature = marker.feature;
+    function update_map(lat, lon) {
+        map.setView([lat, lon], 3);
 
-            marker.setIcon(L.icon(feature.properties.icon));
-        });
-
-        myLayer.setGeoJSON(geojson);
+        marker.setLatLng(L.latLng(lat, lon));
     }
+
+    (function worker() {
+        $.ajax({
+            url: url,
+            success: function(data) {
+                if (('lat' in data) && ('lon' in data)) {
+                    update_map(data.lat, data.lon);
+                } else {
+                    $('div#map').hide();
+                }
+            },
+            complete: function() {
+                setTimeout(worker, 5000);
+            }
+        });
+    })();
 });
