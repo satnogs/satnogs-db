@@ -133,34 +133,41 @@ body {
     min-height: 100px;
 }
 
-.satellite-group-item {
-    margin-top: 20px;
+.sats {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-a.satellite-item {
-    min-height: 120px;
-    padding: 10px;
-    border: 1px solid #ffffff;
-    cursor: pointer;
+.satellite-group-item {
+    margin: 20px;
+    flex-basis: 20%;
+    text-align: center;
+}
+
+.satellite-item {
     display: block;
-    background-image: linear-gradient(to bottom, #ffffff 0, #f4f4f4 100%);
-    color: black;
-    text-decoration: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-    border-radius: 5px;
+}
+
+.satellite-item .panel-heading {
+    background-image: url('/static/img/sat.png');
+    background-size: cover;
+    height: 120px;
 }
 
 a.satellite-item:hover {
-    box-shadow: 0 2px 5px #808080;
-    transition: all 0.3s ease-out 0s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-out 0s;
+    text-decoration: none;
 }
 
 .satellite-title {
     font-weight: bold;
     font-size: 1.2em;
-    display: inline-block;
     min-height: 30px;
     padding-top: 5px;
+    display: inline-block;
 }
 
 .satellite-title .badge {
@@ -169,10 +176,24 @@ a.satellite-item:hover {
 
 .satellite-names {
     font-size: 1.1em;
+    margin: 5px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
+    white-space: nowrap;
+}
+
+.satellite-names-full {
     margin-bottom: 10px;
     font-weight: normal;
     float: right;
     margin-top: 5px;
+}
+
+.panel-default .satellite-transmitters {
+    position: relative;
+    margin-top: 10px;
 }
 
 #map {
@@ -193,29 +214,10 @@ a.satellite-item:hover {
     display: inline-block;
 }
 
-.satellite-img {
-    max-width: 70px;
-    max-height: 70px;
-    border-radius: 10px;
-    padding: 5px;
-}
-
 .satellite-img-full {
     width: 100%;
     max-height: 250px;
     border-radius: 5px;
-}
-
-.satellite-transmitters {
-    position: absolute;
-    bottom: 0;
-}
-
-.satellite-transmitters > span {
-    display: inline-block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100px;
 }
 
 .panel-transmitter {
