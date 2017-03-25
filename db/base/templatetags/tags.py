@@ -18,9 +18,10 @@ def frq(value):
         to_format = float(value)
     except (TypeError, ValueError):
         return ''
-    prec = to_format / 1000
-    formatted = format(to_format / 1000000, '.3f')
-    if not prec.is_integer():
-        point = str(prec - int(prec))[2:]
-        formatted = format_html('{0}<small>{1}</small> MHz', formatted, point)
-    return formatted
+    prec = int(to_format % 1000)
+    formatted = format((to_format // 1000) / 1000, '.3f')
+    if prec:
+        stripped = str(prec).rstrip('0')
+        formatted = format_html('{0}<small>{1}</small>', formatted, stripped)
+    response = format_html('{0} Mhz', formatted)
+    return response
