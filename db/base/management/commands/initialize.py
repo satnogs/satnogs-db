@@ -19,6 +19,8 @@ class Command(BaseCommand):
         call_command('loaddata', 'modes')
         call_command('loaddata', 'satellites')
         call_command('loaddata', 'transmitters')
+        self.stdout.write("Fetching TLEs...")
+        call_command('update_all_tle')
 
         # Create superuser
         self.stdout.write("Creating a superuser...")

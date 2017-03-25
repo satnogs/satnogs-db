@@ -10,7 +10,7 @@ from db.base.models import Satellite, Transmitter, DemodData
 
 
 class Command(BaseCommand):
-    help = 'Fetch and decode Satellite data from Network'
+    help = 'Fetch Satellite data from Network'
 
     def handle(self, *args, **options):
         apiurl = settings.NETWORK_API_ENDPOINT
