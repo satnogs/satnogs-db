@@ -1,5 +1,7 @@
+import ephem
 import logging
 import requests
+from datetime import datetime
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
@@ -50,6 +52,26 @@ def robots(request):
     response = HttpResponse(data,
                             content_type='text/plain; charset=utf-8')
     return response
+
+
+def satellite_position(request, sat_id):
+    sat = get_object_or_404(Satellite, norad_cat_id=sat_id)
+    try:
+        satellite = ephem.readtle(
+            str(sat.name),
+            str(sat.tle1),
+            str(sat.tle2)
+        )
+    except:
+        data = {}
+    else:
+        now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        satellite.compute(now)
+        data = {
+            'lon': '{0}'.format(satellite.sublong),
+            'lat': '{0}'.format(satellite.sublat)
+        }
+    return JsonResponse(data, safe=False)
 
 
 def satellite(request, norad):
