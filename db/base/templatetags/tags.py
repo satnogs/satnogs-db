@@ -23,5 +23,5 @@ def frq(value):
     if prec:
         stripped = str(prec).rstrip('0')
         formatted = format_html('{0}<small>{1}</small>', formatted, stripped)
-    response = format_html('{0} Mhz', formatted)
+    response = format_html('{0} MHz', formatted)
     return response
