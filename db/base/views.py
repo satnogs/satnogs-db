@@ -193,6 +193,7 @@ def statistics(request):
 
     total_satellites = satellites.count()
     total_transmitters = transmitters.count()
+    total_data = DemodData.objects.all().count()
     alive_transmitters = transmitters.filter(alive=True).count()
     alive_transmitters_percentage = '{0}%'.format(round((float(alive_transmitters) /
                                                          float(total_transmitters)) * 100, 2))
@@ -271,6 +272,7 @@ def statistics(request):
 
     statistics = {
         'total_satellites': total_satellites,
+        'total_data': total_data,
         'transmitters': total_transmitters,
         'transmitters_alive': alive_transmitters_percentage,
         'mode_label': mode_label_sorted,
