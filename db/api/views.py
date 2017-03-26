@@ -5,7 +5,7 @@ from rest_framework.response import Response
 
 from django.core.files.base import ContentFile
 
-from db.api import serializers, filters
+from db.api import serializers, filters, pagination
 from db.base.models import Mode, Satellite, Transmitter, DemodData
 
 
@@ -33,6 +33,7 @@ class TelemetryView(viewsets.ModelViewSet, mixins.CreateModelMixin):
     filter_class = filters.TelemetryViewFilter
     permission_classes = (AllowAny, )
     parser_classes = (FormParser, FileUploadParser)
+    pagination_class = pagination.LinkedHeaderPageNumberPagination
 
     def create(self, request, *args, **kwargs):
         data = {}
@@ -40,7 +41,6 @@ class TelemetryView(viewsets.ModelViewSet, mixins.CreateModelMixin):
         data['satellite'] = Satellite.objects.get(norad_cat_id=request.data.get('noradID')).id
         data['station'] = request.data.get('source')
         timestamp = request.data.get('timestamp')
-        # datetime.strptime(p, '%Y%m%dT%H%M%SZ')
         data['timestamp'] = timestamp
 
         # Convert coordinates to omit N-S and W-E designators

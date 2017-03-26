@@ -12,6 +12,7 @@ class LinkedHeaderPageNumberPagination(PageNumberPagination):
     returns the results as an array, not the pagination controls
     (eg number of results, etc)
     """
+    page_size = 25
 
     def get_paginated_response(self, data):
         next_url = self.get_next_link()
