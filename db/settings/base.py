@@ -207,6 +207,7 @@ CSP_IMG_SRC = (
     "'self'",
     'https://*.gravatar.com',
     'https://*.mapbox.com',
+    'https://*.google-analytics.com',
 )
 
 # Database
