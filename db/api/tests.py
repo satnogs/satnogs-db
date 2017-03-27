@@ -55,6 +55,7 @@ class TransmitterViewApiTest(TestCase):
 
     def setUp(self):
         self.transmitter = TransmitterFactory()
+        self.transmitter.uuid = 'test'
         self.transmitter.save()
 
     def test_list(self):

@@ -64,7 +64,6 @@ class SatelliteFactory(factory.django.DjangoModelFactory):
 
 class TransmitterFactory(factory.django.DjangoModelFactory):
     """Transmitter model factory."""
-    uuid = fuzzy.FuzzyText()
     description = fuzzy.FuzzyText()
     alive = fuzzy.FuzzyChoice(choices=[True, False])
     uplink_low = fuzzy.FuzzyInteger(200000000, 500000000, step=10000)

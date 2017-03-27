@@ -20,7 +20,6 @@ class Command(BaseCommand):
                                   'not exist').format(obj.name, obj.norad_cat_id))
                 continue
 
-            obj.name = sat.name()
             tle = sat.tle()
             obj.tle1 = tle[1]
             obj.tle2 = tle[2]
