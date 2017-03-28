@@ -176,5 +176,9 @@ class DemodData(models.Model):
     def __unicode__(self):
         return 'data-for-{0}'.format(self.satellite.norad_cat_id)
 
+    def display_frame(self):
+        with open(self.payload_frame.path) as fp:
+            return fp.read()
+
 
 post_save.connect(_gen_observer, sender=DemodData)
