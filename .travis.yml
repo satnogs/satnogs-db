@@ -1,5 +1,7 @@
 language: python
 dist: trusty
+notifications:
+  email: false
 python:
   - "2.7"
 install:

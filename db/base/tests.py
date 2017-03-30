@@ -105,8 +105,8 @@ class DemodDataFactory(factory.django.DjangoModelFactory):
     source = fuzzy.FuzzyChoice(choices=DATA_SOURCE_IDS)
     data_id = fuzzy.FuzzyInteger(0, 200)
     payload_frame = factory.django.FileField(filename='data.raw')
-    payload_decoded = None
-    payload_telemetry = None
+    payload_decoded = '{}'
+    payload_telemetry = factory.SubFactory(TelemetryFactory)
     station = fuzzy.FuzzyText()
     lat = fuzzy.FuzzyFloat(-20, 70)
     lng = fuzzy.FuzzyFloat(-180, 180)

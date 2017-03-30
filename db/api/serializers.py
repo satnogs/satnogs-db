@@ -37,24 +37,36 @@ class TransmitterSerializer(serializers.ModelSerializer):
 
 class TelemetrySerializer(serializers.ModelSerializer):
     norad_cat_id = serializers.SerializerMethodField()
-    appendix = serializers.SerializerMethodField()
-    telemetry = serializers.SerializerMethodField()
+    transmitter = serializers.SerializerMethodField()
+    schema = serializers.SerializerMethodField()
+    decoded = serializers.SerializerMethodField()
+    frame = serializers.SerializerMethodField()
 
     class Meta:
         model = DemodData
-        fields = ('norad_cat_id', 'appendix', 'telemetry')
+        fields = ('norad_cat_id', 'transmitter', 'source', 'schema', 'decoded', 'frame',
+                  'observer', 'timestamp')
 
     def get_norad_cat_id(self, obj):
         return obj.satellite.norad_cat_id
 
-    def get_appendix(self, obj):
+    def get_transmitter(self, obj):
+        try:
+            return obj.transmitter.uuid
+        except:
+            return ''
+
+    def get_schema(self, obj):
         try:
             return obj.payload_telemetry.schema
         except:
             return ''
 
-    def get_telemetry(self, obj):
+    def get_decoded(self, obj):
         return obj.payload_decoded
+
+    def get_frame(self, obj):
+        return obj.display_frame()
 
 
 class SidsSerializer(serializers.ModelSerializer):
