@@ -40,8 +40,6 @@ django-crispy-forms==1.6.1 \
     --hash=sha256:18e904c7bd55c45201739cb343272767ff820263a1fca40a7b388006ce94910c
 
 # Static
-django-bower==5.2.0 \
-    --hash=sha256:f1cf649842c0cb28f8aa28617e99fc7fb7773bac4e8886ee4e36962a38c99a6e
 django-compressor==2.1.1 \
     --hash=sha256:6483f6091d614b2f3ddaa0d5061849e7bd40528f4f1fdf0d74e48df09e7c6699
 Pillow==4.0.0 \

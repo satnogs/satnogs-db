@@ -1,7 +1,7 @@
 {
     "name": "satnogs-db",
     "description": "Satellite Transmitter Suggestions App",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "homepage": "https://github.com/satnogs/satnogs-db",
     "license": "AGPLv3",
     "dependencies": {
@@ -13,6 +13,49 @@
         "chart.js": "^2.4.0",
         "moment": "2.10.6",
         "bootstrap-daterangepicker": "2.1.x",
-        "mapbox.js": "2.2.x"
+        "mapbox.js": "2.2.x",
+        "dnt-helper": "schalkneethling/dnt-helper"
+    },
+    "overrides": {
+        "jquery": {
+            "main": "dist/jquery.min.js"
+        },
+        "bootstrap": {
+            "main": [
+                "dist/css/bootstrap.min.css",
+                "dist/js/bootstrap.min.js",
+                "dist/fonts/*"
+            ]
+        },
+        "bootstrap-daterangepicker": {
+            "main": [
+                "daterangepicker.css",
+                "daterangepicker.js"
+            ]
+        },
+        "mapbox.js": {
+            "main": [
+                "mapbox.css",
+                "mapbox.js"
+            ]
+        },
+        "underscore": {
+            "main": "underscore-min.js"
+        },
+        "d3": {
+            "main": "d3.min.js"
+        },
+        "moment": {
+            "main": "moment.js"
+        },
+        "backbone": {
+            "main": "backbone-min.js"
+        },
+        "chart.js": {
+            "main": "dist/Chart.min.js"
+        },
+        "dnt-helper": {
+            "main": "js/dnt-helper.js"
+        }
     }
 }
