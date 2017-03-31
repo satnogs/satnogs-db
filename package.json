@@ -1,0 +1,17 @@
+{
+    "name": "satnogs-db",
+    "version": "0.1.0",
+    "description": "Satellite Transmitter Suggestions Appp",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/satnogs/satnogs-db"
+    },
+    "author": "SatNOGS",
+    "license": "AGPLv3",
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-eslint": "^3.0.1",
+        "gulp-main-bower-files": "^1.6.1",
+        "gulp-stylelint": "^3.9.0"
+    }
+}

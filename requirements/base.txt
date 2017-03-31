@@ -6,6 +6,9 @@ django-shortuuidfield==0.1.3 \
     --hash=sha256:a292c0fe5538abe947b131e2b914edd9ac44afcc6a40eaec71448e6231a3ef00
 django-jsonfield==1.0.1 \
     --hash=sha256:6c0afd5554739365b55d86e285cf966cc3a45682fff963463364ea1f6511ca3e
+celery==4.0.2 \
+    --hash=sha256:0e5b7e0d7f03aa02061abfd27aa9da05b6740281ca1f5228a54fbf7fe74d8afa \
+    --hash=sha256:e3d5a6c56a73ff8f2ddd4d06dc37f4c2afe4bb4da7928b884d0725ea865ef54d
 
 # Cache
 redis==2.10.5 \
@@ -40,8 +43,6 @@ django-crispy-forms==1.6.1 \
     --hash=sha256:18e904c7bd55c45201739cb343272767ff820263a1fca40a7b388006ce94910c
 
 # Static
-django-bower==5.2.0 \
-    --hash=sha256:f1cf649842c0cb28f8aa28617e99fc7fb7773bac4e8886ee4e36962a38c99a6e
 django-compressor==2.1.1 \
     --hash=sha256:6483f6091d614b2f3ddaa0d5061849e7bd40528f4f1fdf0d74e48df09e7c6699
 Pillow==4.0.0 \
@@ -92,3 +93,20 @@ certifi==2017.1.23 \
     --hash=sha256:f74a224a9860fd5a2e9757230a7ea3eba82d6d46914780abc18e70c8b58d4bf8
 olefile==0.44 \
     --hash=sha256:61f2ca0cd0aa77279eb943c07f607438edf374096b66332fae1ee64a6f0f73ad
+billiard==3.5.0.2 \
+    --hash=sha256:82478ebdd3cd4d357613cb4735eb828014364c5e02d3bba96ea6c1565a2c0172 \
+    --hash=sha256:a93c90d59fca62ad63f92b3d2bf1d752c154dde90a3100dba4c8e439386e534c \
+    --hash=sha256:d8df4b276b11b3e2fe25652e411487bda6e5bac4f8fd236a278a2bfe300f7c43 \
+    --hash=sha256:e740e352bbf7b6c8cc92a2596cc2da2bfb4ab1009aeb68bf844456af4e924278 \
+    --hash=sha256:52c2e01c95c6edae9ca1f48d83503e6ceeafbf28c19929a1e917fe951a83adb1 \
+    --hash=sha256:03f669755f1d6b7dbe528fe615a3164b0d8efca095382c514dd7026dfb79a9c6 \
+    --hash=sha256:3eb01a8fe44116aa6d63d2010515ef1526e40caee5f766f75b2d28393332dcaa
+kombu==4.0.2 \
+    --hash=sha256:385bf38e6de7f3851f674671dbfe24572ce999608d293a85fb8a630654d8bd9c \
+    --hash=sha256:d0fc6f2a36610a308f838db4b832dad79a681b516ac1d1a1f9d42edb58cc11a2
+amqp==2.1.4 \
+    --hash=sha256:5e0871a93433f941e444c2b859da095f05034d2ac1b7c084529cfd0b6f8eef18 \
+    --hash=sha256:1378cc14afeb6c2850404f322d03dec0082d11d04bdcb0360e1b10d4e6e77ef9
+vine==1.1.3 \
+    --hash=sha256:739b19304065de99bd1f4665abe461b449b1022c1e4f89a7925db9d50e9741ea \
+    --hash=sha256:87b95da19249373430a8fafca36f1aecb7aa0f1cc78545877857afc46aea2441

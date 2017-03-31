@@ -21,7 +21,6 @@ THIRD_PARTY_APPS = (
     'allauth.account',
     'crispy_forms',
     'compressor',
-    'djangobower',
     'csp',
 )
 LOCAL_APPS = (
@@ -109,7 +108,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
-    'djangobower.finders.BowerFinder',
 )
 MEDIA_ROOT = path.join(path.dirname(BASE_DIR), 'media')
 MEDIA_URL = '/media/'
@@ -179,6 +177,16 @@ LOGGING = {
         },
     }
 }
+
+# Celery
+CELERY_ENABLE_UTC = USE_TZ
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_RESULTS_EXPIRES = 3600
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_SEND_TASK_ERROR_EMAILS = True
+CELERY_TASK_ALWAYS_EAGER = True
 
 # API
 REST_FRAMEWORK = {

@@ -7,6 +7,18 @@ db:
   - MYSQL_ROOT_PASSWORD=toor
 redis:
   image: redis:3.2.8
+celery:
+  build: .
+  volumes:
+    - .:/app
+  links:
+    - db
+    - redis
+  environment:
+    - DJANGO_SETTINGS_MODULE=db.settings.docker
+    - DATABASE_URL=mysql://satnogsdb:satnogsdb@db/satnogsdb
+  command:
+    ./docker/run-celery.sh
 web:
   build: .
   ports:
@@ -16,10 +28,11 @@ web:
   links:
     - db
     - redis
+    - celery
   environment:
     - DJANGO_SETTINGS_MODULE=db.settings.docker
     - DEFAULT_FROM_EMAIL=noreply@example.com
     - ALLOWED_HOSTS=*
     - DATABASE_URL=mysql://satnogsdb:satnogsdb@db/satnogsdb
   command:
-    ./docker/run-docker.sh
+    ./docker/run-web.sh

@@ -24,6 +24,11 @@ CACHES = {
     }
 }
 
+# Celery
+CELERY_DEFAULT_QUEUE = 'db-{0}-queue'.format(ENVIRONMENT)
+CELERY_BROKER_URL = getenv('CELERY_BROKER_URL', 'unix://var/run/redis/redis.sock')
+CELERY_RESULT_BACKEND = getenv('CELERY_RESULT_BACKEND', 'unix://var/run/redis/redis.sock')
+
 # Security
 SECURE_HSTS_SECONDS = 60
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
