@@ -14,7 +14,8 @@
         "moment": "2.10.6",
         "bootstrap-daterangepicker": "2.1.x",
         "mapbox.js": "2.2.x",
-        "dnt-helper": "schalkneethling/dnt-helper"
+        "dnt-helper": "schalkneethling/dnt-helper",
+        "gpredict.js": "kerel-fs/gpredict.js"
     },
     "overrides": {
         "jquery": {
@@ -56,6 +57,9 @@
         },
         "dnt-helper": {
             "main": "js/dnt-helper.js"
+        },
+        "gpredict.js": {
+            "main": "dist/gpredict.min.js"
         }
     }
 }
