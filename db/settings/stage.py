@@ -24,6 +24,11 @@ CACHES = {
     }
 }
 
+# Celery
+CELERY_DEFAULT_QUEUE = 'db-{0}-queue'.format(ENVIRONMENT)
+CELERY_BROKER_URL = getenv('CELERY_BROKER_URL', 'redis+socket:///var/run/redis/redis.sock')
+CELERY_RESULT_BACKEND = getenv('CELERY_RESULT_BACKEND', 'redis+socket:///var/run/redis/redis.sock')
+
 # Security
 ALLOWED_HOSTS = [
     os.getenv('ALLOWED_HOSTS', '*')

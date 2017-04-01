@@ -25,3 +25,6 @@ media
 /staticfiles/*
 bower_components
 node_modules
+
+# Celery
+celerybeat-schedule

@@ -1,12 +1,17 @@
 import logging
+from socket import error as socket_error
 
-from django.contrib import admin
+from django.conf.urls import url
+from django.contrib import admin, messages
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
+from django.http import HttpResponseRedirect
 
 from db.base.models import Mode, Satellite, Transmitter, Suggestion, DemodData, Telemetry
+from db.base.tasks import check_celery
+
 
 logger = logging.getLogger('db')
 
@@ -19,6 +24,29 @@ class ModeAdmin(admin.ModelAdmin):
 @admin.register(Satellite)
 class SatelliteAdmin(admin.ModelAdmin):
     list_display = ('name', 'norad_cat_id')
+
+    def get_urls(self):
+        urls = super(SatelliteAdmin, self).get_urls()
+        my_urls = [
+            url(r'^check_celery/$', self.check_celery, name='check_celery'),
+        ]
+        return my_urls + urls
+
+    def check_celery(self, request):
+        try:
+            investigator = check_celery.delay()
+        except socket_error as e:
+            messages.error(request, 'Cannot connect to broker: %s' % e)
+            return HttpResponseRedirect(reverse('admin:index'))
+
+        try:
+            investigator.get(timeout=5)
+        except investigator.TimeoutError as e:
+            messages.error(request, 'Worker timeout: %s' % e)
+        else:
+            messages.success(request, 'Celery is OK')
+        finally:
+            return HttpResponseRedirect(reverse('admin:index'))
 
 
 @admin.register(Transmitter)
