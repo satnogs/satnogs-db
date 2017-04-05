@@ -24,26 +24,38 @@ $(document).ready(function() {
         clickable: false
     });
 
+    var sat = new sat_t();
+    var tle = [];
+
     marker.addTo(map);
 
-    function update_map(lat, lon) {
-        map.setView([lat, lon], 3);
+    function initialize_map(name, tle1, tle2) {
+        // Load satellite orbit data from TLE
+        gtk_sat_data_read_sat([name, tle1, tle2], sat);
 
-        marker.setLatLng(L.latLng(lat, lon));
+        update_map();
     }
 
-    (function worker() {
+    function update_map() {
+        // Recalculate satellite location
+        var t = new Date();
+        predict_calc(sat, (0, 0), Julian_Date(t));
+
+        // Update location on map
+        map.setView([sat.ssplat, sat.ssplon], 3);
+        marker.setLatLng(L.latLng(sat.ssplat, sat.ssplon));
+    }
+
+    (function init_worker() {
         $.ajax({
             url: url,
             success: function(data) {
-                if (('lat' in data) && ('lon' in data)) {
-                    update_map(data.lat, data.lon);
+                if (('name' in data) && ('tle1' in data) && ('tle2' in data)) {
+                    initialize_map(data.name, data.tle1, data.tle2);
+                    setInterval(update_map, 5000);
                 } else {
                     $('div#map').hide();
                 }
-            },
-            complete: function() {
-                setTimeout(worker, 5000);
             }
         });
     })();
