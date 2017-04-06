@@ -46,8 +46,14 @@ class TelemetryView(viewsets.ModelViewSet, mixins.CreateModelMixin):
         # Convert coordinates to omit N-S and W-E designators
         lat = request.data.get('latitude')
         lng = request.data.get('longitude')
-        data['lat'] = (-float(lat[:-1]) if ('W' in lat) else float(lat[:-1]))
-        data['lng'] = (-float(lng[:-1]) if ('S' in lng) else float(lng[:-1]))
+        if any(x.isalpha() for x in lat):
+            data['lat'] = (-float(lat[:-1]) if ('W' in lat) else float(lat[:-1]))
+        else:
+            data['lat'] = float(lat)
+        if any(x.isalpha() for x in lng):
+            data['lng'] = (-float(lng[:-1]) if ('S' in lng) else float(lng[:-1]))
+        else:
+            data['lng'] = float(lng)
 
         # Create file out of frame string
         frame = ContentFile(request.data.get('frame'), name='sids')
