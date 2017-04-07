@@ -96,15 +96,15 @@ class Transmitter(models.Model):
     DEAD = 'd'
     RE_ENTERED = 'r'
     STATUS = (
-        (ALIVE,'Alive'),
-        (DEAD,'Dead'),
-        (RE_ENTERED,'Re-entered'),
-        )
+        (ALIVE, 'Alive'),
+        (DEAD, 'Dead'),
+        (RE_ENTERED, 'Re-entered'),
+    )
     status = models.CharField(
-        max_length = 2,
-        choices = STATUS,
-        default = ALIVE,
-        )
+        max_length=2,
+        choices=STATUS,
+        default=ALIVE,
+    )
     uplink_low = models.PositiveIntegerField(blank=True, null=True)
     uplink_high = models.PositiveIntegerField(blank=True, null=True)
     downlink_low = models.PositiveIntegerField(blank=True, null=True)
