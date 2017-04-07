@@ -176,11 +176,22 @@ a.satellite-item:hover {
     white-space: nowrap;
 }
 
-.satellite-names-full {
+.satellite-names-full,.satellite-status {
     margin-bottom: 10px;
     font-weight: normal;
     float: right;
     margin-top: 5px;
+    margin-right: 6px;
+}
+
+.satellite-status[status='a']{
+    color: #31c731;
+}
+.satellite-status[status='d']{
+    color:#c76b31;
+}
+.satellite-status[status='r']{
+    color:#3186c7;
 }
 
 .panel-default .satellite-transmitters {
