@@ -81,8 +81,9 @@
                     </div>
                     <div class="row panel-body">
                       <div class="col-md-12">
-                        {% if transmitter.alive %}
-                          {% include "includes/field.html" with name="Alive" value=transmitter.alive %}
+                        
+                        {% if transmitter.status %}
+                          {% include "includes/field.html" with name="Status" value=transmitter.get_status_display %}
                         {% endif %}
                         {% if transmitter.mode %}
                           {% include "includes/field.html" with name="Mode" value=transmitter.mode %}
