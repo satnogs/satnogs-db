@@ -1,7 +1,7 @@
 # Basic
-Django==1.10.7 \
-    --hash=sha256:e68fd450154ad7ee2c88472bb812350490232462adc6e3c6bcb544abe5212134 \
-    --hash=sha256:593d779dbc2350a245c4f76d26bdcad58a39895e87304fe6d725bbdf84b5b0b8
+Django==1.11 \
+    --hash=sha256:0120b3b60760fb0617848b58aaa9702c0bf963320ed472f0879c5c55ab75b64a \
+    --hash=sha256:b6f3b864944276b4fd1d099952112696558f78b77b39188ac92b6c5e80152c30
 django-shortuuidfield==0.1.3 \
     --hash=sha256:a292c0fe5538abe947b131e2b914edd9ac44afcc6a40eaec71448e6231a3ef00
 django-jsonfield==1.0.1 \

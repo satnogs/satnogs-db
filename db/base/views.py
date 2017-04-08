@@ -3,18 +3,18 @@ import logging
 import requests
 from datetime import datetime
 
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.models import User
-from django.views.decorators.http import require_POST
+from django.db.models import Count, Max
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib.sites.shortcuts import get_current_site
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseNotFound, HttpResponseServerError, HttpResponse, JsonResponse
-from django.conf import settings
-from django.contrib.sites.shortcuts import get_current_site
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
+from django.views.decorators.http import require_POST
 from django.views.decorators.cache import cache_page
-from django.db.models import Count, Max
 
 from db.base.models import Mode, Transmitter, Satellite, Suggestion, DemodData
 from db.base.forms import SuggestionForm
@@ -24,7 +24,6 @@ from db.base.helpers import get_apikey
 logger = logging.getLogger('db')
 
 
-@cache_page(settings.CACHE_TTL)
 def home(request):
     """View to render home page."""
     satellites = Satellite.objects.all()
