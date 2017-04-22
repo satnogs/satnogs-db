@@ -1,5 +1,5 @@
 # Local development dependencies go here
--r base.txt
+-r production.txt
 
 # Debug & Testing
 sqlparse==0.2.3 \

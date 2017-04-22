@@ -1,0 +1,12 @@
+# Full list of options at https://pyup.io/docs/configuration/
+update: all
+pin: True
+branch: dev
+schedule: "every week on friday"
+search: False
+requirements:
+  - requirements/production.txt
+assignees: comzeradd
+branch_prefix: pyup-
+pr_prefix: "[update]"
+close_prs: True

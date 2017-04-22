@@ -8,7 +8,7 @@ RUN npm install -g bower gulp-cli
 RUN pip install --upgrade pip
 
 COPY ./requirements/ /tmp/requirements/
-RUN pip install --no-cache-dir --require-hashes --no-deps -r /tmp/requirements/docker.txt
+RUN pip install --no-cache-dir --require-hashes --no-deps -r /tmp/requirements/dev.txt
 
 WORKDIR /app
 COPY . /app
