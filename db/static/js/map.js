@@ -25,7 +25,6 @@ $(document).ready(function() {
     });
 
     var sat = new sat_t();
-    var tle = [];
 
     marker.addTo(map);
 
