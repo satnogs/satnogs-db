@@ -45,7 +45,7 @@ class SuggestionApprovedManager(models.Manager):
 class Mode(models.Model):
     name = models.CharField(max_length=10, unique=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -83,7 +83,7 @@ class Satellite(models.Model):
         has_decoders = Telemetry.objects.filter(satellite=self.id).exclude(decoder='').count()
         return has_decoders
 
-    def __unicode__(self):
+    def __str__(self):
         return '{0} - {1}'.format(self.norad_cat_id, self.name)
 
 
@@ -106,7 +106,7 @@ class Transmitter(models.Model):
 
     objects = TransmitterApprovedManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.description
 
     def update_from_suggestion(self, suggestion):
@@ -133,7 +133,7 @@ class Suggestion(Transmitter):
 
     objects = SuggestionApprovedManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.description
 
 
