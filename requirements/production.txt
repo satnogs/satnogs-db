@@ -47,8 +47,9 @@ django-braces==1.11.0 \
     --hash=sha256:6be8277a535565e2140f7b1eb83ec26aa8d181acc8bb046875142a2792e4babe
 django-secure==1.0.1 \
     --hash=sha256:b14f6e1b1224e9de347aef4e53f00bdd85b505d08a3e28b6357e4c10e2ddf37b
-django-csp==3.2 \
-    --hash=sha256:7cec78ba7c426deba6d4bea188dcfc1a8b2609ad98dd539c365605c9ec2996b2
+django-csp==3.3 \
+    --hash=sha256:a95eeeb04df155b6270612238700f16abd2b0cc3d32dbcfca8c7fd06d26dacba \
+    --hash=sha256:db082b75075672fb9cf4a622c75c94ee624cb566ffe9d2a645687e58598b6d39
 
 # Users
 django-allauth==0.31.0 \
