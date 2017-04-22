@@ -1,4 +1,4 @@
-/*global L */
+/*global L sat_t gtk_sat_data_read_sat predict_calc Julian_Date */
 
 $(document).ready(function() {
     'use strict';
