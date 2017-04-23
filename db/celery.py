@@ -7,7 +7,7 @@ from celery import Celery
 
 dotenv.read_dotenv()
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', os.getenv('DJANGO_SETTINGS_MODULE'))
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'db.settings.production')
 
 from django.conf import settings  # noqa
 
