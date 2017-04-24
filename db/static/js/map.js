@@ -1,4 +1,4 @@
-/*global L sat_t gtk_sat_data_read_sat predict_calc Julian_Date */
+/*global L sat_t gtk_sat_data_read_sat predict_calc Julian_Date geodetic_t Radians xkmper de2ra asin sin cos arccos Degrees pio2 pi fabs */
 
 $(document).ready(function() {
     'use strict';
