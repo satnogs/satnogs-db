@@ -19,7 +19,8 @@ $(document).ready(function() {
         iconAnchor: [16, 16]
     });
 
-    var marker = L.marker([0, 0], {
+    // Create satellite marker
+    var satMarker = L.marker([0, 0], {
         icon: satIcon,
         clickable: false
     });
@@ -36,7 +37,7 @@ $(document).ready(function() {
 
     var sat = new sat_t();
 
-    marker.addTo(map);
+    satMarker.addTo(map);
     satFootprint.addTo(map);
 
     function initialize_map(name, tle1, tle2) {
