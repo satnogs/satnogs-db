@@ -9,6 +9,13 @@ $(document).ready(function() {
 
     L.mapbox.accessToken = mapboxtoken;
     L.mapbox.config.FORCE_HTTPS = true;
+
+    // Number of positions to compute
+    var COUNT = 300;
+
+    // Interval in ms between positions to compute
+    var STEP = 60*1000;
+
     var map = L.mapbox.map('map', mapboxid, {
         zoomControl: false
     });
@@ -35,15 +42,47 @@ $(document).ready(function() {
             }
     );
 
+    // Create satellite orbit
+    var current_orbit = [];
+    var all_orbits = [];
+
+    var satOrbit = L.multiPolyline(
+            all_orbits,
+            {
+                weight: 4
+            }
+    );
+
     var sat = new sat_t();
 
     satMarker.addTo(map);
     satFootprint.addTo(map);
+    satOrbit.addTo(map);
 
     function initialize_map(name, tle1, tle2) {
         // Load satellite orbit data from TLE
         gtk_sat_data_read_sat([name, tle1, tle2], sat);
 
+        {
+            var t = new Date();
+
+            var g = "";
+            var previous = 0;
+            for ( var i = 0; i < COUNT; i++) {
+                predict_calc(sat, (0,0), Julian_Date(t));
+                if (Math.abs(sat.ssplon - previous) > 180) {
+                    // orbit crossing -PI, PI
+                    all_orbits.push(current_orbit);
+                    current_orbit = [];
+                }
+                current_orbit.push([sat.ssplat, sat.ssplon]);
+                previous = sat.ssplon;
+                // Increase time for next point
+                t.setTime(t.getTime() + STEP);
+            }
+
+            satOrbit.setLatLngs(all_orbits);
+        }
         update_map();
     }
 
