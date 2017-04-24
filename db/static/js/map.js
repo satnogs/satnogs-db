@@ -24,9 +24,20 @@ $(document).ready(function() {
         clickable: false
     });
 
+    // Create satellite footprint
+    var satFootprint = L.polygon(
+            [],
+            {
+                stroke: true,
+                weight: 2,
+                fill: true,
+            }
+    );
+
     var sat = new sat_t();
 
     marker.addTo(map);
+    satFootprint.addTo(map);
 
     function initialize_map(name, tle1, tle2) {
         // Load satellite orbit data from TLE
@@ -42,7 +53,60 @@ $(document).ready(function() {
 
         // Update location on map
         map.setView([sat.ssplat, sat.ssplon], 3);
-        marker.setLatLng(L.latLng(sat.ssplat, sat.ssplon));
+        satMarker.setLatLng(L.latLng(sat.ssplat, sat.ssplon));
+
+    // Refresh satellite footprint
+        {
+            var azi;
+            //var msx, msy, ssx, ssy;
+            var ssplat, ssplon, beta, azimuth, num, dem;
+            //var rangelon, rangelat, mlon;
+
+            var geo = new geodetic_t();
+
+            /* Range circle calculations.
+             * Borrowed from gsat 0.9.0 by Xavier Crehueras, EB3CZS
+             * who borrowed from John Magliacane, KD2BD.
+             * Optimized by Alexandru Csete and William J Beksi.
+             */
+            ssplat = Radians(sat.ssplat);
+            ssplon = Radians(sat.ssplon);
+            beta = (0.5 * sat.footprint) / xkmper;
+
+            var gn = "", gp = "", g = "";
+            var pos_overlap = false;
+            var neg_overlap = false;
+            var points = [];
+
+            for (azi = 0; azi < 360; azi += 5) {
+                azimuth = de2ra * azi;
+                geo.lat = asin(sin(ssplat) * cos(beta) + cos(azimuth) * sin(beta)
+                        * cos(ssplat));
+                num = cos(beta) - (sin(ssplat) * sin(geo.lat));
+                dem = cos(ssplat) * cos(geo.lat);
+
+                if (azi == 0 && (beta > pio2 - ssplat))
+                    geo.lon = ssplon + pi;
+
+                else if (azi == 180 && (beta > pio2 + ssplat))
+                    geo.lon = ssplon + pi;
+
+                else if (fabs(num / dem) > 1.0)
+                    geo.lon = ssplon;
+
+                else {
+                    if ((180 - azi) >= 0)
+                        geo.lon = ssplon - arccos(num, dem);
+                    else
+                        geo.lon = ssplon + arccos(num, dem);
+                }
+
+                points.push([Degrees(geo.lat), Degrees(geo.lon)]);
+            }
+
+            satFootprint.setLatLngs(points);
+        }
+
     }
 
     (function init_worker() {
