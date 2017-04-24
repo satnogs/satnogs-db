@@ -34,12 +34,12 @@ $(document).ready(function() {
 
     // Create satellite footprint
     var satFootprint = L.polygon(
-            [],
-            {
-                stroke: true,
-                weight: 2,
-                fill: true,
-            }
+        [],
+        {
+            stroke: true,
+            weight: 2,
+            fill: true,
+        }
     );
 
     // Create satellite orbit
@@ -47,10 +47,10 @@ $(document).ready(function() {
     var all_orbits = [];
 
     var satOrbit = L.multiPolyline(
-            all_orbits,
-            {
-                weight: 4
-            }
+        all_orbits,
+        {
+            weight: 4
+        }
     );
 
     var sat = new sat_t();
@@ -66,7 +66,6 @@ $(document).ready(function() {
         {
             var t = new Date();
 
-            var g = "";
             var previous = 0;
             for ( var i = 0; i < COUNT; i++) {
                 predict_calc(sat, (0,0), Julian_Date(t));
@@ -98,9 +97,14 @@ $(document).ready(function() {
     // Refresh satellite footprint
         {
             var azi;
-            //var msx, msy, ssx, ssy;
-            var ssplat, ssplon, beta, azimuth, num, dem;
-            //var rangelon, rangelat, mlon;
+            // var msx, msy, ssx, ssy;
+            var ssplat,
+                ssplon,
+                beta,
+                azimuth,
+                num,
+                dem;
+            // var rangelon, rangelat, mlon;
 
             var geo = new geodetic_t();
 
@@ -113,9 +117,6 @@ $(document).ready(function() {
             ssplon = Radians(sat.ssplon);
             beta = (0.5 * sat.footprint) / xkmper;
 
-            var gn = "", gp = "", g = "";
-            var pos_overlap = false;
-            var neg_overlap = false;
             var points = [];
 
             for (azi = 0; azi < 360; azi += 5) {
@@ -125,20 +126,20 @@ $(document).ready(function() {
                 num = cos(beta) - (sin(ssplat) * sin(geo.lat));
                 dem = cos(ssplat) * cos(geo.lat);
 
-                if (azi == 0 && (beta > pio2 - ssplat))
+                if (azi == 0 && (beta > pio2 - ssplat)) {
                     geo.lon = ssplon + pi;
-
-                else if (azi == 180 && (beta > pio2 + ssplat))
+                }
+                else if (azi == 180 && (beta > pio2 + ssplat)) {
                     geo.lon = ssplon + pi;
-
-                else if (fabs(num / dem) > 1.0)
+                }
+                else if (fabs(num / dem) > 1.0) {
                     geo.lon = ssplon;
-
-                else {
-                    if ((180 - azi) >= 0)
+                } else {
+                    if ((180 - azi) >= 0) {
                         geo.lon = ssplon - arccos(num, dem);
-                    else
+                    } else {
                         geo.lon = ssplon + arccos(num, dem);
+                    }
                 }
 
                 points.push([Degrees(geo.lat), Degrees(geo.lon)]);
