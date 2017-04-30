@@ -2,4 +2,4 @@
 {% endblock %}
 
 --
-the {{ data.site_name }} team
+the SatNOGS team

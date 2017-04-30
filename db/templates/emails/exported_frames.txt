@@ -1,0 +1,7 @@
+{% extends 'emails/base.txt' %}
+
+{% block main %}
+Your downlaod request for {{ data.norad }} frames is ready!
+
+{{ data.url }}
+{% endblock %}

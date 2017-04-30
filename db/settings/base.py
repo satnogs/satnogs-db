@@ -117,6 +117,7 @@ SATELLITE_DEFAULT_IMAGE = '/static/img/sat.png'
 # App conf
 ROOT_URLCONF = 'db.urls'
 WSGI_APPLICATION = 'db.wsgi.application'
+SITE_URL = getenv('SITE_URL', 'https://db.satnogs.org/')
 
 # Auth
 AUTHENTICATION_BACKENDS = (
