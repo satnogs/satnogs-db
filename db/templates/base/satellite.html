@@ -292,6 +292,11 @@
         <div class="panel-footer">
            <span class="badge">Frames: {{ satellite.telemetry_data.count }}</span>
            <span class="badge">Decoded: {{ telemetry_data_count }}</span>
+           {% if request.user.is_authenticated %}
+             <a href="{% url 'frames' norad=satellite.norad_cat_id %}" class="btn btn-default btn-xs">
+               <span class="glyphicon glyphicon-download"></span> Frames
+             </a>
+           {% endif %}
            Latest frame submitted on {{ latest_frame.timestamp|date:'Y-m-d H:i:s' }} by
            {{ latest_frame.observer }}
           </body>

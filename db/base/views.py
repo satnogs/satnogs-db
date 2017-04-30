@@ -1,3 +1,4 @@
+import csv
 import ephem
 import logging
 import requests
@@ -74,7 +75,7 @@ def satellite_position(request, sat_id):
 
 
 def satellite(request, norad):
-    """View to render home page."""
+    """View to render satellite page."""
     satellite_query = Satellite.objects \
                                .annotate(latest_payload_time=Max('telemetry_data__timestamp'),
                                          payload_frames_count=Count('telemetry_data'))
@@ -106,6 +107,18 @@ def satellite(request, norad):
                                                    'sat_position': sat_position,
                                                    'mapbox_id': settings.MAPBOX_MAP_ID,
                                                    'mapbox_token': settings.MAPBOX_TOKEN})
+
+
+@login_required
+def frames(request, norad):
+    """View to export satellite frames in csv."""
+    frames = DemodData.objects.filter(satellite__norad_cat_id=norad)
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="{0}.csv"'.format(norad)
+    writer = csv.writer(response)
+    for obj in frames:
+        writer.writerow([obj.timestamp, obj.display_frame()])
+    return response
 
 
 @login_required
