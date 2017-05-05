@@ -3,6 +3,10 @@
 
 {% block title %}{% endblock %}
 
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+{% endblock %}
+
 {% block top %}
   <div class="row" id="search">
     <div class="col-md-8">
@@ -47,7 +51,7 @@
 {% block content %}
   <div class="row sats">
     {% for sat in satellites %}
-      <div class="satellite-group-item"
+      <div class="satellite-group-item wow fadeInUp"
            data-selector="{{ sat.name|lower }}{{ sat.norad_cat_id }}{{ sat.names|lower }}"
            data-image="{{ sat.get_image }}">
         <a href="{% url 'satellite' norad=sat.norad_cat_id %}" class="panel panel-default satellite-item">
@@ -98,4 +102,6 @@
 
 {% block javascript %}
   <script src="{% static 'js/home.js' %}"></script>
+  <script src="{% static 'js/wow.js' %}"></script>
+  <script src="{% static 'js/wow_init.js' %}"></script>
 {% endblock %}

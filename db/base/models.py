@@ -58,6 +58,19 @@ class Satellite(models.Model):
                               help_text='Ideally: 250x250')
     tle1 = models.CharField(max_length=200, blank=True)
     tle2 = models.CharField(max_length=200, blank=True)
+    ALIVE = 'a'
+    DEAD = 'd'
+    RE_ENTERED = 'r'
+    STATUS = (
+        (ALIVE, 'Alive'),
+        (DEAD, 'Dead'),
+        (RE_ENTERED, 'Re-entered'),
+    )
+    status = models.CharField(
+        max_length=2,
+        choices=STATUS,
+        default=ALIVE,
+    )
 
     class Meta:
         ordering = ['norad_cat_id']

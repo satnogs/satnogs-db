@@ -74,7 +74,7 @@ def satellite_position(request, sat_id):
 
 
 def satellite(request, norad):
-    """View to render home page."""
+    """View to render satellite info page."""
     satellite_query = Satellite.objects \
                                .annotate(latest_payload_time=Max('telemetry_data__timestamp'),
                                          payload_frames_count=Count('telemetry_data'))

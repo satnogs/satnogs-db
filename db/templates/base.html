@@ -21,53 +21,53 @@
 
   <body>
     {{ stage_notice }}
+    <div class="row header">
+      <div class="container">
+        <nav class="navbar navbar-default" role="navigation" id="main-navbar">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="{% url 'home' %}">
+                <img id="navbar-logo" src="{% static 'img/satnogs_db.png' %}" alt="SatNOGS net">
+              </a>
+            </div>
 
-    <div class="container">
-      <nav class="navbar navbar-default" role="navigation" id="main-navbar">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{% url 'home' %}">
-              <img id="navbar-logo" src="{% static 'img/satnogs_db.png' %}" alt="SatNOGS net">
-            </a>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li class="{% active request 'home' %}"><a href="{% url 'home' %}">Home</a></li>
+                <li class="{% active request 'about' %}"><a href="{% url 'about' %}">About</a></li>
+                <li class="{% active request 'stats' %}"><a href="{% url 'stats' %}">Statistics</a></li>
+                <li class="{% active request 'faq' %}"><a href="{% url 'faq' %}">FAQ</a></li>
+                <li><a href="https://community.satnogs.org/" target="_blank">Community</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                {% if request.user.is_authenticated %}
+                <li class="dropdown">
+                  <a href="#"
+                     class="dropdown-toggle"
+                     data-toggle="dropdown">{% avatar request.user 35 %} {{ request.user.username }}
+                     <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="{% url 'users_edit' %}">Settings</a></li>
+                    <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                  </ul>
+                </li>
+                {% else %}
+                  <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+                  <li><a href="{% url 'account_login' %}">Log In</a></li>
+                {% endif %}
+              </ul>
+            </div>
           </div>
-
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="{% active request 'home' %}"><a href="{% url 'home' %}">Home</a></li>
-              <li class="{% active request 'about' %}"><a href="{% url 'about' %}">About</a></li>
-              <li class="{% active request 'stats' %}"><a href="{% url 'stats' %}">Statistics</a></li>
-              <li class="{% active request 'faq' %}"><a href="{% url 'faq' %}">FAQ</a></li>
-              <li><a href="https://community.satnogs.org/" target="_blank">Community</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              {% if request.user.is_authenticated %}
-              <li class="dropdown">
-                <a href="#"
-                   class="dropdown-toggle"
-                   data-toggle="dropdown">{% avatar request.user 35 %} {{ request.user.username }}
-                   <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="{% url 'users_edit' %}">Settings</a></li>
-                  <li><a href="{% url 'account_logout' %}">Logout</a></li>
-                </ul>
-              </li>
-              {% else %}
-                <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
-                <li><a href="{% url 'account_login' %}">Log In</a></li>
-              {% endif %}
-            </ul>
-          </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </div>
-
     <div class="container">
 
       {% if messages %}

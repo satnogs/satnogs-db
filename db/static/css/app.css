@@ -52,6 +52,7 @@ body {
     font-size: 14px;
     line-height: 1.3;
     font-family: ClearSans;
+    background: rgb(236,236,236);
 }
 
 .alert-debug {
@@ -104,11 +105,53 @@ body {
 }
 
 #main-navbar {
-    margin-top: 2%;
+    margin: 0;
+    background: transparent;
+    border-width: 0;
+}
+
+#main-navbar a:hover {
+    color: #eee;
+}
+
+#main-navbar .dropdown a {
+    color: #ddd;
+}
+
+#main-navbar .active a,
+#main-navbar .navbar-right .open a,
+#main-navbar .dropdown-menu {
+    background: #4c4b4b;
+    color: #ddd;
+}
+
+#main-navbar .active a {
+    box-shadow: inset 0 -2px 5px #333;
+}
+
+#main-navbar .navbar-right .open .dropdown-menu a:hover{
+    color: #aaa;
+}
+
+body .header {
+    background-color: #212121;
 }
 
 #navbar-logo {
     width: 80px;
+}
+
+#search {
+    margin-top: 15px;
+}
+
+#search input{
+    border-width: 0;
+    box-shadow: 0 0 0 #000;  
+}
+
+#search input:focus{
+    box-shadow: inset 0 2px 7px #212121;
 }
 
 .statistics {
@@ -176,11 +219,24 @@ a.satellite-item:hover {
     white-space: nowrap;
 }
 
-.satellite-names-full {
+.satellite-names-full,.satellite-status {
     margin-bottom: 10px;
     font-weight: normal;
     float: right;
     margin-top: 5px;
+    margin-right: 6px;
+}
+
+.satellite-status[status='a'] {
+    color: #31c731;
+}
+
+.satellite-status[status='d'] {
+    color: #c76b31;
+}
+
+.satellite-status[status='r'] {
+    color: #3186c7;
 }
 
 .panel-default .satellite-transmitters {
