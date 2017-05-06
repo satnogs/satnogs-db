@@ -11,8 +11,7 @@ from django.conf import settings
 from db.base.helpers import gridsquare
 
 DATA_SOURCES = ['manual', 'network', 'sids']
-SATELLITE_STATUS = ['Alive', 'Dead', 'Re-entered']
-SATELLITE_STATUS_CODES = ['a', 'd', 'r']
+SATELLITE_STATUS = (('a', 'Alive'), ('d', 'Dead'), ('r', 'Re-Entered'), )
 
 
 def _name_payload_frame(instance, filename):
@@ -62,7 +61,7 @@ class Satellite(models.Model):
     tle2 = models.CharField(max_length=200, blank=True)
     status = models.CharField(
         max_length=2,
-        choices=zip(SATELLITE_STATUS_CODES, SATELLITE_STATUS),
+        choices=SATELLITE_STATUS,
         default='a',
     )
 
