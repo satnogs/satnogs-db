@@ -19,6 +19,7 @@ from django.views.decorators.cache import cache_page
 from db.base.models import Mode, Transmitter, Satellite, Suggestion, DemodData
 from db.base.forms import SuggestionForm
 from db.base.helpers import get_apikey
+from db.base.tasks import export_frames
 
 
 logger = logging.getLogger('db')
@@ -74,7 +75,7 @@ def satellite_position(request, sat_id):
 
 
 def satellite(request, norad):
-    """View to render home page."""
+    """View to render satellite page."""
     satellite_query = Satellite.objects \
                                .annotate(latest_payload_time=Max('telemetry_data__timestamp'),
                                          payload_frames_count=Count('telemetry_data'))
@@ -109,6 +110,15 @@ def satellite(request, norad):
 
 
 @login_required
+def request_export(request, norad):
+    """View to request frames export download."""
+    export_frames.delay(norad, request.user.email, request.user.pk)
+    messages.success(request, ('Your download request was received. '
+                               'You will get an email when it\'s ready'))
+    return redirect(reverse('satellite', kwargs={'norad': norad}))
+
+
+@login_required
 @require_POST
 def suggestion(request):
     """View to process suggestion form"""
@@ -122,15 +132,14 @@ def suggestion(request):
         admins = User.objects.filter(is_superuser=True)
         site = get_current_site(request)
         subject = '[{0}] A new suggestion was submitted'.format(site.name)
-        template = 'emails/new_suggestion.txt'
+        template = 'emails/exported_frames.txt'
         saturl = '{0}{1}'.format(
             site.domain,
             reverse('satellite', kwargs={'norad': suggestion.satellite.norad_cat_id})
         )
         data = {
             'satname': suggestion.satellite.name,
-            'saturl': saturl,
-            'site_name': site.name
+            'saturl': saturl
         }
         message = render_to_string(template, {'data': data})
         for user in admins:

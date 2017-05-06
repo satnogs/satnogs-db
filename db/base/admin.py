@@ -85,8 +85,7 @@ class SuggestionAdmin(admin.ModelAdmin):
             subject = '[{0}] Your suggestion was approved'.format(current_site.name)
             template = 'emails/suggestion_approved.txt'
             data = {
-                'satname': obj.satellite.name,
-                'site_name': current_site.name
+                'satname': obj.satellite.name
             }
             message = render_to_string(template, {'data': data})
             try:
