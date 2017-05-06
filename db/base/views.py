@@ -31,9 +31,11 @@ def home(request):
     transmitters = Transmitter.objects.all().count()
     suggestions = Suggestion.objects.all().count()
     contributors = User.objects.filter(is_active=1).count()
+    payloads = DemodData.objects.all().count()
     return render(request, 'base/home.html', {'satellites': satellites,
                                               'transmitters': transmitters,
                                               'contributors': contributors,
+                                              'payloads': payloads,
                                               'suggestions': suggestions})
 
 
