@@ -5,35 +5,41 @@
 
 {% block top %}
   <div class="row" id="search">
-    <div class="col-md-8">
+    <div class="col-md-7">
       <input type="text" list="satellites-list"
              class="form-control input-lg satellite-search"
              placeholder="Filter by Name or NORAD Cat ID"
              autocomplete="off">
     </div>
-    <div class="col-md-4">
+    <div class="col-md-5">
       <div class="row hidden-xs hidden-sm">
-        <div class="{% if suggestions %}col-md-3{% else %}col-md-4{% endif %}">
+        <div class="{% if suggestions %}col-md-3{% else %}col-md-3{% endif %}">
           <p class="statistics">
             <img src="{% static 'img/satellites.png' %}">
             {{ satellites.count }}
           </p>
         </div>
-        <div class="{% if suggestions %}col-md-3{% else %}col-md-4{% endif %}">
+        <div class="{% if suggestions %}col-md-2{% else %}col-md-3{% endif %}">
           <p class="statistics">
             <img src="{% static 'img/transmitters.png' %}">
             {{ transmitters }}
           </p>
         </div>
         {% if suggestions %}
-          <div class="col-md-3">
+          <div class="col-md-2">
             <p class="statistics">
               <img src="{% static 'img/suggestions.png' %}">
               {{ suggestions }}
             </p>
           </div>
         {% endif %}
-        <div class="{% if suggestions %}col-md-3{% else %}col-md-4{% endif %}">
+        <div class="{% if suggestions %}col-md-2{% else %}col-md-3{% endif %}">
+          <p class="statistics">
+            <img src="{% static 'img/payloads.png' %}">
+            {{ payloads }}
+          </p>
+        </div>
+        <div class="{% if suggestions %}col-md-3{% else %}col-md-3{% endif %}">
           <p class="statistics">
             <img src="{% static 'img/contributors.png' %}">
             {{ contributors }}
