@@ -1,13 +1,10 @@
 from __future__ import absolute_import
 
 import os
-import dotenv
 
 from celery import Celery
 
-dotenv.read_dotenv()
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'db.settings.production')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'db.settings')
 
 from django.conf import settings  # noqa
 
