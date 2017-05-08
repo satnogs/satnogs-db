@@ -176,11 +176,29 @@ a.satellite-item:hover {
     white-space: nowrap;
 }
 
-.satellite-names-full {
+.satellite-names-full,
+.satellite-status {
     margin-bottom: 10px;
     font-weight: normal;
     float: right;
     margin-top: 5px;
+    margin-right: 6px;
+}
+
+.satellite-status {
+    font-size: .9em;
+}
+
+.satellite-status[data-status='alive'] {
+    background-color: #5cb85c;
+}
+
+.satellite-status[data-status='dead'] {
+    background-color: #f0ad4e;
+}
+
+.satellite-status[data-status='re-entered'] {
+    background-color: #d9534f;
 }
 
 .panel-default .satellite-transmitters {
