@@ -134,7 +134,7 @@ def suggestion(request):
         admins = User.objects.filter(is_superuser=True)
         site = get_current_site(request)
         subject = '[{0}] A new suggestion was submitted'.format(site.name)
-        template = 'emails/exported_frames.txt'
+        template = 'emails/new_suggestion.txt'
         saturl = '{0}{1}'.format(
             site.domain,
             reverse('satellite', kwargs={'norad': suggestion.satellite.norad_cat_id})
