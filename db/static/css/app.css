@@ -111,10 +111,16 @@ body {
     width: 80px;
 }
 
+#search {
+    margin: auto;
+}
+
 .statistics {
     text-align: center;
     text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.77);
     margin-top: 12px;
+    display: inline-block;
+    padding: 0 15px;
 }
 
 .statistics > img {
