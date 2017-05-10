@@ -1,7 +1,9 @@
-from os import path, getenv
-import dj_database_url
+from os import getenv
+from dj_database_url import parse as db_url
+from unipath import Path
 
-BASE_DIR = path.dirname(path.dirname(__file__))
+
+ROOT = Path(__file__).parent.parent
 
 ENVIRONMENT = getenv('ENVIRONMENT', 'production')
 DEBUG = getenv('DEBUG', False)
@@ -90,7 +92,9 @@ USE_TZ = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [path.join(BASE_DIR, 'db/templates')],
+        'DIRS': [
+            Path('db/templates').resolve(),
+        ],
         'OPTIONS': {
             'debug': False,
             'context_processors': [
@@ -115,17 +119,17 @@ TEMPLATES = [
 ]
 
 # Static & Media
-STATIC_ROOT = path.join(path.dirname(BASE_DIR), 'staticfiles')
+STATIC_ROOT = Path('staticfiles').resolve()
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    path.join(BASE_DIR, 'db/static'),
-)
+STATICFILES_DIRS = [
+    Path('db/static').resolve(),
+]
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
-MEDIA_ROOT = path.join(path.dirname(BASE_DIR), 'media')
+MEDIA_ROOT = Path('media').resolve()
 MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 SATELLITE_DEFAULT_IMAGE = '/static/img/sat.png'
@@ -247,7 +251,7 @@ ALLOWED_HOSTS = [
 
 # Database
 DATABASE_URL = getenv('DATABASE_URL', 'sqlite:///db.sqlite3')
-DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
+DATABASES = {'default': db_url(DATABASE_URL)}
 
 # NETWORK API
 NETWORK_API_ENDPOINT = getenv('NETWORK_API_ENDPOINT', 'https://network.satnogs.org/api/')
