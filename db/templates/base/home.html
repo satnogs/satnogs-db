@@ -13,38 +13,26 @@
     </div>
     <div class="col-md-5">
       <div class="row hidden-xs hidden-sm">
-        <div class="{% if suggestions %}col-md-3{% else %}col-md-3{% endif %}">
-          <p class="statistics">
-            <img src="{% static 'img/satellites.png' %}">
-            {{ satellites.count }}
-          </p>
-        </div>
-        <div class="{% if suggestions %}col-md-2{% else %}col-md-3{% endif %}">
-          <p class="statistics">
-            <img src="{% static 'img/transmitters.png' %}">
-            {{ transmitters }}
-          </p>
-        </div>
-        {% if suggestions %}
-          <div class="col-md-2">
-            <p class="statistics">
-              <img src="{% static 'img/suggestions.png' %}">
-              {{ suggestions }}
-            </p>
-          </div>
-        {% endif %}
-        <div class="{% if suggestions %}col-md-2{% else %}col-md-3{% endif %}">
-          <p class="statistics">
-            <img src="{% static 'img/payloads.png' %}">
-            {{ payloads }}
-          </p>
-        </div>
-        <div class="{% if suggestions %}col-md-3{% else %}col-md-3{% endif %}">
-          <p class="statistics">
-            <img src="{% static 'img/contributors.png' %}">
-            {{ contributors }}
-          </p>
-        </div>
+        <p class="statistics" title="satellites" data-toggle="tooltip">
+          <img src="{% static 'img/satellites.png' %}">
+          {{ satellites.count }}
+        </p>
+        <p class="statistics" title="transmitters" data-toggle="tooltip">
+          <img src="{% static 'img/transmitters.png' %}">
+          {{ transmitters }}
+        </p>
+        <p class="statistics" title="suggestions" data-toggle="tooltip">
+          <img src="{% static 'img/suggestions.png' %}">
+          {{ suggestions }}
+        </p>
+        <p class="statistics" title="telemetry" data-toggle="tooltip">
+          <img src="{% static 'img/payloads.png' %}">
+          {{ payloads }}
+        </p>
+        <p class="statistics" title="contributors" data-toggle="tooltip">
+          <img src="{% static 'img/contributors.png' %}">
+          {{ contributors }}
+        </p>
       </div>
     </div>
   </div>
