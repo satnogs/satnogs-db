@@ -234,6 +234,7 @@ CSP_DEFAULT_SRC = (
 CSP_SCRIPT_SRC = (
     "'self'",
     'https://*.google-analytics.com',
+    "'unsafe-eval'",
 )
 CSP_IMG_SRC = (
     "'self'",
