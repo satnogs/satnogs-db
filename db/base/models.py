@@ -1,3 +1,4 @@
+import json
 from os import path
 from shortuuidfield import ShortUUIDField
 from uuid import uuid4
@@ -178,6 +179,12 @@ class DemodData(models.Model):
 
     def __unicode__(self):
         return 'data-for-{0}'.format(self.satellite.norad_cat_id)
+
+    def display_decoded(self):
+        try:
+            json.dumps(self.payload_decoded)
+        except:
+            '{}'
 
     def display_frame(self):
         with open(self.payload_frame.path) as fp:

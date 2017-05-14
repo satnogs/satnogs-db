@@ -10,7 +10,7 @@ class TransmitterViewFilter(django_filters.FilterSet):
 
 
 class TelemetryViewFilter(django_filters.FilterSet):
-    satellite = django_filters.NumberFilter(name='transmitter__satellite__norad_cat_id',
+    satellite = django_filters.NumberFilter(name='satellite__norad_cat_id',
                                             lookup_expr='exact')
 
     class Meta:
