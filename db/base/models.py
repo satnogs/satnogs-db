@@ -1,4 +1,5 @@
 import json
+from markdown import markdown
 from os import path
 from shortuuidfield import ShortUUIDField
 from uuid import uuid4
@@ -56,6 +57,7 @@ class Satellite(models.Model):
     norad_cat_id = models.PositiveIntegerField()
     name = models.CharField(max_length=45)
     names = models.TextField(blank=True)
+    description = models.TextField(blank=True)
     image = models.ImageField(upload_to='satellites', blank=True,
                               help_text='Ideally: 250x250')
     tle1 = models.CharField(max_length=200, blank=True)
@@ -65,6 +67,9 @@ class Satellite(models.Model):
 
     class Meta:
         ordering = ['norad_cat_id']
+
+    def get_description(self):
+        return markdown(self.description)
 
     def get_image(self):
         if self.image and hasattr(self.image, 'url'):

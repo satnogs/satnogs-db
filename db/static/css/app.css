@@ -207,6 +207,10 @@ a.satellite-item:hover {
     background-color: #d9534f;
 }
 
+.satellite-description {
+    margin-top: 10px;
+}
+
 .panel-default .satellite-transmitters {
     position: relative;
     margin-top: 10px;
