@@ -35,6 +35,9 @@
             <div>
               <img src="{{ satellite.get_image }}" alt="{{ satellite.name }}" class="satellite-img-full">
             </div>
+            <div class="satellite-description">
+              {{ satellite.get_description|safe }}
+            </div>
           </div>
           <div class="col-sm-9">
             <div id="map" data-mapboxid="{{ mapbox_id }}" data-mapboxtoken="{{ mapbox_token }}"></div>
