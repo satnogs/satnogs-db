@@ -1,3 +1,14 @@
+## 2017.05-1
+* Counts of payloads on satellite page
+* Recamp homepage UI
+* Fetch and keep on TLE per Satellite
+* Add gulp support
+* Upgrade to Django 1.11
+* Add task to export satellite frames on csv
+* Add Satellite status
+* Add decoder for UniSAT-6
+* Add description field on Satellites
+
 ## 0.9
 * Add redis support for cache
 * Add dnd-helper for Do-Not-Track
