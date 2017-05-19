@@ -114,14 +114,14 @@ Pillow==4.1.1 \
     --hash=sha256:86b380e5302502654df5de3de99fc93c57220d7d2635e548c532600fd46f973c
 
 # API
-djangorestframework==3.6.2 \
-    --hash=sha256:3dc4bb6377dd1d58d8e2adc908d4f2e3bca5d8d0fb8323c49f57c8c8d407f6ec \
-    --hash=sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+djangorestframework==3.6.3 \
+    --hash=sha256:bb9d55997a71fb1c844cd84c15cbe2e87d2ec8493a685f96aa3db403760626b7 \
+    --hash=sha256:6aa6aafdfb7f6152a401873ecae93aff9eb54d7a74266065347cf4de68278ae4
 markdown==2.6.8 \
     --hash=sha256:0ac8a81e658167da95d063a9279c9c1b2699f37c7c4153256a458b3a43860e33
-django-filter==1.0.2 \
-    --hash=sha256:11cc64a75c708ca72d03b8bafa2ee2908debc41ae942a55b01fdaed375b5ee14 \
-    --hash=sha256:a6a1b59fc7c9c5da17af1c5c98490f89d2df26b9501934a54d814414af9ee1ac
+django-filter==1.0.4 \
+    --hash=sha256:6ef1611aeacfda8f13a075a992ff65687afbd5cc8fcb0f3f1563a9ad4fe2d1b0 \
+    --hash=sha256:e44620d4e707beaff7396ac8df765dc015a07467df813b9c1663fe4017934b58
 
 # Astronomy
 https://github.com/comzeradd/orbit/archive/0.2.1.tar.gz \
