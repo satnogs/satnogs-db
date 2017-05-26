@@ -48,7 +48,7 @@ def export_frames(norad, email, uid):
     subject = '[satnogs] Your request for exported frames is ready!'
     template = 'emails/exported_frames.txt'
     data = {
-        'url': '{0}{1}{2}.csv'.format(settings.SITE_URL, settings.MEDIA_URL, filename),
+        'url': '{0}{1}download/{2}'.format(settings.SITE_URL, settings.MEDIA_URL, filename),
         'norad': norad
     }
     message = render_to_string(template, {'data': data})
