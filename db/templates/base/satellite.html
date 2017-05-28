@@ -272,13 +272,13 @@
     </div>
   </div>
 
-  <!-- Telemetry Section -->
+  <!-- Telemetry Decoded Section -->
   <div id="telemetry" class="row hidden-xs hidden-sm">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 satellite-panels">
       <div class="panel panel-default panel-satellite">
         <div class="panel-heading">
           <div class="satellite-title" id="telemetry-block" data-satid="{{ satellite.norad_cat_id }}">
-            Telemetry
+            Telemetry (decoded)
           </div>
         </div>
         <div class="row panel-body">
@@ -296,24 +296,54 @@
           </div>
         </div>
         <div class="panel-footer">
-           <span class="badge">Frames: {{ satellite.telemetry_data.count }}</span>
-           <span class="badge">Decoded: {{ telemetry_data_count }}</span>
-           {% if request.user.is_authenticated %}
-             <a href="{% url 'request_export' norad=satellite.norad_cat_id %}" class="btn btn-default btn-xs">
-               <span class="glyphicon glyphicon-download"></span> Frames
-             </a>
-           {% endif %}
-           Latest frame submitted on {{ latest_frame.timestamp|date:'Y-m-d H:i:s' }} by
-           {{ latest_frame.observer }}
-          </body>
+          <span class="badge">Decoded: {{ telemetry_data_count }}</span>
         </div>
       </div>
     </div>
   </div>
 
   <script id="telemetryDescriptorsTemplate" type="text/template">
-      <li class="list-group-item telemetry-key" data-key="<%- key %>" data-unit="<%- unit %>"><%- description %></li>
+    <li class="list-group-item telemetry-key" data-key="<%- key %>" data-unit="<%- unit %>"><%- description %></li>
   </script>
+
+  <!-- Telemetry Frames Section -->
+  {% comment %}
+  {% if satellite.telemetry_data.count %}
+  {% endcomment %}
+    <div class="row hidden-xs hidden-sm">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 satellite-panels">
+        <div class="panel panel-default panel-satellite">
+          <div class="panel-heading">
+            <div class="satellite-title" id="telemetry-block" data-satid="{{ satellite.norad_cat_id }}">
+              Telemetry (frames)
+            </div>
+          </div>
+          <div class="row panel-body">
+            <div class="panel-satellite chart">
+              <div class="col-md-3 panel-satellite">
+                {% if request.user.is_authenticated %}
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="glyphicon glyphicon-download"></span> Download <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a href="{% url 'request_export_all' norad=satellite.norad_cat_id %}">Everything</a></li>
+                      <li><a href="{% url 'request_export' norad=satellite.norad_cat_id period=1 %}">Last week</a></li>
+                      <li><a href="{% url 'request_export' norad=satellite.norad_cat_id period=2 %}">Last month</a></li>
+                    </ul>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <span class="badge">Frames: {{ satellite.telemetry_data.count }}</span>
+            Latest frame submitted on {{ latest_frame.timestamp|date:'Y-m-d H:i:s' }} by
+            {{ latest_frame.observer }}
+          </div>
+        </div>
+      </div>
+    </div>
 
   <!-- Suggestion Modal -->
   <div class="modal fade" id="NewSuggestionModal" tabindex="-1" role="dialog" aria-labelledby="NewSuggestionModalLabel" aria-hidden="true">

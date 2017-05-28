@@ -15,7 +15,8 @@ celery:
     - db
     - redis
   environment:
-    - DJANGO_SETTINGS_MODULE=db.settings.docker
+    - ENVIRONMENT=stage
+    - DEBUG=True
     - DATABASE_URL=mysql://satnogsdb:satnogsdb@db/satnogsdb
   command:
     ./docker/run-celery.sh

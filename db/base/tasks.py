@@ -1,4 +1,5 @@
 import csv
+from datetime import datetime, timedelta
 
 from celery.task import task
 from orbit import satellite
@@ -34,21 +35,35 @@ def update_all_tle():
 
 
 @task
-def export_frames(norad, email, uid):
+def export_frames(norad, email, uid, period=None):
     """Task to export satellite frames in csv."""
-    frames = DemodData.objects.filter(satellite__norad_cat_id=norad)
-    filename = '{0}-{1}.csv'.format(norad, uid)
+    now = datetime.utcnow()
+    if period:
+        if period == '1':
+            q = datetime.now() - timedelta(days=7)
+            suffix = 'week'
+        else:
+            q = datetime.now() - timedelta(days=30)
+            suffix = 'month'
+        frames = DemodData.objects.filter(satellite__norad_cat_id=norad,
+                                          timestamp__gte=q)
+    else:
+        frames = DemodData.objects.filter(satellite__norad_cat_id=norad)
+        suffix = 'all'
+    filename = '{0}-{1}-{2}-{3}.csv'.format(norad, uid, now.strftime('%Y%m%dT%H%M%SZ'), suffix)
     filepath = '{0}/download/{1}'.format(settings.MEDIA_ROOT, filename)
     with open(filepath, 'w') as f:
         writer = csv.writer(f)
         for obj in frames:
-            writer.writerow([obj.timestamp, obj.display_frame()])
+            writer.writerow([obj.timestamp.strftime('%Y%m%dT%H:%M:%SZ'),
+                             obj.observer, obj.display_frame()])
 
     # Notify user
     subject = '[satnogs] Your request for exported frames is ready!'
     template = 'emails/exported_frames.txt'
     data = {
-        'url': '{0}{1}download/{2}'.format(settings.SITE_URL, settings.MEDIA_URL, filename),
+        'url': '{0}{1}download/{2}'.format(settings.SITE_URL,
+                                           settings.MEDIA_URL, filename),
         'norad': norad
     }
     message = render_to_string(template, {'data': data})

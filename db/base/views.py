@@ -111,9 +111,9 @@ def satellite(request, norad):
 
 
 @login_required
-def request_export(request, norad):
+def request_export(request, norad, period=None):
     """View to request frames export download."""
-    export_frames.delay(norad, request.user.email, request.user.pk)
+    export_frames.delay(norad, request.user.email, request.user.pk, period)
     messages.success(request, ('Your download request was received. '
                                'You will get an email when it\'s ready'))
     return redirect(reverse('satellite', kwargs={'norad': norad}))
