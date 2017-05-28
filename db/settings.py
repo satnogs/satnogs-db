@@ -22,6 +22,7 @@ THIRD_PARTY_APPS = (
     'avatar',
     'rest_framework',
     'rest_framework.authtoken',
+    'django_filters',
     'allauth',
     'allauth.account',
     'crispy_forms',
