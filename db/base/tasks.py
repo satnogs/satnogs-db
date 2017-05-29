@@ -1,7 +1,6 @@
 import csv
 from datetime import datetime, timedelta
 
-from celery.task import task
 from orbit import satellite
 
 from django.conf import settings
@@ -9,15 +8,16 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 
 from db.base.models import Satellite, DemodData
+from db.celery import app
 
 
-@task(ignore_result=False)
+@app.task(task_ignore_result=False)
 def check_celery():
     """Dummy celery task to check that everything runs smoothly."""
     pass
 
 
-@task(ignore_result=True)
+@app.task
 def update_all_tle():
     """Task to update all satellite TLEs"""
     satellites = Satellite.objects.all()
@@ -34,7 +34,7 @@ def update_all_tle():
         obj.save()
 
 
-@task
+@app.task
 def export_frames(norad, email, uid, period=None):
     """Task to export satellite frames in csv."""
     now = datetime.utcnow()
@@ -53,10 +53,10 @@ def export_frames(norad, email, uid, period=None):
     filename = '{0}-{1}-{2}-{3}.csv'.format(norad, uid, now.strftime('%Y%m%dT%H%M%SZ'), suffix)
     filepath = '{0}/download/{1}'.format(settings.MEDIA_ROOT, filename)
     with open(filepath, 'w') as f:
-        writer = csv.writer(f)
+        writer = csv.writer(f, delimiter='|')
         for obj in frames:
-            writer.writerow([obj.timestamp.strftime('%Y%m%dT%H:%M:%SZ'),
-                             obj.observer, obj.display_frame()])
+            writer.writerow([obj.timestamp.strftime('%Y-%m-%d %H:%M:%S'),
+                             obj.display_frame()])
 
     # Notify user
     subject = '[satnogs] Your request for exported frames is ready!'
