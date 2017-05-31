@@ -3,6 +3,8 @@ from __future__ import absolute_import
 import os
 
 from celery import Celery
+from opbeat.contrib.django.models import client, logger, register_handlers
+from opbeat.contrib.celery import register_signal
 
 import dotenv
 
@@ -26,3 +28,12 @@ def setup_periodic_tasks(sender, **kwargs):
 
     sender.add_periodic_task(RUN_DAILY, update_all_tle.s(),
                              name='update-all-tle')
+
+
+try:
+    register_signal(client)
+except Exception as e:
+    logger.exception('Failed installing celery hook: %s' % e)
+
+if 'opbeat.contrib.django' in settings.INSTALLED_APPS:
+    register_handlers()
