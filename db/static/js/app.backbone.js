@@ -32,13 +32,13 @@ d3.lineChart = function(telemetry_key, unit) {
             switch(_data.length) {
             case 1:
                 y1 = d3.scale.linear()
-                    .domain([0, d3.max(_data, function(d){ return +d.decoded.damod_data[telemetry_key]; })])
+                    .domain([0, d3.max(_data, function(d){ return +d.decoded.demod_data[telemetry_key]; })])
                     .range([chartH, 0])
                     .nice(4);
                 break;
             default:
                 y1 = d3.scale.linear()
-                .domain(d3.extent(_data, function(d){ return +d.decoded.damod_data[telemetry_key]; }))
+                .domain(d3.extent(_data, function(d){ return +d.decoded.demod_data[telemetry_key]; }))
                 .range([chartH, 0])
                 .nice(4);
             }
@@ -102,13 +102,13 @@ d3.lineChart = function(telemetry_key, unit) {
                     .enter().append('circle')
                     .attr('r', 4)
                     .attr('cx', function() { return chartW / 2 + config.margin.left; })
-                    .attr('cy', function(d) { return y1(d.decoded.damod_data[telemetry_key]) + config.margin.top; })
+                    .attr('cy', function(d) { return y1(d.decoded.demod_data[telemetry_key]) + config.margin.top; })
                     .attr('class', 'circle')
                     .on('mouseover', function(d) {
                         div.transition()
                             .duration(200)
                             .style('opacity', 1);
-                        div.html(d.decoded.damod_data[telemetry_key] + ' (' + unit + ')')
+                        div.html(d.decoded.demod_data[telemetry_key] + ' (' + unit + ')')
                            .style('left', (d3.event.pageX) + 'px')
                            .style('top', (d3.event.pageY - 26) + 'px');
                     })
@@ -124,7 +124,7 @@ d3.lineChart = function(telemetry_key, unit) {
                 // Define the line
                 var valueline = d3.svg.line()
                     .x(function(d,i) { return (xInterval*i + config.margin.left); })
-                    .y(function(d) { return y1(d.decoded.damod_data[telemetry_key]) + config.margin.top; });
+                    .y(function(d) { return y1(d.decoded.demod_data[telemetry_key]) + config.margin.top; });
 
                 // Add the valueline path
                 svg.append('path')
@@ -137,13 +137,13 @@ d3.lineChart = function(telemetry_key, unit) {
                     .enter().append('circle')
                     .attr('r', 4)
                     .attr('cx', function(d, i) { return xInterval*i + config.margin.left; })
-                    .attr('cy', function(d) { return y1(d.decoded.damod_data[telemetry_key]) + config.margin.top; })
+                    .attr('cy', function(d) { return y1(d.decoded.demod_data[telemetry_key]) + config.margin.top; })
                     .attr('class', 'circle')
                     .on('mouseover', function(d) {
                         div.transition()
                             .duration(200)
                             .style('opacity', 1);
-                        div.html(d.decoded.damod_data[telemetry_key] + ' (' + unit + ')')
+                        div.html(d.decoded.demod_data[telemetry_key] + ' (' + unit + ')')
                            .style('left', (d3.event.pageX) + 'px')
                            .style('top', (d3.event.pageY - 26) + 'px');
                     })
@@ -208,7 +208,9 @@ if (has_telemetry_data) {
         },
         byDate: function (start_date, end_date) {
             var filtered = this.filter(function (model) {
+
                 var date = parseDateFilter(model.get('decoded').observation_datetime);
+
                 return ( date >= start_date && date <= end_date );
             });
             return new TelemetryValues(filtered);

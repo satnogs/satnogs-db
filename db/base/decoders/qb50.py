@@ -56,7 +56,7 @@ def decode_payload(payload, observation_datetime, data_id):
             'satellite_datetime': satellite_datetime,
             'observation_datetime': observation_datetime,
             'data_id': data_id,
-            'damod_data': {
+            'demod_data': {
                 'status': status,
                 'bat_v': bat_v,
                 'bat_c': bat_c,
