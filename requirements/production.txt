@@ -57,8 +57,8 @@ django-csp==3.3 \
 # Users
 django-allauth==0.32.0 \
     --hash=sha256:e593338d87a57100a6fb64760e2ab8dd67fa6af8d016b4620166c832ecdec23a
-django-avatar==3.1.0 \
-    --hash=sha256:0e29c99e488061f9ef9cc1fb52306e31d849379fb63aa5acd2adeb400a106e84
+django-avatar==4.0.0 \
+    --hash=sha256:0e31205e186e15bba41ea5d3261fc4f011fbf926cce2699f2ae90931979b9596
 django-crispy-forms==1.6.1 \
     --hash=sha256:18e904c7bd55c45201739cb343272767ff820263a1fca40a7b388006ce94910c
 
