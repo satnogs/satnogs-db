@@ -1,4 +1,4 @@
-/*global L sat_t gtk_sat_data_read_sat predict_calc Julian_Date geodetic_t Radians xkmper de2ra asin sin cos arccos Degrees pio2 pi fabs */
+/*global L Sat_t gtk_sat_data_read_sat predict_calc julian_date Geodetic_t radians xkmper de2ra asin sin cos arccos degrees pio2 pi fabs */
 
 $(document).ready(function() {
     'use strict';
@@ -53,7 +53,7 @@ $(document).ready(function() {
         }
     );
 
-    var sat = new sat_t();
+    var sat = new Sat_t();
 
     satMarker.addTo(map);
     satFootprint.addTo(map);
@@ -68,7 +68,7 @@ $(document).ready(function() {
 
             var previous = 0;
             for ( var i = 0; i < COUNT; i++) {
-                predict_calc(sat, (0,0), Julian_Date(t));
+                predict_calc(sat, (0,0), julian_date(t));
                 if (Math.abs(sat.ssplon - previous) > 180) {
                     // orbit crossing -PI, PI
                     all_orbits.push(current_orbit);
@@ -88,7 +88,7 @@ $(document).ready(function() {
     function update_map() {
         // Recalculate satellite location
         var t = new Date();
-        predict_calc(sat, (0, 0), Julian_Date(t));
+        predict_calc(sat, (0, 0), julian_date(t));
 
         // Update location on map
         map.setView([sat.ssplat, sat.ssplon], 3);
@@ -106,15 +106,15 @@ $(document).ready(function() {
                 dem;
             // var rangelon, rangelat, mlon;
 
-            var geo = new geodetic_t();
+            var geo = new Geodetic_t();
 
             /* Range circle calculations.
              * Borrowed from gsat 0.9.0 by Xavier Crehueras, EB3CZS
              * who borrowed from John Magliacane, KD2BD.
              * Optimized by Alexandru Csete and William J Beksi.
              */
-            ssplat = Radians(sat.ssplat);
-            ssplon = Radians(sat.ssplon);
+            ssplat = radians(sat.ssplat);
+            ssplon = radians(sat.ssplon);
             beta = (0.5 * sat.footprint) / xkmper;
 
             var points = [];
@@ -142,7 +142,7 @@ $(document).ready(function() {
                     }
                 }
 
-                points.push([Degrees(geo.lat), Degrees(geo.lon)]);
+                points.push([degrees(geo.lat), degrees(geo.lon)]);
             }
 
             satFootprint.setLatLngs(points);
