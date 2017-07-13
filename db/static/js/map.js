@@ -94,7 +94,7 @@ $(document).ready(function() {
         map.setView([sat.ssplat, sat.ssplon], 3);
         satMarker.setLatLng(L.latLng(sat.ssplat, sat.ssplon));
 
-    // Refresh satellite footprint
+        // Refresh satellite footprint
         {
             var azi;
             // var msx, msy, ssx, ssy;
