@@ -38,9 +38,9 @@ d3.lineChart = function(telemetry_key, unit) {
                 break;
             default:
                 y1 = d3.scale.linear()
-                .domain(d3.extent(_data, function(d){ return +d.decoded.demod_data[telemetry_key]; }))
-                .range([chartH, 0])
-                .nice(4);
+                    .domain(d3.extent(_data, function(d){ return +d.decoded.demod_data[telemetry_key]; }))
+                    .range([chartH, 0])
+                    .nice(4);
             }
 
             var xAxis = d3.svg.axis()
@@ -82,9 +82,9 @@ d3.lineChart = function(telemetry_key, unit) {
 
             // Axis labels
             svg.append('text')
-                    .attr('transform', 'translate(' + (chartW + config.margin.right + 18) + ' ,' + (chartH + 10) + ')')
-                    .style('text-anchor', 'middle')
-                    .text('Observation Datetime');
+                .attr('transform', 'translate(' + (chartW + config.margin.right + 18) + ' ,' + (chartH + 10) + ')')
+                .style('text-anchor', 'middle')
+                .text('Observation Datetime');
 
             svg.append('text')
                 .attr('transform', 'rotate(-90)')
@@ -109,8 +109,8 @@ d3.lineChart = function(telemetry_key, unit) {
                             .duration(200)
                             .style('opacity', 1);
                         div.html(d.decoded.demod_data[telemetry_key] + ' (' + unit + ')')
-                           .style('left', (d3.event.pageX) + 'px')
-                           .style('top', (d3.event.pageY - 26) + 'px');
+                            .style('left', (d3.event.pageX) + 'px')
+                            .style('top', (d3.event.pageY - 26) + 'px');
                     })
                     .on('mouseout', function() {
                         div.transition()
@@ -144,8 +144,8 @@ d3.lineChart = function(telemetry_key, unit) {
                             .duration(200)
                             .style('opacity', 1);
                         div.html(d.decoded.demod_data[telemetry_key] + ' (' + unit + ')')
-                           .style('left', (d3.event.pageX) + 'px')
-                           .style('top', (d3.event.pageY - 26) + 'px');
+                            .style('left', (d3.event.pageX) + 'px')
+                            .style('top', (d3.event.pageY - 26) + 'px');
                     })
                     .on('mouseout', function() {
                         div.transition()
