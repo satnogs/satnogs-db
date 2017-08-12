@@ -12,7 +12,7 @@ class ModeSerializer(serializers.ModelSerializer):
 class SatelliteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Satellite
-        fields = ('norad_cat_id', 'name', 'names', 'image')
+        fields = ('norad_cat_id', 'name', 'names', 'image', 'status')
 
 
 class TransmitterSerializer(serializers.ModelSerializer):
