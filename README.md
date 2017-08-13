@@ -6,6 +6,8 @@ SatNOGS DB is a transmitter suggestions and crowd-sourcing app.
 
 See the [documentation](http://docs.satnogs.org/en/stable/db/).
 
+The main repository lives on [Gitlab](https://gitlab.com/librespacefoundation/satnogs/satnogs-db).
+
 ## Join
 
 [![irc](https://img.shields.io/badge/IRC-%23satnogs%20on%20freenode-blue.svg)](https://webchat.freenode.net/?channels=satnogs)
@@ -13,7 +15,7 @@ See the [documentation](http://docs.satnogs.org/en/stable/db/).
 
 ## Current Development
 
-[![kanban](https://img.shields.io/badge/kanban-board-lightgray.svg)](https://github.com/satnogs/satnogs-db/projects/1)
+[![kanban](https://img.shields.io/badge/kanban-board-lightgray.svg)](https://gitlab.com/librespacefoundation/satnogs/satnogs-db/boards/345706)
 [![travis](https://img.shields.io/travis/satnogs/satnogs-db/dev.svg?label=tests)](http://travis-ci.org/satnogs/satnogs-db/)
 [![coveralls](https://img.shields.io/coveralls/satnogs/satnogs-db/dev.svg)](https://coveralls.io/github/satnogs/satnogs-db)
 [![updates](https://pyup.io/repos/github/satnogs/satnogs-db/shield.svg)](https://pyup.io/repos/github/satnogs/satnogs-db/)
