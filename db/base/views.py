@@ -69,6 +69,9 @@ def satellite_position(request, sat_id):
         now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         satellite.compute(now)
         data = {
+            'name': str(sat.name),
+            'tle1': str(sat.tle1),
+            'tle2': str(sat.tle2),
             'lon': '{0}'.format(satellite.sublong),
             'lat': '{0}'.format(satellite.sublat)
         }
